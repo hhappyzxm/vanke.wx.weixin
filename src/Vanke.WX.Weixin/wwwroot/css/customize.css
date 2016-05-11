@@ -1,0 +1,72 @@
+﻿.nav-icon {
+    margin-right: 10px;
+    color: #3498DB;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+.hdropdown li a {
+    color: #9d9fa2 !important;
+}
+
+ul.rightside-list, ul.h-list {
+    list-style: none;
+    padding: 0;
+}
+
+    ul.rightside-list li a, ul.h-list li a {
+        padding: 10px 0;
+        display: block;
+    }
+
+        ul.rightside-list li a i, ul.h-list li a i {
+            margin-right: 6px;
+            display: inline-block;
+        }
+
+    ul.rightside-list li.active a, ul.h-list li.active a {
+        background: #f7f9fa;
+        border: 1px solid #e4e5e7;
+        font-weight: 600;
+        border-radius: 1px;
+    }
+
+    ul.rightside-list li:hover a, ul.h-list li:hover a {
+        font-weight: 600;
+    }
+
+
+.profile-picture ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+}
+
+    .profile-picture ul li {
+        padding: 5px 0;
+    }
+
+        .profile-picture ul li small {
+            color:#4A9E4B;
+        }
+
+.legend td {
+	padding: 1px;
+}
+
+.panel-heading-bg-yellow {
+    background: #FFED86 !important;
+    color: #B39B16 !important;
+}
+
+.ul-none ul {
+    list-style: none;
+    padding:0;
+    margin:0;
+}
+
+.txt-mandatory {
+    color: red;
+}

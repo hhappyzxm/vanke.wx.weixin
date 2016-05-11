@@ -1,0 +1,83 @@
+<div id="navigation">
+    <div class="profile-picture">
+
+        <div class="stats-label text-color">
+            <span class="font-extra-bold font-uppercase">Pete He</span>
+            <ul>
+                <li>
+                    <div class="dropdown" uib-dropdown>
+                        <a uib-dropdown-toggle class="dropdown-toggle" href="#">
+                            <small>Smartfleet Administrator&nbsp;<b class="caret"></b></small>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs" uib-dropdown-menu>
+                            <li><a href="#">Smartfleet Administrator</a></li>
+                            <li><a href="#">System Administrator</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="dropdown" uib-dropdown>
+                        <a uib-dropdown-toggle class="dropdown-toggle" href="#">
+                            <small>Australian Home Care&nbsp;<b class="caret"></b></small>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs" uib-dropdown-menu>
+                            <li><a href="#">Australian Home Care</a></li>
+                            <li><a href="#">Camberwell (800 00)</a></li>
+                            <li><a href="#">Community Nursing (110 03)</a></li>
+                            <li><a href="#">Community Operations Management (785 10)</a></li>
+                            <li><a href="#">Community Relations &Aacute; Marketing (790 00)</a></li>
+                            <li><a href="#">Gippsland (230 10)</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><small>Australian Home Care</small></li>
+            </ul>
+        </div>
+    </div>
+
+    <ul side-navigation class="nav" id="side-menu">
+        <li ui-sref-active="active">
+            <a ui-sref="customer.dashboard"><span class="nav-icon fa fa-home fa-lg"></span><span class="nav-label">Dashboard</span></a>
+        </li>
+        <li ng-class="{active: $state.includes('interface')}">
+            <a href="#"><span class="nav-icon fa fa-building fa-lg"></span><span class="nav-label">Company</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('interface')}">
+                <li ui-sref-active="active">
+                    <a ui-sref="interface.panels"><span class="nav-label">Company Setting</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="#">Business Unit</a></li>
+                        <li><a href="#">Transfer Between Business Unit</a></li>
+                        <li><a href="#">Company Fuel Providers</a></li>
+                        <li><a href="#">Customer Toll Providers</a></li>
+                        <li><a href="#">Company Insures</a></li>
+                        <li><a href="#">Registration Locations</a></li>
+                        <li><a href="#">Registration Postal Addresses</a></li>
+                        <li><a href="#">Sites</a></li>
+                        <li><a href="#">Customer Site Transfer</a></li>
+                    </ul>
+                </li>
+                <li ui-sref-active="active"><a ui-sref="interface.typography">Company Account Codes</a></li>
+                <li ui-sref-active="active"><a ui-sref="interface.buttons">Company Admin</a></li>
+            </ul>
+        </li>
+        <li ng-class="{'active': $state.includes('app_views') || $state.includes('blog_details')}">
+            <a href="#"><span class="nav-icon fa fa-user fa-lg"></span><span class="nav-label">Personnel</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{'in': $state.includes('app_views') || $state.includes('blog_details')}">
+                <li ui-sref-active="active"><a ui-sref="app_views.contacts">System Users</a></li>
+                <li ui-sref-active="active"><a ui-sref="app_views.projects">Drivers</a></li>
+            </ul>
+        </li>
+        <li ng-class="{active: $state.includes('charts')}">
+            <a href="#"><span class="nav-icon fa fa-car"></span><span class="nav-label">Fleet</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('charts')}">
+                <li ui-sref-active="active"><a ui-sref="customer.vehicles">Vehicle List</a></li>
+                <li ui-sref-active="active"><a ui-sref="charts.flot">Copy And Create New Vehicle</a></li>
+                <li ui-sref-active="active"><a ui-sref="charts.inline">Update Vehicle Odometers</a></li>
+                <li ui-sref-active="active"><a ui-sref="charts.chartist">Vehicle Search/Vehicle Reporting</a></li>
+                <li ui-sref-active="active"><a ui-sref="charts.chartist">Vehicle Driver Exchange</a></li>
+                <li ui-sref-active="active"><a ui-sref="charts.chartist">Vehicle Push Report Management</a></li>
+                <li ui-sref-active="active"><a ui-sref="charts.chartist">Vehicle Registration Change Uploading</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
