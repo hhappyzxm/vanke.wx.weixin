@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using EZ.Framework.Core;
 
 namespace EZ.Framework.EntityFramework
 {
-    public class CRUDService<TUnitOfWork, TRepository, TEntity> : Service<TUnitOfWork>
+    public class CRUDService<TUnitOfWork, TRepository, TEntity> : Service<TUnitOfWork>, ICRUDService<TEntity>, ICRUDAsyncService<TEntity>
         where TUnitOfWork : IDataContext
         where TRepository : IRepository<TEntity>
         where TEntity : IEntity
@@ -17,6 +18,34 @@ namespace EZ.Framework.EntityFramework
 
             Repository = repository;
         }
+
+        #region GetByKey
+
+        public TEntity GetByKey(object key)
+        {
+            return Repository.GetByKey(key);
+        }
+
+        public async Task<TEntity> GetByKeyAsync(object key)
+        {
+            return await Repository.GetByKeyAsync(key);
+        }
+
+        #endregion
+
+        #region GetAll
+
+        public IEnumerable<TEntity> GetAll()
+        {
+            return Repository.GetAll();
+        }
+
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
+        {
+            return await Repository.GetAllAsync();
+        }
+
+        #endregion
 
         #region Insert
 

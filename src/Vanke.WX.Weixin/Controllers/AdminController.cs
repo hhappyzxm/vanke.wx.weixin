@@ -1,45 +1,45 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Http;
 using EZ.Framework.EntityFramework;
 using Vanke.WX.Weixin.Common;
+using Vanke.WX.Weixin.Data.Entity;
 using Vanke.WX.Weixin.Service;
 using Vanke.WX.Weixin.Service.Interface;
+using Vanke.WX.Weixin.ViewModels;
 
 namespace Vanke.WX.Weixin.Controllers
 {
     
-    public class AdminController : ApiController
+    public class AdminController : BaseApiController
     {
-        public AdminController(IDataContext dataContext)
-        {
-        }
+        private readonly IAdminService _adminService = IoC.Container.GetInstance<IAdminService>();
 
-        // GET api/values
         public IEnumerable<string> Get()
         {
             var s = IoC.Container.GetInstance<IAdminService>();
             return new string[] { "11", "22" };
         }
 
-        // GET api/values/5
-        public string Get(int id)
+        //public AdminViewModel Get(int id)
+        //{
+        //    return _adminService.
+        //}
+
+        public async Task Post(Admin entity)
         {
-            return "value";
+            await _adminService.InsertAsync(entity);
         }
 
-        // POST api/values
-        public void Post([FromBody]string value)
+        public async Task Put(Admin entity)
         {
-        }
-
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
-        {
+            await _adminService.UpdateAsync(entity);
         }
 
         // DELETE api/values/5
-        public void Delete(int id)
-        {
-        }
+        //public async Task Delete(int id)
+        //{
+            
+        //}
     }
 }
