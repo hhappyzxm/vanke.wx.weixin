@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 using EZ.Framework.EntityFramework;
@@ -18,13 +19,15 @@ namespace Vanke.WX.Weixin.Controllers
         public IEnumerable<string> Get()
         {
             var s = IoC.Container.GetInstance<IAdminService>();
-            return new string[] { "11", "22" };
+            //return new string[] { "11", "22" };
+
+            throw  new Exception();
         }
 
-        //public AdminViewModel Get(int id)
-        //{
-        //    return _adminService.
-        //}
+        public async Task<AdminViewModel> Get(int id)
+        {
+            return (AdminViewModel)await _adminService.GetByKeyAsync(id);
+        }
 
         public async Task Post(Admin entity)
         {

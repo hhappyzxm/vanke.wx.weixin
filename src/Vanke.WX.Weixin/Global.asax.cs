@@ -11,6 +11,8 @@ using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data;
+using Vanke.WX.Weixin.Data.Repository;
+using Vanke.WX.Weixin.Data.Repository.Interface;
 using Vanke.WX.Weixin.Service;
 using Vanke.WX.Weixin.Service.Interface;
 
@@ -35,6 +37,9 @@ namespace Vanke.WX.Weixin
 
             container.Register<IAdminService, AdminService>(Lifestyle.Transient);
             container.Register<IStaffService, StaffService>(Lifestyle.Transient);
+
+            container.Register<IAdminRepository, AdminRepository>(Lifestyle.Transient);
+            container.Register<IStaffRepository, StaffRepository>(Lifestyle.Transient);
 
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
             container.Verify();
