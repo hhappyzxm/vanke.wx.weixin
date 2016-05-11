@@ -52,13 +52,13 @@ namespace EZ.Framework.EntityFramework
             DataContext.Entry(entity).State = EntityState.Modified;
         }
 
-        public override void Delete(object key)
+        public override void Remove(object key)
         {
             var entity = DbSet.Find(key);
-            Delete(entity);
+            Remove(entity);
         }
 
-        public override void Delete(TEntity entity)
+        public override void Remove(TEntity entity)
         {
             if (DataContext.Entry(entity).State == EntityState.Detached)
             {

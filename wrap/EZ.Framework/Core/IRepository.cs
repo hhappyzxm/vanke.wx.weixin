@@ -16,8 +16,8 @@ namespace EZ.Framework.Core
 
         void Update(TEntity entity);
 
-        void Delete(object key);
+        void Remove(object key);
 
-        void Delete(TEntity entity);
+        void Remove(TEntity entity);
     }
 }

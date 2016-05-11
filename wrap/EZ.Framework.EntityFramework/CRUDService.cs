@@ -59,5 +59,89 @@ namespace EZ.Framework.EntityFramework
         }
 
         #endregion
+
+        #region Update
+
+        protected virtual void BeforeUpdate(TEntity entity)
+        {
+        }
+
+        public virtual void Update(TEntity entity)
+        {
+            BeforeUpdate(entity);
+
+            Repository.Update(entity);
+            UnitOfWork.SaveChanges();
+
+            AfertUpdate(entity);
+        }
+
+        public virtual void AfertUpdate(TEntity entity)
+        {
+        }
+
+        protected virtual async Task BeforeUpdateAsync(TEntity entity)
+        {
+            await Task.FromResult(0);
+        }
+
+        public virtual async Task UpdateAsync(TEntity entity)
+        {
+            await BeforeUpdateAsync(entity);
+
+            Repository.Update(entity);
+            await UnitOfWork.SaveChangesAsync();
+
+            await AfterUpdateAsync(entity);
+        }
+
+        protected virtual async Task AfterUpdateAsync(TEntity entity)
+        {
+            await Task.FromResult(0);
+        }
+
+        #endregion
+
+        #region Remove
+
+        protected virtual void BeforeRemove(TEntity entity)
+        {
+        }
+
+        public virtual void Remove(TEntity entity)
+        {
+            BeforeRemove(entity);
+
+            Repository.Remove(entity);
+            UnitOfWork.SaveChanges();
+
+            AfertRemove(entity);
+        }
+
+        public virtual void AfertRemove(TEntity entity)
+        {
+        }
+
+        protected virtual async Task BeforeRemoveAsync(TEntity entity)
+        {
+            await Task.FromResult(0);
+        }
+
+        public virtual async Task RemoveAsync(TEntity entity)
+        {
+            await BeforeRemoveAsync(entity);
+
+            Repository.Remove(entity);
+            await UnitOfWork.SaveChangesAsync();
+
+            await AfterRemoveAsync(entity);
+        }
+
+        protected virtual async Task AfterRemoveAsync(TEntity entity)
+        {
+            await Task.FromResult(0);
+        }
+
+        #endregion
     }
 }
