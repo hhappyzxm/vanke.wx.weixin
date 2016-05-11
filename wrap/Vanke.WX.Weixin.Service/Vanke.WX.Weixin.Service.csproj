@@ -30,18 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SimpleInjector, Version=3.1.4.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SimpleInjector.3.1.4\lib\net45\SimpleInjector.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminService.cs" />
@@ -61,10 +51,6 @@
     <ProjectReference Include="..\EZ.Framework\EZ.Framework.csproj">
       <Project>{d10d1d97-17b8-484d-9454-122c4dfbab95}</Project>
       <Name>EZ.Framework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Vanke.WX.Weixin.Common\Vanke.WX.Weixin.Common.csproj">
-      <Project>{10c83d93-35af-47db-bae5-10db42fc9507}</Project>
-      <Name>Vanke.WX.Weixin.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Vanke.WX.Weixin.Data\Vanke.WX.Weixin.Data.csproj">
       <Project>{167bc705-3749-4451-9154-153eddf2c6f1}</Project>

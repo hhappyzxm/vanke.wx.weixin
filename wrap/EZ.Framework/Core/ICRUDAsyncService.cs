@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace EZ.Framework.Core
 {
-
     public interface IRetrieveAsyncService<TEntity>
         where TEntity : IEntity
     {
