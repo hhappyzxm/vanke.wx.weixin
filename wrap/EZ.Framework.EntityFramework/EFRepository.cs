@@ -43,7 +43,7 @@ namespace EZ.Framework.EntityFramework
 
         public override void Insert(TEntity entity)
         {
-            throw new NotImplementedException();
+            DbSet.Add(entity);
         }
 
         public override void Update(TEntity entity)

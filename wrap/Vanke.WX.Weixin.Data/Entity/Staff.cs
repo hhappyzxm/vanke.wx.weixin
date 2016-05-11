@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using EZ.Framework.Core;
 
-namespace WK.WX.WeiXin.Data.Entities
+namespace Vanke.WX.Weixin.Data.Entity
 {
-    public partial class Staff
+    public partial class Staff : IEntity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Staff()

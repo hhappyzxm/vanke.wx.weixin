@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5C6E122C-97C8-4B40-A17E-865642CFB07A}</ProjectGuid>
+    <ProjectGuid>{10C83D93-35AF-47DB-BAE5-10DB42FC9507}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Vanke.WX.Weixin.Service</RootNamespace>
-    <AssemblyName>Vanke.WX.Weixin.Service</AssemblyName>
+    <RootNamespace>Vanke.WX.Weixin.Common</RootNamespace>
+    <AssemblyName>Vanke.WX.Weixin.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,32 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminService.cs" />
-    <Compile Include="Interface\IAdminService.cs" />
-    <Compile Include="Interface\IStaffService.cs" />
+    <Compile Include="IoC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StaffService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\EZ.Framework.EntityFramework\EZ.Framework.EntityFramework.csproj">
-      <Project>{c3b057db-0f36-4a51-86fb-6d39719a02f1}</Project>
-      <Name>EZ.Framework.EntityFramework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EZ.Framework\EZ.Framework.csproj">
-      <Project>{d10d1d97-17b8-484d-9454-122c4dfbab95}</Project>
-      <Name>EZ.Framework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Vanke.WX.Weixin.Common\Vanke.WX.Weixin.Common.csproj">
-      <Project>{10c83d93-35af-47db-bae5-10db42fc9507}</Project>
-      <Name>Vanke.WX.Weixin.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Vanke.WX.Weixin.Data\Vanke.WX.Weixin.Data.csproj">
-      <Project>{167bc705-3749-4451-9154-153eddf2c6f1}</Project>
-      <Name>Vanke.WX.Weixin.Data</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

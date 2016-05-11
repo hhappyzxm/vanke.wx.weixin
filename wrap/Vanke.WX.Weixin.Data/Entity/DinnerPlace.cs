@@ -2,29 +2,21 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace WK.WX.WeiXin.Data.Entities
+namespace Vanke.WX.Weixin.Data.Entity
 {
-    public partial class User
+    public partial class DinnerPlace
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public DinnerPlace()
         {
-            Admins = new HashSet<Admin>();
+            DinnerRegisterHistories = new HashSet<DinnerRegisterHistory>();
         }
 
         public long ID { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string LoginName { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string Password { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string Status { get; set; }
+        public string Place { get; set; }
 
         public DateTime? CreatedOn { get; set; }
 
@@ -35,6 +27,6 @@ namespace WK.WX.WeiXin.Data.Entities
         public long? UpdatedBy { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Admin> Admins { get; set; }
+        public virtual ICollection<DinnerRegisterHistory> DinnerRegisterHistories { get; set; }
     }
 }

@@ -1,8 +1,9 @@
 using System;
+using EZ.Framework.Core;
 
-namespace WK.WX.WeiXin.Data.Entities
+namespace Vanke.WX.Weixin.Data.Entity
 {
-    public partial class Admin
+    public partial class Admin : IEntity
     {
         public long ID { get; set; }
 

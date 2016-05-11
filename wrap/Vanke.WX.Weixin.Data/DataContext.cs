@@ -1,8 +1,8 @@
-using EZ.Framework.EntityFramework;
 using System.Data.Entity;
-using WK.WX.WeiXin.Data.Entities;
+using EZ.Framework.EntityFramework;
+using Vanke.WX.Weixin.Data.Entity;
 
-namespace WK.WX.WeiXin.Data
+namespace Vanke.WX.Weixin.Data
 {
     public partial class DataContext : DbContext, IDataContext
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WK.WX.WeiXin.Data.Entities
+namespace Vanke.WX.Weixin.Data.Entity
 {
     public partial class DinnerType
     {
