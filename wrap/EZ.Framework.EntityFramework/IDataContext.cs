@@ -7,6 +7,8 @@ namespace EZ.Framework.EntityFramework
 {
     public interface IDataContext : IUnitOfWork
     {
+        int SaveChanges();
+
         Task<int> SaveChangesAsync();
 
         DbSet<TEntity> Set<TEntity>() where TEntity : class;

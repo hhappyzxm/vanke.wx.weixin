@@ -2,11 +2,12 @@
 
 namespace EZ.Framework.Core
 {
-    public class Service : IService
+    public class Service<TUnitOfWork> : IService
+        where TUnitOfWork : IUnitOfWork
     {
-        protected readonly IUnitOfWork UnitOfWork;
+        protected readonly TUnitOfWork UnitOfWork;
 
-        public Service(IUnitOfWork unitOfWork)
+        public Service(TUnitOfWork unitOfWork)
         {
             if (unitOfWork == null) throw new ArgumentNullException(nameof(unitOfWork));
 

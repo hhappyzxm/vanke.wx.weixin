@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CRUDService.cs" />
     <Compile Include="EFRepository.cs" />
     <Compile Include="IDataContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
