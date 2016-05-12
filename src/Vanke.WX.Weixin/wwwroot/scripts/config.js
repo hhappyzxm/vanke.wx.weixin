@@ -7,7 +7,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
     $compileProvider.debugInfoEnabled(true);
 
     // Set default state
-    $urlRouterProvider.otherwise("/customer/dashboard");
+    $urlRouterProvider.otherwise("/admin/dashboard");
 
     $stateProvider
 
@@ -15,28 +15,28 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         .state("admin", {
             abstract: true,
             url: "/admin",
-            templateUrl: "views/common/content.html",
+            templateUrl: "views/admin/common/content.html",
             data: {
-                pageTitle: 'Customer'
+                pageTitle: 'Admin'
             }
         })
-        .state("customer.dashboard", {
+        .state("admin.dashboard", {
             url: "/dashboard",
-            templateUrl: "views/customer/index.html",
+            templateUrl: "views/admin/dashboard.html",
             data: {
                 pageTitle: 'Dashboard'
             }
         })
-        .state("customer.vehicles", {
-            url: "/vehicles",
-            templateUrl: "views/customer/fleetcore/vehicles.html",
+        .state("admin.admins", {
+            url: "/admins",
+            templateUrl: "views/admin/settings/admins.html",
             data: {
                 pageTitle: 'Vehicle Management'
             }
         })
-        .state("customer.vehicleedit", {
-            url: "/vehicleedit",
-            templateUrl: "views/customer/fleetcore/vehicleedit.html",
+        .state("admin.adminedit", {
+            url: "/adminedit",
+            templateUrl: "views/admin/settings/adminedit.html",
             data: {
                 pageTitle: 'Edit Vehicle'
             }

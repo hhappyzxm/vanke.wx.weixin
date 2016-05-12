@@ -42,7 +42,7 @@
         <li ng-class="{'active': $state.includes('app_views') || $state.includes('blog_details')}">
             <a href="#"><span class="nav-icon fa fa-lg fa-cogs"></span><span class="nav-label">系统设置</span><span class="fa arrow"></span> </a>
             <ul class="nav nav-second-level" ng-class="{'in': $state.includes('app_views') || $state.includes('blog_details')}">
-                <li ui-sref-active="active"><a ui-sref="app_views.contacts">系统管理员</a></li>
+                <li ui-sref-active="active"><a ui-sref="admin.admins">系统管理员</a></li>
                 <li ui-sref-active="active"><a ui-sref="app_views.projects">内部员工管理</a></li>
                 <li ui-sref-active="active"><a ui-sref="app_views.projects">宴请地点管理</a></li>
                 <li ui-sref-active="active"><a ui-sref="app_views.projects">宴请类型管理</a></li>
