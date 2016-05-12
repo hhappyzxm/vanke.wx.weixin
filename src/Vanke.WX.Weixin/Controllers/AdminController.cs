@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 using EZ.Framework.EntityFramework;
+using Vanke.WX.Weixin.App_Base;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data.Entity;
 using Vanke.WX.Weixin.Service;
@@ -33,7 +34,7 @@ namespace Vanke.WX.Weixin.Controllers
         [HttpPost]
         public async Task Post(AdminViewModel viewModel)
         {
-            throw new Exception("asdf");
+            throw new Exception("asdfasdf");
             await _adminService.InsertAsync(ConvertToEntity(viewModel));
         }
 

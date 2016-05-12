@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using Vanke.WX.Weixin.App_Base;
 
 namespace Vanke.WX.Weixin
 {
@@ -19,6 +20,8 @@ namespace Vanke.WX.Weixin
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Filters.Add(new WebApiExceptionFilter());
         }
     }
 }

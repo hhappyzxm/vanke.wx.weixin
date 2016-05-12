@@ -34,6 +34,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessException.cs" />
     <Compile Include="Core\ICRUDAsyncService.cs" />
     <Compile Include="Core\ICRUDService.cs" />
     <Compile Include="Core\IViewModel.cs" />
