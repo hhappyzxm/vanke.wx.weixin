@@ -1,18 +1,18 @@
-﻿(function (angular) {
+﻿(function (angular, app) {
     'use strict';
 
-    angular
-        .module('architecture')
-        .controller('AdminEditCtrl', function ($scope, api, sweetAlert) {
-            $scope.data = {};
+    app.controller('AdminEditCtrl', function($scope, api, sweetAlert) {
+        $scope.data = {};
 
-            $scope.save = function(isValid) {
-                if(isValid) {
-                    api.createAdmin($scope.data, function () {
+        $scope.save = function (form) {
+            form.$setSubmitted(true);
 
-                    });
-                }
-            };
-        });
+            if (form.$valid) {
+                api.createAdmin($scope.data, function() {
 
-})(angular);
+                });
+            }
+        };
+    });
+
+})(angular, app);

@@ -292,7 +292,6 @@
     <Content Include="wwwroot\scripts\controllers\customer\fleetcore\vehicles.js" />
     <Content Include="wwwroot\scripts\controllers\customer\index.js" />
     <Content Include="wwwroot\scripts\directives\directives.js" />
-    <Content Include="wwwroot\scripts\directives\touchSpin.js" />
     <Content Include="wwwroot\scripts\factories\sweet-alert.js" />
     <Content Include="wwwroot\scripts\initialization.js" />
     <Content Include="wwwroot\scripts\main.js" />

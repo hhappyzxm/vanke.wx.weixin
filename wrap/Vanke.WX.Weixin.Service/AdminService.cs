@@ -14,5 +14,14 @@ namespace Vanke.WX.Weixin.Service
         public AdminService(IDataContext dataContext, IAdminRepository repository) : base(dataContext, repository)
         {
         }
+
+        protected override async Task BeforeInsertAsync(Admin entity)
+        {
+
+
+            entity.CreatedOn = DateTime.Now;
+            entity.User.CreatedOn = DateTime.Now;
+            entity.User.Status = "Active";
+        }
     }
 }

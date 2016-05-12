@@ -33,6 +33,7 @@ namespace Vanke.WX.Weixin.Controllers
         [HttpPost]
         public async Task Post(AdminViewModel viewModel)
         {
+            throw new Exception("asdf");
             await _adminService.InsertAsync(ConvertToEntity(viewModel));
         }
 

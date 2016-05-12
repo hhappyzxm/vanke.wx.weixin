@@ -1,9 +1,7 @@
-﻿(function (angular) {
+﻿(function (angular, app) {
     'use strict';
 
-    angular
-        .module('architecture')
-        .factory('api', function ($resource) {
+    app.factory('api', function ($resource) {
             return $resource(null,
                 null,
                 {
@@ -12,9 +10,9 @@
                         url: '/api/dashboard'
                     },
                     'createAdmin': {
-                        method: 'PUT',
+                        method: 'POST',
                         url: '/api/admin'
                     }
                 });
         });
-})(angular);
+})(angular, app);
