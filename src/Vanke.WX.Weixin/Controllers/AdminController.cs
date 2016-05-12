@@ -26,17 +26,33 @@ namespace Vanke.WX.Weixin.Controllers
 
         public async Task<AdminViewModel> Get(int id)
         {
-            return (AdminViewModel)await _adminService.GetByKeyAsync(id);
+            throw new Exception();
+            //return (AdminViewModel)await _adminService.GetByKeyAsync(id);
         }
 
-        public async Task Post(Admin entity)
+        [HttpPost]
+        public async Task Post(AdminViewModel viewModel)
         {
-            await _adminService.InsertAsync(entity);
+            await _adminService.InsertAsync(ConvertToEntity(viewModel));
         }
 
-        public async Task Put(Admin entity)
+        [HttpPut]
+        public async Task Put(AdminViewModel viewModel)
         {
-            await _adminService.UpdateAsync(entity);
+            await _adminService.UpdateAsync(ConvertToEntity(viewModel));
+        }
+
+        private Admin ConvertToEntity(AdminViewModel viewModel)
+        {
+            return new Admin
+            {
+                ID = viewModel.ID,
+                User = new User
+                {
+                    LoginName = viewModel.LoginName,
+                    Password = viewModel.Password
+                }
+            };
         }
 
         // DELETE api/values/5

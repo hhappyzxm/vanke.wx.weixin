@@ -7,7 +7,7 @@ namespace Vanke.WX.Weixin.Data
     public partial class DataContext : DbContext, IDataContext
     {
         public DataContext()
-            : base("name=Model11")
+            : base("name=SQLConnection")
         {
         }
 

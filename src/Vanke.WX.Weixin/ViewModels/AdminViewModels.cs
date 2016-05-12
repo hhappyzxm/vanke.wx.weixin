@@ -7,7 +7,12 @@ using Vanke.WX.Weixin.Data.Entity;
 
 namespace Vanke.WX.Weixin.ViewModels
 {
-    public class AdminViewModel : Admin, IViewModel
+    public class AdminViewModel : IViewModel
     {
+        public long ID { get; set; }
+
+        public string LoginName { get; set; }
+
+        public string Password { get; set; }
     }
 }

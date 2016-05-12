@@ -284,8 +284,7 @@
     <Content Include="wwwroot\lib\metisMenu\metisMenu.min.js" />
     <Content Include="wwwroot\lib\sweetalert2\sweetalert2.css" />
     <Content Include="wwwroot\lib\sweetalert2\sweetalert2.min.js" />
-    <Content Include="wwwroot\scripts\api\api.customer.dashboard.js" />
-    <Content Include="wwwroot\scripts\api\api.js" />
+    <Content Include="wwwroot\scripts\api.js" />
     <Content Include="wwwroot\scripts\app.js" />
     <Content Include="wwwroot\scripts\config.js" />
     <Content Include="wwwroot\scripts\controllers\admin\adminedit.js" />
