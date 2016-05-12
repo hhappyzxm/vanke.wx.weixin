@@ -1,0 +1,19 @@
+﻿<div class="row" ng-controller="AdminsCtrl">
+    <div class="hpanel">
+        <div class="panel-heading hbuilt">
+            <div panel-tools></div>
+            <i class="panel-icon fa fa-list"></i>Vehicles
+        </div>
+        <div class="panel-body list">
+            <div class="row">
+                <div class="col-md-6 m-b-md">
+                    <button ui-sref="admin.adminedit" class="btn btn-success btn-sm"><i class="fa fa-plus"></i>&nbsp;Create</button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table datatable="" dt-options="::dtOptions" dt-columns="::dtColumns" class="table table-bordered table-hover nowrap" width="100%">
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -296,7 +296,6 @@
     <Content Include="wwwroot\scripts\factories\sweet-alert.js" />
     <Content Include="wwwroot\scripts\initialization.js" />
     <Content Include="wwwroot\scripts\main.js" />
-    <Content Include="wwwroot\views\admin\settings\admins.html" />
     <Content Include="wwwroot\views\admin\common\content.html" />
     <Content Include="wwwroot\views\admin\common\header.html" />
     <Content Include="wwwroot\views\admin\common\navigation.html" />
@@ -304,6 +303,7 @@
     <Content Include="wwwroot\views\admin\common\right_sidebar.html" />
     <Content Include="wwwroot\views\admin\dashboard.html" />
     <Content Include="wwwroot\views\admin\settings\adminedit.html" />
+    <Content Include="wwwroot\views\admin\settings\admins.html" />
     <Content Include="wwwroot\views\customer\fleetcore\vehicleedit.html" />
     <Content Include="wwwroot\views\customer\fleetcore\vehicles.html" />
     <Content Include="wwwroot\views\customer\index.html" />
