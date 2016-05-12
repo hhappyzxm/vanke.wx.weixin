@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace EZ.Framework.Core
+namespace EZ.Framework
 {
     public abstract class RepositoryAbstract<TEntity> : IRepository<TEntity>
          where TEntity : class, IEntity

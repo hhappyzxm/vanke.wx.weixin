@@ -1,4 +1,4 @@
-﻿namespace EZ.Framework.Core
+﻿namespace EZ.Framework
 {
     public interface IService
     {

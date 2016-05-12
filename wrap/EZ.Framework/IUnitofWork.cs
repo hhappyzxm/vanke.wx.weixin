@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EZ.Framework.Core
+namespace EZ.Framework
 {
     public interface IUnitOfWork : IDisposable
     {

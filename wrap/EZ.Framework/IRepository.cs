@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace EZ.Framework.Core
+namespace EZ.Framework
 {
     public interface IRepository<TEntity>
         where TEntity : IEntity

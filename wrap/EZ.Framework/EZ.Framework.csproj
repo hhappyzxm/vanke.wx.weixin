@@ -35,15 +35,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessException.cs" />
-    <Compile Include="Core\ICRUDAsyncService.cs" />
-    <Compile Include="Core\ICRUDService.cs" />
-    <Compile Include="Core\IViewModel.cs" />
-    <Compile Include="Core\Service.cs" />
-    <Compile Include="Core\IEntity.cs" />
-    <Compile Include="Core\IRepository.cs" />
-    <Compile Include="Core\IService.cs" />
-    <Compile Include="Core\IUnitofWork.cs" />
-    <Compile Include="Core\RepositoryAbstract.cs" />
+    <Compile Include="ICRUDAsyncService.cs" />
+    <Compile Include="ICRUDService.cs" />
+    <Compile Include="IViewModel.cs" />
+    <Compile Include="Service.cs" />
+    <Compile Include="IEntity.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="IService.cs" />
+    <Compile Include="IUnitofWork.cs" />
+    <Compile Include="RepositoryAbstract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

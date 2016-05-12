@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using EZ.Framework.Core;
+using EZ.Framework;
 
 namespace Vanke.WX.Weixin.Data.Entity
 {

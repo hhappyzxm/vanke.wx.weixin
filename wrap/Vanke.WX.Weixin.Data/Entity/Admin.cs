@@ -1,5 +1,5 @@
 using System;
-using EZ.Framework.Core;
+using EZ.Framework;
 
 namespace Vanke.WX.Weixin.Data.Entity
 {

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace EZ.Framework.Core
+namespace EZ.Framework
 {
     public interface IRetrieveAsyncService<TEntity>
         where TEntity : IEntity

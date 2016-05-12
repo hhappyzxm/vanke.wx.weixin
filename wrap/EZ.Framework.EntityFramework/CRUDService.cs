@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using EZ.Framework.Core;
 
 namespace EZ.Framework.EntityFramework
 {

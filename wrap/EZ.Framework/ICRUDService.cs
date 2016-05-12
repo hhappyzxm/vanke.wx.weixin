@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace EZ.Framework.Core
+namespace EZ.Framework
 {
     public interface IRetrieveService<out TEntity>
        where TEntity : IEntity

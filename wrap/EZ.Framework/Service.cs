@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EZ.Framework.Core
+namespace EZ.Framework
 {
     public class Service<TUnitOfWork> : IService
         where TUnitOfWork : IUnitOfWork
