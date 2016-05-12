@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
-using EZ.Framework.EntityFramework;
-using Vanke.WX.Weixin.App_Base;
+using EZ.Framework.Integration.WebApi;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data.Entity;
-using Vanke.WX.Weixin.Service;
 using Vanke.WX.Weixin.Service.Interface;
 using Vanke.WX.Weixin.ViewModels;
 
 namespace Vanke.WX.Weixin.Controllers
 {
     
-    public class AdminController : BaseApiController
+    public class AdminController : GenericApiController
     {
         private readonly IAdminService _adminService = IoC.Container.GetInstance<IAdminService>();
 

@@ -1,5 +1,5 @@
 ﻿using System.Web.Http;
-using Vanke.WX.Weixin.App_Base;
+using EZ.Framework.Integration.WebApi;
 
 namespace Vanke.WX.Weixin
 {

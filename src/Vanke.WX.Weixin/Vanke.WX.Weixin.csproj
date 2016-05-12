@@ -333,10 +333,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Base\WebApiExceptionFilter.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="App_Base\BaseApiController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -352,6 +350,10 @@
     <ProjectReference Include="..\..\wrap\EZ.Framework.EntityFramework\EZ.Framework.EntityFramework.csproj">
       <Project>{c3b057db-0f36-4a51-86fb-6d39719a02f1}</Project>
       <Name>EZ.Framework.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\wrap\EZ.Framework.Integration.WebApi\EZ.Framework.Integration.WebApi.csproj">
+      <Project>{1d91cf21-307c-44dd-817c-94c10f0b0515}</Project>
+      <Name>EZ.Framework.Integration.WebApi</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\wrap\EZ.Framework\EZ.Framework.csproj">
       <Project>{d10d1d97-17b8-484d-9454-122c4dfbab95}</Project>
