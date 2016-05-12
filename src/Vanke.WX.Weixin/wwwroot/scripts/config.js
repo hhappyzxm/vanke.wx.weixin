@@ -12,9 +12,9 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
     $stateProvider
 
         // Customer
-        .state("customer", {
+        .state("admin", {
             abstract: true,
-            url: "/customer",
+            url: "/admin",
             templateUrl: "views/common/content.html",
             data: {
                 pageTitle: 'Customer'

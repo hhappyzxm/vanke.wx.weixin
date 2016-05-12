@@ -67,4 +67,4 @@ function sweetAlert($rootScope, $window) {
  */
 angular
     .module('architecture')
-    .factory('sweetAlert', sweetAlert)
+    .factory('sweetAlert', sweetAlert);

@@ -39,44 +39,32 @@
         <li ui-sref-active="active">
             <a ui-sref="customer.dashboard"><span class="nav-icon fa fa-home fa-lg"></span><span class="nav-label">Dashboard</span></a>
         </li>
-        <li ng-class="{active: $state.includes('interface')}">
-            <a href="#"><span class="nav-icon fa fa-building fa-lg"></span><span class="nav-label">Company</span><span class="fa arrow"></span> </a>
-            <ul class="nav nav-second-level" ng-class="{in: $state.includes('interface')}">
-                <li ui-sref-active="active">
-                    <a ui-sref="interface.panels"><span class="nav-label">Company Setting</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li><a href="#">Business Unit</a></li>
-                        <li><a href="#">Transfer Between Business Unit</a></li>
-                        <li><a href="#">Company Fuel Providers</a></li>
-                        <li><a href="#">Customer Toll Providers</a></li>
-                        <li><a href="#">Company Insures</a></li>
-                        <li><a href="#">Registration Locations</a></li>
-                        <li><a href="#">Registration Postal Addresses</a></li>
-                        <li><a href="#">Sites</a></li>
-                        <li><a href="#">Customer Site Transfer</a></li>
-                    </ul>
-                </li>
-                <li ui-sref-active="active"><a ui-sref="interface.typography">Company Account Codes</a></li>
-                <li ui-sref-active="active"><a ui-sref="interface.buttons">Company Admin</a></li>
+        <li ng-class="{'active': $state.includes('app_views') || $state.includes('blog_details')}">
+            <a href="#"><span class="nav-icon fa fa-lg fa-cogs"></span><span class="nav-label">系统设置</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{'in': $state.includes('app_views') || $state.includes('blog_details')}">
+                <li ui-sref-active="active"><a ui-sref="app_views.contacts">系统管理员</a></li>
+                <li ui-sref-active="active"><a ui-sref="app_views.projects">内部员工管理</a></li>
+                <li ui-sref-active="active"><a ui-sref="app_views.projects">宴请地点管理</a></li>
+                <li ui-sref-active="active"><a ui-sref="app_views.projects">宴请类型管理</a></li>
+                <li ui-sref-active="active"><a ui-sref="app_views.projects">物品管理</a></li>
             </ul>
         </li>
         <li ng-class="{'active': $state.includes('app_views') || $state.includes('blog_details')}">
-            <a href="#"><span class="nav-icon fa fa-user fa-lg"></span><span class="nav-label">Personnel</span><span class="fa arrow"></span> </a>
+            <a href="#"><span class="nav-icon fa fa-user fa-lg"></span><span class="nav-label">行政服务</span><span class="fa arrow"></span> </a>
             <ul class="nav nav-second-level" ng-class="{'in': $state.includes('app_views') || $state.includes('blog_details')}">
-                <li ui-sref-active="active"><a ui-sref="app_views.contacts">System Users</a></li>
-                <li ui-sref-active="active"><a ui-sref="app_views.projects">Drivers</a></li>
+                <li ui-sref-active="active"><a ui-sref="app_views.contacts">外部人员就餐管理</a></li>
+                <li ui-sref-active="active"><a ui-sref="app_views.projects">宴请管理</a></li>
+                <li ui-sref-active="active"><a ui-sref="app_views.projects">闲置资产管理</a></li>
+                <li ui-sref-active="active"><a ui-sref="app_views.projects">物品借用管理</a></li>
             </ul>
         </li>
         <li ng-class="{active: $state.includes('charts')}">
-            <a href="#"><span class="nav-icon fa fa-car"></span><span class="nav-label">Fleet</span><span class="fa arrow"></span> </a>
+            <a href="#"><span class="nav-icon fa fa-car"></span><span class="nav-label">服务查询</span><span class="fa arrow"></span> </a>
             <ul class="nav nav-second-level" ng-class="{in: $state.includes('charts')}">
-                <li ui-sref-active="active"><a ui-sref="customer.vehicles">Vehicle List</a></li>
-                <li ui-sref-active="active"><a ui-sref="charts.flot">Copy And Create New Vehicle</a></li>
-                <li ui-sref-active="active"><a ui-sref="charts.inline">Update Vehicle Odometers</a></li>
-                <li ui-sref-active="active"><a ui-sref="charts.chartist">Vehicle Search/Vehicle Reporting</a></li>
-                <li ui-sref-active="active"><a ui-sref="charts.chartist">Vehicle Driver Exchange</a></li>
-                <li ui-sref-active="active"><a ui-sref="charts.chartist">Vehicle Push Report Management</a></li>
-                <li ui-sref-active="active"><a ui-sref="charts.chartist">Vehicle Registration Change Uploading</a></li>
+                <li ui-sref-active="active"><a ui-sref="customer.vehicles">无锡周边</a></li>
+                <li ui-sref-active="active"><a ui-sref="charts.flot">协议酒店管理</a></li>
+                <li ui-sref-active="active"><a ui-sref="charts.inline">代驾管理</a></li>
+                <li ui-sref-active="active"><a ui-sref="charts.chartist">员工优惠管理</a></li>
             </ul>
         </li>
     </ul>
