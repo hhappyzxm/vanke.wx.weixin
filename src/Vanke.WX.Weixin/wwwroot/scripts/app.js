@@ -1,4 +1,4 @@
-﻿(function(angular) {
+﻿(function (angular, $, document) {
     'use strict';
 
     window.app = angular.module('architecture', [
@@ -9,4 +9,9 @@
         'datatables', // Angular datatables plugin
         'datatables.buttons'
     ]);
-})(angular);
+
+    // Start angular by manual
+    angular.element(document).ready(function () {
+        angular.bootstrap(document, ['app']);
+    });
+})(angular, jQuery, document);

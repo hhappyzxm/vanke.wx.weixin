@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
+using EZ.Framework;
 using EZ.Framework.Integration.WebApi;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data.Entity;
@@ -25,7 +26,7 @@ namespace Vanke.WX.Weixin.Controllers
 
         public async Task<AdminViewModel> Get(int id)
         {
-            throw new Exception();
+            throw new BusinessException("asf");
             //return (AdminViewModel)await _adminService.GetByKeyAsync(id);
         }
 
