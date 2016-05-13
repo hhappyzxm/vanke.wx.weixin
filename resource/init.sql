@@ -1,11 +1,12 @@
-
-/****** Object:  Database [EamonDemo]    Script Date: 5/10/2016 4:23:46 PM ******/
+USE [master]
+GO
+/****** Object:  Database [EamonDemo]    Script Date: 5/13/2016 8:36:38 PM ******/
 CREATE DATABASE [EamonDemo]
  CONTAINMENT = NONE
  ON  PRIMARY 
-( NAME = N'EamonDemo', FILENAME = N'D:\MSSQL Data\EamonDemo.mdf' , SIZE = 5120KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+( NAME = N'EamonDemo', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\DATA\EamonDemo.mdf' , SIZE = 5120KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
  LOG ON 
-( NAME = N'EamonDemo_log', FILENAME = N'D:\MSSQL Data\EamonDemo_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+( NAME = N'EamonDemo_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\DATA\EamonDemo_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
 GO
 ALTER DATABASE [EamonDemo] SET COMPATIBILITY_LEVEL = 110
 GO
@@ -74,14 +75,19 @@ EXEC sys.sp_db_vardecimal_storage_format N'EamonDemo', N'ON'
 GO
 USE [EamonDemo]
 GO
-/****** Object:  Table [dbo].[Admins]    Script Date: 5/10/2016 4:23:46 PM ******/
+/****** Object:  Table [dbo].[Admins]    Script Date: 5/13/2016 8:36:38 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE [dbo].[Admins](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
-	[UserID] [bigint] NOT NULL,
+	[RealName] [varchar](50) NOT NULL,
+	[LoginName] [varchar](50) NOT NULL,
+	[Password] [varchar](50) NOT NULL,
+	[Status] [int] NOT NULL,
 	[CreatedOn] [datetime] NULL,
 	[CreatedBy] [bigint] NULL,
 	[UpdatedOn] [datetime] NULL,
@@ -93,7 +99,9 @@ CREATE TABLE [dbo].[Admins](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[DinnerPlaces]    Script Date: 5/10/2016 4:23:46 PM ******/
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[DinnerPlaces]    Script Date: 5/13/2016 8:36:38 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -116,7 +124,7 @@ CREATE TABLE [dbo].[DinnerPlaces](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[DinnerRegisterHistories]    Script Date: 5/10/2016 4:23:46 PM ******/
+/****** Object:  Table [dbo].[DinnerRegisterHistories]    Script Date: 5/13/2016 8:36:38 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -140,7 +148,7 @@ CREATE TABLE [dbo].[DinnerRegisterHistories](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[DinnerTypes]    Script Date: 5/10/2016 4:23:46 PM ******/
+/****** Object:  Table [dbo].[DinnerTypes]    Script Date: 5/13/2016 8:36:38 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -163,7 +171,7 @@ CREATE TABLE [dbo].[DinnerTypes](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[ExternalPersonnelDiningRegisterHistories]    Script Date: 5/10/2016 4:23:46 PM ******/
+/****** Object:  Table [dbo].[ExternalPersonnelDiningRegisterHistories]    Script Date: 5/13/2016 8:36:38 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -184,7 +192,7 @@ CREATE TABLE [dbo].[ExternalPersonnelDiningRegisterHistories](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Staffs]    Script Date: 5/10/2016 4:23:46 PM ******/
+/****** Object:  Table [dbo].[Staffs]    Script Date: 5/13/2016 8:36:38 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -193,8 +201,10 @@ SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[Staffs](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
-	[UserID] [bigint] NOT NULL,
 	[RealName] [varchar](50) NOT NULL,
+	[LoginName] [varchar](50) NOT NULL,
+	[Password] [varchar](50) NOT NULL,
+	[Status] [int] NOT NULL,
 	[CreatedOn] [datetime] NULL,
 	[CreatedBy] [bigint] NULL,
 	[UpdatedOn] [datetime] NULL,
@@ -207,36 +217,6 @@ CREATE TABLE [dbo].[Staffs](
 
 GO
 SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Users]    Script Date: 5/10/2016 4:23:46 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[Users](
-	[ID] [bigint] IDENTITY(1,1) NOT NULL,
-	[LoginName] [varchar](50) NOT NULL,
-	[Password] [varchar](50) NOT NULL,
-	[Status] [varchar](50) NOT NULL,
-	[CreatedOn] [datetime] NULL,
-	[CreatedBy] [bigint] NULL,
-	[UpdatedOn] [datetime] NULL,
-	[UpdatedBy] [bigint] NULL,
- CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-
-GO
-SET ANSI_PADDING OFF
-GO
-ALTER TABLE [dbo].[Admins]  WITH CHECK ADD  CONSTRAINT [FK_Admins_Users] FOREIGN KEY([UserID])
-REFERENCES [dbo].[Users] ([ID])
-GO
-ALTER TABLE [dbo].[Admins] CHECK CONSTRAINT [FK_Admins_Users]
 GO
 ALTER TABLE [dbo].[DinnerRegisterHistories]  WITH CHECK ADD  CONSTRAINT [FK_DinnerRegisterHistories_DinnerPlaces] FOREIGN KEY([PlaceID])
 REFERENCES [dbo].[DinnerPlaces] ([ID])
