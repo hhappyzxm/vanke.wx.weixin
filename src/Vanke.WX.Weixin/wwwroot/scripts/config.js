@@ -14,7 +14,7 @@
         $compileProvider.debugInfoEnabled(true);
 
         // Set default state
-        $urlRouterProvider.otherwise("/admin/dashboard");
+        $urlRouterProvider.otherwise("/common/login");
 
         $stateProvider
             .state("admin", {
@@ -44,6 +44,24 @@
                 templateUrl: "views/admin/settings/adminedit.html",
                 data: {
                     pageTitle: 'Edit Vehicle'
+                }
+            })
+
+            // Common views
+            .state('common', {
+                abstract: true,
+                url: "/common",
+                templateUrl: "views/admin/common/content_empty.html",
+                data: {
+                    pageTitle: 'Common'
+                }
+            })
+            .state('common.login', {
+                url: "/login",
+                templateUrl: "views/admin/common_app/login.html",
+                data: {
+                    pageTitle: 'Login page',
+                    specialClass: 'blank'
                 }
             });
     }

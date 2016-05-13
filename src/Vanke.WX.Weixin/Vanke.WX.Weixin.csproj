@@ -287,6 +287,7 @@
     <Content Include="wwwroot\scripts\api.js" />
     <Content Include="wwwroot\scripts\app.js" />
     <Content Include="wwwroot\scripts\config.js" />
+    <Content Include="wwwroot\scripts\controllers\admin\login.js" />
     <Content Include="wwwroot\scripts\controllers\admin\adminedit.js" />
     <Content Include="wwwroot\scripts\controllers\admin\admins.js" />
     <Content Include="wwwroot\scripts\controllers\customer\fleetcore\vehicles.js" />
@@ -296,10 +297,12 @@
     <Content Include="wwwroot\scripts\initialization.js" />
     <Content Include="wwwroot\scripts\main.js" />
     <Content Include="wwwroot\views\admin\common\content.html" />
+    <Content Include="wwwroot\views\admin\common\content_empty.html" />
     <Content Include="wwwroot\views\admin\common\header.html" />
     <Content Include="wwwroot\views\admin\common\navigation.html" />
     <Content Include="wwwroot\views\admin\common\panel_tools.html" />
     <Content Include="wwwroot\views\admin\common\right_sidebar.html" />
+    <Content Include="wwwroot\views\admin\common_app\login.html" />
     <Content Include="wwwroot\views\admin\dashboard.html" />
     <Content Include="wwwroot\views\admin\settings\adminedit.html" />
     <Content Include="wwwroot\views\admin\settings\admins.html" />
@@ -334,11 +337,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\LoginViewModels.cs" />
     <Compile Include="ViewModels\AdminViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
