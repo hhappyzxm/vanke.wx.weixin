@@ -1,4 +1,5 @@
 using EZ.Framework;
+using Vanke.WX.Weixin.Common;
 
 namespace Vanke.WX.Weixin.Data.Entity
 {
@@ -11,7 +12,7 @@ namespace Vanke.WX.Weixin.Data.Entity
 
         [Required]
         [StringLength(50)]
-        public string UserName { get; set; }
+        public string RealName { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -21,7 +22,8 @@ namespace Vanke.WX.Weixin.Data.Entity
         [StringLength(50)]
         public string Password { get; set; }
 
-        public int Status { get; set; }
+        [Required]
+        public UserStatus Status { get; set; }
 
         public DateTime? CreatedOn { get; set; }
 

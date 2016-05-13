@@ -9,7 +9,7 @@ namespace Vanke.WX.Weixin.ViewModels
 {
     public class AdminViewModel : IViewModel
     {
-        public long ID { get; set; }
+        public string RealName { get; set; }
 
         public string LoginName { get; set; }
 

@@ -11,7 +11,7 @@ using Vanke.WX.Weixin.ViewModels;
 
 namespace Vanke.WX.Weixin.Controllers
 {
-    
+
     public class AdminController : GenericApiController
     {
         private readonly IAdminService _adminService = IoC.Container.GetInstance<IAdminService>();
@@ -30,12 +30,17 @@ namespace Vanke.WX.Weixin.Controllers
             //return (AdminViewModel)await _adminService.GetByKeyAsync(id);
         }
 
+        /// <summary>
+        /// Insert Admin
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task Post(AdminViewModel viewModel)
         {
             var newEntity = new Admin
             {
-                ID = viewModel.ID,
+                RealName = viewModel.RealName,
                 LoginName = viewModel.LoginName,
                 Password = viewModel.Password
             };

@@ -1,25 +1,37 @@
 ﻿<div class="row" ng-controller="AdminEditCtrl">
-    <div class="col-md-9" ng-form="submitForm">
+    <div class="col-md-9">
         <div class="hpanel hgreen">
             <div class="panel-heading hbuilt">
                 <div panel-tools></div>
-                <i class="panel-icon fa fa-info-circle"></i>Vehicle Information
+                <i class="panel-icon fa fa-info-circle"></i>&nbsp;系统管理员信息
             </div>
             <div class="panel-body">
-                <div class="form-group">
-                    <label>用户名<span class="txt-mandatory">*</span></label>
-                    <input name="loginName" type="text" class="form-control" ng-model="data.LoginName" required/>
-                    <div class="m-t-xs" ng-show="submitForm.loginName.$invalid && submitForm.$submitted">
-                         <span class="text-danger" ng-show="submitForm.loginName.$error"><i class="fa fa-exclamation-triangle"></i>&nbsp;请输入用户名</span> 
+                <form name="submitForm">
+                    <div class="form-group">
+                        <label>真实姓名<span class="txt-mandatory">*</span></label>
+                        <input name="realName" type="text" class="form-control" ng-model="data.RealName" required/>
+                        <div class="m-t-xs" ng-show="submitForm.realName.$invalid && submitForm.$submitted">
+                            <span class="text-danger" ng-show="submitForm.realName.$error"><i
+                                    class="fa fa-exclamation-triangle"></i>&nbsp;请输入真是姓名</span>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label>密码<span class="txt-mandatory">*</span></label>
-                    <input name="password" type="password" class="form-control" ng-model="data.Password" required/>
-                    <div class="m-t-xs" ng-show="submitForm.password.$invalid && submitForm.$submitted">
-                        <span class="text-danger" ng-show="submitForm.password.$error"><i class="fa fa-exclamation-triangle"></i>&nbsp;请输入密码</span>
+                    <div class="form-group">
+                        <label>用户名<span class="txt-mandatory">*</span></label>
+                        <input name="loginName" type="text" class="form-control" ng-model="data.LoginName" required/>
+                        <div class="m-t-xs" ng-show="submitForm.loginName.$invalid && submitForm.$submitted">
+                            <span class="text-danger" ng-show="submitForm.loginName.$error"><i
+                                    class="fa fa-exclamation-triangle"></i>&nbsp;请输入用户名</span>
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label>密码<span class="txt-mandatory">*</span></label>
+                        <input name="password" type="password" class="form-control" ng-model="data.Password" required/>
+                        <div class="m-t-xs" ng-show="submitForm.password.$invalid && submitForm.$submitted">
+                            <span class="text-danger" ng-show="submitForm.password.$error"><i
+                                    class="fa fa-exclamation-triangle"></i>&nbsp;请输入密码</span>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

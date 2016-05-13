@@ -21,7 +21,7 @@ namespace Vanke.WX.Weixin.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Admin>()
-                .Property(e => e.UserName)
+                .Property(e => e.RealName)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Admin>()

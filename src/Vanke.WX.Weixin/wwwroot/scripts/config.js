@@ -69,14 +69,14 @@
                     var sweetAlert = $injector.get('sweetAlert');
 
                     if (rejection.status === 401) {
-                        sweetAlert.warning('Éí·İÈÏÖ¤Ê§°Ü', 'ÇëÏÈµÇÂ¼ºóÔÙ³¢ÊÔ');
+                        sweetAlert.warning('èº«ä»½è®¤è¯å¤±è´¥', 'è¯·ç™»å½•åå†å°è¯•');
                     }
                     else {
                         var errorData = rejection.data;
                         if (errorData.ErrorType === 'BusinessError') {
-                            sweetAlert.warning('¾¯¸æ', errorData.Message);
+                            sweetAlert.warning('è­¦å‘Š', errorData.Message);
                         } else {
-                            sweetAlert.error('´íÎó', errorData.Message);
+                            sweetAlert.error('é”™è¯¯', errorData.Message);
                         }
                     }
 

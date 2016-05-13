@@ -65,6 +65,10 @@
       <Project>{d10d1d97-17b8-484d-9454-122c4dfbab95}</Project>
       <Name>EZ.Framework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Vanke.WX.Weixin.Common\Vanke.WX.Weixin.Common.csproj">
+      <Project>{10c83d93-35af-47db-bae5-10db42fc9507}</Project>
+      <Name>Vanke.WX.Weixin.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
