@@ -7,7 +7,7 @@
                 {
                     'login': {
                         method: 'POST',
-                        url: '/api/login'
+                        url: '/api/account'
                     },
                     'getCustomerDashboard': {
                         method: 'GET',

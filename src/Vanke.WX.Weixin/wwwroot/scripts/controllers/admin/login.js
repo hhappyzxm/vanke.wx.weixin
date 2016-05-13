@@ -11,7 +11,7 @@
                         $state.go('admin.dashboard');
                     }
                     else{
-                        sweetAlert.error('用户名或者密码错误');
+                        sweetAlert.error('用户名和密码错误');
                     }
                 });
             }

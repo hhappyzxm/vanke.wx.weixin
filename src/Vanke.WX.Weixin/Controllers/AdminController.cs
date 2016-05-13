@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 using EZ.Framework;
+using EZ.Framework.EntityFramework;
 using EZ.Framework.Integration.WebApi;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data.Entity;
@@ -15,6 +16,7 @@ namespace Vanke.WX.Weixin.Controllers
     public class AdminController : GenericApiController
     {
         private readonly IAdminService _adminService = IoC.Container.GetInstance<IAdminService>();
+        
 
         public IEnumerable<string> Get()
         {
