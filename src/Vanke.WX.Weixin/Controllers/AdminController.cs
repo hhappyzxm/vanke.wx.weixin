@@ -22,36 +22,34 @@ namespace Vanke.WX.Weixin.Controllers
 
         }
 
-        public IEnumerable<string> Get()
+        /// <summary>
+        /// Get all admins
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IEnumerable<Admin>> Get()
         {
-            var s = IoC.Container.GetInstance<IAdminService>();
-            //return new string[] { "11", "22" };
-
-            throw  new Exception();
-        }
-
-        public async Task<AdminViewModel> Get(int id)
-        {
-            throw new BusinessException("asf");
-            //return (AdminViewModel)await _adminService.GetByKeyAsync(id);
+            return await _adminService.GetAllAsync();
         }
 
         /// <summary>
-        /// Insert Admin
+        /// Get admin by key
         /// </summary>
-        /// <param name="viewModel"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<Admin> Get(int id)
+        {
+            return await _adminService.GetByKeyAsync(id);
+        }
+        
+        /// <summary>
+        /// Insert admin
+        /// </summary>
+        /// <param name="entity"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task Post(AdminViewModel viewModel)
+        public async Task Post(Admin entity)
         {
-            var newEntity = new Admin
-            {
-                RealName = viewModel.RealName,
-                LoginName = viewModel.LoginName,
-                Password = viewModel.Password
-            };
-
-            await _adminService.InsertAsync(newEntity);
+            await _adminService.InsertAsync(entity);
         }
 
         //[HttpPut]

@@ -13,6 +13,11 @@
                         method: 'GET',
                         url: '/api/dashboard'
                     },
+                    'getAdmins': {
+                        method: 'GET',
+                        url: '/api/admin',
+                        isArray: true
+                    },
                     'createAdmin': {
                         method: 'POST',
                         url: '/api/admin'
