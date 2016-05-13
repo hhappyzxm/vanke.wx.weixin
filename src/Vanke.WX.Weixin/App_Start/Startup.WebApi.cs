@@ -18,7 +18,9 @@ namespace Vanke.WX.Weixin
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new {id = RouteParameter.Optional}
                 );
+
             config.Filters.Add(new WebApiExceptionFilter());
+            config.Filters.Add(new AuthorizeAttribute());
 
             config.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(IoC.Container);
 

@@ -21,6 +21,7 @@ namespace Vanke.WX.Weixin
                 defaults: new {id = RouteParameter.Optional}
                 );
 
+            config.Filters.Add(new AuthorizeAttribute());
             config.Filters.Add(new WebApiExceptionFilter());
         }
     }

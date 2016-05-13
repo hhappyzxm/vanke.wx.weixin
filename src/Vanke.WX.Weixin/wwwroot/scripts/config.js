@@ -67,7 +67,7 @@
     }
 
     function configHttpProvider($httpProvider) {
-        $httpProvider.interceptors.push(function ($rootScope, $q, $injector, $window) {
+        $httpProvider.interceptors.push(function ($rootScope, $q, $injector) {
             return {
                 //'request': function (config) {
                 //    //config.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
@@ -85,9 +85,10 @@
 
                 'responseError': function (rejection) {
                     var sweetAlert = $injector.get('sweetAlert');
+                    var $state = $injector.get('$state');
 
                     if (rejection.status === 401) {
-                        sweetAlert.warning('请登录后再尝试');
+                        $state.go('common.login');
                     }
                     else {
                         var errorData = rejection.data;

@@ -1,0 +1,1 @@
+INSERT Admins(RealName, LoginName, Password, Status) Values('Admin', 'admin', 'YWRtaW4=', 0)
