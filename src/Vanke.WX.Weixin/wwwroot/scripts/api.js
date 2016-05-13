@@ -5,6 +5,10 @@
             return $resource(null,
                 null,
                 {
+                    'login': {
+                        method: 'POST',
+                        url: '/api/login'
+                    },
                     'getCustomerDashboard': {
                         method: 'GET',
                         url: '/api/dashboard'

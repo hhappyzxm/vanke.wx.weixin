@@ -20,24 +20,24 @@
                     }
                 });
             },
-            success: function (title, message) {
+            success: function (message) {
                 $rootScope.$evalAsync(function () {
-                    swal(title, message, 'success');
+                    swal('', message, 'success');
                 });
             },
-            error: function (title, message) {
+            error: function (message) {
                 $rootScope.$evalAsync(function () {
-                    swal(title, message, 'error');
+                    swal('', message, 'error');
                 });
             },
-            warning: function (title, message) {
+            warning: function (message) {
                 $rootScope.$evalAsync(function () {
-                    swal(title, message, 'warning');
+                    swal('', message, 'warning');
                 });
             },
-            info: function (title, message) {
+            info: function (message) {
                 $rootScope.$evalAsync(function () {
-                    swal(title, message, 'info');
+                    swal('', message, 'info');
                 });
             },
             showInputError: function (message) {

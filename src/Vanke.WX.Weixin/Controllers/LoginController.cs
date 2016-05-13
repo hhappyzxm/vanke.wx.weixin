@@ -17,12 +17,11 @@ namespace Vanke.WX.Weixin.Controllers
         private readonly IAdminService _adminService = IoC.Container.GetInstance<IAdminService>();
 
         [HttpPost]
-        [Route("/{controller}/{action}")]
-        public async Task<bool> Login(LoginViewModel viewModel)
+        public async Task<object> Login(LoginViewModel viewModel)
         {
-            var s = IoC.Container.GetInstance<IAdminService>();
-            //return new string[] { "11", "22" };
-            return true;
+            var admin = await _adminService.LoginAsync(viewModel.LoginName, viewModel.Password);
+
+            return new {Result = admin != null};
         }
     }
 }

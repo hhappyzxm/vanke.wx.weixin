@@ -87,14 +87,14 @@
                     var sweetAlert = $injector.get('sweetAlert');
 
                     if (rejection.status === 401) {
-                        sweetAlert.warning('身份认证失败', '请登录后再尝试');
+                        sweetAlert.warning('请登录后再尝试');
                     }
                     else {
                         var errorData = rejection.data;
                         if (errorData.ErrorType === 'BusinessError') {
-                            sweetAlert.warning('警告', errorData.Message);
+                            sweetAlert.warning(errorData.Message);
                         } else {
-                            sweetAlert.error('错误', errorData.Message);
+                            sweetAlert.error(errorData.Message);
                         }
                     }
 

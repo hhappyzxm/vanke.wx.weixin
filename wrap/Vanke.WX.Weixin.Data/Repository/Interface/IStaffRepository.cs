@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EZ.Framework;
+using EZ.Framework.EntityFramework;
 using Vanke.WX.Weixin.Data.Entity;
 
 namespace Vanke.WX.Weixin.Data.Repository.Interface
 {
-    public interface IStaffRepository : IRepository<Staff>
+    public interface IStaffRepository : IEFRepository<Staff>
     {
     }
 }

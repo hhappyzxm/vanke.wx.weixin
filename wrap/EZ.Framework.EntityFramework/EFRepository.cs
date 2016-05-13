@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace EZ.Framework.EntityFramework
 {
-    public class EFRepository<TEntity> : RepositoryAbstract<TEntity>
+    public class EFRepository<TEntity> : RepositoryAbstract<TEntity>, IEFRepository<TEntity>
         where TEntity : class, IEntity
     {
         protected readonly IDataContext DataContext;
@@ -65,5 +66,75 @@ namespace EZ.Framework.EntityFramework
             }
             DbSet.Remove(entity);
         }
+
+        #region ToList
+
+        public IEnumerable<TEntity> ToList(Expression<Func<TEntity, bool>> filter)
+        {
+            IQueryable<TEntity> query = DbSet;
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            return query.ToList();
+        }
+
+        public async Task<IEnumerable<TEntity>> ToListAsync(Expression<Func<TEntity, bool>> filter)
+        {
+            IQueryable<TEntity> query = DbSet;
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            return await query.ToListAsync();
+        }
+
+        #endregion
+
+        #region SingleOrDefualt
+
+        public TEntity SingleOrDefault(Expression<Func<TEntity, bool>> filter)
+        {
+            return DbSet.SingleOrDefault(filter);
+        }
+
+        public async Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> filter)
+        {
+            return await DbSet.SingleOrDefaultAsync(filter);
+        }
+
+        #endregion
+
+        #region Any
+
+        public bool Any(Expression<Func<TEntity, bool>> filter)
+        {
+            return DbSet.Any(filter);
+        }
+
+        public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> filter)
+        {
+            return await DbSet.AnyAsync(filter);
+        }
+
+        #endregion
+
+        #region Count
+
+        public int Count(Expression<Func<TEntity, bool>> filter)
+        {
+            return DbSet.Count(filter);
+        }
+
+        public async Task<int> CountAsync(Expression<Func<TEntity, bool>> filter)
+        {
+            return await DbSet.CountAsync(filter);
+        }
+
+        #endregion
     }
 }

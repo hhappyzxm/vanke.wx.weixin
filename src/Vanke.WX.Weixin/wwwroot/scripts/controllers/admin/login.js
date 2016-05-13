@@ -1,15 +1,19 @@
 ﻿(function (angular, app) {
     'use strict';
 
-    app.controller('LoginCtrl', function($scope, $state, api) {
+    app.controller('LoginCtrl', function($scope, $state, api, sweetAlert) {
         $scope.login = function (form) {
             form.$setSubmitted(true);
 
             if (form.$valid) {
-                $state.go('admin.dashboard');
-                //api.createAdmin($scope.data, function() {
-                //
-                //});
+                api.login($scope.data, function(response) {
+                    if(response.Result){
+                        $state.go('admin.dashboard');
+                    }
+                    else{
+                        sweetAlert.error('用户名或者密码错误');
+                    }
+                });
             }
         };
     });
