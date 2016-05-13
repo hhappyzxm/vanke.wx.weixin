@@ -1,7 +1,9 @@
 (function (angular, app) {
     'use strict';
 
-    app.factory('sweetAlert', sweetAlert);
+    app
+        .factory('sweetAlert', sweetAlert)
+        .factory('datatableSettings', datatableSettings);
 
     function sweetAlert($rootScope, $window) {
         var swal = $window.swal;
@@ -49,6 +51,20 @@
                 $rootScope.$evalAsync(function () {
                     swal.close();
                 });
+            }
+        };
+
+        return self;
+    };
+
+    function datatableSettings() {
+        var self = {
+            getGeneralSettings: function(dtOptionsBuilder) {
+                return dtOptionsBuilder.newOptions()
+                    .withDOM(
+                        "<'row'<'col-sm-12'tr>>" +
+                        "<'row'<'col-sm-5'i><'col-sm-7'p>>")
+                    .withDisplayLength(10);
             }
         };
 
