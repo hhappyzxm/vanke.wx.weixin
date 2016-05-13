@@ -16,11 +16,7 @@ namespace Vanke.WX.Weixin.Service
 
         protected override async Task BeforeInsertAsync(Admin entity)
         {
-
-
             entity.CreatedOn = DateTime.Now;
-            entity.User.CreatedOn = DateTime.Now;
-            entity.User.Status = "Active";
         }
     }
 }

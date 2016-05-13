@@ -33,28 +33,22 @@ namespace Vanke.WX.Weixin.Controllers
         [HttpPost]
         public async Task Post(AdminViewModel viewModel)
         {
-            throw new Exception("asdfasdf");
-            await _adminService.InsertAsync(ConvertToEntity(viewModel));
-        }
-
-        [HttpPut]
-        public async Task Put(AdminViewModel viewModel)
-        {
-            await _adminService.UpdateAsync(ConvertToEntity(viewModel));
-        }
-
-        private Admin ConvertToEntity(AdminViewModel viewModel)
-        {
-            return new Admin
+            var newEntity = new Admin
             {
                 ID = viewModel.ID,
-                User = new User
-                {
-                    LoginName = viewModel.LoginName,
-                    Password = viewModel.Password
-                }
+                LoginName = viewModel.LoginName,
+                Password = viewModel.Password
             };
+
+            await _adminService.InsertAsync(newEntity);
         }
+
+        //[HttpPut]
+        //public async Task Put(AdminViewModel viewModel)
+        //{
+        //   await _adminService.UpdateAsync(ConvertToEntity(viewModel));
+        //}
+        
 
         // DELETE api/values/5
         //public async Task Delete(int id)

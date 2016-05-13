@@ -1,10 +1,12 @@
+using EZ.Framework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using EZ.Framework;
 
 namespace Vanke.WX.Weixin.Data.Entity
 {
+   
+
     public partial class Staff : IEntity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -15,11 +17,19 @@ namespace Vanke.WX.Weixin.Data.Entity
 
         public long ID { get; set; }
 
-        public long UserID { get; set; }
-
         [Required]
         [StringLength(50)]
         public string RealName { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string LoginName { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string Password { get; set; }
+
+        public int Status { get; set; }
 
         public DateTime? CreatedOn { get; set; }
 

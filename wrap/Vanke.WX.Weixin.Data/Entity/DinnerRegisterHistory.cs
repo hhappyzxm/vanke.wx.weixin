@@ -1,11 +1,13 @@
-using System;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace Vanke.WX.Weixin.Data.Entity
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
     public partial class DinnerRegisterHistory
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long ID { get; set; }
 
         public long StaffID { get; set; }
