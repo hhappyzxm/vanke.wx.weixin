@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3C7720EE-142E-4AB8-AFE5-DF84E3855789}"
 EndProject
@@ -22,6 +22,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EZ.Framework.Integration.WebApi", "wrap\EZ.Framework.Integration.WebApi\EZ.Framework.Integration.WebApi.csproj", "{1D91CF21-307C-44DD-817C-94C10F0B0515}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EZ.Framework.Integration.Identity", "wrap\EZ.Framework.Integration.Identity\EZ.Framework.Integration.Identity.csproj", "{8B4F4A67-F742-473B-8AF3-3ABFDB9D9E5B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resource", "resource", "{0DF15E19-5937-4FC9-BAFF-9A48697C230F}"
+	ProjectSection(SolutionItems) = preProject
+		resource\init.sql = resource\init.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
