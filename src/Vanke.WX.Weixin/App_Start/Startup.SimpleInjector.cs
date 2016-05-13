@@ -1,7 +1,9 @@
-﻿using EZ.Framework.EntityFramework;
+﻿using System.Web.Http;
+using EZ.Framework.EntityFramework;
 using Owin;
 using SimpleInjector;
 using SimpleInjector.Extensions.ExecutionContextScoping;
+using SimpleInjector.Integration.WebApi;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data;
 using Vanke.WX.Weixin.Data.Repository;
@@ -15,7 +17,8 @@ namespace Vanke.WX.Weixin
     {
         public void ConfigureSimpleInjector(IAppBuilder app)
         {
-            app.Use(async (context, next) => {
+            app.Use(async (context, next) =>
+            {
                 using (IoC.Container.BeginExecutionContextScope())
                 {
                     await next();
@@ -34,10 +37,7 @@ namespace Vanke.WX.Weixin
             container.Register<IAdminRepository, AdminRepository>(Lifestyle.Transient);
             container.Register<IStaffRepository, StaffRepository>(Lifestyle.Transient);
 
-            //container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
-            //container.Verify();
-
-            //GlobalConfiguration.Configuration.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
+            container.Verify();
         }
     }
 }

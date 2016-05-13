@@ -15,16 +15,13 @@ namespace Vanke.WX.Weixin.Controllers
 
     public class AccountController : GenericApiController
     {
-        public AccountController():this(IoC.Container.GetInstance<IDataContext>())
-        {
-        }
+        //protected IDataContext _DataContext;
+        //public AccountController(IDataContext dataContext)
+        //{
+        //    _DataContext = dataContext;
+        //}
 
-        public AccountController(IDataContext dataContext)
-        {
-
-        }
-
-        private IAdminService _adminService;
+        private IAdminService _adminService = IoC.Container.GetInstance<IAdminService>();
         private IAuthenticationManager AuthenticationManager => Request.GetOwinContext().Authentication;
 
         //public AccountController()
@@ -37,7 +34,6 @@ namespace Vanke.WX.Weixin.Controllers
         //[Route("account/login")]
         public async Task<object> Login(LoginViewModel viewModel)
         {
-            _adminService = IoC.Container.GetInstance<IAdminService>();
             var admin = await _adminService.LoginAsync(viewModel.LoginName, viewModel.Password);
 
             if (admin != null)
