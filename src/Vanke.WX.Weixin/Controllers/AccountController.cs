@@ -5,6 +5,7 @@ using System.Web.Http;
 using EZ.Framework.EntityFramework;
 using EZ.Framework.Integration.Identity;
 using EZ.Framework.Integration.WebApi;
+using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Service.Interface;
@@ -12,7 +13,8 @@ using Vanke.WX.Weixin.ViewModels;
 
 namespace Vanke.WX.Weixin.Controllers
 {
-
+    [RoutePrefix("api/account")]
+    [Route("{action}")]
     public class AccountController : GenericApiController
     {
         private readonly IAdminService _adminService = IoC.Container.GetInstance<IAdminService>();
@@ -20,7 +22,6 @@ namespace Vanke.WX.Weixin.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        [Route("api/account/login")]
         public async Task<object> Login(LoginViewModel viewModel)
         {
             var admin = await _adminService.LoginAsync(viewModel.LoginName, viewModel.Password);
@@ -41,10 +42,9 @@ namespace Vanke.WX.Weixin.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        [Route("api/account/logout")]
         public void Logout()
         {
-            //AuthenticationManager.SignOut();
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
         }
     }
 }
