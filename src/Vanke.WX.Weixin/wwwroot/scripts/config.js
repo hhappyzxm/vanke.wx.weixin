@@ -40,7 +40,7 @@
                 }
             })
             .state("admin.adminedit", {
-                url: "/adminedit",
+                url: "/adminedit?id",
                 templateUrl: "views/admin/settings/adminedit.html",
                 data: {
                     pageTitle: 'Edit Vehicle'
