@@ -14,14 +14,17 @@
 
         $scope.remove = function (id) {
             sweetAlert.confirm(
-                "你是否确定?",
-                "你将删除本条记录!",
+                "你将删除这条数据!",
                 function() {
-                    api.admins.remove({ id: id });
-                },
-                null,
-                true,
-                true);
+                    api.admins.remove({ id: id }, function () {
+                        for (var i = 0; i < $scope.admins.length; i++) {
+                            if ($scope.admins[i].ID === id) {
+                                $scope.admins.splice(i, 1);
+                                break;;
+                            }
+                        }
+                    });
+                });
         };
     });
 

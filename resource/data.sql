@@ -1,1 +1,1 @@
-INSERT Admins(RealName, LoginName, Password, Status) Values('Admin', 'admin', 'YWRtaW4=', 0)
+INSERT Admins(RealName, LoginName, Password, Status, CreatedOn) Values('Admin', 'admin', 'YWRtaW4=', 0, getdate())

@@ -69,7 +69,7 @@ namespace EZ.Framework.EntityFramework
 
         #region ToList
 
-        public IEnumerable<TEntity> ToList(Expression<Func<TEntity, bool>> filter)
+        public IEnumerable<TEntity> ToList(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null)
         {
             IQueryable<TEntity> query = DbSet;
 
@@ -78,10 +78,17 @@ namespace EZ.Framework.EntityFramework
                 query = query.Where(filter);
             }
 
-            return query.ToList();
+            if (orderBy != null)
+            {
+                return orderBy(query).ToList();
+            }
+            else
+            {
+                return query.ToList();
+            }
         }
 
-        public async Task<IEnumerable<TEntity>> ToListAsync(Expression<Func<TEntity, bool>> filter)
+        public async Task<IEnumerable<TEntity>> ToListAsync(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null)
         {
             IQueryable<TEntity> query = DbSet;
 
@@ -90,7 +97,14 @@ namespace EZ.Framework.EntityFramework
                 query = query.Where(filter);
             }
 
-            return await query.ToListAsync();
+            if (orderBy != null)
+            {
+                return await orderBy(query).ToListAsync();
+            }
+            else
+            {
+                return await query.ToListAsync();
+            }
         }
 
         #endregion

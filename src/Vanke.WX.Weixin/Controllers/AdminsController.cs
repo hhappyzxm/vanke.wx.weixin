@@ -23,7 +23,7 @@ namespace Vanke.WX.Weixin.Controllers
         /// <returns></returns>
         public async Task<IEnumerable<Admin>> Get()
         {
-            return await _adminService.GetAllAsync();
+            return await _adminService.GetAllActiveAdmins();
         }
 
         /// <summary>
@@ -37,26 +37,33 @@ namespace Vanke.WX.Weixin.Controllers
         }
         
         /// <summary>
-        /// Insert admin
+        /// Insert/Update admin
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task Post(Admin entity)
+        public async Task Save(Admin entity)
         {
-            await _adminService.InsertAsync(entity);
+            if (entity.ID == 0)
+            {
+                await _adminService.InsertAsync(entity);
+            }
+            else
+            {
+                await _adminService.UpdateAsync(entity);
+            }
         }
 
-        //[HttpPut]
-        //public async Task Put(AdminViewModel viewModel)
-        //{
-        //   await _adminService.UpdateAsync(ConvertToEntity(viewModel));
-        //}
-
+        /// <summary>
+        /// Delete admin
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete]
         public async Task Delete(int id)
         {
-            await _adminService.RemoveAsync(id);
+            var entity = await _adminService.GetByKeyAsync(id);
+            await _adminService.RemoveAsync(entity);
         }
     }
 }

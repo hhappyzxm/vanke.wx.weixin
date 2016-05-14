@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EZ.Framework;
@@ -39,6 +41,21 @@ namespace Vanke.WX.Weixin.Service
                             p.LoginName.Equals(loginName) && 
                             p.Password.Equals(password) &&
                             p.Status == UserStatus.Active);
+        }
+
+        public override async Task RemoveAsync(Admin entity)
+        {
+            if (entity.LoginName.Equals("admin", StringComparison.Ordinal))
+            {
+                throw new BusinessException("该账号是默认管理员账号，不能被删除");
+            }
+
+            await base.RemoveAsync(entity);
+        }
+
+        public async Task<IEnumerable<Admin>> GetAllActiveAdmins()
+        {
+            return await Repository.ToListAsync(p => p.Status == UserStatus.Active);
         }
     }
 }

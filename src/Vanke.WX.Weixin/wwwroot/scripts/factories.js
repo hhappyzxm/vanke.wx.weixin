@@ -9,73 +9,55 @@
         var swal = $window.swal;
 
         var self = {
-            swal: function (arg1, arg2, arg3) {
+            success: function (message) {
                 $rootScope.$evalAsync(function () {
-                    if (typeof (arg2) === 'function') {
-                        swal(arg1, function (isConfirm) {
-                            $rootScope.$evalAsync(function () {
-                                arg2(isConfirm);
-                            });
-                        }, arg3);
-                    } else {
-                        swal(arg1, arg2, arg3);
-                    }
-                });
-            },
-            success: function (title, message) {
-                $rootScope.$evalAsync(function () {
-                    swal('', message, 'success');
+                    swal('Sucess', message, 'success');
                 });
             },
             error: function (message) {
                 $rootScope.$evalAsync(function () {
-                    swal('', message, 'error');
+                    swal('Error', message, 'error');
                 });
             },
             warning: function (message) {
                 $rootScope.$evalAsync(function () {
-                    swal('', message, 'warning');
+                    swal('Warning', message, 'warning');
                 });
             },
             info: function (message) {
                 $rootScope.$evalAsync(function () {
-                    swal('', message, 'info');
+                    swal('Info', message, 'info');
                 });
             },
-            showInputError: function (message) {
+            confirm: function (message, yesFn, noFn) {
                 $rootScope.$evalAsync(function () {
-                    swal.showInputError(message);
-                });
-            },
-            confirm: function (title, message, yesFn, noFn, closeOnConfirm, closeOnCancel) {
-                $rootScope.$evalAsync(function() {
                     swal({
-                            title: title,
-                            text: message,
-                            type: "warning",
-                            showCancelButton: true,
-                            confirmButtonColor: "#DD6B55",
-                            confirmButtonText: "Yes",
-                            cancelButtonText: "No",
-                            closeOnConfirm: closeOnConfirm,
-                            closeOnCancel: closeOnCancel
+                        title: 'Are you sure?',
+                        text: message,
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Yes",
+                        cancelButtonText: "No",
+                        preConfirm: function() {
+                            return new Promise(function(resolve) {
+                                swal.enableLoading();
+                                yesFn(resolve);
+                            });
                         },
-                        function(isConfirm) {
-                            if (isConfirm) {
-                                if (yesFn) {
-                                    yesFn();
-                                }
-                            } else {
-                                if (noFn) {
-                                    noFn();
-                                }
+                        allowOutsideClick: false
+                    }).then(function(isConfirm) {
+                        if (isConfirm == false) {
+                            if (noFn) {
+                                noFn();
                             }
-                        });
+                        }
+                    });
                 });
             },
             close: function () {
                 $rootScope.$evalAsync(function () {
-                    swal.close();
+                    swal.closeModal();
                 });
             }
         };
