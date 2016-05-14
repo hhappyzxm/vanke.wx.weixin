@@ -11,6 +11,10 @@
                 'login': {
                     method: 'POST',
                     url: '/api/account/login'
+                },
+                'logout': {
+                    method: 'POST',
+                    url: '/api/account/logout'
                 }
             }),
 

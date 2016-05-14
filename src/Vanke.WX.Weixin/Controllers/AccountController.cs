@@ -17,10 +17,10 @@ namespace Vanke.WX.Weixin.Controllers
     {
         private readonly IAdminService _adminService = IoC.Container.GetInstance<IAdminService>();
         private IAuthenticationManager AuthenticationManager => Request.GetOwinContext().Authentication;
-        
+
         [AllowAnonymous]
         [HttpPost]
-        [Route("account/login")]
+        [Route("api/account/login")]
         public async Task<object> Login(LoginViewModel viewModel)
         {
             var admin = await _adminService.LoginAsync(viewModel.LoginName, viewModel.Password);
@@ -31,12 +31,20 @@ namespace Vanke.WX.Weixin.Controllers
                 {
                     Id = admin.ID.ToString(),
                     UserName = admin.RealName,
-                    Roles = new List<string> { "Admin"}
+                    Roles = new List<string> { "Admin" }
                 };
                 AuthenticationManager.SignIn(identityUser.GenerateUserIdentity());
             }
 
-            return new {Result = admin != null};
+            return new { Result = admin != null };
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("api/account/logout")]
+        public void Logout()
+        {
+            //AuthenticationManager.SignOut();
         }
     }
 }

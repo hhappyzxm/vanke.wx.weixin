@@ -1,7 +1,9 @@
 ﻿(function (angular, app) {
     'use strict';
 
-    app.controller('LoginCtrl', function($scope, $state, api, sweetAlert) {
+    app.controller('LoginCtrl', function ($scope, $state, api, sweetAlert) {
+        api.account.logout();
+
         $scope.login = function (form) {
             form.$setSubmitted(true);
 
