@@ -6,7 +6,7 @@
             form.$setSubmitted(true);
 
             if (form.$valid) {
-                api.login($scope.data, function(response) {
+                api.account.login($scope.data, function(response) {
                     if(response.Result){
                         $state.go('admin.dashboard');
                     }

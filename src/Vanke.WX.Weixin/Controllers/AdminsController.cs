@@ -13,14 +13,9 @@ using Vanke.WX.Weixin.ViewModels;
 namespace Vanke.WX.Weixin.Controllers
 {
 
-    public class AdminController : GenericApiController
+    public class AdminsController : GenericApiController
     {
         private readonly IAdminService _adminService = IoC.Container.GetInstance<IAdminService>();
-
-        public AdminController(IDataContext dataContext)
-        {
-
-        }
 
         /// <summary>
         /// Get all admins
