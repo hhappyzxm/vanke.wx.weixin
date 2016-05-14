@@ -21,7 +21,7 @@
             /**
              * Admin Api
              */
-            admin: $resource('/api/admins/:id', { id: '@id' },
+            admins: $resource('/api/admins/:id', { id: '@id' },
             {
                 'createAdmin': {
                     method: 'POST',

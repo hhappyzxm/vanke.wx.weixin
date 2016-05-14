@@ -52,12 +52,11 @@ namespace Vanke.WX.Weixin.Controllers
         //{
         //   await _adminService.UpdateAsync(ConvertToEntity(viewModel));
         //}
-        
 
-        // DELETE api/values/5
-        //public async Task Delete(int id)
-        //{
-            
-        //}
+        [HttpDelete]
+        public async Task Delete(int id)
+        {
+            await _adminService.RemoveAsync(id);
+        }
     }
 }

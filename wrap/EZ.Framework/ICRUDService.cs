@@ -25,6 +25,8 @@ namespace EZ.Framework
     public interface IDeleteService<in TEntity>
         where TEntity : IEntity
     {
+        void Remove(object key);
+
         void Remove(TEntity entity);
     }
 

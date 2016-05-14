@@ -150,6 +150,24 @@ namespace EZ.Framework.EntityFramework
         {
         }
 
+        protected virtual void BeforeRemove(object key)
+        {
+        }
+
+        public virtual void Remove(object key)
+        {
+            BeforeRemove(key);
+
+            Repository.Remove(key);
+            UnitOfWork.SaveChanges();
+
+            AfertRemove(key);
+        }
+
+        public virtual void AfertRemove(object key)
+        {
+        }
+
         protected virtual async Task BeforeRemoveAsync(TEntity entity)
         {
             await Task.FromResult(0);
@@ -166,6 +184,26 @@ namespace EZ.Framework.EntityFramework
         }
 
         protected virtual async Task AfterRemoveAsync(TEntity entity)
+        {
+            await Task.FromResult(0);
+        }
+
+        protected virtual async Task BeforeRemoveAsync(object key)
+        {
+            await Task.FromResult(0);
+        }
+
+        public virtual async Task RemoveAsync(object key)
+        {
+            await BeforeRemoveAsync(key);
+
+            Repository.Remove(key);
+            await UnitOfWork.SaveChangesAsync();
+
+            await AfterRemoveAsync(key);
+        }
+
+        protected virtual async Task AfterRemoveAsync(object key)
         {
             await Task.FromResult(0);
         }

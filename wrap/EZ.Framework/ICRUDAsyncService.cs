@@ -26,6 +26,8 @@ namespace EZ.Framework
     public interface IDeleteAsyncService<in TEntity>
         where TEntity : IEntity
     {
+        Task RemoveAsync(object key);
+
         Task RemoveAsync(TEntity entity);
     }
 

@@ -2,7 +2,7 @@
     'use strict';
 
     app.controller('AdminsCtrl', function ($scope, $compile, api, datatableSettings, sweetAlert, DTOptionsBuilder, DTColumnDefBuilder) {
-        api.admin.query(function (result) {
+        api.admins.query(function (result) {
             $scope.admins = result;
         });
 
@@ -13,24 +13,15 @@
         ];
 
         $scope.remove = function (id) {
-            sweetAlert.swal({
-                title: "Are you sure?",
-                text: "Your will not be able to recover this imaginary file!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Yes, delete it!",
-                cancelButtonText: "No, cancel plx!",
-                closeOnConfirm: false,
-                closeOnCancel: false
-            },
-                    function (isConfirm) {
-                        if (isConfirm) {
-                            sweetAlert.swal("Deleted!", "Your imaginary file has been deleted.", "success");
-                        } else {
-                            sweetAlert.swal("Cancelled", "Your imaginary file is safe :)", "error");
-                        }
-                    });
+            sweetAlert.confirm(
+                "你是否确定?",
+                "你将删除本条记录!",
+                function() {
+                    api.admins.remove({ id: id });
+                },
+                null,
+                true,
+                true);
         };
     });
 

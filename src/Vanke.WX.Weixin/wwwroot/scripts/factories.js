@@ -22,7 +22,7 @@
                     }
                 });
             },
-            success: function (message) {
+            success: function (title, message) {
                 $rootScope.$evalAsync(function () {
                     swal('', message, 'success');
                 });
@@ -45,6 +45,32 @@
             showInputError: function (message) {
                 $rootScope.$evalAsync(function () {
                     swal.showInputError(message);
+                });
+            },
+            confirm: function (title, message, yesFn, noFn, closeOnConfirm, closeOnCancel) {
+                $rootScope.$evalAsync(function() {
+                    swal({
+                            title: title,
+                            text: message,
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "Yes",
+                            cancelButtonText: "No",
+                            closeOnConfirm: closeOnConfirm,
+                            closeOnCancel: closeOnCancel
+                        },
+                        function(isConfirm) {
+                            if (isConfirm) {
+                                if (yesFn) {
+                                    yesFn();
+                                }
+                            } else {
+                                if (noFn) {
+                                    noFn();
+                                }
+                            }
+                        });
                 });
             },
             close: function () {
