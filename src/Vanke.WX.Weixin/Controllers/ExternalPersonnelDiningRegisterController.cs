@@ -1,17 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
+using EZ.Framework;
+using EZ.Framework.EntityFramework;
 using EZ.Framework.Integration.WebApi;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data.Entity;
 using Vanke.WX.Weixin.Service.Interface;
+using Vanke.WX.Weixin.ViewModels;
 
 namespace Vanke.WX.Weixin.Controllers
 {
 
-    public class AdminsController : GenericApiController
+    public class ExternalPersonnelDiningRegisterController : GenericApiController
     {
-        private readonly IAdminService _adminService = IoC.Container.GetInstance<IAdminService>();
+        private readonly IExternalPersonnelDiningRegisterService _externalPersonnelDiningRegisterService = IoC.Container.GetInstance<IExternalPersonnelDiningRegisterService>();
 
         /// <summary>
         /// Get all admins
@@ -19,7 +23,8 @@ namespace Vanke.WX.Weixin.Controllers
         /// <returns></returns>
         public async Task<IEnumerable<Admin>> Get()
         {
-            return await _adminService.GetAllActiveAdmins();
+            throw new Exception();
+            //return await _externalPersonnelDiningRegisterService.GetAllActiveAdmins();
         }
 
         /// <summary>
@@ -27,9 +32,9 @@ namespace Vanke.WX.Weixin.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<Admin> Get(int id)
+        public async Task<ExternalPersonnelDiningRegisterHistory> Get(int id)
         {
-            return await _adminService.GetByKeyAsync(id);
+            return await _externalPersonnelDiningRegisterService.GetByKeyAsync(id);
         }
         
         /// <summary>
@@ -38,15 +43,15 @@ namespace Vanke.WX.Weixin.Controllers
         /// <param name="entity"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task Save(Admin entity)
+        public async Task Save(ExternalPersonnelDiningRegisterHistory entity)
         {
             if (entity.ID == 0)
             {
-                await _adminService.InsertAsync(entity);
+                await _externalPersonnelDiningRegisterService.InsertAsync(entity);
             }
             else
             {
-                await _adminService.UpdateAsync(entity);
+                await _externalPersonnelDiningRegisterService.UpdateAsync(entity);
             }
         }
 
@@ -58,8 +63,8 @@ namespace Vanke.WX.Weixin.Controllers
         [HttpDelete]
         public async Task Delete(int id)
         {
-            var entity = await _adminService.GetByKeyAsync(id);
-            await _adminService.RemoveAsync(entity);
+            var entity = await _externalPersonnelDiningRegisterService.GetByKeyAsync(id);
+            await _externalPersonnelDiningRegisterService.RemoveAsync(entity);
         }
     }
 }

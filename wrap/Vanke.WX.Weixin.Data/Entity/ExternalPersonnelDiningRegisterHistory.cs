@@ -1,3 +1,5 @@
+using EZ.Framework;
+
 namespace Vanke.WX.Weixin.Data.Entity
 {
     using System;
@@ -6,7 +8,7 @@ namespace Vanke.WX.Weixin.Data.Entity
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class ExternalPersonnelDiningRegisterHistory
+    public partial class ExternalPersonnelDiningRegisterHistory : IEntity
     {
         public long ID { get; set; }
 
