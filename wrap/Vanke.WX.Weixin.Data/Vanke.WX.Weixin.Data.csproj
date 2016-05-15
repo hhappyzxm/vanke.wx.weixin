@@ -37,13 +37,22 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity\Admin.cs" />
     <Compile Include="Entity\DinnerPlace.cs" />
     <Compile Include="Entity\DinnerRegisterHistory.cs" />
     <Compile Include="Entity\DinnerType.cs" />
+    <Compile Include="Entity\EmployeeDiscount.cs" />
     <Compile Include="Entity\ExternalPersonnelDiningRegisterHistory.cs" />
+    <Compile Include="Entity\Hotel.cs" />
+    <Compile Include="Entity\IdleAsset.cs" />
+    <Compile Include="Entity\Item.cs" />
+    <Compile Include="Entity\ItemBorrowHistory.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="Entity\Staff.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,5 +1,3 @@
-using EZ.Framework;
-
 namespace Vanke.WX.Weixin.Data.Entity
 {
     using System;
@@ -8,7 +6,7 @@ namespace Vanke.WX.Weixin.Data.Entity
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class ExternalPersonnelDiningRegisterHistory : IEntity
+    public partial class ExternalPersonnelDiningRegisterHistory
     {
         public long ID { get; set; }
 
@@ -16,8 +14,11 @@ namespace Vanke.WX.Weixin.Data.Entity
 
         public int CardNumber { get; set; }
 
-        [Column(TypeName = "text")]
+        [Required]
+        [StringLength(500)]
         public string Comment { get; set; }
+
+        public int Status { get; set; }
 
         public DateTime? CreatedOn { get; set; }
 

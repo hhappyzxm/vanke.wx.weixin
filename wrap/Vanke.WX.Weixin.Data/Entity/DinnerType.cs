@@ -21,6 +21,8 @@ namespace Vanke.WX.Weixin.Data.Entity
         [StringLength(50)]
         public string Type { get; set; }
 
+        public int Status { get; set; }
+
         public DateTime? CreatedOn { get; set; }
 
         public long? CreatedBy { get; set; }
