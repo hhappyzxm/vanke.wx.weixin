@@ -340,7 +340,9 @@
     <Content Include="wwwroot\views\admin\common\right_sidebar.html" />
     <Content Include="wwwroot\views\admin\common_app\login.html" />
     <Content Include="wwwroot\views\admin\dashboard.html" />
+    <Content Include="wwwroot\views\admin\settings\staffedit.html" />
     <Content Include="wwwroot\views\admin\settings\adminedit.html" />
+    <Content Include="wwwroot\views\admin\settings\staffs.html" />
     <Content Include="wwwroot\views\admin\settings\admins.html" />
     <Content Include="wwwroot\views\customer\fleetcore\vehicleedit.html" />
     <Content Include="wwwroot\views\customer\fleetcore\vehicles.html" />

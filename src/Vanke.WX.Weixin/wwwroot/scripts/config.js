@@ -46,6 +46,34 @@
                     pageTitle: 'Edit Vehicle'
                 }
             })
+            .state("admin.staffs", {
+                 url: "/staffs",
+                 templateUrl: "views/admin/settings/staffs.html",
+                 data: {
+                     pageTitle: 'Vehicle Management'
+                 }
+             })
+            .state("admin.staffedit", {
+                url: "/staffedit?id",
+                templateUrl: "views/admin/settings/staffedit.html",
+                data: {
+                    pageTitle: 'Edit Vehicle'
+                }
+            })
+            .state("admin.dinnertypes", {
+                url: "/dinnertypes",
+                templateUrl: "views/admin/settings/dinnertypes.html",
+                data: {
+                    pageTitle: 'Vehicle Management'
+                }
+            })
+            .state("admin.dinnertypeedit", {
+                url: "/dinnertypeedit?id",
+                templateUrl: "views/admin/settings/dinnertypeedit.html",
+                data: {
+                    pageTitle: 'Edit Vehicle'
+                }
+            })
 
             // Common views
             .state('common', {
