@@ -74,6 +74,20 @@
                     pageTitle: 'Edit Vehicle'
                 }
             })
+            .state("admin.dinnerplaces", {
+                url: "/dinnerplaces",
+                templateUrl: "views/admin/settings/dinnerplaces.html",
+                data: {
+                    pageTitle: 'Vehicle Management'
+                }
+            })
+            .state("admin.dinnerplaceedit", {
+                url: "/dinnerplaceedit?id",
+                templateUrl: "views/admin/settings/dinnerplaceedit.html",
+                data: {
+                    pageTitle: 'Edit Vehicle'
+                }
+            })
 
             // Common views
             .state('common', {

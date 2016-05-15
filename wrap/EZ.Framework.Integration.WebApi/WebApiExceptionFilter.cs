@@ -21,8 +21,8 @@ namespace EZ.Framework.Integration.WebApi
             }
             else
             {
-                errorMessagError = new HttpError(context.Exception.Message) { { "ErrorType", SystemError } };
-
+                var errorMessage = context.Exception.InnerException?.Message ?? context.Exception.Message;
+                errorMessagError = new HttpError(errorMessage) { { "ErrorType", SystemError } };
             }
 
             context.Response = context.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, errorMessagError);

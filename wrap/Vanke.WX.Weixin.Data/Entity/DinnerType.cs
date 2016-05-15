@@ -14,8 +14,7 @@ namespace Vanke.WX.Weixin.Data.Entity
         {
             DinnerRegisterHistories = new HashSet<DinnerRegisterHistory>();
         }
-
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        
         public long ID { get; set; }
 
         [Required]

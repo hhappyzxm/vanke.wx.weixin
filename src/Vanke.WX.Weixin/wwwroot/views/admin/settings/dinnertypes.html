@@ -1,33 +1,29 @@
-﻿<div class="row" ng-controller="AdminsCtrl">
+﻿<div class="row" ng-controller="DinnerTypesCtrl">
     <div class="hpanel">
         <div class="panel-heading hbuilt">
             <div panel-tools></div>
-            <i class="panel-icon fa fa-list"></i>&nbsp;系统管理员
+            <i class="panel-icon fa fa-list"></i>&nbsp;宴请类型
         </div>
         <div class="panel-body list">
             <div class="row">
                 <div class="col-md-6 m-b-md">
-                    <a ui-sref="admin.dinnertypes" class="btn btn-success btn-sm"><i class="fa fa-plus"></i>&nbsp;添加</a>
+                    <a ui-sref="admin.dinnertypeedit" class="btn btn-success btn-sm"><i class="fa fa-plus"></i>&nbsp;添加</a>
                 </div>
             </div>
             <div class="table-responsive">
                 <table datatable="ng" dt-options="::dtOptions" dt-column-defs="::dtMessageColumnDefs" class="table table-bordered table-hover nowrap" width="100%">
                     <thead>
                         <tr>
-                            <th>真实姓名</th>
-                            <th>用户名</th>
+                            <th>类型</th>
                             <th width="150" class="text-center">操作</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="item in admins">
+                        <tr ng-repeat="item in dinnerTypes">
                             <td>
-                                {{item.RealName}}
+                                {{item.Type}}
                             </td>
-                            <td>
-                                {{item.LoginName}}
-                            </td>
-                            <td class="text-center"><a ui-sref="admin.adminedit({id:item.ID})" class="btn btn-success btn-xs">修改</a>&nbsp;<button class="btn btn-danger btn-xs" type="button" ng-click="remove(item.ID)">删除</button></td>
+                            <td class="text-center"><a ui-sref="admin.dinnertypeedit({id:item.ID})" class="btn btn-success btn-xs">修改</a>&nbsp;<button class="btn btn-danger btn-xs" type="button" ng-click="remove(item.ID)">删除</button></td>
                         </tr>
                     </tbody>
                 </table>

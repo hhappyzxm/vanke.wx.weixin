@@ -18,9 +18,32 @@ namespace Vanke.WX.Weixin.Service
         {
         }
 
+        protected override async Task BeforeInsertAsync(DinnerType entity)
+        {
+            await CheckTypeExist(entity);
+
+            entity.Status = DinnerTypeStatus.Active;
+            entity.CreatedOn = DateTime.Now;
+        }
+
+        protected override async Task BeforeUpdateAsync(DinnerType entity)
+        {
+            await CheckTypeExist(entity);
+
+            entity.UpdatedOn = DateTime.Now;
+        }
+
         public override async Task<IEnumerable<DinnerType>> GetAllAsync()
         {
             return await Repository.ToListAsync(p => p.Status == DinnerTypeStatus.Active);
+        }
+
+        private async Task CheckTypeExist(DinnerType entity)
+        {
+            if (await Repository.AnyAsync(p => p.Type.Equals(entity.Type) && p.ID != entity.ID))
+            {
+                throw new BusinessException("宴请类型已经存在");
+            }
         }
     }
 }

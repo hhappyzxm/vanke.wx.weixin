@@ -23,10 +23,20 @@
              */
             admins: $resource('/api/admins/:id', { id: '@id' },
             {
-                'createAdmin': {
-                    method: 'POST',
-                    url: '/api/admin'
-                }
+            }),
+
+            /**
+             * Dinner Types Api
+             */
+            dinnerTypes: $resource('/api/dinnertypes/:id', { id: '@id' },
+            {
+            }),
+
+            /**
+             * Dinner Places Api
+             */
+            dinnerPlaces: $resource('/api/dinnerplaces/:id', { id: '@id' },
+            {
             })
         };
     });
