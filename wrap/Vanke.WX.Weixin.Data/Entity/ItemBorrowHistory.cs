@@ -6,23 +6,15 @@ namespace Vanke.WX.Weixin.Data.Entity
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Admin
+    public partial class ItemBorrowHistory
     {
         public long ID { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string RealName { get; set; }
+        public long ItemID { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string LoginName { get; set; }
+        public long StaffID { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string Password { get; set; }
-
-        public int Status { get; set; }
+        public int Quantity { get; set; }
 
         public DateTime? CreatedOn { get; set; }
 
@@ -31,5 +23,9 @@ namespace Vanke.WX.Weixin.Data.Entity
         public DateTime? UpdatedOn { get; set; }
 
         public long? UpdatedBy { get; set; }
+
+        public virtual Item Item { get; set; }
+
+        public virtual Staff Staff { get; set; }
     }
 }

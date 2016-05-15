@@ -6,12 +6,11 @@ namespace Vanke.WX.Weixin.Data.Entity
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Staff
+    public partial class Item
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Staff()
+        public Item()
         {
-            DinnerRegisterHistories = new HashSet<DinnerRegisterHistory>();
             ItemBorrowHistories = new HashSet<ItemBorrowHistory>();
         }
 
@@ -19,15 +18,7 @@ namespace Vanke.WX.Weixin.Data.Entity
 
         [Required]
         [StringLength(50)]
-        public string RealName { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string LoginName { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string Password { get; set; }
+        public string Name { get; set; }
 
         public int Status { get; set; }
 
@@ -38,11 +29,6 @@ namespace Vanke.WX.Weixin.Data.Entity
         public DateTime? UpdatedOn { get; set; }
 
         public long? UpdatedBy { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DinnerRegisterHistory> DinnerRegisterHistories { get; set; }
-
-        public virtual ExternalPersonnelDiningRegisterHistory ExternalPersonnelDiningRegisterHistory { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemBorrowHistory> ItemBorrowHistories { get; set; }

@@ -20,7 +20,9 @@ namespace Vanke.WX.Weixin.Data.Entity
 
         public long PlaceID { get; set; }
 
-        [Column(TypeName = "text")]
+        public int Status { get; set; }
+
+        [StringLength(500)]
         public string Comment { get; set; }
 
         public DateTime? CreatedOn { get; set; }
