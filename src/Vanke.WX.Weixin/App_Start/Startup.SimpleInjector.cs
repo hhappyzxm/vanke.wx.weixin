@@ -29,7 +29,7 @@ namespace Vanke.WX.Weixin
             container.Options.DefaultScopedLifestyle = new ExecutionContextScopeLifestyle();
 
             // Register your types, for instance using the scoped lifestyle:
-            container.Register<IDataContext, DataContext>(Lifestyle.Scoped);
+            container.Register<IDataContext>(() => new DataContext("SQLConnection"), Lifestyle.Scoped);
 
             container.Register<IAdminService, AdminService>(Lifestyle.Transient);
             container.Register<IStaffService, StaffService>(Lifestyle.Transient);

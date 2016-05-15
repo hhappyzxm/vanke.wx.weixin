@@ -1,12 +1,11 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+using EZ.Framework;
+using Vanke.WX.Weixin.Common;
+
 namespace Vanke.WX.Weixin.Data.Entity
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
-    public partial class Admin
+    public partial class Admin : IEntity
     {
         public long ID { get; set; }
 
@@ -22,7 +21,7 @@ namespace Vanke.WX.Weixin.Data.Entity
         [StringLength(50)]
         public string Password { get; set; }
 
-        public int Status { get; set; }
+        public AdminStatus Status { get; set; }
 
         public DateTime? CreatedOn { get; set; }
 

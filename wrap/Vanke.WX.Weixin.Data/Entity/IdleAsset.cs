@@ -1,12 +1,9 @@
+using EZ.Framework;
+using System;
+
 namespace Vanke.WX.Weixin.Data.Entity
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
-    public partial class IdleAsset
+    public partial class IdleAsset : IEntity
     {
         public long ID { get; set; }
 

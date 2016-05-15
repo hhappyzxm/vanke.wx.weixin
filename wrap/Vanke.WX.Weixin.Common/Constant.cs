@@ -6,9 +6,22 @@ using System.Threading.Tasks;
 
 namespace Vanke.WX.Weixin.Common
 {
-    public enum UserStatus
+    public enum AdminStatus
     {
         Active,
+        Removed
+    }
+
+    public enum StaffStatus
+    {
+        Active,
+        Removed
+    }
+
+    public enum ExternalPersonnelDiningRegisterStatus
+    {
+        Active,
+        Cancelled,
         Removed
     }
 }

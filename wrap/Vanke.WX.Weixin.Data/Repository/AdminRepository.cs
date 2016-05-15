@@ -18,7 +18,7 @@ namespace Vanke.WX.Weixin.Data.Repository
 
         public override void Remove(Admin entity)
         {
-            entity.Status = UserStatus.Removed;
+            entity.Status = AdminStatus.Removed;
 
             Update(entity);
         }

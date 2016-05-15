@@ -1,12 +1,9 @@
+using System;
+using EZ.Framework;
+
 namespace Vanke.WX.Weixin.Data.Entity
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
-    public partial class EmployeeDiscount
+    public partial class EmployeeDiscount : IEntity
     {
         public long ID { get; set; }
 

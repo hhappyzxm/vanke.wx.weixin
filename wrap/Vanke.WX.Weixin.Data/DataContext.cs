@@ -1,14 +1,13 @@
-namespace Vanke.WX.Weixin.Data.Entity
-{
-    using System;
-    using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
+using System.Data.Entity;
+using EZ.Framework.EntityFramework;
+using Vanke.WX.Weixin.Data.Entity;
 
-    public partial class Model1 : DbContext
+namespace Vanke.WX.Weixin.Data
+{
+    public partial class DataContext : DbContext, IDataContext
     {
-        public Model1()
-            : base("name=Model1")
+        public DataContext(string connectionName)
+            : base("name="+ connectionName)
         {
         }
 

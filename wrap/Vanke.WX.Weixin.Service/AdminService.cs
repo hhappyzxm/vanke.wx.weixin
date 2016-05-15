@@ -26,7 +26,7 @@ namespace Vanke.WX.Weixin.Service
             }
 
             entity.Password = Convert.ToBase64String(Encoding.UTF8.GetBytes(entity.Password));
-            entity.Status = UserStatus.Active;
+            entity.Status = AdminStatus.Active;
             entity.CreatedOn = DateTime.Now;
         }
 
@@ -40,7 +40,7 @@ namespace Vanke.WX.Weixin.Service
                         p =>
                             p.LoginName.Equals(loginName) && 
                             p.Password.Equals(password) &&
-                            p.Status == UserStatus.Active);
+                            p.Status == AdminStatus.Active);
         }
 
         public override async Task RemoveAsync(Admin entity)
@@ -55,7 +55,7 @@ namespace Vanke.WX.Weixin.Service
 
         public async Task<IEnumerable<Admin>> GetAllActiveAdmins()
         {
-            return await Repository.ToListAsync(p => p.Status == UserStatus.Active);
+            return await Repository.ToListAsync(p => p.Status == AdminStatus.Active);
         }
     }
 }
