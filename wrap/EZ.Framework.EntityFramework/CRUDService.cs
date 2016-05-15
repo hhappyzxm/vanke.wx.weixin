@@ -20,12 +20,12 @@ namespace EZ.Framework.EntityFramework
 
         #region GetByKey
 
-        public TEntity GetByKey(object key)
+        public virtual TEntity GetByKey(object key)
         {
             return Repository.GetByKey(key);
         }
 
-        public async Task<TEntity> GetByKeyAsync(object key)
+        public virtual async Task<TEntity> GetByKeyAsync(object key)
         {
             return await Repository.GetByKeyAsync(key);
         }
@@ -34,12 +34,12 @@ namespace EZ.Framework.EntityFramework
 
         #region GetAll
 
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             return Repository.GetAll();
         }
 
-        public async Task<IEnumerable<TEntity>> GetAllAsync()
+        public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return await Repository.GetAllAsync();
         }

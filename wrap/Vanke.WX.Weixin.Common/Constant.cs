@@ -18,10 +18,21 @@ namespace Vanke.WX.Weixin.Common
         Removed
     }
 
+    public enum DinnerTypeStatus
+    {
+        Active,
+        Removed
+    }
+
+    public enum DinnerPlaceStatus
+    {
+        Active,
+        Removed
+    }
+
     public enum ExternalPersonnelDiningRegisterStatus
     {
         Active,
-        Cancelled,
-        Removed
+        Cancelled
     }
 }

@@ -1,9 +1,8 @@
-﻿using System.Web.Http;
+﻿using System.Linq;
 using EZ.Framework.EntityFramework;
 using Owin;
 using SimpleInjector;
 using SimpleInjector.Extensions.ExecutionContextScoping;
-using SimpleInjector.Integration.WebApi;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data;
 using Vanke.WX.Weixin.Data.Repository;
@@ -31,12 +30,50 @@ namespace Vanke.WX.Weixin
             // Register your types, for instance using the scoped lifestyle:
             container.Register<IDataContext>(() => new DataContext("SQLConnection"), Lifestyle.Scoped);
 
-            container.Register<IAdminService, AdminService>(Lifestyle.Transient);
-            container.Register<IStaffService, StaffService>(Lifestyle.Transient);
+            #region Register Services
 
-            container.Register<IAdminRepository, AdminRepository>(Lifestyle.Transient);
-            container.Register<IStaffRepository, StaffRepository>(Lifestyle.Transient);
+            var serviceAssembly = typeof(AdminService).Assembly;
+            var services =
+                from type in serviceAssembly.GetExportedTypes()
+                where type.Namespace == "Vanke.WX.Weixin.Service"
+                where type.GetInterfaces().Any()
+                select
+                    new
+                    {
+                        Service =
+                            type.GetInterfaces().Single(p => p.Namespace == "Vanke.WX.Weixin.Service.Interface"),
+                        Implementation = type
+                    };
 
+            foreach (var reg in services)
+            {
+                container.Register(reg.Service, reg.Implementation, Lifestyle.Transient);
+            }
+
+            #endregion
+
+            #region Register Repositories
+
+            var repositoryAssembly = typeof(DataContext).Assembly;
+            var registrations =
+                from type in repositoryAssembly.GetExportedTypes()
+                where type.Namespace == "Vanke.WX.Weixin.Data.Repository"
+                where type.GetInterfaces().Any()
+                select
+                    new
+                    {
+                        Service =
+                            type.GetInterfaces().Single(p => p.Namespace == "Vanke.WX.Weixin.Data.Repository.Interface"),
+                        Implementation = type
+                    };
+
+            foreach (var reg in registrations)
+            {
+                container.Register(reg.Service, reg.Implementation, Lifestyle.Transient);
+            }
+
+            #endregion
+            
             container.Verify();
         }
     }

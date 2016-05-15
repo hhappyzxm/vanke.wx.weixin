@@ -9,57 +9,56 @@ using Vanke.WX.Weixin.Service.Interface;
 namespace Vanke.WX.Weixin.Controllers
 {
 
-    public class AdminsController : GenericApiController
+    public class DinnerPlacesController : GenericApiController
     {
-        private readonly IAdminService _adminService = IoC.Container.GetInstance<IAdminService>();
+        private readonly IDinnerPlaceService _dinnerPlaceService = IoC.Container.GetInstance<IDinnerPlaceService>();
 
         /// <summary>
-        /// Get all admins
+        /// Get all dinner palce
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<Admin>> Get()
+        public async Task<IEnumerable<DinnerPlace>> Get()
         {
-            return await _adminService.GetAllAsync();
+            return await _dinnerPlaceService.GetAllAsync();
         }
 
         /// <summary>
-        /// Get admin by key
+        /// Get dinner place by key
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<Admin> Get(int id)
+        public async Task<DinnerPlace> Get(int id)
         {
-            return await _adminService.GetByKeyAsync(id);
+            return await _dinnerPlaceService.GetByKeyAsync(id);
         }
         
         /// <summary>
-        /// Insert/Update admin
+        /// Insert/Update dinner place
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task Save(Admin entity)
+        public async Task Save(DinnerPlace entity)
         {
             if (entity.ID == 0)
             {
-                await _adminService.InsertAsync(entity);
+                await _dinnerPlaceService.InsertAsync(entity);
             }
             else
             {
-                await _adminService.UpdateAsync(entity);
+                await _dinnerPlaceService.UpdateAsync(entity);
             }
         }
 
         /// <summary>
-        /// Delete admin
+        /// Delete dinner place
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete]
         public async Task Delete(int id)
         {
-            var entity = await _adminService.GetByKeyAsync(id);
-            await _adminService.RemoveAsync(entity);
+            await _dinnerPlaceService.RemoveAsync(id);
         }
     }
 }

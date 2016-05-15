@@ -5,15 +5,15 @@ using Vanke.WX.Weixin.Data.Repository.Interface;
 
 namespace Vanke.WX.Weixin.Data.Repository
 {
-    public class AdminRepository : EFRepository<Admin>, IAdminRepository
+    public class DinnerTypeRepository : EFRepository<DinnerType>, IDinnerTypeRepository
     {
-        public AdminRepository(IDataContext dataContext) : base(dataContext)
+        public DinnerTypeRepository(IDataContext dataContext) : base(dataContext)
         {
         }
 
-        public override void Remove(Admin entity)
+        public override void Remove(DinnerType entity)
         {
-            entity.Status = AdminStatus.Removed;
+            entity.Status = DinnerTypeStatus.Removed;
 
             Update(entity);
         }

@@ -53,7 +53,7 @@ namespace Vanke.WX.Weixin.Service
             await base.RemoveAsync(entity);
         }
 
-        public async Task<IEnumerable<Admin>> GetAllActiveAdmins()
+        public override async Task<IEnumerable<Admin>> GetAllAsync()
         {
             return await Repository.ToListAsync(p => p.Status == AdminStatus.Active);
         }

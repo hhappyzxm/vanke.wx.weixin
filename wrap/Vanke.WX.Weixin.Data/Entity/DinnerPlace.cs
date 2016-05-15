@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using EZ.Framework;
+using Vanke.WX.Weixin.Common;
 
 namespace Vanke.WX.Weixin.Data.Entity
 {
-    public partial class DinnerPlace
+    public partial class DinnerPlace : IEntity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DinnerPlace()
@@ -18,7 +20,7 @@ namespace Vanke.WX.Weixin.Data.Entity
         [StringLength(50)]
         public string Place { get; set; }
 
-        public int Status { get; set; }
+        public DinnerPlaceStatus Status { get; set; }
 
         public DateTime? CreatedOn { get; set; }
 

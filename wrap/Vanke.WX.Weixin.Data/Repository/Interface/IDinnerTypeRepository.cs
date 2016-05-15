@@ -3,7 +3,7 @@ using Vanke.WX.Weixin.Data.Entity;
 
 namespace Vanke.WX.Weixin.Data.Repository.Interface
 {
-    public interface IAdminRepository : IEFRepository<Admin>
+    public interface IDinnerTypeRepository : IEFRepository<DinnerType>
     {
     }
 }

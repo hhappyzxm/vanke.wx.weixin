@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Vanke.WX.Weixin.Common;
 
 namespace Vanke.WX.Weixin.Data.Entity
 {
@@ -21,7 +22,7 @@ namespace Vanke.WX.Weixin.Data.Entity
         [StringLength(50)]
         public string Type { get; set; }
 
-        public int Status { get; set; }
+        public DinnerTypeStatus Status { get; set; }
 
         public DateTime? CreatedOn { get; set; }
 

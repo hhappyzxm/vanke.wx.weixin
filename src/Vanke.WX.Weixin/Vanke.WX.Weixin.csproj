@@ -342,6 +342,7 @@
     <Content Include="wwwroot\views\admin\dashboard.html" />
     <Content Include="wwwroot\views\admin\settings\staffedit.html" />
     <Content Include="wwwroot\views\admin\settings\adminedit.html" />
+    <Content Include="wwwroot\views\admin\settings\dinnertypes.html" />
     <Content Include="wwwroot\views\admin\settings\staffs.html" />
     <Content Include="wwwroot\views\admin\settings\admins.html" />
     <Content Include="wwwroot\views\customer\fleetcore\vehicleedit.html" />
@@ -378,6 +379,8 @@
     <Compile Include="App_Start\Startup.WebApi.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DinnerPlacesController.cs" />
+    <Compile Include="Controllers\DinnerTypesController.cs" />
     <Compile Include="Controllers\ExternalPersonnelDiningRegisterController.cs" />
     <Compile Include="Controllers\AdminsController.cs" />
     <Compile Include="Global.asax.cs">

@@ -34,7 +34,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DinnerPlaceService.cs" />
+    <Compile Include="DinnerTypeService.cs" />
     <Compile Include="AdminService.cs" />
+    <Compile Include="Interface\IDinnerPlaceService.cs" />
+    <Compile Include="Interface\IDinnerTypeService.cs" />
     <Compile Include="Interface\IExternalPersonnelDiningRegisterService.cs" />
     <Compile Include="Interface\IAdminService.cs" />
     <Compile Include="Interface\IStaffService.cs" />
