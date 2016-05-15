@@ -1,4 +1,4 @@
-/****** Object:  Database [EamonDemo]    Script Date: 5/15/2016 7:17:53 PM ******/
+/****** Object:  Database [EamonDemo]    Script Date: 5/15/2016 11:27:26 PM ******/
 CREATE DATABASE [EamonDemo]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -73,7 +73,7 @@ EXEC sys.sp_db_vardecimal_storage_format N'EamonDemo', N'ON'
 GO
 USE [EamonDemo]
 GO
-/****** Object:  Table [dbo].[Admins]    Script Date: 5/15/2016 7:17:53 PM ******/
+/****** Object:  Table [dbo].[Admins]    Script Date: 5/15/2016 11:27:26 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -82,7 +82,7 @@ SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[Admins](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
-	[RealName] [varchar](50) NOT NULL,
+	[RealName] [nvarchar](50) NOT NULL,
 	[LoginName] [varchar](50) NOT NULL,
 	[Password] [varchar](50) NOT NULL,
 	[Status] [int] NOT NULL,
@@ -99,16 +99,14 @@ CREATE TABLE [dbo].[Admins](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[DinnerPlaces]    Script Date: 5/15/2016 7:17:53 PM ******/
+/****** Object:  Table [dbo].[DinnerPlaces]    Script Date: 5/15/2016 11:27:26 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-SET ANSI_PADDING ON
-GO
 CREATE TABLE [dbo].[DinnerPlaces](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
-	[Place] [varchar](50) NOT NULL,
+	[Place] [nvarchar](50) NOT NULL,
 	[Status] [int] NOT NULL,
 	[CreatedOn] [datetime] NULL,
 	[CreatedBy] [bigint] NULL,
@@ -121,14 +119,10 @@ CREATE TABLE [dbo].[DinnerPlaces](
 ) ON [PRIMARY]
 
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[DinnerRegisterHistories]    Script Date: 5/15/2016 7:17:53 PM ******/
+/****** Object:  Table [dbo].[DinnerRegisterHistories]    Script Date: 5/15/2016 11:27:26 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[DinnerRegisterHistories](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
@@ -138,7 +132,7 @@ CREATE TABLE [dbo].[DinnerRegisterHistories](
 	[TypeID] [bigint] NOT NULL,
 	[PlaceID] [bigint] NOT NULL,
 	[Status] [int] NOT NULL,
-	[Comment] [varchar](500) NULL,
+	[Comment] [nvarchar](500) NULL,
 	[CreatedOn] [datetime] NULL,
 	[CreatedBy] [bigint] NULL,
 	[UpdatedOn] [datetime] NULL,
@@ -150,18 +144,14 @@ CREATE TABLE [dbo].[DinnerRegisterHistories](
 ) ON [PRIMARY]
 
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[DinnerTypes]    Script Date: 5/15/2016 7:17:53 PM ******/
+/****** Object:  Table [dbo].[DinnerTypes]    Script Date: 5/15/2016 11:27:26 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-SET ANSI_PADDING ON
-GO
 CREATE TABLE [dbo].[DinnerTypes](
-	[ID] [bigint] NOT NULL,
-	[Type] [varchar](50) NOT NULL,
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Type] [nvarchar](50) NOT NULL,
 	[Status] [int] NOT NULL,
 	[CreatedOn] [datetime] NULL,
 	[CreatedBy] [bigint] NULL,
@@ -174,9 +164,7 @@ CREATE TABLE [dbo].[DinnerTypes](
 ) ON [PRIMARY]
 
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[EmployeeDiscounts]    Script Date: 5/15/2016 7:17:53 PM ******/
+/****** Object:  Table [dbo].[EmployeeDiscounts]    Script Date: 5/15/2016 11:27:26 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -194,18 +182,16 @@ CREATE TABLE [dbo].[EmployeeDiscounts](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[ExternalPersonnelDiningRegisterHistories]    Script Date: 5/15/2016 7:17:53 PM ******/
+/****** Object:  Table [dbo].[ExternalPersonnelDiningRegisterHistories]    Script Date: 5/15/2016 11:27:26 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[ExternalPersonnelDiningRegisterHistories](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
 	[StaffID] [bigint] NOT NULL,
 	[CardNumber] [int] NOT NULL,
-	[Comment] [varchar](500) NOT NULL,
+	[Comment] [nvarchar](500) NOT NULL,
 	[Status] [int] NOT NULL,
 	[CreatedOn] [datetime] NULL,
 	[CreatedBy] [bigint] NULL,
@@ -218,18 +204,14 @@ CREATE TABLE [dbo].[ExternalPersonnelDiningRegisterHistories](
 ) ON [PRIMARY]
 
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Hotels]    Script Date: 5/15/2016 7:17:53 PM ******/
+/****** Object:  Table [dbo].[Hotels]    Script Date: 5/15/2016 11:27:26 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-SET ANSI_PADDING ON
-GO
 CREATE TABLE [dbo].[Hotels](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
-	[Name] [varchar](50) NULL,
+	[Name] [nvarchar](50) NULL,
 	[CreatedOn] [datetime] NULL,
 	[CreatedBy] [bigint] NULL,
 	[UpdatedOn] [datetime] NULL,
@@ -241,9 +223,7 @@ CREATE TABLE [dbo].[Hotels](
 ) ON [PRIMARY]
 
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[IdleAssets]    Script Date: 5/15/2016 7:17:53 PM ******/
+/****** Object:  Table [dbo].[IdleAssets]    Script Date: 5/15/2016 11:27:26 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -261,7 +241,7 @@ CREATE TABLE [dbo].[IdleAssets](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[ItemBorrowHistories]    Script Date: 5/15/2016 7:17:53 PM ******/
+/****** Object:  Table [dbo].[ItemBorrowHistories]    Script Date: 5/15/2016 11:27:26 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -282,16 +262,14 @@ CREATE TABLE [dbo].[ItemBorrowHistories](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Items]    Script Date: 5/15/2016 7:17:53 PM ******/
+/****** Object:  Table [dbo].[Items]    Script Date: 5/15/2016 11:27:26 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-SET ANSI_PADDING ON
-GO
 CREATE TABLE [dbo].[Items](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
-	[Name] [varchar](50) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
 	[Status] [int] NOT NULL,
 	[CreatedOn] [datetime] NULL,
 	[CreatedBy] [bigint] NULL,
@@ -304,9 +282,7 @@ CREATE TABLE [dbo].[Items](
 ) ON [PRIMARY]
 
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Staffs]    Script Date: 5/15/2016 7:17:53 PM ******/
+/****** Object:  Table [dbo].[Staffs]    Script Date: 5/15/2016 11:27:26 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -315,7 +291,7 @@ SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[Staffs](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
-	[RealName] [varchar](50) NOT NULL,
+	[RealName] [nvarchar](50) NOT NULL,
 	[LoginName] [varchar](50) NOT NULL,
 	[Password] [varchar](50) NOT NULL,
 	[Status] [int] NOT NULL,
