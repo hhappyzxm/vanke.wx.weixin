@@ -30,6 +30,12 @@ namespace Vanke.WX.Weixin.Common
         Removed
     }
 
+    public enum ItemStatus
+    {
+        Active,
+        Removed
+    }
+
     public enum ExternalPersonnelDiningRegisterStatus
     {
         Active,

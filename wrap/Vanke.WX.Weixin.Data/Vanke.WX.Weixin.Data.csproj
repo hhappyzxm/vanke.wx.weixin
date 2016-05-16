@@ -56,9 +56,11 @@
     <Compile Include="DataContext.cs" />
     <Compile Include="Entity\Staff.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ItemRepository.cs" />
     <Compile Include="Repository\DinnerPlaceRepository.cs" />
     <Compile Include="Repository\DinnerTypeRepository.cs" />
     <Compile Include="Repository\ExternalPersonnelDiningRegisterRepository.cs" />
+    <Compile Include="Repository\Interface\ItemRepository.cs" />
     <Compile Include="Repository\Interface\IDinnerPlaceRepository.cs" />
     <Compile Include="Repository\Interface\IDinnerTypeRepository.cs" />
     <Compile Include="Repository\Interface\IExternalPersonnelDiningRegisterRepository.cs" />

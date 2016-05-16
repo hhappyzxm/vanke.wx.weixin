@@ -35,8 +35,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DinnerPlaceService.cs" />
+    <Compile Include="ItemService.cs" />
     <Compile Include="DinnerTypeService.cs" />
     <Compile Include="AdminService.cs" />
+    <Compile Include="Interface\IItemService.cs" />
     <Compile Include="Interface\IDinnerPlaceService.cs" />
     <Compile Include="Interface\IDinnerTypeService.cs" />
     <Compile Include="Interface\IExternalPersonnelDiningRegisterService.cs" />
