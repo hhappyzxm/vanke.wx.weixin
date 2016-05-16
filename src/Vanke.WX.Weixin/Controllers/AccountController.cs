@@ -11,9 +11,9 @@ namespace Vanke.WX.Weixin.Controllers
     {
         [AllowAnonymous]
         [HttpPost]
-        public async Task<object> Login(LoginViewModel viewModel)
+        public object Login(LoginViewModel viewModel)
         {
-            var currentLogin = await AccountManager.Instance.SignIn(viewModel.LoginName, viewModel.Password);
+            var currentLogin = AccountManager.Instance.SignIn(viewModel.LoginName, viewModel.Password);
 
             return new { Result = currentLogin != null };
         }

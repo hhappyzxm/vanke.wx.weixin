@@ -14,7 +14,7 @@ namespace EZ.Framework.Integration.WebApi
         private readonly object _lock = new object();
         private readonly Dictionary<string, ICurrentLogin> _users;
 
-        private AccountManager(Func<string, string, Task<IdentityUser>> findFunc, Func<object, Task<ICurrentLogin>> getUserInfoFunc)
+        private AccountManager(Func<string, string, IdentityUser> findFunc, Func<object, ICurrentLogin> getUserInfoFunc)
         {
             _users = new Dictionary<string, ICurrentLogin>();
             _find = findFunc;
@@ -33,7 +33,7 @@ namespace EZ.Framework.Integration.WebApi
             }
         }
 
-        public static void Register(Func<string, string, Task<IdentityUser>> findFunc, Func<object, Task<ICurrentLogin>> getUserInfoUserFunc)
+        public static void Register(Func<string, string, IdentityUser> findFunc, Func<object, ICurrentLogin> getUserInfoUserFunc)
         {
             if (_instance != null)
             {
@@ -43,15 +43,15 @@ namespace EZ.Framework.Integration.WebApi
             _instance = new Lazy<AccountManager>(() => new AccountManager(findFunc, getUserInfoUserFunc));
         }
 
-        private readonly Func<string, string, Task<IdentityUser>> _find;
+        private readonly Func<string, string, IdentityUser> _find;
 
-        private readonly Func<object, Task<ICurrentLogin>> _getUserInfo;
+        private readonly Func<object, ICurrentLogin> _getUserInfo;
 
         private IAuthenticationManager AuthenticationManager => HttpContext.Current.GetOwinContext().Authentication;
 
-        public async Task<ClaimsIdentity> CreateIdentity(string userName, string password)
+        public ClaimsIdentity CreateIdentity(string userName, string password)
         {
-            var identityUser = await _find(userName, password);
+            var identityUser = _find(userName, password);
             if (identityUser != null)
             {
                 return CreateIdentity(identityUser);
@@ -65,18 +65,18 @@ namespace EZ.Framework.Integration.WebApi
             return identityUser.GenerateUserIdentity(authenticationType);
         }
 
-        public async Task<ICurrentLogin> SignIn(string userName, string password, bool isPersistent = false)
+        public ICurrentLogin SignIn(string userName, string password, bool isPersistent = false)
         {
             ICurrentLogin currentLogin = null;
 
-            var identityUser = await _find(userName, password);
+            var identityUser = _find(userName, password);
             if (identityUser != null)
             {
                 AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
                 var identity = CreateIdentity(identityUser);
                 AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = isPersistent }, identity);
 
-                currentLogin = await _getUserInfo(identityUser.Id);
+                currentLogin = _getUserInfo(identityUser.Id);
                 Add(identityUser.Id.ToString(), currentLogin);
             }
 

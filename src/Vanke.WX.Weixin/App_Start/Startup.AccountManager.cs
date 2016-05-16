@@ -17,9 +17,9 @@ namespace Vanke.WX.Weixin
             AccountManager.Register(FindUser, GetUserInfo);
         }
 
-        private async Task<IdentityUser> FindUser(string loginName, string password)
+        private IdentityUser FindUser(string loginName, string password)
         {
-            var admin = await IoC.Container.GetInstance<IAdminService>().LoginAsync(loginName, password);
+            var admin = IoC.Container.GetInstance<IAdminService>().Login(loginName, password);
 
             return new IdentityUser
             {
@@ -29,9 +29,9 @@ namespace Vanke.WX.Weixin
             };
         }
 
-        private async Task<ICurrentLogin> GetUserInfo(object key)
+        private ICurrentLogin GetUserInfo(object key)
         {
-            var user = await IoC.Container.GetInstance<IAdminService>().GetByKeyAsync(key);
+            var user = IoC.Container.GetInstance<IAdminService>().GetByKey(key);
 
             return new CurrentLogin
             {

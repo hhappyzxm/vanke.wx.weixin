@@ -32,13 +32,12 @@ namespace Vanke.WX.Weixin.Service
             entity.CreatedBy = (long)AccountManager.Instance.CurrentLoginUser.ID;
         }
 
-        public async Task<Admin> LoginAsync(string loginName, string password)
+        public Admin Login(string loginName, string password)
         {
             password = Convert.ToBase64String(Encoding.UTF8.GetBytes(password));
 
             return
-                await
-                    Repository.SingleOrDefaultAsync(
+                Repository.SingleOrDefault(
                         p =>
                             p.LoginName.Equals(loginName) && 
                             p.Password.Equals(password) &&

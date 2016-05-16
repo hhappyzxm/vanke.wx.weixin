@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using EZ.Framework;
+﻿using EZ.Framework;
 using Vanke.WX.Weixin.Data.Entity;
 
 namespace Vanke.WX.Weixin.Service.Interface
 {
-    public interface IAdminService : ICRUDAsyncService<Admin>
+    public interface IAdminService : ICRUDAsyncService<Admin>, IRetrieveService<Admin>
     {
-        Task<Admin> LoginAsync(string loginName, string password);
+        Admin Login(string loginName, string password);
     }
 }
