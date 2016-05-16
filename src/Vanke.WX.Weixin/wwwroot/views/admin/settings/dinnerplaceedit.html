@@ -9,9 +9,9 @@
                 <form name="submitForm">
                     <div class="form-group">
                         <label>类型<span class="txt-mandatory">*</span></label>
-                        <input name="type" type="text" class="form-control" ng-model="data.Type" required/>
-                        <div class="m-t-xs" ng-show="submitForm.type.$invalid && submitForm.$submitted">
-                            <span class="text-danger" ng-show="submitForm.type.$error"><i
+                        <input name="place" type="text" class="form-control" ng-model="data.Place" required/>
+                        <div class="m-t-xs" ng-show="submitForm.place.$invalid && submitForm.$submitted">
+                            <span class="text-danger" ng-show="submitForm.place.$error"><i
                                     class="fa fa-exclamation-triangle"></i>&nbsp;请输入宴请地点</span>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                 <hr>
                 <ul class="mailbox-list">
                     <li>
-                        <a ui-sref="admin.dinnertypes"><i class="fa fa-backward"></i>&nbsp;返回</a>
+                        <a ui-sref="admin.dinnerplaces"><i class="fa fa-backward"></i>&nbsp;返回</a>
                     </li>
                 </ul>
             </div>

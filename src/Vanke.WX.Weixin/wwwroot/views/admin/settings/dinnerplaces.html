@@ -21,7 +21,7 @@
                     <tbody>
                         <tr ng-repeat="item in dinnerPlaces">
                             <td>
-                                {{item.Name}}
+                                {{item.Place}}
                             </td>
                             <td class="text-center"><a ui-sref="admin.dinnerplaceedit({id:item.ID})" class="btn btn-success btn-xs">修改</a>&nbsp;<button class="btn btn-danger btn-xs" type="button" ng-click="remove(item.ID)">删除</button></td>
                         </tr>
