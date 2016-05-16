@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EZ.Framework;
 using EZ.Framework.EntityFramework;
+using EZ.Framework.Integration.WebApi;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data.Entity;
 using Vanke.WX.Weixin.Data.Repository.Interface;
@@ -24,6 +25,7 @@ namespace Vanke.WX.Weixin.Service
 
             entity.Status = DinnerPlaceStatus.Active;
             entity.CreatedOn = DateTime.Now;
+            entity.CreatedBy = (long)AccountManager.Instance.CurrentLoginUser.ID;
         }
 
         protected override async Task BeforeUpdateAsync(DinnerPlace entity)
@@ -31,6 +33,7 @@ namespace Vanke.WX.Weixin.Service
             await CheckPlaceExist(entity);
 
             entity.UpdatedOn = DateTime.Now;
+            entity.UpdatedBy = (long)AccountManager.Instance.CurrentLoginUser.ID;
         }
 
         public override async Task<IEnumerable<DinnerPlace>> GetAllAsync()

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EZ.Framework;
 using EZ.Framework.EntityFramework;
+using EZ.Framework.Integration.WebApi;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data.Entity;
 using Vanke.WX.Weixin.Data.Repository.Interface;
@@ -28,6 +29,7 @@ namespace Vanke.WX.Weixin.Service
             entity.Password = Convert.ToBase64String(Encoding.UTF8.GetBytes(entity.Password));
             entity.Status = AdminStatus.Active;
             entity.CreatedOn = DateTime.Now;
+            entity.CreatedBy = (long)AccountManager.Instance.CurrentLoginUser.ID;
         }
 
         public async Task<Admin> LoginAsync(string loginName, string password)

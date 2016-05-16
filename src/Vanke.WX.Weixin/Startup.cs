@@ -14,6 +14,8 @@ namespace Vanke.WX.Weixin
             ConfigureAuth(app);
 
             ConfigureWebApi(app);
+
+            ConfigureAccountManager(app);
         }
     }
 }

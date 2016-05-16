@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3C7720EE-142E-4AB8-AFE5-DF84E3855789}"
 EndProject
@@ -20,8 +20,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vanke.WX.Weixin.Common", "wrap\Vanke.WX.Weixin.Common\Vanke.WX.Weixin.Common.csproj", "{10C83D93-35AF-47DB-BAE5-10DB42FC9507}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EZ.Framework.Integration.WebApi", "wrap\EZ.Framework.Integration.WebApi\EZ.Framework.Integration.WebApi.csproj", "{1D91CF21-307C-44DD-817C-94C10F0B0515}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EZ.Framework.Integration.Identity", "wrap\EZ.Framework.Integration.Identity\EZ.Framework.Integration.Identity.csproj", "{8B4F4A67-F742-473B-8AF3-3ABFDB9D9E5B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resource", "resource", "{0DF15E19-5937-4FC9-BAFF-9A48697C230F}"
 	ProjectSection(SolutionItems) = preProject
@@ -63,10 +61,6 @@ Global
 		{1D91CF21-307C-44DD-817C-94C10F0B0515}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D91CF21-307C-44DD-817C-94C10F0B0515}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D91CF21-307C-44DD-817C-94C10F0B0515}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8B4F4A67-F742-473B-8AF3-3ABFDB9D9E5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8B4F4A67-F742-473B-8AF3-3ABFDB9D9E5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8B4F4A67-F742-473B-8AF3-3ABFDB9D9E5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8B4F4A67-F742-473B-8AF3-3ABFDB9D9E5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +73,5 @@ Global
 		{5C6E122C-97C8-4B40-A17E-865642CFB07A} = {D8492937-C6CC-4B91-97DF-9EAF65F00E73}
 		{10C83D93-35AF-47DB-BAE5-10DB42FC9507} = {D8492937-C6CC-4B91-97DF-9EAF65F00E73}
 		{1D91CF21-307C-44DD-817C-94C10F0B0515} = {D8492937-C6CC-4B91-97DF-9EAF65F00E73}
-		{8B4F4A67-F742-473B-8AF3-3ABFDB9D9E5B} = {D8492937-C6CC-4B91-97DF-9EAF65F00E73}
 	EndGlobalSection
 EndGlobal

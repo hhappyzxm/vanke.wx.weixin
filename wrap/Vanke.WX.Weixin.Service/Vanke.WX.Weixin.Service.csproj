@@ -53,6 +53,10 @@
       <Project>{c3b057db-0f36-4a51-86fb-6d39719a02f1}</Project>
       <Name>EZ.Framework.EntityFramework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EZ.Framework.Integration.WebApi\EZ.Framework.Integration.WebApi.csproj">
+      <Project>{1d91cf21-307c-44dd-817c-94c10f0b0515}</Project>
+      <Name>EZ.Framework.Integration.WebApi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EZ.Framework\EZ.Framework.csproj">
       <Project>{d10d1d97-17b8-484d-9454-122c4dfbab95}</Project>
       <Name>EZ.Framework</Name>
