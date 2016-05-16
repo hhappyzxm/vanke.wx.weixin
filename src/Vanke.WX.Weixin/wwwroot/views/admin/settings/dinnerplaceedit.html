@@ -1,9 +1,9 @@
-﻿<div class="row" ng-controller="DinnerTypeEditCtrl">
+﻿<div class="row" ng-controller="DinnerPlaceEditCtrl">
     <div class="col-md-9">
         <div class="hpanel hgreen">
             <div class="panel-heading hbuilt">
                 <div panel-tools></div>
-                <i class="panel-icon fa fa-info-circle"></i>&nbsp;宴请类型
+                <i class="panel-icon fa fa-info-circle"></i>&nbsp;宴请地点
             </div>
             <div class="panel-body">
                 <form name="submitForm">
@@ -12,7 +12,7 @@
                         <input name="type" type="text" class="form-control" ng-model="data.Type" required/>
                         <div class="m-t-xs" ng-show="submitForm.type.$invalid && submitForm.$submitted">
                             <span class="text-danger" ng-show="submitForm.type.$error"><i
-                                    class="fa fa-exclamation-triangle"></i>&nbsp;请输入宴请类型</span>
+                                    class="fa fa-exclamation-triangle"></i>&nbsp;请输入宴请地点</span>
                         </div>
                     </div>
                 </form>

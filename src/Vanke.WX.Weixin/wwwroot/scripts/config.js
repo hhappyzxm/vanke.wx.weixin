@@ -125,14 +125,16 @@
                 //    return response;
                 //},
 
-                'responseError': function (rejection) {
+                'responseError': function(rejection) {
                     var sweetAlert = $injector.get('sweetAlert');
                     var $state = $injector.get('$state');
 
                     if (rejection.status === 401) {
                         $state.go('common.login');
                     }
-                    else {
+                    else if (rejection.status === 404) {
+                        sweetAlert.error('Not Found ' + rejection.config.url);
+                    } else {
                         var errorData = rejection.data;
                         if (errorData.ErrorType === 'BusinessError') {
                             sweetAlert.warning(errorData.Message);
