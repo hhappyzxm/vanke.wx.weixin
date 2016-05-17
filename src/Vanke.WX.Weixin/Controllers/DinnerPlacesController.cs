@@ -8,7 +8,6 @@ using Vanke.WX.Weixin.Service.Interface;
 
 namespace Vanke.WX.Weixin.Controllers
 {
-
     public class DinnerPlacesController : GenericApiController
     {
         private readonly IDinnerPlaceService _dinnerPlaceService = IoC.Container.GetInstance<IDinnerPlaceService>();

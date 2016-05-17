@@ -8,7 +8,6 @@ using Vanke.WX.Weixin.Service.Interface;
 
 namespace Vanke.WX.Weixin.Controllers
 {
-
     public class AdminsController : GenericApiController
     {
         private readonly IAdminService _adminService = IoC.Container.GetInstance<IAdminService>();
@@ -17,6 +16,7 @@ namespace Vanke.WX.Weixin.Controllers
         /// Get all admins
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
         public async Task<IEnumerable<Admin>> Get()
         {
             return await _adminService.GetAllAsync();
@@ -27,6 +27,7 @@ namespace Vanke.WX.Weixin.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpGet]
         public async Task<Admin> Get(int id)
         {
             return await _adminService.GetByKeyAsync(id);

@@ -1,7 +1,9 @@
 ﻿using System;
+using EZ.Framework.Integration.WebApi;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.OAuth;
 using Owin;
 
 namespace Vanke.WX.Weixin
@@ -31,20 +33,15 @@ namespace Vanke.WX.Weixin
             // This is similar to the RememberMe option when you log in.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
-            ////启用OAuth验证
-            //var OAuthOptions = new OAuthAuthorizationServerOptions
-            //{
-            //    //获取Token的虚拟路径                
-            //    TokenEndpointPath = new PathString("/Token"),
-            //    Provider = new OAuthProvider("admin"), //默认的OAuth绑定用户为admin
-            //    AuthorizeEndpointPath = PathString.Empty,
-            //    ApplicationCanDisplayErrors = true,
-            //    //Token 过期时间，默认1天               
-            //    AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
-            //    //在生产模式下设 AllowInsecureHttp = false               
-            //    AllowInsecureHttp = true
-            //};
-            //app.UseOAuthBearerTokens(OAuthOptions);
+            // Token Generation
+            app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions()
+            {
+                AllowInsecureHttp = true,
+                TokenEndpointPath = new PathString("/token"),
+                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(1),
+                Provider = new OAuthBearerServerProvider()
+            });
+            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
         }
     }
 }

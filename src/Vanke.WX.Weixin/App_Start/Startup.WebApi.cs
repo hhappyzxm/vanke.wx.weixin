@@ -1,6 +1,8 @@
-﻿using System.Web.Http;
+﻿using System.Linq;
+using System.Web.Http;
 using EZ.Framework.Integration.WebApi;
 using Owin;
+using Microsoft.Owin.Cors;
 using SimpleInjector.Integration.WebApi;
 using Vanke.WX.Weixin.Common;
 
@@ -10,7 +12,6 @@ namespace Vanke.WX.Weixin
     {
         public void ConfigureWebApi(IAppBuilder app)
         {
-
             var config = new HttpConfiguration();
 
             config.MapHttpAttributeRoutes();
@@ -25,6 +26,7 @@ namespace Vanke.WX.Weixin
 
             config.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(IoC.Container);
 
+            app.UseCors(CorsOptions.AllowAll);
             app.UseWebApi(config);
         }
     }

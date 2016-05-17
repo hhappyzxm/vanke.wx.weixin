@@ -7,9 +7,9 @@ namespace Vanke.WX.Weixin.Controllers
 {
     [RoutePrefix("api/account")]
     [Route("{action}")]
+    [AllowAnonymous]
     public class AccountController : GenericApiController
     {
-        [AllowAnonymous]
         [HttpPost]
         public object Login(LoginViewModel viewModel)
         {
@@ -18,11 +18,17 @@ namespace Vanke.WX.Weixin.Controllers
             return new { Result = currentLogin != null };
         }
 
-        [AllowAnonymous]
         [HttpPost]
         public void Logout()
         {
             AccountManager.Instance.SignOut();
+        }
+
+        public string Options()
+        {
+
+            return null; // HTTP 200 response with empty body
+
         }
     }
 }
