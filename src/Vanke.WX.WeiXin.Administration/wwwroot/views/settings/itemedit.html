@@ -1,0 +1,43 @@
+﻿<div class="row" ng-controller="ItemEditCtrl">
+    <div class="col-md-9">
+        <div class="hpanel hgreen">
+            <div class="panel-heading hbuilt">
+                <div panel-tools></div>
+                <i class="panel-icon fa fa-info-circle"></i>&nbsp;办公物品
+            </div>
+            <div class="panel-body">
+                <form name="submitForm">
+                    <div class="form-group">
+                        <label>物品<span class="txt-mandatory">*</span></label>
+                        <input name="item" type="text" class="form-control" ng-model="data.Name" required/>
+                        <div class="m-t-xs" ng-show="submitForm.item.$invalid && submitForm.$submitted">
+                            <span class="text-danger" ng-show="submitForm.item.$error"><i
+                                    class="fa fa-exclamation-triangle"></i>&nbsp;请输入物品名称</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div sticky class="hpanel hgreen">
+            <div class="panel-heading hbuilt">
+                <div panel-tools></div>
+                <i class="panel-icon fa fa-bars"></i>操作
+            </div>
+            <div class="panel-body">
+                <ul class="mailbox-list">
+                    <li>
+                        <a ng-click="save(submitForm)"><i class="fa fa-save text-success"></i>&nbsp;保存</a>
+                    </li>
+                </ul>
+                <hr>
+                <ul class="mailbox-list">
+                    <li>
+                        <a ui-sref="admin.items"><i class="fa fa-backward"></i>&nbsp;返回</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
