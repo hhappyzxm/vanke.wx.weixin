@@ -37,6 +37,13 @@
              */
             dinnerPlaces: $resource('/api/dinnerplaces/:id', { id: '@id' },
             {
+            }),
+
+            /**
+             * Items Api
+             */
+            items: $resource('/api/items/:id', { id: '@id' },
+            {
             })
         };
     });

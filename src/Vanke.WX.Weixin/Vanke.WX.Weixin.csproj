@@ -324,6 +324,7 @@
     <Content Include="wwwroot\scripts\app.js" />
     <Content Include="wwwroot\scripts\config.js" />
     <Content Include="wwwroot\scripts\controllers\admin\dinnerplaceedit.js" />
+    <Content Include="wwwroot\scripts\controllers\admin\items.js" />
     <Content Include="wwwroot\scripts\controllers\admin\dinnertypeedit.js" />
     <Content Include="wwwroot\scripts\controllers\admin\dinnerplaces.js" />
     <Content Include="wwwroot\scripts\controllers\admin\dinnertypes.js" />
@@ -347,6 +348,7 @@
     <Content Include="wwwroot\views\admin\settings\dinnerplaceedit.html" />
     <Content Include="wwwroot\views\admin\settings\dinnertypeedit.html" />
     <Content Include="wwwroot\views\admin\settings\dinnerplaces.html" />
+    <Content Include="wwwroot\views\admin\settings\items.html" />
     <Content Include="wwwroot\views\admin\settings\staffedit.html" />
     <Content Include="wwwroot\views\admin\settings\adminedit.html" />
     <Content Include="wwwroot\views\admin\settings\dinnertypes.html" />

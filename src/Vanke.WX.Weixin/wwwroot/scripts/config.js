@@ -88,6 +88,20 @@
                     pageTitle: 'Edit Vehicle'
                 }
             })
+            .state("admin.items", {
+                url: "/items",
+                templateUrl: "views/admin/settings/items.html",
+                data: {
+                    pageTitle: 'Vehicle Management'
+                }
+            })
+            .state("admin.itemedit", {
+                url: "/itemedit?id",
+                templateUrl: "views/admin/settings/itemedit.html",
+                data: {
+                    pageTitle: 'Edit Vehicle'
+                }
+            })
 
             // Common views
             .state('common', {
