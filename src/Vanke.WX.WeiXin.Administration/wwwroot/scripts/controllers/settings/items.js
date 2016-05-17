@@ -1,7 +1,7 @@
 ﻿(function (angular, app) {
     'use strict';
 
-    app.controller('ItemsCtrl', function ($scope, $compile, api, datatableSettings, sweetAlert, DTOptionsBuilder, DTColumnDefBuilder) {
+    app.controller('ItemsCtrl', function ($scope, api, datatableSettings, sweetAlert, DTOptionsBuilder, DTColumnDefBuilder) {
         api.items.query(function (result) {
             $scope.items = result;
         });

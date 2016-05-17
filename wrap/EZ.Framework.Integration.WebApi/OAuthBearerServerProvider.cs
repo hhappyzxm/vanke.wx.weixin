@@ -47,11 +47,15 @@ namespace EZ.Framework.Integration.WebApi
         {
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
 
-            var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-            identity.AddClaim(new Claim("sub", context.UserName));
-            identity.AddClaim(new Claim("role", "user"));
-
-            context.Validated(identity);
+            var identityUser = AccountManager.Instance.CreateIdentity(context.UserName, context.Password);
+            if (identityUser == null)
+            {
+                context.SetError("auth_invalid_grant", "The user name or password is incorrect.");
+            }
+            else
+            {
+                context.Validated(identityUser);
+            }
 
             return Task.FromResult(0);
         }

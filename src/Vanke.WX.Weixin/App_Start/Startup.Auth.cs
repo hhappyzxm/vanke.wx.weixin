@@ -38,7 +38,7 @@ namespace Vanke.WX.Weixin
             {
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(1),
+                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
                 Provider = new OAuthBearerServerProvider()
             });
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());

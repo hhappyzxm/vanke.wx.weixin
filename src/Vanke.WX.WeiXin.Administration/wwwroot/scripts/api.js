@@ -6,21 +6,6 @@
 
         return {
             /**
-             * Account Api
-             */
-            account: $resource(apiHost + '/api/account', null,
-            {
-                'login': {
-                    method: 'POST',
-                    url: apiHost + '/api/account/login'
-                },
-                'logout': {
-                    method: 'POST',
-                    url: apiHost + '/api/account/logout'
-                }
-            }),
-
-            /**
              * Admin Api
              */
             admins: $resource(apiHost + '/api/admins/:id', { id: '@id' }),
