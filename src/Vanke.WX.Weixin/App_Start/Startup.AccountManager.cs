@@ -21,12 +21,19 @@ namespace Vanke.WX.Weixin
         {
             var admin = IoC.Container.GetInstance<IAdminService>().Login(loginName, password);
 
-            return new IdentityUser
+            if (admin == null)
             {
-                Id = admin.ID,
-                UserName = admin.RealName,
-                Roles = new List<string> {"Admin"}
-            };
+                return null;
+            }
+            else
+            {
+                return new IdentityUser
+                {
+                    Id = admin.ID,
+                    UserName = admin.RealName,
+                    Roles = new List<string> {"Admin"}
+                };
+            }
         }
 
         private ICurrentLogin GetUserInfo(object key)

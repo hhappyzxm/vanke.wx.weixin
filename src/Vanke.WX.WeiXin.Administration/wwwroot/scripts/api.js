@@ -23,6 +23,16 @@
             /**
              * Admin Api
              */
+            //auth: $resource(apiHost + '/token', null, {
+            //    login: {
+            //        method: 'POST',
+            //        heads: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            //    }
+            //}),
+
+            /**
+             * Admin Api
+             */
             admins: $resource(apiHost + '/api/admins/:id', { id: '@id' }),
 
             /**

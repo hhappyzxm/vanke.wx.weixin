@@ -127,11 +127,11 @@
         $httpProvider.interceptors.push(function ($rootScope, $q, $injector) {
             return {
                 'request': function (config) {
+                    var authService = $injector.get('authService');
                     config.headers = config.headers || {};
 
-                    var authData = $rootScope.aa;
-                    if (authData) {
-                        config.headers.Authorization = 'Bearer ' + authData;
+                    if (authService.authentication.isAuthenticated) {
+                        config.headers.Authorization = 'Bearer ' + authService.authentication.token;
                     }
 
                     return config;
@@ -149,10 +149,14 @@
                     var sweetAlert = $injector.get('sweetAlert');
                     var $state = $injector.get('$state');
 
-                    if (rejection.status === 401) {
+                    if (rejection.status === 400 &&
+                        !angular.isUndefined(rejection.data) &&
+                        !angular.isUndefined(rejection.data.error) &&
+                        rejection.data.error === 'auth_invalid_grant') {
+                        sweetAlert.error('用户名和密码错误');
+                    } else if (rejection.status === 401) {
                         $state.go('common.login');
-                    }
-                    else if (rejection.status === 404) {
+                    } else if (rejection.status === 404) {
                         sweetAlert.error('Not Found ' + rejection.config.url);
                     } else {
                         var errorData = rejection.data;
