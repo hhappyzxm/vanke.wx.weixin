@@ -124,14 +124,14 @@
 
     function configHttpProvider($httpProvider) {
         //$httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
-        $httpProvider.interceptors.push(function ($rootScope, $q, $injector) {
+        $httpProvider.interceptors.push(function ($rootScope, $q, $injector, $window) {
             return {
                 'request': function (config) {
                     var authService = $injector.get('authService');
                     config.headers = config.headers || {};
 
-                    if (authService.authentication.isAuthenticated) {
-                        config.headers.Authorization = 'Bearer ' + authService.authentication.token;
+                    if (authService.getAccessToken()) {
+                        config.headers.Authorization = 'Bearer ' + authService.getAccessToken();
                     }
 
                     return config;
