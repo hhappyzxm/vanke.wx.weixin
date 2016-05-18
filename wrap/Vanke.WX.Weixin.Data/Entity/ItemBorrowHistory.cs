@@ -1,5 +1,6 @@
 using System;
 using EZ.Framework;
+using Vanke.WX.Weixin.Common;
 
 namespace Vanke.WX.Weixin.Data.Entity
 {
@@ -12,6 +13,8 @@ namespace Vanke.WX.Weixin.Data.Entity
         public long StaffID { get; set; }
 
         public int Quantity { get; set; }
+
+        public ItemBorrowStatus Status { get; set; }
 
         public DateTime? CreatedOn { get; set; }
 

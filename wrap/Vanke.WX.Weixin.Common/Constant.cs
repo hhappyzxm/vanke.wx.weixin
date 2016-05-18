@@ -36,6 +36,13 @@ namespace Vanke.WX.Weixin.Common
         Removed
     }
 
+    public enum ItemBorrowStatus
+    {
+        Active,
+        Cancelled,
+        Removed
+    }
+
     public enum ExternalPersonnelDiningRegisterStatus
     {
         Active,

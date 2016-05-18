@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using EZ.Framework;
-using Vanke.WX.Weixin.Data.Entity;
+﻿using EZ.Framework;
 
 namespace Vanke.WX.Weixin.ViewModels
 {

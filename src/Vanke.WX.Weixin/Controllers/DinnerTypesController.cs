@@ -16,6 +16,7 @@ namespace Vanke.WX.Weixin.Controllers
         /// Get all dinner types
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
         public async Task<IEnumerable<DinnerType>> Get()
         {
             return await _dinnerTypeService.GetAllAsync();
@@ -26,6 +27,7 @@ namespace Vanke.WX.Weixin.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpGet]
         public async Task<DinnerType> Get(int id)
         {
             return await _dinnerTypeService.GetByKeyAsync(id);

@@ -16,6 +16,7 @@ namespace Vanke.WX.Weixin.Controllers
         /// Get all items
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
         public async Task<IEnumerable<Item>> Get()
         {
             return await _itemService.GetAllAsync();
@@ -26,6 +27,7 @@ namespace Vanke.WX.Weixin.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpGet]
         public async Task<Item> Get(int id)
         {
             return await _itemService.GetByKeyAsync(id);

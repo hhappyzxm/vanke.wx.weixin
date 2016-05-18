@@ -34,7 +34,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ItemBorrowService.cs" />
     <Compile Include="DinnerPlaceService.cs" />
+    <Compile Include="Interface\IItemBorrowService.cs" />
     <Compile Include="ItemService.cs" />
     <Compile Include="DinnerTypeService.cs" />
     <Compile Include="AdminService.cs" />

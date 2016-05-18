@@ -190,6 +190,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DinnerPlacesController.cs" />
+    <Compile Include="Controllers\ItemBorrowController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\DinnerTypesController.cs" />
     <Compile Include="Controllers\ExternalPersonnelDiningRegisterController.cs" />
@@ -200,7 +201,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\LoginViewModels.cs" />
-    <Compile Include="ViewModels\AdminViewModels.cs" />
+    <Compile Include="ViewModels\ItemBorrowViewModels.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
