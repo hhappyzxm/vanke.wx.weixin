@@ -2,7 +2,7 @@
 
 namespace Vanke.WX.Weixin.Service.Models
 {
-    public class AdminModel : IViewModel
+    public class AdminModel : IModel
     {
         public long ID { get; set; }
 
@@ -13,7 +13,7 @@ namespace Vanke.WX.Weixin.Service.Models
         public string Password { get; set; }
     }
 
-    public class StaffModel : IViewModel
+    public class StaffModel : IModel
     {
         public long ID { get; set; }
 

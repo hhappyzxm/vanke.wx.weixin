@@ -8,6 +8,7 @@ using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data.Entity;
 using Vanke.WX.Weixin.Data.Repository.Interface;
 using Vanke.WX.Weixin.Service.Interface;
+using Vanke.WX.Weixin.Service.Models;
 
 namespace Vanke.WX.Weixin.Service
 {

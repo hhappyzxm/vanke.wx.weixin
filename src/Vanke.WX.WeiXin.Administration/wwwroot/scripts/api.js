@@ -23,7 +23,17 @@
             /**
              * Items Api
              */
-            items: $resource(apiHost + '/api/items/:id', { id: '@id' })
+            items: $resource(apiHost + '/api/items/:id', { id: '@id' }),
+
+            /**
+             * Item Borrow Api
+             */
+            itemBorrow: $resource(null, null, {
+                'cancel': {
+                    method: 'POST',
+                    url: apiHost + '/api/itemborrow/cancel'
+                }
+            })
         };
     });
 })(angular, app);

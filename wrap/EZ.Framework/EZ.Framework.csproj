@@ -38,6 +38,7 @@
     <Compile Include="ICRUDAsyncService.cs" />
     <Compile Include="ICRUDService.cs" />
     <Compile Include="ICurrentLogin.cs" />
+    <Compile Include="IModel.cs" />
     <Compile Include="IViewModel.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="IEntity.cs" />

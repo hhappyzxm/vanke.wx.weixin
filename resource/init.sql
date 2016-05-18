@@ -281,7 +281,3 @@ REFERENCES [dbo].[Users] ([ID])
 GO
 ALTER TABLE [dbo].[Staffs] CHECK CONSTRAINT [FK_Staffs_Users]
 GO
-USE [master]
-GO
-ALTER DATABASE [EamonDemo] SET  READ_WRITE 
-GO

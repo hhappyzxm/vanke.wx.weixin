@@ -69,7 +69,7 @@ namespace EZ.Framework.EntityFramework
 
         #region ToList
 
-        public IEnumerable<TEntity> ToList(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null)
+        public IEnumerable<TEntity> ToList(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>,  IOrderedQueryable<TEntity>> orderBy = null)
         {
             IQueryable<TEntity> query = DbSet;
 
@@ -85,6 +85,25 @@ namespace EZ.Framework.EntityFramework
             else
             {
                 return query.ToList();
+            }
+        }
+
+        public IEnumerable<TResult> SelectList<TResult>(Expression<Func<TEntity, TResult>> selector, Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null)
+        {
+            IQueryable<TEntity> query = DbSet;
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            if (orderBy != null)
+            {
+                return orderBy(query).Select(selector).ToList();
+            }
+            else
+            {
+                return query.Select(selector).ToList();
             }
         }
 
@@ -107,6 +126,25 @@ namespace EZ.Framework.EntityFramework
             }
         }
 
+        public async Task<IEnumerable<TResult>> SelectListAsync<TResult>(Expression<Func<TEntity, TResult>> selector, Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null)
+        {
+            IQueryable<TEntity> query = DbSet;
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            if (orderBy != null)
+            {
+                return await orderBy(query).Select(selector).ToListAsync();
+            }
+            else
+            {
+                return await query.Select(selector).ToListAsync();
+            }
+        }
+
         #endregion
 
         #region SingleOrDefualt
@@ -115,7 +153,7 @@ namespace EZ.Framework.EntityFramework
         {
             return DbSet.SingleOrDefault(filter);
         }
-
+        
         public async Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> filter)
         {
             return await DbSet.SingleOrDefaultAsync(filter);

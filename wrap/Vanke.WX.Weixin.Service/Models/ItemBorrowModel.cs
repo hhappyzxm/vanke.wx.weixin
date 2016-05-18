@@ -3,7 +3,7 @@ using EZ.Framework;
 
 namespace Vanke.WX.Weixin.Service.Models
 {
-    public class ItemBorrowModel : IViewModel
+    public class ItemBorrowModel : IModel
     {
         public long ID { get; set; }
 

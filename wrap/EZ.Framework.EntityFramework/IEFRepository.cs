@@ -23,7 +23,11 @@ namespace EZ.Framework.EntityFramework
         Task<int> CountAsync(Expression<Func<TEntity, bool>> filter);
 
         IEnumerable<TEntity> ToList(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null);
-
+        
         Task<IEnumerable<TEntity>> ToListAsync(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null);
+
+        IEnumerable<TResult> SelectList<TResult>(Expression<Func<TEntity, TResult>> selector, Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null);
+
+        Task<IEnumerable<TResult>> SelectListAsync<TResult>(Expression<Func<TEntity, TResult>> selector, Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null);
     }
 }
