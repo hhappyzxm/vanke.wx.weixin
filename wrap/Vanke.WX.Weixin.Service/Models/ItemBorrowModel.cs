@@ -1,5 +1,6 @@
 ﻿using System;
 using EZ.Framework;
+using Vanke.WX.Weixin.Common;
 
 namespace Vanke.WX.Weixin.Service.Models
 {
@@ -13,7 +14,9 @@ namespace Vanke.WX.Weixin.Service.Models
 
         public int Quantity { get; set; }
 
-        public DateTime BorrowTime { get; set; }
+        public ItemBorrowStatus Status { get; set; }
+
+        public DateTime BorrowedTime { get; set; }
 
         public DateTime? CancelledTime { get; set; }
     }

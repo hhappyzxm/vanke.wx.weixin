@@ -21,9 +21,23 @@ namespace Vanke.WX.Weixin.Service
         {
         }
 
+        public async Task<AdminModel> GetByKeyAsync(object key)
+        {
+            var query = from admin in UnitOfWork.Set<Admin>()
+                        join user in UnitOfWork.Set<User>() on admin.UserID equals user.ID
+                        where admin.Status == AdminStatus.Active
+                        select new AdminModel
+                        {
+                            ID = admin.ID,
+                            LoginName = user.LoginName,
+                            RealName = admin.RealName,
+                        };
+
+            return await query.SingleAsync();
+        }
+
         public async Task<IEnumerable<AdminModel>> GetAllAsync()
         {
-
             var query = from admin in UnitOfWork.Set<Admin>()
                 join user in UnitOfWork.Set<User>() on admin.UserID equals user.ID
                 where admin.Status == AdminStatus.Active
@@ -55,6 +69,12 @@ namespace Vanke.WX.Weixin.Service
             };
 
             IoC.Container.GetInstance<IAdminRepository>().Insert(adminEntity);
+            await UnitOfWork.SaveChangesAsync();
+        }
+
+        public async Task RemoveAsync(object key)
+        {
+            IoC.Container.GetInstance<IAdminRepository>().Remove(key);
             await UnitOfWork.SaveChangesAsync();
         }
 

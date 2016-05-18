@@ -58,10 +58,10 @@
     <Compile Include="Interface\IExternalPersonnelDiningRegisterService.cs" />
     <Compile Include="Interface\IAdminService.cs" />
     <Compile Include="Interface\IStaffService.cs" />
-    <Compile Include="Models\ItemModel.cs" />
+    <Compile Include="Models\AdminModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaffService.cs" />
-    <Compile Include="Models\AccoutModels.cs" />
+    <Compile Include="Models\StaffModel.cs" />
     <Compile Include="Models\ItemBorrowModel.cs" />
   </ItemGroup>
   <ItemGroup>

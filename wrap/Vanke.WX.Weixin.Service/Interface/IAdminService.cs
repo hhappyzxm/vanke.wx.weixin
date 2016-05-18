@@ -10,6 +10,10 @@ namespace Vanke.WX.Weixin.Service.Interface
     {
         Task InsertAsync(AdminModel admin);
 
+        Task RemoveAsync(object key);
+
         Task<IEnumerable<AdminModel>> GetAllAsync();
+
+        Task<AdminModel> GetByKeyAsync(object key);
     }
 }

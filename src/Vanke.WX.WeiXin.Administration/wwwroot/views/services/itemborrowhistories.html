@@ -15,11 +15,11 @@
                             <th>状态</th>
                             <th>借用时间</th>
                             <th>取消时间</th>
-                            <th width="150" class="text-center">操作</th>
+                            <th width="70" class="text-center">操作</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="item in admins">
+                        <tr ng-repeat="item in itemBorrowHistories">
                             <td>
                                 {{item.Staff}}
                             </td>
@@ -33,12 +33,12 @@
                                 {{item.Status == 0 ? '已借用' : '已取消'}}
                             </td>
                             <td>
-                                {{item.BorrowedTime}}
+                                {{item.BorrowedTime | date : 'yyyy-MM-dd hh:mm'}}
                             </td>
                             <td>
-                                {{item.CancelledTime}}
+                                {{item.CancelledTime | date : 'yyyy-MM-dd hh:mm'}}
                             </td>
-                            <td class="text-center"><button class="btn btn-danger btn-xs" type="button" ng-click="cancel(item.ID)">取消</button></td>
+                            <td class="text-center"><button ng-hide="item.Status == 1" class="btn btn-danger btn-xs" type="button" ng-click="cancel(item.ID)">取消</button></td>
                         </tr>
                     </tbody>
                 </table>

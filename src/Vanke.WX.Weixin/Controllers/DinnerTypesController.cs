@@ -28,7 +28,7 @@ namespace Vanke.WX.Weixin.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<DinnerType> Get(int id)
+        public async Task<DinnerType> Get(long id)
         {
             return await _dinnerTypeService.GetByKeyAsync(id);
         }
@@ -57,7 +57,7 @@ namespace Vanke.WX.Weixin.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete]
-        public async Task Delete(int id)
+        public async Task Delete(long id)
         {
             await _dinnerTypeService.RemoveAsync(id);
         }

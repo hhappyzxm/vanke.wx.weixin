@@ -10,6 +10,7 @@ using Vanke.WX.Weixin.Service.Models;
 namespace Vanke.WX.Weixin.Controllers
 {
     [RoutePrefix("api/itemborrow")]
+    [AllowAnonymous]
     public class ItemBorrowController : GenericApiController
     {
         private readonly IItemBorrowService _itemBorrowService = IoC.Container.GetInstance<IItemBorrowService>();
@@ -39,13 +40,13 @@ namespace Vanke.WX.Weixin.Controllers
         /// <summary>
         /// Cancel borrow
         /// </summary>
-        /// <param name="key"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("cancel")]
-        public async Task Cancel(object key)
+        [Route("cancel/{id}")]
+        public async Task Cancel(long id)
         {
-            await _itemBorrowService.CancelAsync(key);
+            await _itemBorrowService.CancelAsync(id);
         }
     }
 }

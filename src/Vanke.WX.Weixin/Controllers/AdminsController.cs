@@ -22,16 +22,19 @@ namespace Vanke.WX.Weixin.Controllers
             return await _adminService.GetAllAsync();
         }
 
-        ///// <summary>
-        ///// Get admin by key
-        ///// </summary>
-        ///// <param name="id"></param>
-        ///// <returns></returns>
-        //[HttpGet]
-        //public async Task<Admin> Get(int id)
-        //{
-        //    return await _adminService.GetByKeyAsync(id);
-        //}
+        /// <summary>
+        /// Get admin by key
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<AdminModel> Get(int id)
+        {
+            var admin =  await _adminService.GetByKeyAsync(id);
+            admin.Password = "******";
+
+            return admin;
+        }
 
         /// <summary>
         /// Insert/Update admin
@@ -51,16 +54,16 @@ namespace Vanke.WX.Weixin.Controllers
             }
         }
 
-        ///// <summary>
-        ///// Delete admin
-        ///// </summary>
-        ///// <param name="id"></param>
-        ///// <returns></returns>
-        //[HttpDelete]
-        //public async Task Delete(int id)
-        //{
-        //    var entity = await _adminService.GetByKeyAsync(id);
-        //    await _adminService.RemoveAsync(entity);
-        //}
+        /// <summary>
+        /// Delete admin
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete]
+        public async Task Delete(int id)
+        {
+            var entity = await _adminService.GetByKeyAsync(id);
+            await _adminService.RemoveAsync(entity);
+        }
     }
 }

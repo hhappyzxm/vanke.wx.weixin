@@ -103,6 +103,24 @@
                 }
             })
 
+            // 行政服务
+            .state('service', {
+                abstract: true,
+                url: "/service",
+                templateUrl: "views/common/content.html",
+                data: {
+                    pageTitle: 'Common'
+                }
+            })
+            .state('service.itemborrow', {
+                url: "/login",
+                templateUrl: "views/services/itemborrowhistories.html",
+                data: {
+                    pageTitle: 'Login page',
+                    specialClass: 'blank'
+                }
+            })
+
             // Common views
             .state('common', {
                 abstract: true,

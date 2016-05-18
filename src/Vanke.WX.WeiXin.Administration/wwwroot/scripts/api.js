@@ -28,10 +28,10 @@
             /**
              * Item Borrow Api
              */
-            itemBorrow: $resource(null, null, {
+            itemBorrow: $resource(apiHost + '/api/itemborrow/:id', { id: '@id' }, {
                 'cancel': {
                     method: 'POST',
-                    url: apiHost + '/api/itemborrow/cancel'
+                    url: apiHost + '/api/itemborrow/cancel/:id'
                 }
             })
         };

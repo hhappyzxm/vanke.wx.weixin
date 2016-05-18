@@ -16,10 +16,11 @@
             sweetAlert.confirm(
                 "你将取消这条数据!",
                 function(resover) {
-                    api.itemBorrowHistories.remove({ id: id }, function () {
+                    api.itemBorrow.cancel({ id: id }, function () {
                         for (var i = 0; i < $scope.itemBorrowHistories.length; i++) {
                             if ($scope.itemBorrowHistories[i].ID === id) {
-                                $scope.itemBorrowHistories.splice(i, 1);
+                                $scope.itemBorrowHistories[i].Status = 1;
+                                $scope.itemBorrowHistories[i].CancelledTime = new Date();
                                 break;
                             }
                         }

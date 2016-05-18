@@ -49,10 +49,12 @@ namespace Vanke.WX.Weixin.Service
         {
             var query = from borrowHistory in UnitOfWork.Set<ItemBorrowHistory>()
                 join staff in UnitOfWork.Set<Staff>() on borrowHistory.StaffID equals staff.ID
+                join item in UnitOfWork.Set<Item>() on borrowHistory.ItemID equals  item.ID
                 select new
                 {
                     BorrowHistory = borrowHistory,
-                    Staff = staff
+                    Staff = staff,
+                    Item = item
                 };
 
             if (filterStatuses == null)
@@ -71,8 +73,10 @@ namespace Vanke.WX.Weixin.Service
             {
                 ID = p.BorrowHistory.ID,
                 Staff = p.Staff.RealName,
+                Item = p.Item.Name,
+                Status = p.BorrowHistory.Status,
                 Quantity = p.BorrowHistory.Quantity,
-                BorrowTime = p.BorrowHistory.BorrowedOn,
+                BorrowedTime = p.BorrowHistory.BorrowedOn,
                 CancelledTime = p.BorrowHistory.CancelledOn
             }).ToListAsync();
         }

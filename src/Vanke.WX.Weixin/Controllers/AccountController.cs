@@ -23,12 +23,5 @@ namespace Vanke.WX.Weixin.Controllers
         {
             AccountManager.Instance.SignOut();
         }
-
-        public string Options()
-        {
-
-            return null; // HTTP 200 response with empty body
-
-        }
     }
 }

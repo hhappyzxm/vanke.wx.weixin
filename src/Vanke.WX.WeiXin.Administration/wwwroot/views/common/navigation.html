@@ -49,13 +49,13 @@
                 <li ui-sref-active="active"><a ui-sref="admin.items">物品管理</a></li>
             </ul>
         </li>
-        <li ng-class="{'active': $state.includes('app_views') || $state.includes('blog_details')}">
+        <li ng-class="{'active': $state.includes('service')}">
             <a href="#"><span class="nav-icon fa fa-user fa-lg"></span><span class="nav-label">行政服务</span><span class="fa arrow"></span> </a>
-            <ul class="nav nav-second-level" ng-class="{'in': $state.includes('app_views') || $state.includes('blog_details')}">
+            <ul class="nav nav-second-level" ng-class="{'in': $state.includes('service')}">
                 <li ui-sref-active="active"><a ui-sref="app_views.contacts">外部人员就餐管理</a></li>
                 <li ui-sref-active="active"><a ui-sref="app_views.projects">宴请管理</a></li>
                 <li ui-sref-active="active"><a ui-sref="app_views.projects">闲置资产管理</a></li>
-                <li ui-sref-active="active"><a ui-sref="app_views.projects">物品借用管理</a></li>
+                <li ui-sref-active="active"><a ui-sref="service.itemborrow">物品借用管理</a></li>
             </ul>
         </li>
         <li ng-class="{active: $state.includes('charts')}">
