@@ -245,3 +245,5 @@ ModelManifest.xml
 .fake/
 /src/Vanke.WX.Weixin/bower_components
 /src/Vanke.WX.WeiXin.Administration/bower_components
+/src/Vanke.WX.Weixin/.idea
+/src/Vanke.WX.WeiXin.Administration/.idea
