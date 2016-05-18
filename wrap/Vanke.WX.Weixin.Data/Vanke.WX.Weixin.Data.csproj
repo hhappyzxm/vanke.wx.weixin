@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataContext.cs" />
     <Compile Include="Entity\Admin.cs" />
     <Compile Include="Entity\DinnerPlace.cs" />
     <Compile Include="Entity\DinnerRegisterHistory.cs" />
@@ -53,8 +54,8 @@
     <Compile Include="Entity\IdleAsset.cs" />
     <Compile Include="Entity\Item.cs" />
     <Compile Include="Entity\ItemBorrowHistory.cs" />
-    <Compile Include="DataContext.cs" />
     <Compile Include="Entity\Staff.cs" />
+    <Compile Include="Entity\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Interface\IItemBorrowRepository.cs" />
     <Compile Include="Repository\IItemBorrowRepository.cs" />

@@ -5,7 +5,7 @@ using EZ.Framework.Integration.WebApi;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data.Entity;
 using Vanke.WX.Weixin.Service.Interface;
-using Vanke.WX.Weixin.ViewModels;
+using Vanke.WX.Weixin.Service.Models;
 
 namespace Vanke.WX.Weixin.Controllers
 {
@@ -18,22 +18,11 @@ namespace Vanke.WX.Weixin.Controllers
         /// Get all item borrow history
         /// </summary>
         /// <returns></returns>
-        //[HttpGet]
-        //public async Task<List<ItemBorrowHistory>> Get()
-        //{
-        //    var lst = new List<ItemBorrowViewModel>();
-
-        //    var histories = await _itemBorrowService.GetAllAsync();
-        //    foreach (var record in histories)
-        //    {
-        //        lst.Add(new ItemBorrowViewModel
-        //        {
-                    
-        //        });
-        //    }
-
-        //    return lst;
-        //}
+        [HttpGet]
+        public async Task<IEnumerable<ItemBorrowModel>> Get()
+        {
+            return await _itemBorrowService.GetAllItemBorrowHistoryAsync();
+        }
 
         /// <summary>
         /// Borrow item

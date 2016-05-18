@@ -162,6 +162,11 @@ namespace EZ.Framework.Integration.WebApi
             }
         }
 
+        public T GetCurrentLoginUser<T>() where T : ICurrentLogin
+        {
+            return (T) CurrentLoginUser;
+        }
+
         public bool TryGetLoginUser(string userId, out ICurrentLogin user)
         {
             lock (_lock)

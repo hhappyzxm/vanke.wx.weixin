@@ -1,7 +1,7 @@
-using EZ.Framework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using EZ.Framework;
 using Vanke.WX.Weixin.Common;
 
 namespace Vanke.WX.Weixin.Data.Entity
@@ -17,23 +17,17 @@ namespace Vanke.WX.Weixin.Data.Entity
 
         public long ID { get; set; }
 
+        public long UserID { get; set; }
+
         [Required]
         [StringLength(50)]
         public string RealName { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string LoginName { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string Password { get; set; }
-
         public StaffStatus Status { get; set; }
 
-        public DateTime? CreatedOn { get; set; }
+        public DateTime CreatedOn { get; set; }
 
-        public long? CreatedBy { get; set; }
+        public long CreatedBy { get; set; }
 
         public DateTime? UpdatedOn { get; set; }
 
@@ -46,5 +40,7 @@ namespace Vanke.WX.Weixin.Data.Entity
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemBorrowHistory> ItemBorrowHistories { get; set; }
+
+        public virtual User User { get; set; }
     }
 }

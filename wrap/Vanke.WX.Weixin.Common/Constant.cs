@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace Vanke.WX.Weixin.Common
 {
+    public enum UserType
+    {
+        Admin,
+        Staff
+    }
+
     public enum AdminStatus
     {
         Active,

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,53 +11,59 @@ using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data.Entity;
 using Vanke.WX.Weixin.Data.Repository.Interface;
 using Vanke.WX.Weixin.Service.Interface;
+using Vanke.WX.Weixin.Service.Models;
 
 namespace Vanke.WX.Weixin.Service
 {
-    public class AdminService : CRUDService<IDataContext, IAdminRepository, Admin>, IAdminService
+    public class AdminService : Service<IDataContext>, IAdminService
     {
-        public AdminService(IDataContext dataContext, IAdminRepository repository) : base(dataContext, repository)
+        public AdminService(IDataContext dataContext) : base(dataContext)
         {
         }
 
-        protected override async Task BeforeInsertAsync(Admin entity)
+        public async Task<IEnumerable<AdminModel>> GetAllAsync()
         {
-            if (await Repository.AnyAsync(p => p.LoginName.Equals(entity.LoginName)))
+
+            var query = from admin in UnitOfWork.Set<Admin>()
+                join user in UnitOfWork.Set<User>() on admin.UserID equals user.ID
+                where admin.Status == AdminStatus.Active
+                select new AdminModel
+                {
+                    ID = admin.ID,
+                    LoginName = user.LoginName,
+                    RealName = admin.RealName,
+                };
+
+            return await query.ToListAsync();
+        }
+
+        public async Task InsertAsync(AdminModel admin)
+        {
+            await CheckLoginNameExist(admin.LoginName);
+
+            var adminEntity = new Admin
+            {
+                RealName = admin.RealName,
+                Status = AdminStatus.Active,
+                CreatedOn = DateTime.Now,
+                CreatedBy = (long) AccountManager.Instance.CurrentLoginUser.ID,
+                User = new User
+                {
+                    LoginName = admin.LoginName,
+                    Password = Convert.ToBase64String(Encoding.UTF8.GetBytes(admin.Password))
+                }
+            };
+
+            IoC.Container.GetInstance<IAdminRepository>().Insert(adminEntity);
+            await UnitOfWork.SaveChangesAsync();
+        }
+
+        private async Task CheckLoginNameExist(string logingName, long userId = 0)
+        {
+            if (await UnitOfWork.Set<User>().AnyAsync(p=>p.LoginName == logingName && p.ID != userId))
             {
                 throw new BusinessException("用户名已经存在");
             }
-
-            entity.Password = Convert.ToBase64String(Encoding.UTF8.GetBytes(entity.Password));
-            entity.Status = AdminStatus.Active;
-            entity.CreatedOn = DateTime.Now;
-            entity.CreatedBy = (long)AccountManager.Instance.CurrentLoginUser.ID;
-        }
-
-        public Admin Login(string loginName, string password)
-        {
-            password = Convert.ToBase64String(Encoding.UTF8.GetBytes(password));
-
-            return
-                Repository.SingleOrDefault(
-                        p =>
-                            p.LoginName.Equals(loginName) && 
-                            p.Password.Equals(password) &&
-                            p.Status == AdminStatus.Active);
-        }
-
-        public override async Task RemoveAsync(Admin entity)
-        {
-            if (entity.LoginName.Equals("admin", StringComparison.Ordinal))
-            {
-                throw new BusinessException("该账号是默认管理员账号，不能被删除");
-            }
-
-            await base.RemoveAsync(entity);
-        }
-
-        public override async Task<IEnumerable<Admin>> GetAllAsync()
-        {
-            return await Repository.ToListAsync(p => p.Status == AdminStatus.Active);
         }
     }
 }

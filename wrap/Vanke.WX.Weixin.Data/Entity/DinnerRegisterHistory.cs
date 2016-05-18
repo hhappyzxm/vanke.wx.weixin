@@ -23,13 +23,11 @@ namespace Vanke.WX.Weixin.Data.Entity
         [StringLength(500)]
         public string Comment { get; set; }
 
-        public DateTime? CreatedOn { get; set; }
+        public DateTime RegisteredOn { get; set; }
 
-        public long? CreatedBy { get; set; }
+        public DateTime? CancelledOn { get; set; }
 
-        public DateTime? UpdatedOn { get; set; }
-
-        public long? UpdatedBy { get; set; }
+        public long? CancelledBy { get; set; }
 
         public virtual DinnerPlace DinnerPlace { get; set; }
 

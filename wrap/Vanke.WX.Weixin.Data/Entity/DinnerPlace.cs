@@ -22,9 +22,9 @@ namespace Vanke.WX.Weixin.Data.Entity
 
         public DinnerPlaceStatus Status { get; set; }
 
-        public DateTime? CreatedOn { get; set; }
+        public DateTime CreatedOn { get; set; }
 
-        public long? CreatedBy { get; set; }
+        public long CreatedBy { get; set; }
 
         public DateTime? UpdatedOn { get; set; }
 

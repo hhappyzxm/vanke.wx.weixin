@@ -1,8 +1,7 @@
-using EZ.Framework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using EZ.Framework;
 using Vanke.WX.Weixin.Common;
 
 namespace Vanke.WX.Weixin.Data.Entity
@@ -14,7 +13,7 @@ namespace Vanke.WX.Weixin.Data.Entity
         {
             DinnerRegisterHistories = new HashSet<DinnerRegisterHistory>();
         }
-        
+
         public long ID { get; set; }
 
         [Required]
@@ -23,9 +22,9 @@ namespace Vanke.WX.Weixin.Data.Entity
 
         public DinnerTypeStatus Status { get; set; }
 
-        public DateTime? CreatedOn { get; set; }
+        public DateTime CreatedOn { get; set; }
 
-        public long? CreatedBy { get; set; }
+        public long CreatedBy { get; set; }
 
         public DateTime? UpdatedOn { get; set; }
 

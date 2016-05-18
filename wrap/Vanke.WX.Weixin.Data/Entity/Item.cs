@@ -1,13 +1,11 @@
-using EZ.Framework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using EZ.Framework;
 using Vanke.WX.Weixin.Common;
 
 namespace Vanke.WX.Weixin.Data.Entity
 {
-    
-
     public partial class Item : IEntity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,9 +22,9 @@ namespace Vanke.WX.Weixin.Data.Entity
 
         public ItemStatus Status { get; set; }
 
-        public DateTime? CreatedOn { get; set; }
+        public DateTime CreatedOn { get; set; }
 
-        public long? CreatedBy { get; set; }
+        public long CreatedBy { get; set; }
 
         public DateTime? UpdatedOn { get; set; }
 

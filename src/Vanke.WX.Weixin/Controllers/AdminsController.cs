@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using EZ.Framework.Integration.WebApi;
 using Vanke.WX.Weixin.Common;
-using Vanke.WX.Weixin.Data.Entity;
 using Vanke.WX.Weixin.Service.Interface;
+using Vanke.WX.Weixin.Service.Models;
 
 namespace Vanke.WX.Weixin.Controllers
 {
@@ -17,29 +17,29 @@ namespace Vanke.WX.Weixin.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IEnumerable<Admin>> Get()
+        public async Task<IEnumerable<AdminModel>> Get()
         {
             return await _adminService.GetAllAsync();
         }
 
-        /// <summary>
-        /// Get admin by key
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpGet]
-        public async Task<Admin> Get(int id)
-        {
-            return await _adminService.GetByKeyAsync(id);
-        }
-        
+        ///// <summary>
+        ///// Get admin by key
+        ///// </summary>
+        ///// <param name="id"></param>
+        ///// <returns></returns>
+        //[HttpGet]
+        //public async Task<Admin> Get(int id)
+        //{
+        //    return await _adminService.GetByKeyAsync(id);
+        //}
+
         /// <summary>
         /// Insert/Update admin
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task Save(Admin entity)
+        public async Task Save(AdminModel entity)
         {
             if (entity.ID == 0)
             {
@@ -47,20 +47,20 @@ namespace Vanke.WX.Weixin.Controllers
             }
             else
             {
-                await _adminService.UpdateAsync(entity);
+               // await _adminService.UpdateAsync(entity);
             }
         }
 
-        /// <summary>
-        /// Delete admin
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpDelete]
-        public async Task Delete(int id)
-        {
-            var entity = await _adminService.GetByKeyAsync(id);
-            await _adminService.RemoveAsync(entity);
-        }
+        ///// <summary>
+        ///// Delete admin
+        ///// </summary>
+        ///// <param name="id"></param>
+        ///// <returns></returns>
+        //[HttpDelete]
+        //public async Task Delete(int id)
+        //{
+        //    var entity = await _adminService.GetByKeyAsync(id);
+        //    await _adminService.RemoveAsync(entity);
+        //}
     }
 }

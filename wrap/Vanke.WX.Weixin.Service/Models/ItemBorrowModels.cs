@@ -1,9 +1,9 @@
 ﻿using System;
 using EZ.Framework;
 
-namespace Vanke.WX.Weixin.ViewModels
+namespace Vanke.WX.Weixin.Service.Models
 {
-    public class ItemBorrowViewModel : IViewModel
+    public class ItemBorrowModel : IViewModel
     {
         public long ID { get; set; }
 
@@ -13,6 +13,8 @@ namespace Vanke.WX.Weixin.ViewModels
 
         public int Quantity { get; set; }
 
-        public DateTime BorrowDateTime { get; set; }
+        public DateTime BorrowTime { get; set; }
+
+        public DateTime? CancelledTime { get; set; }
     }
 }

@@ -201,7 +201,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\LoginViewModels.cs" />
-    <Compile Include="ViewModels\ItemBorrowViewModels.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
