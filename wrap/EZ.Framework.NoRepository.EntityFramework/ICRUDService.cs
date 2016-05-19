@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EZ.Framework
+namespace EZ.Framework.NoRepository.EntityFramework
 {
     public interface IRetrieveService<out TEntity>
        where TEntity : IEntity

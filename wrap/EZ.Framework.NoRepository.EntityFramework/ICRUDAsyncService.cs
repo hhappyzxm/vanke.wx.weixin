@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace EZ.Framework
+namespace EZ.Framework.NoRepository.EntityFramework
 {
     public interface IRetrieveAsyncService<TEntity>
         where TEntity : IEntity

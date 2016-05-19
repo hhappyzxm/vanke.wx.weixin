@@ -40,6 +40,8 @@
   <ItemGroup>
     <Compile Include="CRUDService.cs" />
     <Compile Include="EFRepository.cs" />
+    <Compile Include="ICRUDAsyncService.cs" />
+    <Compile Include="ICRUDService.cs" />
     <Compile Include="IDataContext.cs" />
     <Compile Include="IEFRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
