@@ -32,9 +32,9 @@ namespace Vanke.WX.Weixin.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("borrow")]
-        public async Task Borrow(ItemBorrowHistory entity)
+        public async Task Borrow(ItemBorrowModel model)
         {
-            await _itemBorrowService.InsertAsync(entity);
+            await _itemBorrowService.InsertAsync(model);
         }
 
         /// <summary>

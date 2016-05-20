@@ -44,13 +44,13 @@ namespace Vanke.WX.Weixin.Controllers
         [HttpPost]
         public async Task Save(AdminModel entity)
         {
-            if (entity.ID == 0)
+            if (entity.ID.Equals(0))
             {
                 await _adminService.InsertAsync(entity);
             }
             else
             {
-               // await _adminService.UpdateAsync(entity);
+                await _adminService.UpdateAsync(entity.ID, entity);
             }
         }
 

@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Text;
 using EZ.Framework;
-using EZ.Framework.EntityFramework;
 using EZ.Framework.Integration.WebApi;
+using EZ.Framework.NoRepository.EntityFramework;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data.Entity;
 using Vanke.WX.Weixin.Service.Interface;

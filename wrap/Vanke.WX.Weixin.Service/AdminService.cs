@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EZ.Framework;
-using EZ.Framework.EntityFramework;
 using EZ.Framework.Integration.WebApi;
+using EZ.Framework.NoRepository.EntityFramework;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data.Entity;
-using Vanke.WX.Weixin.Data.Repository.Interface;
 using Vanke.WX.Weixin.Service.Interface;
 using Vanke.WX.Weixin.Service.Models;
 
@@ -23,9 +22,10 @@ namespace Vanke.WX.Weixin.Service
 
         public async Task<AdminModel> GetByKeyAsync(object key)
         {
+            var id = long.Parse(key.ToString());
             var query = from admin in UnitOfWork.Set<Admin>()
                         join user in UnitOfWork.Set<User>() on admin.UserID equals user.ID
-                        where admin.Status == AdminStatus.Active
+                        where admin.ID == id && admin.Status == AdminStatus.Active
                         select new AdminModel
                         {
                             ID = admin.ID,
@@ -33,7 +33,7 @@ namespace Vanke.WX.Weixin.Service
                             RealName = admin.RealName,
                         };
 
-            return await query.SingleAsync();
+            return await query.SingleOrDefaultAsync();
         }
 
         public async Task<IEnumerable<AdminModel>> GetAllAsync()
@@ -68,13 +68,19 @@ namespace Vanke.WX.Weixin.Service
                 }
             };
 
-            IoC.Container.GetInstance<IAdminRepository>().Insert(adminEntity);
+            UnitOfWork.Set<Admin>().Add(adminEntity);
             await UnitOfWork.SaveChangesAsync();
+        }
+
+        public Task UpdateAsync(object key, AdminModel model)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task RemoveAsync(object key)
         {
-            IoC.Container.GetInstance<IAdminRepository>().Remove(key);
+            var entity = await UnitOfWork.Set<Admin>().FindAsync(key);
+            entity.Status = AdminStatus.Removed;
             await UnitOfWork.SaveChangesAsync();
         }
 

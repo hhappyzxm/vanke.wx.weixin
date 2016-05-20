@@ -1,5 +1,5 @@
 using System.Data.Entity;
-using EZ.Framework.EntityFramework;
+using EZ.Framework.NoRepository.EntityFramework;
 using Vanke.WX.Weixin.Data.Entity;
 
 namespace Vanke.WX.Weixin.Data

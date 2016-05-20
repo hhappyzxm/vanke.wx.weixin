@@ -1,13 +1,12 @@
-﻿using EZ.Framework.EntityFramework;
-using Vanke.WX.Weixin.Data.Entity;
-using Vanke.WX.Weixin.Data.Repository.Interface;
+﻿using EZ.Framework;
+using EZ.Framework.NoRepository.EntityFramework;
 using Vanke.WX.Weixin.Service.Interface;
 
 namespace Vanke.WX.Weixin.Service
 {
-    public class StaffService : CRUDService<IDataContext, IStaffRepository, Staff>, IStaffService
+    public class StaffService : Service<IDataContext>, IStaffService
     {
-        public StaffService(IDataContext dataContext, IStaffRepository repository) : base(dataContext, repository)
+        public StaffService(IDataContext dataContext) : base(dataContext)
         {
         }
     }

@@ -18,7 +18,7 @@ namespace Vanke.WX.Weixin.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IEnumerable<Item>> Get()
+        public async Task<IEnumerable<ItemModel>> Get()
         {
             return await _itemService.GetAllAsync();
         }
@@ -29,7 +29,7 @@ namespace Vanke.WX.Weixin.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<Item> Get(long id)
+        public async Task<ItemModel> Get(long id)
         {
             return await _itemService.GetByKeyAsync(id);
         }
@@ -40,15 +40,15 @@ namespace Vanke.WX.Weixin.Controllers
         /// <param name="entity"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task Save(Item entity)
+        public async Task Save(ItemModel model)
         {
-            if (entity.ID == 0)
+            if (model.ID.Equals(0))
             {
-                await _itemService.InsertAsync(entity);
+                await _itemService.InsertAsync(model);
             }
             else
             {
-                await _itemService.UpdateAsync(entity);
+                await _itemService.UpdateAsync(model.ID, model);
             }
         }
 

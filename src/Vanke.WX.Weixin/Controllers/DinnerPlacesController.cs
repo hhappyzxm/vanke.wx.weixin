@@ -5,6 +5,7 @@ using EZ.Framework.Integration.WebApi;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data.Entity;
 using Vanke.WX.Weixin.Service.Interface;
+using Vanke.WX.Weixin.Service.Models;
 
 namespace Vanke.WX.Weixin.Controllers
 {
@@ -17,7 +18,7 @@ namespace Vanke.WX.Weixin.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IEnumerable<DinnerPlace>> Get()
+        public async Task<IEnumerable<DinnerPlaceModel>> Get()
         {
             return await _dinnerPlaceService.GetAllAsync();
         }
@@ -28,7 +29,7 @@ namespace Vanke.WX.Weixin.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<DinnerPlace> Get(long id)
+        public async Task<DinnerPlaceModel> Get(long id)
         {
             return await _dinnerPlaceService.GetByKeyAsync(id);
         }
@@ -39,15 +40,15 @@ namespace Vanke.WX.Weixin.Controllers
         /// <param name="entity"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task Save(DinnerPlace entity)
+        public async Task Save(DinnerPlaceModel model)
         {
-            if (entity.ID == 0)
+            if (model.ID.Equals(0))
             {
-                await _dinnerPlaceService.InsertAsync(entity);
+                await _dinnerPlaceService.InsertAsync(model);
             }
             else
             {
-                await _dinnerPlaceService.UpdateAsync(entity);
+                await _dinnerPlaceService.UpdateAsync(model.ID, model);
             }
         }
 

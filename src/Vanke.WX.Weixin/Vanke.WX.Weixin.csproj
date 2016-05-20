@@ -188,7 +188,6 @@
     <Compile Include="App_Start\Startup.AccountManager.cs" />
     <Compile Include="App_Start\Startup.WebApi.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DinnerPlacesController.cs" />
     <Compile Include="Controllers\ItemBorrowController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
@@ -200,17 +199,18 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\LoginViewModels.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\..\wrap\EZ.Framework.EntityFramework\EZ.Framework.EntityFramework.csproj">
-      <Project>{c3b057db-0f36-4a51-86fb-6d39719a02f1}</Project>
-      <Name>EZ.Framework.EntityFramework</Name>
-    </ProjectReference>
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\wrap\EZ.Framework.Integration.WebApi\EZ.Framework.Integration.WebApi.csproj">
       <Project>{1d91cf21-307c-44dd-817c-94c10f0b0515}</Project>
       <Name>EZ.Framework.Integration.WebApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\wrap\EZ.Framework.NoRepository.EntityFramework\EZ.Framework.NoRepository.EntityFramework.csproj">
+      <Project>{f885445c-fb4a-4186-b0a5-3787d0be4fcd}</Project>
+      <Name>EZ.Framework.NoRepository.EntityFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\wrap\EZ.Framework\EZ.Framework.csproj">
       <Project>{d10d1d97-17b8-484d-9454-122c4dfbab95}</Project>

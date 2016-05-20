@@ -50,8 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GenericService.cs" />
-    <Compile Include="ICRUDAsyncService.cs" />
-    <Compile Include="ICRUDService.cs" />
     <Compile Include="IDataContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

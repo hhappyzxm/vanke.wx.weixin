@@ -8,7 +8,9 @@ namespace Vanke.WX.Weixin.Service.Interface
 {
     public interface IAdminService : IService
     {
-        Task InsertAsync(AdminModel admin);
+        Task InsertAsync(AdminModel model);
+
+        Task UpdateAsync(object key, AdminModel model);
 
         Task RemoveAsync(object key);
 

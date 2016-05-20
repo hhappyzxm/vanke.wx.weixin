@@ -4,7 +4,7 @@ using Vanke.WX.Weixin.Common;
 
 namespace Vanke.WX.Weixin.Service.Models
 {
-    public class ItemBorrowModel : IModel
+    public class ExternalPersonnelDiningRegisterModel : IModel
     {
         public long ID { get; set; }
 

@@ -14,10 +14,6 @@ namespace Vanke.WX.Weixin
         {
             var config = new HttpConfiguration();
 
-            config.Formatters.JsonFormatter
-                .SerializerSettings
-                .ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-
             config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

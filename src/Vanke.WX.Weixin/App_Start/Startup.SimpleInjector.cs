@@ -1,14 +1,11 @@
 ﻿using System.Linq;
-using EZ.Framework.EntityFramework;
+using EZ.Framework.NoRepository.EntityFramework;
 using Owin;
 using SimpleInjector;
 using SimpleInjector.Extensions.ExecutionContextScoping;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data;
-using Vanke.WX.Weixin.Data.Repository;
-using Vanke.WX.Weixin.Data.Repository.Interface;
 using Vanke.WX.Weixin.Service;
-using Vanke.WX.Weixin.Service.Interface;
 
 namespace Vanke.WX.Weixin
 {
@@ -52,28 +49,6 @@ namespace Vanke.WX.Weixin
 
             #endregion
 
-            #region Register Repositories
-
-            var repositoryAssembly = typeof(DataContext).Assembly;
-            var registrations =
-                from type in repositoryAssembly.GetExportedTypes()
-                where type.Namespace == "Vanke.WX.Weixin.Data.Repository"
-                where type.GetInterfaces().Any()
-                select
-                    new
-                    {
-                        Service =
-                            type.GetInterfaces().Single(p => p.Namespace == "Vanke.WX.Weixin.Data.Repository.Interface"),
-                        Implementation = type
-                    };
-
-            foreach (var reg in registrations)
-            {
-                container.Register(reg.Service, reg.Implementation, Lifestyle.Transient);
-            }
-
-            #endregion
-            
             container.Verify();
         }
     }

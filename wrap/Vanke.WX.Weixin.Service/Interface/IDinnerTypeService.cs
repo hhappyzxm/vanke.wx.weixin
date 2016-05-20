@@ -1,10 +1,10 @@
 ﻿using EZ.Framework;
-using EZ.Framework.EntityFramework;
-using Vanke.WX.Weixin.Data.Entity;
+using EZ.Framework.NoRepository.EntityFramework;
+using Vanke.WX.Weixin.Service.Models;
 
 namespace Vanke.WX.Weixin.Service.Interface
 {
-    public interface IDinnerTypeService : ICRUDAsyncService<DinnerType>
+    public interface IDinnerTypeService : ICRUDAsyncService<DinnerTypeModel>
     {
     }
 }

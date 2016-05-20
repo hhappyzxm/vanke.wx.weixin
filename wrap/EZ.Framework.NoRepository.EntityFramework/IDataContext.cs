@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace EZ.Framework.NoRepository.EntityFramework
 {
-    public interface IDataContext : IUnitOfWork
+    public interface IDataContext : IUnitOfWork, IObjectContextAdapter
     {
         int SaveChanges();
 

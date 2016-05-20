@@ -1,48 +1,88 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using EZ.Framework;
-using EZ.Framework.EntityFramework;
 using EZ.Framework.Integration.WebApi;
+using EZ.Framework.NoRepository.EntityFramework;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data.Entity;
-using Vanke.WX.Weixin.Data.Repository.Interface;
 using Vanke.WX.Weixin.Service.Interface;
 using Vanke.WX.Weixin.Service.Models;
 
 namespace Vanke.WX.Weixin.Service
 {
-    public class ItemService : CRUDService<IDataContext, IItemRepository, Item>, IItemService
+    public class ItemService : GenericService<IDataContext, Item, ItemModel>, IItemService
     {
-        public ItemService(IDataContext dataContext, IItemRepository repository) : base(dataContext, repository)
+        public ItemService(IDataContext dataContext) : base(dataContext)
         {
         }
 
-        protected override async Task BeforeInsertAsync(Item entity)
+        protected override Expression<Func<Item, ItemModel>> ModelSelector()
+        {
+            return p => new ItemModel
+            {
+                ID = p.ID,
+                Name = p.Name,
+                Status = p.Status
+            };
+        }
+
+        protected override void ConvertToEntity(ItemModel model, ref Item targetEntity)
+        {
+            targetEntity.ID = model.ID;
+            targetEntity.Name = model.Name;
+            targetEntity.Status = model.Status;
+        }
+
+        public override async Task<ItemModel> GetByKeyAsync(object key)
+        {
+            return await UnitOfWork.Set<Item>().Select(ModelSelector()).SingleOrDefaultAsync(p => p.ID == (long)key);
+        }
+
+        public override async Task<IEnumerable<ItemModel>> GetAllAsync()
+        {
+            return await
+                UnitOfWork.Set<Item>()
+                    .Select(ModelSelector())
+                    .Where(p => p.Status == ItemStatus.Active)
+                    .ToListAsync();
+        }
+
+        protected override async Task InsertEntityAsync(Item entity)
         {
             await CheckItemExist(entity);
 
             entity.Status = ItemStatus.Active;
             entity.CreatedOn = DateTime.Now;
             entity.CreatedBy = (long)AccountManager.Instance.CurrentLoginUser.ID;
+
+            await base.InsertEntityAsync(entity);
         }
 
-        protected override async Task BeforeUpdateAsync(Item entity)
+        public override async Task UpdateEntityAsync(Item entity)
         {
             await CheckItemExist(entity);
 
             entity.UpdatedOn = DateTime.Now;
             entity.UpdatedBy = (long)AccountManager.Instance.CurrentLoginUser.ID;
+
+            await base.UpdateEntityAsync(entity);
         }
 
-        public override async Task<IEnumerable<Item>> GetAllAsync()
+        public override async Task RemoveAsync(object key)
         {
-            return await Repository.ToListAsync(p => p.Status == ItemStatus.Active);
+            var entity = UnitOfWork.Set<Item>().Find(key);
+            entity.Status = ItemStatus.Removed;
+
+            await UpdateEntityAsync(entity);
         }
 
         private async Task CheckItemExist(Item entity)
         {
-            if (await Repository.AnyAsync(p => p.Name.Equals(entity.Name) && p.ID != entity.ID))
+            if (await UnitOfWork.Set<Item>().AnyAsync(p => p.Name.Equals(entity.Name) && p.ID != entity.ID))
             {
                 throw new BusinessException("物品已经存在");
             }
