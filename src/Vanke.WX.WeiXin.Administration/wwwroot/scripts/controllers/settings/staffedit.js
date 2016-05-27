@@ -1,9 +1,9 @@
 ﻿(function (angular, app) {
     'use strict';
 
-    app.controller('AdminEditCtrl', function ($scope, $state, $stateParams, api) {
+    app.controller('StaffEditCtrl', function ($scope, $state, $stateParams, api) {
         if (!angular.isUndefined($stateParams.id)) {
-            api.admins.get({ id: $stateParams.id }, function(result) {
+            api.staffs.get({ id: $stateParams.id }, function(result) {
                 $scope.data = result;
             });
         }
@@ -12,8 +12,8 @@
             form.$setSubmitted(true);
 
             if (form.$valid) {
-                api.admins.save($scope.data, function() {
-                    $state.go('admin.admins');
+                api.staffs.save($scope.data, function () {
+                    $state.go('admin.staffs');
                 });
             }
         };

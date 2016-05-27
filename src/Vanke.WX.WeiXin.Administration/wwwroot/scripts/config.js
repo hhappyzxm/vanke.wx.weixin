@@ -32,20 +32,6 @@
                     pageTitle: 'Dashboard'
                 }
             })
-            .state("admin.admins", {
-                url: "/admins",
-                templateUrl: "views/settings/admins.html",
-                data: {
-                    pageTitle: 'Vehicle Management'
-                }
-            })
-            .state("admin.adminedit", {
-                url: "/adminedit?id",
-                templateUrl: "views/settings/adminedit.html",
-                data: {
-                    pageTitle: 'Edit Vehicle'
-                }
-            })
             .state("admin.staffs", {
                  url: "/staffs",
                  templateUrl: "views/settings/staffs.html",

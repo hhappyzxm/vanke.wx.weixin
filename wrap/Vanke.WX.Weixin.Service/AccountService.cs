@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using EZ.Framework;
@@ -20,52 +21,49 @@ namespace Vanke.WX.Weixin.Service
         {
             password = Convert.ToBase64String(Encoding.UTF8.GetBytes(password));
 
-            var user =
-                UnitOfWork.Set<User>()
+            var staff =
+                UnitOfWork.Set<Staff>()
                     .SingleOrDefault(p => p.LoginName.Equals(loginName) && p.Password.Equals(password));
 
-            if (user == null)
+            if (staff == null)
             {
                 return null;
             }
             else
             {
-                return new IdentityUser
+                var roles = staff.StaffRoles.ToList();
+
+                var identityUser = new IdentityUser
                 {
-                    Id = user.ID
+                    Id = staff.ID,
+                    Roles = new List<string>()
                 };
+
+                roles.ForEach(p => identityUser.Roles.Add(p.Role.ToString()));
+
+                return identityUser;
             }
         }
 
         public CurrentLogin GetCurrentLogin(object userId)
         {
-            var admin = UnitOfWork.Set<Admin>().Find(userId);
-            if (admin != null)
+            var staff = UnitOfWork.Set<Staff>().Find(userId);
+            if (staff != null)
             {
-                return new CurrentLogin
+                var currentLogin = new CurrentLogin
                 {
-                    ID = userId,
-                    AdminID = admin.ID,
-                    UserName = admin.RealName,
-                    Type = UserType.Admin
+                    ID = staff.ID,
+                    UserName = staff.RealName,
+                    Roles = (from r in UnitOfWork.Set<StaffRole>()
+                        where r.StaffID == staff.ID
+                        select r.Role).ToList()
                 };
-            }
-            else
-            {
-                var staff = UnitOfWork.Set<Staff>().Find(userId);
-                if (staff != null)
-                {
-                    return new CurrentLogin
-                    {
-                        ID = userId,
-                        StaffID = staff.ID,
-                        UserName = staff.RealName,
-                        Type = UserType.Staff
-                    };
-                }
+
+
+                return currentLogin;
             }
 
-            throw new Exception("Can not found user from admin/staff by id " + userId);
+            throw new Exception("Can not found user from staff by id " + userId);
         }
     }
 }

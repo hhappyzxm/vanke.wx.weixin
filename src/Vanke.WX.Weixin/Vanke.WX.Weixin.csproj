@@ -193,16 +193,15 @@
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\DinnerTypesController.cs" />
     <Compile Include="Controllers\ExternalPersonnelDiningRegisterController.cs" />
-    <Compile Include="Controllers\AdminsController.cs" />
+    <Compile Include="Controllers\StaffsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\StaffViewModels.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\wrap\EZ.Framework.Integration.WebApi\EZ.Framework.Integration.WebApi.csproj">
       <Project>{1d91cf21-307c-44dd-817c-94c10f0b0515}</Project>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -65,13 +66,29 @@ namespace EZ.Framework.Integration.WebApi
             return identityUser.GenerateUserIdentity(authenticationType);
         }
 
-        public ICurrentLogin SignIn(string userName, string password, bool isPersistent = false)
+        public ICurrentLogin SignIn(string userName, string password, bool isPersistent = false, IList<string> filterRoles = null)
         {
             ICurrentLogin currentLogin = null;
 
             var identityUser = _find(userName, password);
             if (identityUser != null)
             {
+                // Whether need to filter roles
+                if (filterRoles != null)
+                {
+                    if (identityUser.Roles == null || identityUser.Roles.Count == 0)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        if (filterRoles.Any(filter => !identityUser.Roles.Contains(filter)))
+                        {
+                            return null;
+                        }
+                    }
+                }
+
                 AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
                 var identity = CreateIdentity(identityUser);
                 AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = isPersistent }, identity);

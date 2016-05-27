@@ -8,7 +8,6 @@ namespace Vanke.WX.Weixin.Data.Entity
 {
     public partial class Item : IEntity
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Item()
         {
             ItemBorrowHistories = new HashSet<ItemBorrowHistory>();

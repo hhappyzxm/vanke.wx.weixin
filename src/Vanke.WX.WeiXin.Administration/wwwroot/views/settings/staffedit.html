@@ -1,9 +1,9 @@
-﻿<div class="row" ng-controller="AdminEditCtrl">
+﻿<div class="row" ng-controller="StaffEditCtrl">
     <div class="col-md-9">
         <div class="hpanel hgreen">
             <div class="panel-heading hbuilt">
                 <div panel-tools></div>
-                <i class="panel-icon fa fa-info-circle"></i>&nbsp;系统管理员信息
+                <i class="panel-icon fa fa-info-circle"></i>&nbsp;内部员工信息
             </div>
             <div class="panel-body">
                 <form name="submitForm">
@@ -31,6 +31,11 @@
                                     class="fa fa-exclamation-triangle"></i>&nbsp;请输入密码</span>
                         </div>
                     </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="data.IsAdmin"> 系统管理员
+                        </label>
+                    </div>
                 </form>
             </div>
         </div>
@@ -50,7 +55,7 @@
                 <hr>
                 <ul class="mailbox-list">
                     <li>
-                        <a ui-sref="admin.admins"><i class="fa fa-backward"></i>&nbsp;返回</a>
+                        <a ui-sref="admin.staffs"><i class="fa fa-backward"></i>&nbsp;返回</a>
                     </li>
                 </ul>
             </div>

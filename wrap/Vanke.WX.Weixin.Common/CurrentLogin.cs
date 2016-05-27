@@ -1,4 +1,6 @@
-﻿using EZ.Framework;
+﻿using System;
+using System.Collections.Generic;
+using EZ.Framework;
 
 namespace Vanke.WX.Weixin.Common
 {
@@ -8,10 +10,6 @@ namespace Vanke.WX.Weixin.Common
 
         public string UserName { get; set; }
 
-        public UserType Type { get; set; }
-
-        public long AdminID { get; set; }
-
-        public long StaffID { get; set; }
+        public ICollection<Role> Roles { get; set; }
     }
 }

@@ -29,7 +29,7 @@ namespace Vanke.WX.Weixin
 
             #region Register Services
 
-            var serviceAssembly = typeof(AdminService).Assembly;
+            var serviceAssembly = typeof(StaffService).Assembly;
             var services =
                 from type in serviceAssembly.GetExportedTypes()
                 where type.Namespace == "Vanke.WX.Weixin.Service"

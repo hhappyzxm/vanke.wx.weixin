@@ -8,7 +8,7 @@
             /**
              * Admin Api
              */
-            admins: $resource(apiHost + '/api/admins/:id', { id: '@id' }),
+            staffs: $resource(apiHost + '/api/staffs/:id', { id: '@id' }),
 
             /**
              * Dinner Types Api

@@ -10,8 +10,7 @@ namespace Vanke.WX.Weixin.Data
             : base("name="+ connectionName)
         {
         }
-
-        public virtual DbSet<Admin> Admins { get; set; }
+        
         public virtual DbSet<DinnerPlace> DinnerPlaces { get; set; }
         public virtual DbSet<DinnerRegisterHistory> DinnerRegisterHistories { get; set; }
         public virtual DbSet<DinnerType> DinnerTypes { get; set; }
@@ -22,7 +21,7 @@ namespace Vanke.WX.Weixin.Data
         public virtual DbSet<ItemBorrowHistory> ItemBorrowHistories { get; set; }
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<StaffRole> StaffRoles { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -49,30 +48,18 @@ namespace Vanke.WX.Weixin.Data
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Staff>()
-                .HasOptional(e => e.ExternalPersonnelDiningRegisterHistory)
-                .WithRequired(e => e.Staff);
+                .HasMany(e => e.ExternalPersonnelDiningRegisterHistories)
+                .WithRequired(e => e.Staff)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Staff>()
                 .HasMany(e => e.ItemBorrowHistories)
                 .WithRequired(e => e.Staff)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<User>()
-                .Property(e => e.LoginName)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
-                .Property(e => e.Password)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
-                .HasMany(e => e.Admins)
-                .WithRequired(e => e.User)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<User>()
-                .HasMany(e => e.Staffs)
-                .WithRequired(e => e.User)
+            modelBuilder.Entity<Staff>()
+                .HasMany(e => e.StaffRoles)
+                .WithRequired(e => e.Staff)
                 .WillCascadeOnDelete(false);
         }
     }

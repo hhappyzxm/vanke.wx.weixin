@@ -1,4 +1,6 @@
-﻿using EZ.Framework;
+﻿using System.Collections.Generic;
+using EZ.Framework;
+using Vanke.WX.Weixin.Common;
 
 namespace Vanke.WX.Weixin.Service.Models
 {
@@ -11,5 +13,9 @@ namespace Vanke.WX.Weixin.Service.Models
         public string LoginName { get; set; }
 
         public string Password { get; set; }
+
+        public StaffStatus Status { get; set; }
+
+        public ICollection<Role> Roles { get; set; }
     }
 }
