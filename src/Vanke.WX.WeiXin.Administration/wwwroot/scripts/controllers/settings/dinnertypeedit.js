@@ -13,7 +13,7 @@
 
             if (form.$valid) {
                 api.dinnerTypes.save($scope.data, function () {
-                    $state.go('admin.dinnertypes');
+                    $state.go('settings.dinnertypes');
                 });
             }
         };

@@ -17,71 +17,71 @@
         $urlRouterProvider.otherwise("/common/login");
 
         $stateProvider
-            .state("admin", {
+            .state("settings", {
                 abstract: true,
-                url: "/admin",
+                url: "/settings",
                 templateUrl: "views/common/content.html",
                 data: {
                     pageTitle: 'Admin'
                 }
             })
-            .state("admin.dashboard", {
+            .state("settings.dashboard", {
                 url: "/dashboard",
                 templateUrl: "views/dashboard.html",
                 data: {
                     pageTitle: 'Dashboard'
                 }
             })
-            .state("admin.staffs", {
+            .state("settings.staffs", {
                  url: "/staffs",
                  templateUrl: "views/settings/staffs.html",
                  data: {
                      pageTitle: 'Vehicle Management'
                  }
              })
-            .state("admin.staffedit", {
+            .state("settings.staffedit", {
                 url: "/staffedit?id",
                 templateUrl: "views/settings/staffedit.html",
                 data: {
                     pageTitle: 'Edit Vehicle'
                 }
             })
-            .state("admin.dinnertypes", {
+            .state("settings.dinnertypes", {
                 url: "/dinnertypes",
                 templateUrl: "views/settings/dinnertypes.html",
                 data: {
                     pageTitle: 'Vehicle Management'
                 }
             })
-            .state("admin.dinnertypeedit", {
+            .state("settings.dinnertypeedit", {
                 url: "/dinnertypeedit?id",
                 templateUrl: "views/settings/dinnertypeedit.html",
                 data: {
                     pageTitle: 'Edit Vehicle'
                 }
             })
-            .state("admin.dinnerplaces", {
+            .state("settings.dinnerplaces", {
                 url: "/dinnerplaces",
                 templateUrl: "views/settings/dinnerplaces.html",
                 data: {
                     pageTitle: 'Vehicle Management'
                 }
             })
-            .state("admin.dinnerplaceedit", {
+            .state("settings.dinnerplaceedit", {
                 url: "/dinnerplaceedit?id",
                 templateUrl: "views/settings/dinnerplaceedit.html",
                 data: {
                     pageTitle: 'Edit Vehicle'
                 }
             })
-            .state("admin.items", {
+            .state("settings.items", {
                 url: "/items",
                 templateUrl: "views/settings/items.html",
                 data: {
                     pageTitle: 'Vehicle Management'
                 }
             })
-            .state("admin.itemedit", {
+            .state("settings.itemedit", {
                 url: "/itemedit?id",
                 templateUrl: "views/settings/itemedit.html",
                 data: {

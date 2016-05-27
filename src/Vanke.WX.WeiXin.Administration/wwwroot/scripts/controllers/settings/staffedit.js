@@ -13,7 +13,7 @@
 
             if (form.$valid) {
                 api.staffs.save($scope.data, function () {
-                    $state.go('admin.staffs');
+                    $state.go('settings.staffs');
                 });
             }
         };

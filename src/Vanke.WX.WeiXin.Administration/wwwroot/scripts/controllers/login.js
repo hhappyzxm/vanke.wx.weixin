@@ -10,7 +10,7 @@
             if (form.$valid) {
                 authService.login($scope.data.LoginName, $scope.data.Password,
                     function() {
-                        $state.go('admin.dashboard');
+                        $state.go('settings.staffs');
                     });
             }
         };
