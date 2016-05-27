@@ -20,7 +20,7 @@
                         for (var i = 0; i < $scope.itemBorrowHistories.length; i++) {
                             if ($scope.itemBorrowHistories[i].ID === id) {
                                 $scope.itemBorrowHistories[i].Status = 1;
-                                $scope.itemBorrowHistories[i].CancelledTime = new Date();
+                                $scope.itemBorrowHistories[i].CancelledOn = new Date();
                                 break;
                             }
                         }
