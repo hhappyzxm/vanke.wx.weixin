@@ -11,6 +11,7 @@ namespace Vanke.WX.Weixin.Data.Entity
         public ItemStorageArea()
         {
             IdleAssets = new HashSet<IdleAsset>();
+            ItemStoragePlaces = new HashSet<ItemStoragePlace>();
         }
 
         public long ID { get; set; }
@@ -31,5 +32,8 @@ namespace Vanke.WX.Weixin.Data.Entity
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<IdleAsset> IdleAssets { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ItemStoragePlace> ItemStoragePlaces { get; set; }
     }
 }

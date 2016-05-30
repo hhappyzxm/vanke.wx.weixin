@@ -15,6 +15,8 @@ namespace Vanke.WX.Weixin.Data.Entity
 
         public long ID { get; set; }
 
+        public long AreaID { get; set; }
+
         [Required]
         [StringLength(50)]
         public string Place { get; set; }
@@ -28,6 +30,8 @@ namespace Vanke.WX.Weixin.Data.Entity
         public DateTime? UpdatedOn { get; set; }
 
         public long? UpdatedBy { get; set; }
+
+        public virtual ItemStorageArea Area { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<IdleAsset> IdleAssets { get; set; }

@@ -71,14 +71,42 @@
                 url: "/items",
                 templateUrl: "views/settings/items.html",
                 data: {
-                    pageTitle: '办公物品管理'
+                    pageTitle: '物品管理'
                 }
             })
             .state("settings.itemedit", {
                 url: "/itemedit?id",
                 templateUrl: "views/settings/itemedit.html",
                 data: {
-                    pageTitle: '办公物品管理'
+                    pageTitle: '物品管理'
+                }
+            })
+            .state("settings.itemstorageareas", {
+                url: "/itemstorageareas",
+                templateUrl: "views/settings/itemstorageareas.html",
+                data: {
+                    pageTitle: '物品存放区域管理'
+                }
+            })
+            .state("settings.itemstorageareaedit", {
+                url: "/itemstorageareaedit?id",
+                templateUrl: "views/settings/itemstorageareaedit.html",
+                data: {
+                    pageTitle: '物品存放区域管理'
+                }
+            })
+            .state("settings.itemstorageplaces", {
+                url: "/itemstorageplaces",
+                templateUrl: "views/settings/itemstorageplaces.html",
+                data: {
+                    pageTitle: '物品存放地点管理'
+                }
+            })
+            .state("settings.itemstorageplaceedit", {
+                url: "/itemstorageplaceedit?id",
+                templateUrl: "views/settings/itemstorageplaceedit.html",
+                data: {
+                    pageTitle: '物品存放地点管理'
                 }
             })
 

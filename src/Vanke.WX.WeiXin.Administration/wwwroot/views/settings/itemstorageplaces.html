@@ -1,0 +1,37 @@
+﻿<div class="row" ng-controller="ItemStoragePlacesCtrl">
+    <div class="hpanel">
+        <div class="panel-heading hbuilt">
+            <div panel-tools></div>
+            <i class="panel-icon fa fa-list"></i>&nbsp;物品存放地点
+        </div>
+        <div class="panel-body list">
+            <div class="row">
+                <div class="col-md-6 m-b-md">
+                    <a ui-sref="settings.itemstorageplaceedit" class="btn btn-success btn-sm"><i class="fa fa-plus"></i>&nbsp;添加</a>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table datatable="ng" dt-options="::dtOptions" dt-column-defs="::dtMessageColumnDefs" class="table table-bordered table-hover nowrap" width="100%">
+                    <thead>
+                        <tr>
+                            <th>存放区域</th>
+                            <th>存放地点</th>
+                            <th width="150" class="text-center">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in itemStoragePlaces">
+                        <td>
+                            {{item.Area}}
+                        </td>
+                        <td>
+                            {{item.Place}}
+                        </td>
+                        <td class="text-center"><a ui-sref="settings.itemstorageplaceedit({id:item.ID})" class="btn btn-success btn-xs">修改</a>&nbsp;<button class="btn btn-danger btn-xs" type="button" ng-click="remove(item.ID)">删除</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

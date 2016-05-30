@@ -7,6 +7,10 @@ namespace Vanke.WX.Weixin.Service.Models
     {
         public long ID { get; set; }
 
+        public long AreaID { get; set; }
+
+        public string Area { get; set; }
+
         public string Place { get; set; }
 
         public ItemStoragePlaceStatus Status { get; set; }

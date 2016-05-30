@@ -41,3 +41,8 @@ INSERT DinnerRegisterHistories(StaffID, DinnerDate, PeopleCount, TypeID, PlaceID
 VALUES (2, GETDATE(), 7, 2, 2, 0, '会客', GETDATE())
 INSERT DinnerRegisterHistories(StaffID, DinnerDate, PeopleCount, TypeID, PlaceID, Status, Comment, RegisteredOn)
 VALUES (3, GETDATE(), 3, 1, 3, 0, '会客', GETDATE())
+
+INSERT ItemStorageAreas(Area, Status, CreatedOn, CreatedBy) VALUES('无锡办公楼', 0, GETDATE(), 1)
+INSERT ItemStorageAreas(Area, Status, CreatedOn, CreatedBy) VALUES('常州售楼处', 0, GETDATE(), 1)
+INSERT ItemStorageAreas(Area, Status, CreatedOn, CreatedBy) VALUES('魅力仓库', 0, GETDATE(), 1)
+INSERT ItemStorageAreas(Area, Status, CreatedOn, CreatedBy) VALUES('信成道售楼处', 0, GETDATE(), 1)

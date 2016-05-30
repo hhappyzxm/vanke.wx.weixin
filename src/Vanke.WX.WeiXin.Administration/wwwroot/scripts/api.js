@@ -26,6 +26,16 @@
             items: $resource(apiHost + '/api/items/:id', { id: '@id' }),
 
             /**
+             * Item Storage Area  Api
+             */
+            itemStorageAreas: $resource(apiHost + '/api/itemstorageareas/:id', { id: '@id' }),
+
+            /**
+             * Item Storage Place  Api
+             */
+            itemStoragePlaces: $resource(apiHost + '/api/itemstorageplaces/:id', { id: '@id' }),
+
+            /**
              * Item Borrow Api
              */
             itemBorrow: $resource(null, { id: '@id' }, {

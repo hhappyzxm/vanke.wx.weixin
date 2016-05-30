@@ -44,6 +44,11 @@ namespace Vanke.WX.Weixin.Data
                 .WithRequired(e => e.Item)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<ItemStorageArea>()
+                .HasMany(e => e.ItemStoragePlaces)
+                .WithRequired(e => e.Area)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Staff>()
                 .HasMany(e => e.DinnerRegisterHistories)
                 .WithRequired(e => e.Staff)
