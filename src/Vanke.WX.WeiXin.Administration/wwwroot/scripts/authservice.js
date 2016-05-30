@@ -3,7 +3,7 @@
 
     app.factory('authService', function ($http, $window) {
         return {
-            login: function (loginName, password, sucessFn) {
+            login: function(loginName, password, sucessFn) {
                 var serviceBase = 'http://localhost:54843';
 
                 var data = "grant_type=password&username=" + loginName + "&password=" + password;
@@ -19,14 +19,16 @@
                 });
             },
 
-            logout: function () {
+            logout: function() {
                 $window.sessionStorage.removeItem('access_token');
             },
 
-            getAccessToken: function () {
+            getAccessToken: function() {
                 return $window.sessionStorage.getItem('access_token');
-            }
-        };
+            },
+
+            userName: '李小龙'
+    };
     });
 
 })(angular, app);

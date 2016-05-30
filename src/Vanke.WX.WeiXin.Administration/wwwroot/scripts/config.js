@@ -22,70 +22,63 @@
                 url: "/settings",
                 templateUrl: "views/common/content.html",
                 data: {
-                    pageTitle: 'Admin'
-                }
-            })
-            .state("settings.dashboard", {
-                url: "/dashboard",
-                templateUrl: "views/dashboard.html",
-                data: {
-                    pageTitle: 'Dashboard'
+                    pageTitle: '系统设置'
                 }
             })
             .state("settings.staffs", {
                  url: "/staffs",
                  templateUrl: "views/settings/staffs.html",
                  data: {
-                     pageTitle: 'Vehicle Management'
+                     pageTitle: '内部员工管理'
                  }
              })
             .state("settings.staffedit", {
                 url: "/staffedit?id",
                 templateUrl: "views/settings/staffedit.html",
                 data: {
-                    pageTitle: 'Edit Vehicle'
+                    pageTitle: '内部员工管理'
                 }
             })
             .state("settings.dinnertypes", {
                 url: "/dinnertypes",
                 templateUrl: "views/settings/dinnertypes.html",
                 data: {
-                    pageTitle: 'Vehicle Management'
+                    pageTitle: '宴会类型管理'
                 }
             })
             .state("settings.dinnertypeedit", {
                 url: "/dinnertypeedit?id",
                 templateUrl: "views/settings/dinnertypeedit.html",
                 data: {
-                    pageTitle: 'Edit Vehicle'
+                    pageTitle: '宴会类型管理'
                 }
             })
             .state("settings.dinnerplaces", {
                 url: "/dinnerplaces",
                 templateUrl: "views/settings/dinnerplaces.html",
                 data: {
-                    pageTitle: 'Vehicle Management'
+                    pageTitle: '宴会地点管理'
                 }
             })
             .state("settings.dinnerplaceedit", {
                 url: "/dinnerplaceedit?id",
                 templateUrl: "views/settings/dinnerplaceedit.html",
                 data: {
-                    pageTitle: 'Edit Vehicle'
+                    pageTitle: '宴会地点管理'
                 }
             })
             .state("settings.items", {
                 url: "/items",
                 templateUrl: "views/settings/items.html",
                 data: {
-                    pageTitle: 'Vehicle Management'
+                    pageTitle: '办公物品管理'
                 }
             })
             .state("settings.itemedit", {
                 url: "/itemedit?id",
                 templateUrl: "views/settings/itemedit.html",
                 data: {
-                    pageTitle: 'Edit Vehicle'
+                    pageTitle: '办公物品管理'
                 }
             })
 
@@ -95,31 +88,28 @@
                 url: "/service",
                 templateUrl: "views/common/content.html",
                 data: {
-                    pageTitle: 'Common'
+                    pageTitle: '行政服务'
                 }
             })
             .state('service.itemborrow', {
                 url: "/itemborrow",
                 templateUrl: "views/services/itemborrowhistories.html",
                 data: {
-                    pageTitle: 'Login page',
-                    specialClass: 'blank'
+                    pageTitle: '物品借用'
                 }
             })
             .state('service.dinnerregister', {
                 url: "/dinnerregister",
                 templateUrl: "views/services/dinnerregisteredhistories.html",
                 data: {
-                    pageTitle: 'Login page',
-                    specialClass: 'blank'
+                    pageTitle: '宴请管理'
                 }
             })
             .state('service.externalpersonneldiningregister', {
                 url: "/externalpersonneldiningregister",
                 templateUrl: "views/services/externalpersonneldiningregisterhistories.html",
                 data: {
-                    pageTitle: 'Login page',
-                    specialClass: 'blank'
+                    pageTitle: '外部人员就餐管理'
                 }
             })
 
@@ -136,8 +126,7 @@
                 url: "/login",
                 templateUrl: "views/common_app/login.html",
                 data: {
-                    pageTitle: 'Login page',
-                    specialClass: 'blank'
+                    pageTitle: 'Login'
                 }
             });
     }
