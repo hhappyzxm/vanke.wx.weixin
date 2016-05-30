@@ -1,18 +1,18 @@
-﻿<div class="row" ng-controller="ItemEditCtrl">
+﻿<div class="row" ng-controller="ItemStorageAreaCtrl">
     <div class="col-md-9">
         <div class="hpanel hgreen">
             <div class="panel-heading hbuilt">
                 <div panel-tools></div>
-                <i class="panel-icon fa fa-info-circle"></i>&nbsp;物品管理
+                <i class="panel-icon fa fa-info-circle"></i>&nbsp;物品存放区域
             </div>
             <div class="panel-body">
                 <form name="submitForm">
                     <div class="form-group">
-                        <label>物品<span class="txt-mandatory">*</span></label>
-                        <input name="item" type="text" class="form-control" ng-model="data.Name" required/>
-                        <div class="m-t-xs" ng-show="submitForm.item.$invalid && submitForm.$submitted">
-                            <span class="text-danger" ng-show="submitForm.item.$error"><i
-                                    class="fa fa-exclamation-triangle"></i>&nbsp;请输入物品名称</span>
+                        <label>区域<span class="txt-mandatory">*</span></label>
+                        <input name="area" type="text" class="form-control" ng-model="data.Area" required/>
+                        <div class="m-t-xs" ng-show="submitForm.area.$invalid && submitForm.$submitted">
+                            <span class="text-danger" ng-show="submitForm.area.$error"><i
+                                    class="fa fa-exclamation-triangle"></i>&nbsp;请输入区域名称</span>
                         </div>
                     </div>
                 </form>
@@ -34,7 +34,7 @@
                 <hr>
                 <ul class="mailbox-list">
                     <li>
-                        <a ui-sref="settings.items"><i class="fa fa-backward"></i>&nbsp;返回</a>
+                        <a ui-sref="settings.itemstorageareas"><i class="fa fa-backward"></i>&nbsp;返回</a>
                     </li>
                 </ul>
             </div>
