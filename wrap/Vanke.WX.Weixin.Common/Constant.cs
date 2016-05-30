@@ -55,4 +55,11 @@ namespace Vanke.WX.Weixin.Common
         Cancelled,
         Removed
     }
+
+    public enum DinnerRegisterStatus
+    {
+        Active,
+        Cancelled,
+        Removed
+    }
 }

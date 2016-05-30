@@ -47,6 +47,8 @@
     <Compile Include="AccountService.cs" />
     <Compile Include="Interface\IAccountService.cs" />
     <Compile Include="ExternalPersonnelDiningRegisterService.cs" />
+    <Compile Include="Interface\IDinnerRegisterService.cs" />
+    <Compile Include="DinnerRegisterService.cs" />
     <Compile Include="ItemBorrowService.cs" />
     <Compile Include="DinnerPlaceService.cs" />
     <Compile Include="Interface\IItemBorrowService.cs" />
@@ -58,6 +60,7 @@
     <Compile Include="Interface\IExternalPersonnelDiningRegisterService.cs" />
     <Compile Include="Interface\IStaffService.cs" />
     <Compile Include="Models\ExternalPersonnelDiningRegisterModel.cs" />
+    <Compile Include="Models\DinnerRegisterModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\DinnerPlaceModel.cs" />
     <Compile Include="Models\DinnerTypeModel.cs" />

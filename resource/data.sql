@@ -27,3 +27,17 @@ INSERT ItemBorrowHistories(ItemID, StaffID, Quantity, Status, BorrowedOn) Values
 INSERT ExternalPersonnelDiningRegisterHistories(StaffID, CardQuantity, Comment, Status, RegisteredOn) VALUES(1, 3, '会客', 0, GETDATE())
 INSERT ExternalPersonnelDiningRegisterHistories(StaffID, CardQuantity, Comment, Status, RegisteredOn) VALUES(2, 5, '会客', 0, GETDATE())
 INSERT ExternalPersonnelDiningRegisterHistories(StaffID, CardQuantity, Comment, Status, RegisteredOn) VALUES(3, 8, '会客', 0, GETDATE())
+
+INSERT DinnerTypes(Type, Status, CreatedOn, CreatedBy) VALUES ('午宴', 0, GETDATE(), 1)
+INSERT DinnerTypes(Type, Status, CreatedOn, CreatedBy) VALUES ('晚宴', 0, GETDATE(), 1)
+
+INSERT DinnerPlaces(Type, Status, CreatedOn, CreatedBy) VALUES ('AAA', 0, GETDATE(), 1)
+INSERT DinnerPlaces(Type, Status, CreatedOn, CreatedBy) VALUES ('BBB', 0, GETDATE(), 1)
+INSERT DinnerPlaces(Type, Status, CreatedOn, CreatedBy) VALUES ('CCC', 0, GETDATE(), 1)
+
+INSERT DinnerRegisterHistories(StaffID, DinnerDate, PeopleCount, TypeID, PlaceID, Status, Comment, RegisteredOn)
+VALUES (1, GETDATE(), 4, 1, 1, 0, '会客', GETDATE())
+INSERT DinnerRegisterHistories(StaffID, DinnerDate, PeopleCount, TypeID, PlaceID, Status, Comment, RegisteredOn)
+VALUES (2, GETDATE(), 7, 2, 2, 0, '会客', GETDATE())
+INSERT DinnerRegisterHistories(StaffID, DinnerDate, PeopleCount, TypeID, PlaceID, Status, Comment, RegisteredOn)
+VALUES (3, GETDATE(), 3, 1, 3, 0, '会客', GETDATE())

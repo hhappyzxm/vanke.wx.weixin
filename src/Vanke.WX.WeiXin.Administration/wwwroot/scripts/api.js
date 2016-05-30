@@ -41,7 +41,22 @@
             }),
 
             /**
-             * Item Borrow Api
+             * Dinner Register Api
+             */
+            dinnerRegister: $resource(null, { id: '@id' }, {
+                'search': {
+                    method: 'GET',
+                    url: apiHost + '/api/dinnerregister/search?status=:status',
+                    isArray: true
+                },
+                'cancel': {
+                    method: 'POST',
+                    url: apiHost + '/api/dinnerregister/cancel/:id'
+                }
+            }),
+
+            /**
+             * External Personnel Dining Register Api
              */
             externalPersonnelDiningRegister: $resource(null, { id: '@id' }, {
                 'search': {

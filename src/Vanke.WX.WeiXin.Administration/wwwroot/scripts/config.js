@@ -106,6 +106,14 @@
                     specialClass: 'blank'
                 }
             })
+            .state('service.dinnerregister', {
+                url: "/dinnerregister",
+                templateUrl: "views/services/dinnerregisteredhistories.html",
+                data: {
+                    pageTitle: 'Login page',
+                    specialClass: 'blank'
+                }
+            })
             .state('service.externalpersonneldiningregister', {
                 url: "/externalpersonneldiningregister",
                 templateUrl: "views/services/externalpersonneldiningregisterhistories.html",
