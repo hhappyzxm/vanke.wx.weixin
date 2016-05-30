@@ -191,6 +191,8 @@
     <Compile Include="Controllers\DinnerPlacesController.cs" />
     <Compile Include="Controllers\DinnerRegisterController.cs" />
     <Compile Include="Controllers\ItemBorrowController.cs" />
+    <Compile Include="Controllers\ItemStoragePlacesController.cs" />
+    <Compile Include="Controllers\ItemStorageAreasController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\DinnerTypesController.cs" />
     <Compile Include="Controllers\ExternalPersonnelDiningRegisterController.cs" />

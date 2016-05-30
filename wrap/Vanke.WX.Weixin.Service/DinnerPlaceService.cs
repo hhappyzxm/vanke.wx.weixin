@@ -44,10 +44,10 @@ namespace Vanke.WX.Weixin.Service
 
         public override async Task<IEnumerable<DinnerPlaceModel>> GetAllAsync()
         {
-            return await 
+            return await
                 UnitOfWork.Set<DinnerPlace>()
-                    .Select(ModelSelector())
                     .Where(p => p.Status == DinnerPlaceStatus.Active)
+                    .Select(ModelSelector())
                     .ToListAsync();
         }
 

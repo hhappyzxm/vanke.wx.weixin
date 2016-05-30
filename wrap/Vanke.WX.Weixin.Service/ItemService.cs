@@ -46,8 +46,8 @@ namespace Vanke.WX.Weixin.Service
         {
             return await
                 UnitOfWork.Set<Item>()
-                    .Select(ModelSelector())
                     .Where(p => p.Status == ItemStatus.Active)
+                    .Select(ModelSelector())
                     .ToListAsync();
         }
 

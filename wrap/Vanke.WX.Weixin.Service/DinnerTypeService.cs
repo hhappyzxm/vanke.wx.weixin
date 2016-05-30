@@ -46,8 +46,8 @@ namespace Vanke.WX.Weixin.Service
         {
             return await
                 UnitOfWork.Set<DinnerType>()
-                    .Select(ModelSelector())
                     .Where(p => p.Status == DinnerTypeStatus.Active)
+                    .Select(ModelSelector())
                     .ToListAsync();
         }
 
