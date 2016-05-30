@@ -10,7 +10,6 @@ using Vanke.WX.Weixin.Service.Models;
 namespace Vanke.WX.Weixin.Controllers
 {
     [RoutePrefix("api/itemborrow")]
-    [AllowAnonymous]
     public class ItemBorrowController : GenericApiController
     {
         private readonly IItemBorrowService _itemBorrowService = IoC.Container.GetInstance<IItemBorrowService>();
@@ -20,15 +19,20 @@ namespace Vanke.WX.Weixin.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IEnumerable<ItemBorrowModel>> Get()
+        [Route("search")]
+        public async Task<IEnumerable<ItemBorrowModel>> Search(string status)
         {
-            return await _itemBorrowService.GetAllItemBorrowHistoryAsync();
+            return
+                await
+                    _itemBorrowService.GetAllAsync(string.IsNullOrEmpty(status)
+                        ? null
+                        : new[] {(ItemBorrowStatus) int.Parse(status)});
         }
 
         /// <summary>
         /// Borrow item
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
         [Route("borrow")]

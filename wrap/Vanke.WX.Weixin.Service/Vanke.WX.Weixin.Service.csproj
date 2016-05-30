@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="AccountService.cs" />
     <Compile Include="Interface\IAccountService.cs" />
+    <Compile Include="ExternalPersonnelDiningRegisterService.cs" />
     <Compile Include="ItemBorrowService.cs" />
     <Compile Include="DinnerPlaceService.cs" />
     <Compile Include="Interface\IItemBorrowService.cs" />

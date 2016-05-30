@@ -99,8 +99,16 @@
                 }
             })
             .state('service.itemborrow', {
-                url: "/login",
+                url: "/itemborrow",
                 templateUrl: "views/services/itemborrowhistories.html",
+                data: {
+                    pageTitle: 'Login page',
+                    specialClass: 'blank'
+                }
+            })
+            .state('service.externalpersonneldiningregister', {
+                url: "/externalpersonneldiningregister",
+                templateUrl: "views/services/externalpersonneldiningregisterhistories.html",
                 data: {
                     pageTitle: 'Login page',
                     specialClass: 'blank'

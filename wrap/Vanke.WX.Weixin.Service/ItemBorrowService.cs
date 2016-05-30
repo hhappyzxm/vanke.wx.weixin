@@ -19,18 +19,8 @@ namespace Vanke.WX.Weixin.Service
         public ItemBorrowService(IDataContext dataContext) : base(dataContext)
         {
         }
-
         
-        //protected override Task InsertEntityAsync(ItemBorrowHistory entity)
-        //{
-        //    entity.StaffID = AccountManager.Instance.GetCurrentLoginUser<CurrentLogin>().StaffID;
-        //    entity.Status = ItemBorrowStatus.Active;
-        //    entity.BorrowedOn = DateTime.Now;
-
-        //    return base.InsertEntityAsync(entity);
-        //}
-        
-        public async Task CancelAsync(object key)
+        public async Task CancelAsync(long key)
         {
             var entity = await UnitOfWork.Set<ItemBorrowHistory>().FindAsync(key);
 
@@ -41,7 +31,7 @@ namespace Vanke.WX.Weixin.Service
             await UnitOfWork.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<ItemBorrowModel>> GetAllItemBorrowHistoryAsync(
+        public async Task<IEnumerable<ItemBorrowModel>> GetAllAsync(
             ItemBorrowStatus[] filterStatuses = null)
         {
             var query = from borrowHistory in UnitOfWork.Set<ItemBorrowHistory>()
@@ -78,17 +68,7 @@ namespace Vanke.WX.Weixin.Service
             }).ToListAsync();
         }
 
-        public Task<ItemBorrowModel> GetByKeyAsync(object key)
-        {
-            throw new NotImplementedException();
-        }
-
         public Task InsertAsync(ItemBorrowModel model)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task UpdateAsync(object key,  ItemBorrowModel model)
         {
             throw new NotImplementedException();
         }

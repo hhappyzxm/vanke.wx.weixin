@@ -10,13 +10,13 @@ namespace Vanke.WX.Weixin.Service.Models
 
         public string Staff { get; set; }
 
-        public string Item { get; set; }
+        public int CardQuantity { get; set; }
 
-        public int Quantity { get; set; }
+        public string Comment { get; set; }
 
-        public ItemBorrowStatus Status { get; set; }
+        public ExternalPersonnelDiningRegisterStatus Status { get; set; }
 
-        public DateTime BorrowedOn { get; set; }
+        public DateTime RegisteredOn { get; set; }
 
         public DateTime? CancelledOn { get; set; }
     }

@@ -28,10 +28,30 @@
             /**
              * Item Borrow Api
              */
-            itemBorrow: $resource(apiHost + '/api/itemborrow/:id', { id: '@id' }, {
+            itemBorrow: $resource(null, { id: '@id' }, {
+                'search': {
+                    method: 'GET',
+                    url: apiHost + '/api/itemborrow/search?status=:status',
+                    isArray: true
+                },
                 'cancel': {
                     method: 'POST',
                     url: apiHost + '/api/itemborrow/cancel/:id'
+                }
+            }),
+
+            /**
+             * Item Borrow Api
+             */
+            externalPersonnelDiningRegister: $resource(null, { id: '@id' }, {
+                'search': {
+                    method: 'GET',
+                    url: apiHost + '/api/externalpersonneldiningregister/search?status=:status',
+                    isArray: true
+                },
+                'cancel': {
+                    method: 'POST',
+                    url: apiHost + '/api/externalpersonneldiningregister/cancel/:id'
                 }
             })
         };

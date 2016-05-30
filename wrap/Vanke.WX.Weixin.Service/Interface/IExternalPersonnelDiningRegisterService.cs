@@ -1,9 +1,15 @@
-﻿using EZ.Framework;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using EZ.Framework;
+using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Service.Models;
 
 namespace Vanke.WX.Weixin.Service.Interface
 {
-    public interface IExternalPersonnelDiningRegisterService : ICRUDAsyncService<ExternalPersonnelDiningRegisterModel>
+    public interface IExternalPersonnelDiningRegisterService : ICreateAsyncService<ExternalPersonnelDiningRegisterModel>
     {
+        Task<IEnumerable<ExternalPersonnelDiningRegisterModel>> GetAllAsync(ExternalPersonnelDiningRegisterStatus[] filterStatuses = null);
+
+        Task CancelAsync(long key);
     }
 }

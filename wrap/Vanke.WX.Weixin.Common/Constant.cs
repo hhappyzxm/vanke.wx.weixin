@@ -52,6 +52,7 @@ namespace Vanke.WX.Weixin.Common
     public enum ExternalPersonnelDiningRegisterStatus
     {
         Active,
-        Cancelled
+        Cancelled,
+        Removed
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using EZ.Framework;
+using Vanke.WX.Weixin.Common;
 
 namespace Vanke.WX.Weixin.Data.Entity
 {
@@ -10,13 +11,13 @@ namespace Vanke.WX.Weixin.Data.Entity
 
         public long StaffID { get; set; }
 
-        public int CardNumber { get; set; }
+        public int CardQuantity { get; set; }
 
         [Required]
         [StringLength(500)]
         public string Comment { get; set; }
 
-        public int Status { get; set; }
+        public ExternalPersonnelDiningRegisterStatus Status { get; set; }
 
         public DateTime RegisteredOn { get; set; }
 
