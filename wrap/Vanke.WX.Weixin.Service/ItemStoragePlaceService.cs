@@ -48,7 +48,7 @@ namespace Vanke.WX.Weixin.Service
         {
             return await (from p in UnitOfWork.Set<ItemStoragePlace>()
                 join a in UnitOfWork.Set<ItemStorageArea>() on p.AreaID equals a.ID
-                where p.Status == ItemStoragePlaceStatus.Active
+                where p.Status == ItemStoragePlaceStatus.Active && a.Status == ItemStorageAreaStatus.Active
                 select new ItemStoragePlaceModel
                 {
                     ID = p.ID,

@@ -9,7 +9,7 @@
         $scope.dtOptions = datatableSettings.getGeneralSettings(DTOptionsBuilder);
 
         $scope.dtMessageColumnDefs = [
-            DTColumnDefBuilder.newColumnDef(1).notSortable()
+            DTColumnDefBuilder.newColumnDef(2).notSortable()
         ];
 
         $scope.remove = function (id) {

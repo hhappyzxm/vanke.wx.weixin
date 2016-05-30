@@ -46,3 +46,10 @@ INSERT ItemStorageAreas(Area, Status, CreatedOn, CreatedBy) VALUES('无锡办公楼',
 INSERT ItemStorageAreas(Area, Status, CreatedOn, CreatedBy) VALUES('常州售楼处', 0, GETDATE(), 1)
 INSERT ItemStorageAreas(Area, Status, CreatedOn, CreatedBy) VALUES('魅力仓库', 0, GETDATE(), 1)
 INSERT ItemStorageAreas(Area, Status, CreatedOn, CreatedBy) VALUES('信成道售楼处', 0, GETDATE(), 1)
+
+INSERT ItemStoragePlaces(AreaID, Place, Status, CreatedOn, CreatedBy) VALUES(1, '办公楼司机室', 0, GETDATE(), 1)
+INSERT ItemStoragePlaces(AreaID, Place, Status, CreatedOn, CreatedBy) VALUES(1, '商业地库', 0, GETDATE(), 1)
+INSERT ItemStoragePlaces(AreaID, Place, Status, CreatedOn, CreatedBy) VALUES(1, '红楼三楼仓库', 0, GETDATE(), 1)
+INSERT ItemStoragePlaces(AreaID, Place, Status, CreatedOn, CreatedBy) VALUES(2, '售楼处', 0, GETDATE(), 1)
+INSERT ItemStoragePlaces(AreaID, Place, Status, CreatedOn, CreatedBy) VALUES(3, '魅力仓库', 0, GETDATE(), 1)
+INSERT ItemStoragePlaces(AreaID, Place, Status, CreatedOn, CreatedBy) VALUES(4, '信成道仓库', 0, GETDATE(), 1)
