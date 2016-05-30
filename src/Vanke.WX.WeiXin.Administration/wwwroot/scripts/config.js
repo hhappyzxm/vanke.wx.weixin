@@ -139,7 +139,7 @@
                     var authService = $injector.get('authService');
                     config.headers = config.headers || {};
 
-                    if (authService.getAccessToken()) {
+                    if (authService.isAuth()) {
                         config.headers.Authorization = 'Bearer ' + authService.getAccessToken();
                     }
 

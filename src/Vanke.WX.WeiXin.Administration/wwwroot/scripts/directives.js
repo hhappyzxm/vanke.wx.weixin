@@ -3,6 +3,7 @@
 
     app
         .directive('pageTitle', pageTitle)
+        .directive('loginInfo', loginInfo)
         .directive('sideNavigation', sideNavigation)
         .directive('minimalizaMenu', minimalizaMenu)
         //.directive('sparkline', sparkline)
@@ -32,6 +33,15 @@
                 $rootScope.$on('$stateChangeStart', listener);
             }
         }
+    };
+
+    function loginInfo(authService) {
+      return {
+          link: function(scope, element) {
+              scope.userName = authService.getUserName();
+          },
+          template: '<span class="font-extra-bold font-uppercase">{{userName}}</span>'
+      }
     };
 
     /**
