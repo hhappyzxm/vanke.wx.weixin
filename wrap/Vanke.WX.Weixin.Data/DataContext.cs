@@ -20,6 +20,8 @@ namespace Vanke.WX.Weixin.Data
         public virtual DbSet<IdleAsset> IdleAssets { get; set; }
         public virtual DbSet<ItemBorrowHistory> ItemBorrowHistories { get; set; }
         public virtual DbSet<Item> Items { get; set; }
+        public virtual DbSet<ItemStorageArea> ItemStorageAreas { get; set; }
+        public virtual DbSet<ItemStoragePlace> ItemStoragePlaces { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
         public virtual DbSet<StaffRole> StaffRoles { get; set; }
 

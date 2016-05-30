@@ -51,6 +51,8 @@
     <Compile Include="Entity\ExternalPersonnelDiningRegisterHistory.cs" />
     <Compile Include="Entity\Hotel.cs" />
     <Compile Include="Entity\IdleAsset.cs" />
+    <Compile Include="Entity\ItemStoragePlace.cs" />
+    <Compile Include="Entity\ItemStorageArea.cs" />
     <Compile Include="Entity\StaffRole.cs" />
     <Compile Include="Entity\Item.cs" />
     <Compile Include="Entity\ItemBorrowHistory.cs" />

@@ -42,6 +42,18 @@ namespace Vanke.WX.Weixin.Common
         Removed
     }
 
+    public enum ItemStorageAreaStatus
+    {
+        Active,
+        Removed
+    }
+
+    public enum ItemStoragePlaceStatus
+    {
+        Active,
+        Removed
+    }
+
     public enum ItemBorrowStatus
     {
         Active,
