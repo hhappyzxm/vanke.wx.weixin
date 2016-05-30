@@ -126,7 +126,7 @@
                 url: "/login",
                 templateUrl: "views/common_app/login.html",
                 data: {
-                    pageTitle: 'Login'
+                    pageTitle: '登录'
                 }
             });
     }

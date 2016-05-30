@@ -22,9 +22,9 @@
             link: function (scope, element) {
                 var listener = function (event, toState, toParams, fromState, fromParams) {
                     // Default title
-                    var title = 'HOMER | AngularJS Responsive WebApp';
-                    // Create your own title pattern
-                    if (toState.data && toState.data.pageTitle) title = 'HOMER | ' + toState.data.pageTitle;
+                    var title = '万科微信管理平台';
+
+                    if (toState.data && toState.data.pageTitle) title = '万科微信管理平台 | ' + toState.data.pageTitle;
                     $timeout(function () {
                         element.text(title);
                     });
