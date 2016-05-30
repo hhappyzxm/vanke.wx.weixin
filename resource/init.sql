@@ -1,4 +1,4 @@
-/****** Object:  Table [dbo].[DinnerPlaces]    Script Date: 5/30/2016 4:20:44 PM ******/
+/****** Object:  Table [dbo].[DinnerPlaces]    Script Date: 5/30/2016 9:30:52 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -18,7 +18,7 @@ CREATE TABLE [dbo].[DinnerPlaces](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[DinnerRegisterHistories]    Script Date: 5/30/2016 4:20:44 PM ******/
+/****** Object:  Table [dbo].[DinnerRegisterHistories]    Script Date: 5/30/2016 9:30:52 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -42,7 +42,7 @@ CREATE TABLE [dbo].[DinnerRegisterHistories](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[DinnerTypes]    Script Date: 5/30/2016 4:20:44 PM ******/
+/****** Object:  Table [dbo].[DinnerTypes]    Script Date: 5/30/2016 9:30:52 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -62,7 +62,7 @@ CREATE TABLE [dbo].[DinnerTypes](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[EmployeeDiscounts]    Script Date: 5/30/2016 4:20:44 PM ******/
+/****** Object:  Table [dbo].[EmployeeDiscounts]    Script Date: 5/30/2016 9:30:52 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -80,7 +80,7 @@ CREATE TABLE [dbo].[EmployeeDiscounts](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[ExternalPersonnelDiningRegisterHistories]    Script Date: 5/30/2016 4:20:44 PM ******/
+/****** Object:  Table [dbo].[ExternalPersonnelDiningRegisterHistories]    Script Date: 5/30/2016 9:30:52 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -101,7 +101,7 @@ CREATE TABLE [dbo].[ExternalPersonnelDiningRegisterHistories](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Hotels]    Script Date: 5/30/2016 4:20:44 PM ******/
+/****** Object:  Table [dbo].[Hotels]    Script Date: 5/30/2016 9:30:52 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -120,7 +120,7 @@ CREATE TABLE [dbo].[Hotels](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[IdleAssets]    Script Date: 5/30/2016 4:20:44 PM ******/
+/****** Object:  Table [dbo].[IdleAssets]    Script Date: 5/30/2016 9:30:52 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -150,7 +150,7 @@ CREATE TABLE [dbo].[IdleAssets](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[ItemBorrowHistories]    Script Date: 5/30/2016 4:20:44 PM ******/
+/****** Object:  Table [dbo].[ItemBorrowHistories]    Script Date: 5/30/2016 9:30:52 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -171,7 +171,7 @@ CREATE TABLE [dbo].[ItemBorrowHistories](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Items]    Script Date: 5/30/2016 4:20:44 PM ******/
+/****** Object:  Table [dbo].[Items]    Script Date: 5/30/2016 9:30:52 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -191,7 +191,7 @@ CREATE TABLE [dbo].[Items](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[ItemStorageAreas]    Script Date: 5/30/2016 4:20:44 PM ******/
+/****** Object:  Table [dbo].[ItemStorageAreas]    Script Date: 5/30/2016 9:30:52 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -215,14 +215,14 @@ CREATE TABLE [dbo].[ItemStorageAreas](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[ItemStoragePlace]    Script Date: 5/30/2016 4:20:44 PM ******/
+/****** Object:  Table [dbo].[ItemStoragePlaces]    Script Date: 5/30/2016 9:30:52 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_PADDING ON
 GO
-CREATE TABLE [dbo].[ItemStoragePlace](
+CREATE TABLE [dbo].[ItemStoragePlaces](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
 	[AreaID] [bigint] NOT NULL,
 	[Place] [varchar](50) NOT NULL,
@@ -231,7 +231,7 @@ CREATE TABLE [dbo].[ItemStoragePlace](
 	[CreatedBy] [bigint] NOT NULL,
 	[UpdatedOn] [datetime] NULL,
 	[UpdatedBy] [bigint] NULL,
- CONSTRAINT [PK_ItemStoragePlace] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_ItemStoragePlaces] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -240,7 +240,7 @@ CREATE TABLE [dbo].[ItemStoragePlace](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[StaffRoles]    Script Date: 5/30/2016 4:20:44 PM ******/
+/****** Object:  Table [dbo].[StaffRoles]    Script Date: 5/30/2016 9:30:52 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -256,7 +256,7 @@ CREATE TABLE [dbo].[StaffRoles](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Staffs]    Script Date: 5/30/2016 4:20:44 PM ******/
+/****** Object:  Table [dbo].[Staffs]    Script Date: 5/30/2016 9:30:52 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -312,10 +312,10 @@ REFERENCES [dbo].[ItemStorageAreas] ([ID])
 GO
 ALTER TABLE [dbo].[IdleAssets] CHECK CONSTRAINT [FK_IdleAssets_ItemStorageAreas]
 GO
-ALTER TABLE [dbo].[IdleAssets]  WITH CHECK ADD  CONSTRAINT [FK_IdleAssets_ItemStoragePlace] FOREIGN KEY([PlaceID])
-REFERENCES [dbo].[ItemStoragePlace] ([ID])
+ALTER TABLE [dbo].[IdleAssets]  WITH CHECK ADD  CONSTRAINT [FK_IdleAssets_ItemStoragePlaces] FOREIGN KEY([AreaID])
+REFERENCES [dbo].[ItemStorageAreas] ([ID])
 GO
-ALTER TABLE [dbo].[IdleAssets] CHECK CONSTRAINT [FK_IdleAssets_ItemStoragePlace]
+ALTER TABLE [dbo].[IdleAssets] CHECK CONSTRAINT [FK_IdleAssets_ItemStoragePlaces]
 GO
 ALTER TABLE [dbo].[IdleAssets]  WITH CHECK ADD  CONSTRAINT [FK_IdleAssets_Staffs] FOREIGN KEY([ManagerStaffID])
 REFERENCES [dbo].[Staffs] ([ID])
@@ -331,6 +331,11 @@ ALTER TABLE [dbo].[ItemBorrowHistories]  WITH CHECK ADD  CONSTRAINT [FK_ItemBorr
 REFERENCES [dbo].[Staffs] ([ID])
 GO
 ALTER TABLE [dbo].[ItemBorrowHistories] CHECK CONSTRAINT [FK_ItemBorrowHistories_Staffs]
+GO
+ALTER TABLE [dbo].[ItemStoragePlaces]  WITH CHECK ADD  CONSTRAINT [FK_ItemStoragePlaces_ItemStorageAreas] FOREIGN KEY([AreaID])
+REFERENCES [dbo].[ItemStorageAreas] ([ID])
+GO
+ALTER TABLE [dbo].[ItemStoragePlaces] CHECK CONSTRAINT [FK_ItemStoragePlaces_ItemStorageAreas]
 GO
 ALTER TABLE [dbo].[StaffRoles]  WITH CHECK ADD  CONSTRAINT [FK_StaffRoles_Staffs] FOREIGN KEY([StaffID])
 REFERENCES [dbo].[Staffs] ([ID])
