@@ -55,6 +55,7 @@
     <Compile Include="ItemBorrowService.cs" />
     <Compile Include="DinnerPlaceService.cs" />
     <Compile Include="Interface\IItemBorrowService.cs" />
+    <Compile Include="IdleAssetService.cs" />
     <Compile Include="ItemStoragePlaceService.cs" />
     <Compile Include="ItemStorageAreaService.cs" />
     <Compile Include="ItemService.cs" />
