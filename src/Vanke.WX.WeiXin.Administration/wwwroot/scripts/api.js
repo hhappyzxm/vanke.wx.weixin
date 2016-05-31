@@ -51,6 +51,11 @@
             }),
 
             /**
+             * Idle Assets Api
+             */
+            idleAssets: $resource(apiHost + '/api/idleassets/:id', { id: '@id' }),
+
+            /**
              * Dinner Register Api
              */
             dinnerRegister: $resource(null, { id: '@id' }, {

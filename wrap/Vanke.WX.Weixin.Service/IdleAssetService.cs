@@ -14,35 +14,90 @@ using Vanke.WX.Weixin.Service.Models;
 
 namespace Vanke.WX.Weixin.Service
 {
-    public class IdleAssetService : Service<IDataContext>, IIdleAssetService
+    public class IdleAssetService : GenericService<IDataContext, IdleAsset, IdleAssetModel>, IIdleAssetService
     {
         public IdleAssetService(IDataContext dataContext) : base(dataContext)
         {
         }
 
-        public Task InsertAsync(ItemModel model)
+        protected override Expression<Func<IdleAsset, IdleAssetModel>> ModelSelector()
         {
-            throw new NotImplementedException();
+            return p => new IdleAssetModel
+            {
+                ID = p.ID,
+                AreaID = p.AreaID,
+                PlaceID = p.PlaceID,
+                ItemID =  p.ItemID,
+                Quantity = p.Quantity,
+                Unit = p.Unit,
+                ManagerStaffID = p.ManagerStaffID,
+                Comment = p.Comment,
+                Status = p.Status
+            };
         }
 
-        public Task<ItemModel> GetByKeyAsync(object key)
+        protected override void ConvertToEntity(IdleAssetModel model, ref IdleAsset targetEntity)
         {
-            throw new NotImplementedException();
+            targetEntity.ID = model.ID;
+            targetEntity.AreaID = model.AreaID;
+            targetEntity.PlaceID = model.PlaceID;
+            targetEntity.ItemID = model.ItemID;
+            targetEntity.Quantity = model.Quantity;
+            targetEntity.Unit = model.Unit;
+            targetEntity.ManagerStaffID = model.ManagerStaffID;
+            targetEntity.Comment = model.Comment;
+            targetEntity.Status = model.Status;
         }
 
-        public Task<IEnumerable<ItemModel>> GetAllAsync()
+        public override async Task<IdleAssetModel> GetByKeyAsync(object key)
         {
-            throw new NotImplementedException();
+            return await UnitOfWork.Set<IdleAsset>().Select(ModelSelector()).SingleOrDefaultAsync(p => p.ID == (long)key);
         }
 
-        public Task UpdateAsync(object key, ItemModel model)
+        public override async Task<IEnumerable<IdleAssetModel>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await (from ia in UnitOfWork.Set<IdleAsset>()
+                join a in UnitOfWork.Set<ItemStorageArea>() on ia.AreaID equals a.ID
+                join p in UnitOfWork.Set<ItemStoragePlace>() on ia.PlaceID equals p.ID
+                join i in UnitOfWork.Set<Item>() on ia.ItemID equals i.ID
+                join s in UnitOfWork.Set<Staff>() on ia.ManagerStaffID equals s.ID
+                where ia.Status == IdleAssetStatus.Active
+                select new IdleAssetModel
+                {
+                    ID = ia.ID,
+                    Area = a.Area,
+                    Place = p.Place,
+                    Item = i.Name,
+                    Quantity = ia.Quantity,
+                    Unit = ia.Unit,
+                    ManagerStaff = s.RealName,
+                    Comment = ia.Comment,
+                    Status = ia.Status
+                }).ToListAsync();
         }
 
-        public Task RemoveAsync(object key)
+        protected override async Task InsertEntityAsync(IdleAsset entity)
         {
-            throw new NotImplementedException();
+            entity.Status = IdleAssetStatus.Active;
+            entity.CreatedOn = DateTime.Now;
+            entity.CreatedBy = (long)AccountManager.Instance.CurrentLoginUser.ID;
+
+            await base.InsertEntityAsync(entity);
+        }
+
+        protected override async Task UpdateEntityAsync(IdleAsset entity)
+        {
+            entity.UpdatedOn = DateTime.Now;
+            entity.UpdatedBy = (long)AccountManager.Instance.CurrentLoginUser.ID;
+
+            await base.UpdateEntityAsync(entity);
+        }
+
+        protected override Task RemoveEntityAsync(IdleAsset entity)
+        {
+            entity.Status = IdleAssetStatus.Removed;
+
+            return base.UpdateEntityAsync(entity);
         }
     }
 }

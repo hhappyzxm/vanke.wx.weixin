@@ -126,6 +126,20 @@
                     pageTitle: '物品借用'
                 }
             })
+            .state('service.idleassets', {
+                url: "/idleassets",
+                templateUrl: "views/services/idleassets.html",
+                data: {
+                    pageTitle: '闲置资产'
+                }
+            })
+            .state('service.idleassetedit', {
+                url: "/idleassetedit",
+                templateUrl: "views/services/idleassetedit.html",
+                data: {
+                    pageTitle: '闲置资产'
+                }
+            })
             .state('service.dinnerregister', {
                 url: "/dinnerregister",
                 templateUrl: "views/services/dinnerregisteredhistories.html",

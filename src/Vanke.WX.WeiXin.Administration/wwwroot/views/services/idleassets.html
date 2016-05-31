@@ -1,0 +1,48 @@
+﻿<div class="row" ng-controller="IdleAssetsCtrl">
+    <div class="hpanel">
+        <div class="panel-heading hbuilt">
+            <div panel-tools></div>
+            <i class="panel-icon fa fa-list"></i>&nbsp;闲置资产
+        </div>
+        <div class="panel-body list">
+            <div class="table-responsive">
+                <table datatable="ng" dt-options="::dtOptions" dt-column-defs="::dtMessageColumnDefs" class="table table-bordered table-hover nowrap" width="100%">
+                    <thead>
+                    <tr>
+                        <th>物品</th>
+                        <th>数量</th>
+                        <th>单位</th>
+                        <th>管理人</th>
+                        <th>项目</th>
+                        <th>地点</th>
+                        <th width="140" class="text-center">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in idleAssets">
+                        <td>
+                            {{item.Item}}
+                        </td>
+                        <td>
+                            {{item.Quantity}}
+                        </td>
+                        <td>
+                            {{item.Unit}}
+                        </td>
+                        <td>
+                            {{item.ManagerStaff}}
+                        </td>
+                        <td>
+                            {{item.Area}}
+                        </td>
+                        <td>
+                            {{item.Place}}
+                        </td>
+                        <td class="text-center"><a ui-sref="settings.idleassetedit({id:item.ID})" class="btn btn-success btn-xs">修改</a>&nbsp;<button ng-hide="item.Status == 1" class="btn btn-danger btn-xs" type="button" ng-click="remove(item.ID)">删除</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

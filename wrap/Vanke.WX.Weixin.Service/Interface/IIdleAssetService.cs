@@ -3,7 +3,7 @@ using Vanke.WX.Weixin.Service.Models;
 
 namespace Vanke.WX.Weixin.Service.Interface
 {
-    public interface IIdleAssetService : ICRUDAsyncService<ItemModel>
+    public interface IIdleAssetService : ICRUDAsyncService<IdleAssetModel>
     {
     }
 }
