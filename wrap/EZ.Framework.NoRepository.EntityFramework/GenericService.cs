@@ -142,7 +142,7 @@ namespace EZ.Framework.NoRepository.EntityFramework
             await UpdateEntityAsync(entity);
         }
 
-        public virtual async Task UpdateEntityAsync(TEntity entity)
+        protected virtual async Task UpdateEntityAsync(TEntity entity)
         {
             await UnitOfWork.SaveChangesAsync();
         }
@@ -156,7 +156,7 @@ namespace EZ.Framework.NoRepository.EntityFramework
             Remove(UnitOfWork.Set<TEntity>().Find(key));
         }
 
-        protected virtual void Remove(TEntity entity)
+        protected virtual void RemoveEntity(TEntity entity)
         {
             if (UnitOfWork.Entry(entity).State == EntityState.Detached)
             {
@@ -173,7 +173,7 @@ namespace EZ.Framework.NoRepository.EntityFramework
             await RemoveAsync(entity);
         }
 
-        protected virtual async Task RemoveAsync(TEntity entity)
+        protected virtual async Task RemoveEntityAsync(TEntity entity)
         {
             if (UnitOfWork.Entry(entity).State == EntityState.Detached)
             {

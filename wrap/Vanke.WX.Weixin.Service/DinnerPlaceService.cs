@@ -62,7 +62,7 @@ namespace Vanke.WX.Weixin.Service
             await base.InsertEntityAsync(entity);
         }
 
-        public override async Task UpdateEntityAsync(DinnerPlace entity)
+        protected override async Task UpdateEntityAsync(DinnerPlace entity)
         {
             await CheckPlaceExist(entity);
 
@@ -72,12 +72,11 @@ namespace Vanke.WX.Weixin.Service
             await base.UpdateEntityAsync(entity);
         }
 
-        public override async Task RemoveAsync(object key)
+        protected override Task RemoveEntityAsync(DinnerPlace entity)
         {
-            var entity = UnitOfWork.Set<DinnerPlace>().Find(key);
             entity.Status = DinnerPlaceStatus.Removed;
 
-            await UpdateEntityAsync(entity);
+            return base.UpdateEntityAsync(entity);
         }
 
         private async Task CheckPlaceExist(DinnerPlace entity)
