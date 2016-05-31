@@ -54,6 +54,12 @@ namespace Vanke.WX.Weixin.Common
         Removed
     }
 
+    public enum IdleAssetStatus
+    {
+        Active,
+        Removed
+    }
+
     public enum ItemBorrowStatus
     {
         Active,

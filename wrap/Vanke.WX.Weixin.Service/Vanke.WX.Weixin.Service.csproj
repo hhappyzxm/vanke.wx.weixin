@@ -49,6 +49,7 @@
     <Compile Include="ExternalPersonnelDiningRegisterService.cs" />
     <Compile Include="Interface\IDinnerRegisterService.cs" />
     <Compile Include="DinnerRegisterService.cs" />
+    <Compile Include="Interface\IIdleAssetService.cs" />
     <Compile Include="Interface\IItemStoragePlaceService.cs" />
     <Compile Include="Interface\IItemStorageAreaService.cs" />
     <Compile Include="ItemBorrowService.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Interface\IStaffService.cs" />
     <Compile Include="Models\ExternalPersonnelDiningRegisterModel.cs" />
     <Compile Include="Models\DinnerRegisterModel.cs" />
+    <Compile Include="Models\IdleAssetModel.cs" />
     <Compile Include="Models\ItemStoragePlaceModel.cs" />
     <Compile Include="Models\ItemStorageAreaModel.cs" />
     <Compile Include="Models\ItemModel.cs" />

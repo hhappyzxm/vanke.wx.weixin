@@ -44,9 +44,24 @@ namespace Vanke.WX.Weixin.Data
                 .WithRequired(e => e.Item)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Item>()
+                .HasMany(e => e.IdleAssets)
+                .WithRequired(e => e.Item)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<ItemStorageArea>()
                 .HasMany(e => e.ItemStoragePlaces)
                 .WithRequired(e => e.Area)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ItemStorageArea>()
+                .HasMany(e => e.IdleAssets)
+                .WithRequired(e => e.Area)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ItemStoragePlace>()
+                .HasMany(e => e.IdleAssets)
+                .WithRequired(e => e.Place)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Staff>()
@@ -66,6 +81,11 @@ namespace Vanke.WX.Weixin.Data
 
             modelBuilder.Entity<Staff>()
                 .HasMany(e => e.StaffRoles)
+                .WithRequired(e => e.Staff)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Staff>()
+                .HasMany(e => e.IdleAssets)
                 .WithRequired(e => e.Staff)
                 .WillCascadeOnDelete(false);
         }
