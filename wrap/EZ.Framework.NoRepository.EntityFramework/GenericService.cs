@@ -153,7 +153,7 @@ namespace EZ.Framework.NoRepository.EntityFramework
 
         public virtual void Remove(object key)
         {
-            Remove(UnitOfWork.Set<TEntity>().Find(key));
+            RemoveEntity(UnitOfWork.Set<TEntity>().Find(key));
         }
 
         protected virtual void RemoveEntity(TEntity entity)
@@ -170,7 +170,7 @@ namespace EZ.Framework.NoRepository.EntityFramework
         public virtual async Task RemoveAsync(object key)
         {
             var entity = await UnitOfWork.Set<TEntity>().FindAsync(key);
-            await RemoveAsync(entity);
+            await RemoveEntityAsync(entity);
         }
 
         protected virtual async Task RemoveEntityAsync(TEntity entity)
