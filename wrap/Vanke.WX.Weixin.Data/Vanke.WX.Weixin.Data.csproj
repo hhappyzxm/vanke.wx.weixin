@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.cs" />
+    <Compile Include="Entity\DesignatedDriverPrice.cs" />
     <Compile Include="Entity\DinnerPlace.cs" />
     <Compile Include="Entity\DinnerRegisterHistory.cs" />
     <Compile Include="Entity\DinnerType.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Entity\ExternalPersonnelDiningRegisterHistory.cs" />
     <Compile Include="Entity\Hotel.cs" />
     <Compile Include="Entity\IdleAsset.cs" />
+    <Compile Include="Entity\DesignatedDriver.cs" />
     <Compile Include="Entity\ItemStoragePlace.cs" />
     <Compile Include="Entity\ItemStorageArea.cs" />
     <Compile Include="Entity\StaffRole.cs" />

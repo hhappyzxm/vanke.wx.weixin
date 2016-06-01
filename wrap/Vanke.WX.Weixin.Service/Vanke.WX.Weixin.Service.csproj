@@ -50,6 +50,7 @@
     <Compile Include="Interface\IDinnerRegisterService.cs" />
     <Compile Include="DinnerRegisterService.cs" />
     <Compile Include="Interface\IIdleAssetService.cs" />
+    <Compile Include="Interface\IDesignatedDriverService.cs" />
     <Compile Include="Interface\IItemStoragePlaceService.cs" />
     <Compile Include="Interface\IItemStorageAreaService.cs" />
     <Compile Include="ItemBorrowService.cs" />
@@ -73,7 +74,9 @@
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\DinnerPlaceModel.cs" />
     <Compile Include="Models\DinnerTypeModel.cs" />
+    <Compile Include="Models\DesignatedDriverModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DesignatedDriverService.cs" />
     <Compile Include="StaffService.cs" />
     <Compile Include="Models\StaffModel.cs" />
     <Compile Include="Models\ItemBorrowModel.cs" />

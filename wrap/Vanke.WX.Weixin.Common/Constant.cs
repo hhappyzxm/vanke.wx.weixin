@@ -80,4 +80,10 @@ namespace Vanke.WX.Weixin.Common
         Cancelled,
         Removed
     }
+
+    public enum DesignatedDriverStatus
+    {
+        Active,
+        Removed
+    }
 }

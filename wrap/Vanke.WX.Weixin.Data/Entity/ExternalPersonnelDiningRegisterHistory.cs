@@ -13,7 +13,6 @@ namespace Vanke.WX.Weixin.Data.Entity
 
         public int CardQuantity { get; set; }
 
-        [Required]
         [StringLength(500)]
         public string Comment { get; set; }
 
