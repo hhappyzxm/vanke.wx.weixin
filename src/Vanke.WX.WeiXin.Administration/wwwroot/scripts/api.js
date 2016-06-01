@@ -89,7 +89,12 @@
                     method: 'POST',
                     url: apiHost + '/api/externalpersonneldiningregister/cancel/:id'
                 }
-            })
+            }),
+
+            /**
+             * Designated Drivers Api
+             */
+            designatedDrivers: $resource(apiHost + '/api/designatedDrivers/:id', { id: '@id' })
         };
     });
 })(angular, app);

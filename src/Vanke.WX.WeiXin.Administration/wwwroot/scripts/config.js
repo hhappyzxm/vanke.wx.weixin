@@ -155,6 +155,30 @@
                 }
             })
 
+            // 服务查询
+            .state('query', {
+                abstract: true,
+                url: "/query",
+                templateUrl: "views/common/content.html",
+                data: {
+                    pageTitle: '服务查询'
+                }
+            })
+            .state('query.designateddrivers', {
+                url: "/designateddrivers",
+                templateUrl: "views/query/designateddrivers.html",
+                data: {
+                    pageTitle: '代驾管理'
+                }
+            })
+            .state('query.designateddriveredit', {
+                url: "/designateddriveredit",
+                templateUrl: "views/query/designateddriveredit.html",
+                data: {
+                    pageTitle: '代驾管理'
+                }
+            })
+
             // Common views
             .state('common', {
                 abstract: true,
