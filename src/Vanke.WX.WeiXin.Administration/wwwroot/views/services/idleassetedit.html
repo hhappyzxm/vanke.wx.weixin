@@ -7,12 +7,92 @@
             </div>
             <div class="panel-body">
                 <form name="submitForm">
-                    <div class="form-group">
-                        <label>物品<span class="txt-mandatory">*</span></label>
-                        <input name="item" type="text" class="form-control" ng-model="data.Name" required/>
-                        <div class="m-t-xs" ng-show="submitForm.item.$invalid && submitForm.$submitted">
-                            <span class="text-danger" ng-show="submitForm.item.$error"><i
-                                    class="fa fa-exclamation-triangle"></i>&nbsp;请输入物品名称</span>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>物品<span class="txt-mandatory">*</span></label>
+                                <select name="item" class="form-control" ng-model="data.ItemID" ng-options="item.ID as item.Name for item in items" required>
+                                    <option value="">--- 请选择 ---</option>
+                                </select>
+                                <div class="m-t-xs" ng-show="submitForm.item.$invalid && submitForm.$submitted">
+                                    <span class="text-danger" ng-show="submitForm.item.$error">
+                                        <i class="fa fa-exclamation-triangle"></i>&nbsp;请选择物品
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>管理员<span class="txt-mandatory">*</span></label>
+                                <select name="staff" class="form-control" ng-model="data.ManagerStaffID" ng-options="item.ID as item.RealName for item in staffs" required>
+                                    <option value="">--- 请选择 ---</option>
+                                </select>
+                                <div class="m-t-xs" ng-show="submitForm.staff.$invalid && submitForm.$submitted">
+                                    <span class="text-danger" ng-show="submitForm.staff.$error">
+                                        <i class="fa fa-exclamation-triangle"></i>&nbsp;请选择管理员
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>项目<span class="txt-mandatory">*</span></label>
+                                <select name="area" class="form-control" ng-model="data.AreaID" ng-options="item.ID as item.Area for item in areas" required ng-change="changeArea()">
+                                    <option value="">--- 请选择 ---</option>
+                                </select>
+                                <div class="m-t-xs" ng-show="submitForm.area.$invalid && submitForm.$submitted">
+                                    <span class="text-danger" ng-show="submitForm.area.$error">
+                                        <i class="fa fa-exclamation-triangle"></i>&nbsp;请选择项目
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>地点<span class="txt-mandatory">*</span></label>
+                                <select name="place" class="form-control" ng-model="data.PlaceID" ng-options="item.ID as item.Place for item in places" required>
+                                    <option value="">--- 请选择 ---</option>
+                                </select>
+                                <div class="m-t-xs" ng-show="submitForm.place.$invalid && submitForm.$submitted">
+                                    <span class="text-danger" ng-show="submitForm.place.$error">
+                                        <i class="fa fa-exclamation-triangle"></i>&nbsp;请选择地点
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>数量<span class="txt-mandatory">*</span></label>
+                                <input name="quantity" type="number" class="form-control" ng-model="data.Quantity" required/>
+                                <div class="m-t-xs" ng-show="submitForm.quantity.$invalid && submitForm.$submitted">
+                                    <span class="text-danger" ng-show="submitForm.quantity.$error">
+                                        <i class="fa fa-exclamation-triangle"></i>&nbsp;请输入数量
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>单位<span class="txt-mandatory">*</span></label>
+                                <input name="unit" type="text" class="form-control" ng-model="data.Unit" required/>
+                                <div class="m-t-xs" ng-show="submitForm.unit.$invalid && submitForm.$submitted">
+                                    <span class="text-danger" ng-show="submitForm.unit.$error">
+                                        <i class="fa fa-exclamation-triangle"></i>&nbsp;请输入单位
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>备注</label>
+                                <textarea rows="4" name="comment" class="form-control" ng-model="data.Comment" required ></textarea>
+                            </div>
                         </div>
                     </div>
                 </form>

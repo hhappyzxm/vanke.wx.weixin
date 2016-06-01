@@ -46,16 +46,32 @@ namespace Vanke.WX.Weixin.Service
 
         public override async Task<IEnumerable<ItemStoragePlaceModel>> GetAllAsync()
         {
-            return await (from p in UnitOfWork.Set<ItemStoragePlace>()
+            return await GetAllAsync(0);
+        }
+
+        public async Task<IEnumerable<ItemStoragePlaceModel>> GetAllAsync(long areaId = 0)
+        {
+            var query = (from p in UnitOfWork.Set<ItemStoragePlace>()
                 join a in UnitOfWork.Set<ItemStorageArea>() on p.AreaID equals a.ID
                 where p.Status == ItemStoragePlaceStatus.Active && a.Status == ItemStorageAreaStatus.Active
-                select new ItemStoragePlaceModel
+                select new
                 {
-                    ID = p.ID,
-                    Area = a.Area,
-                    Place = p.Place,
-                    Status = p.Status
-                }).ToListAsync();
+                    Place = p,
+                    Area = a
+                });
+
+            if (areaId > 0)
+            {
+                query = query.Where(p => p.Place.AreaID == areaId);
+            }
+
+            return await query.Select(p => new ItemStoragePlaceModel
+            {
+                ID = p.Place.ID,
+                Area = p.Area.Area,
+                Place = p.Place.Place,
+                Status = p.Place.Status
+            }).ToListAsync();
         }
 
         protected override async Task InsertEntityAsync(ItemStoragePlace entity)

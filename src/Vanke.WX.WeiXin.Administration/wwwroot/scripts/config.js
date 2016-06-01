@@ -134,7 +134,7 @@
                 }
             })
             .state('service.idleassetedit', {
-                url: "/idleassetedit",
+                url: "/idleassetedit?id",
                 templateUrl: "views/services/idleassetedit.html",
                 data: {
                     pageTitle: '闲置资产'

@@ -5,6 +5,11 @@
             <i class="panel-icon fa fa-list"></i>&nbsp;闲置资产
         </div>
         <div class="panel-body list">
+            <div class="row">
+                <div class="col-md-6 m-b-md">
+                    <a ui-sref="service.idleassetedit" class="btn btn-success btn-sm"><i class="fa fa-plus"></i>&nbsp;添加</a>
+                </div>
+            </div>
             <div class="table-responsive">
                 <table datatable="ng" dt-options="::dtOptions" dt-column-defs="::dtMessageColumnDefs" class="table table-bordered table-hover nowrap" width="100%">
                     <thead>
@@ -38,7 +43,7 @@
                         <td>
                             {{item.Place}}
                         </td>
-                        <td class="text-center"><a ui-sref="settings.idleassetedit({id:item.ID})" class="btn btn-success btn-xs">修改</a>&nbsp;<button ng-hide="item.Status == 1" class="btn btn-danger btn-xs" type="button" ng-click="remove(item.ID)">删除</button></td>
+                        <td class="text-center"><a ui-sref="service.idleassetedit({id:item.ID})" class="btn btn-success btn-xs">修改</a>&nbsp;<button ng-hide="item.Status == 1" class="btn btn-danger btn-xs" type="button" ng-click="remove(item.ID)">删除</button></td>
                     </tr>
                     </tbody>
                 </table>

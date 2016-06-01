@@ -33,7 +33,13 @@
             /**
              * Item Storage Place  Api
              */
-            itemStoragePlaces: $resource(apiHost + '/api/itemstorageplaces/:id', { id: '@id' }),
+            itemStoragePlaces: $resource(apiHost + '/api/itemstorageplaces/:id', { id: '@id' }, {
+                'search': {
+                    method: 'GET',
+                    url: apiHost + '/api/itemstorageplaces/search?areaId=:areaId',
+                    isArray: true
+                },
+            }),
 
             /**
              * Item Borrow Api

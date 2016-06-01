@@ -86,7 +86,7 @@ namespace Vanke.WX.Weixin.Data
 
             modelBuilder.Entity<Staff>()
                 .HasMany(e => e.IdleAssets)
-                .WithRequired(e => e.Staff)
+                .WithRequired(e => e.ManagerStaff)
                 .WillCascadeOnDelete(false);
         }
     }

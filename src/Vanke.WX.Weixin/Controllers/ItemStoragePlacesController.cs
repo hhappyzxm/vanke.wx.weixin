@@ -23,6 +23,13 @@ namespace Vanke.WX.Weixin.Controllers
             return await _service.GetAllAsync();
         }
 
+        [HttpGet]
+        [Route("api/itemstorageplaces/search")]
+        public async Task<IEnumerable<ItemStoragePlaceModel>> Search(long areaId)
+        {
+            return await _service.GetAllAsync(areaId);
+        }
+
         /// <summary>
         /// Get item by key
         /// </summary>
