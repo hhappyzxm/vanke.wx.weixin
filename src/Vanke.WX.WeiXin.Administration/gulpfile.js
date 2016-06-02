@@ -27,7 +27,8 @@ gulp.task("install", ["clean:lib"], function () {
         "datatables-buttons": "datatables-buttons/**/*.js",
         "datatables-responsive": "datatables-responsive/**/*.js",
         "angular-datatables": "angular-datatables/dist/**/*.js",
-        "sweetalert2": "sweetalert2/dist/*.{js,css}"
+        "sweetalert2": "sweetalert2/dist/*.{js,css}",
+        "ng-file-upload": "ng-file-upload/*.js"
     }
 
     for (var destinationDir in bower) {
