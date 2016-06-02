@@ -193,6 +193,7 @@
     <Compile Include="Controllers\ItemBorrowController.cs" />
     <Compile Include="Controllers\IdleAssetsController.cs" />
     <Compile Include="Controllers\DesignatedDriversController.cs" />
+    <Compile Include="Controllers\SurroundingServicesController.cs" />
     <Compile Include="Controllers\ItemStoragePlacesController.cs" />
     <Compile Include="Controllers\ItemStorageAreasController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />

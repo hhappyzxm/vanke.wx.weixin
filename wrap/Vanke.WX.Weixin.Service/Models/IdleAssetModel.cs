@@ -15,8 +15,6 @@ namespace Vanke.WX.Weixin.Service.Models
 
         public string Place { get; set; }
 
-        public long ItemID { get; set; }
-
         public string Item { get; set; }
 
         public int Quantity { get; set; }
@@ -28,7 +26,5 @@ namespace Vanke.WX.Weixin.Service.Models
         public string ManagerStaff { get; set; }
 
         public string Comment { get; set; }
-
-        public IdleAssetStatus Status { get; set; }
     }
 }

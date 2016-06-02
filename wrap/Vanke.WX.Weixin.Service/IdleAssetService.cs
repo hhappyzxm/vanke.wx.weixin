@@ -27,12 +27,11 @@ namespace Vanke.WX.Weixin.Service
                 ID = p.ID,
                 AreaID = p.AreaID,
                 PlaceID = p.PlaceID,
-                ItemID =  p.ItemID,
+                Item =  p.Item,
                 Quantity = p.Quantity,
                 Unit = p.Unit,
                 ManagerStaffID = p.ManagerStaffID,
                 Comment = p.Comment,
-                Status = p.Status
             };
         }
 
@@ -41,12 +40,11 @@ namespace Vanke.WX.Weixin.Service
             targetEntity.ID = model.ID;
             targetEntity.AreaID = model.AreaID;
             targetEntity.PlaceID = model.PlaceID;
-            targetEntity.ItemID = model.ItemID;
+            targetEntity.Item = model.Item;
             targetEntity.Quantity = model.Quantity;
             targetEntity.Unit = model.Unit;
             targetEntity.ManagerStaffID = model.ManagerStaffID;
             targetEntity.Comment = model.Comment;
-            targetEntity.Status = model.Status;
         }
 
         public override async Task<IdleAssetModel> GetByKeyAsync(object key)
@@ -59,7 +57,6 @@ namespace Vanke.WX.Weixin.Service
             return await (from ia in UnitOfWork.Set<IdleAsset>()
                 join a in UnitOfWork.Set<ItemStorageArea>() on ia.AreaID equals a.ID
                 join p in UnitOfWork.Set<ItemStoragePlace>() on ia.PlaceID equals p.ID
-                join i in UnitOfWork.Set<Item>() on ia.ItemID equals i.ID
                 join s in UnitOfWork.Set<Staff>() on ia.ManagerStaffID equals s.ID
                 where ia.Status == IdleAssetStatus.Active
                 select new IdleAssetModel
@@ -67,12 +64,11 @@ namespace Vanke.WX.Weixin.Service
                     ID = ia.ID,
                     Area = a.Area,
                     Place = p.Place,
-                    Item = i.Name,
+                    Item = ia.Item,
                     Quantity = ia.Quantity,
                     Unit = ia.Unit,
                     ManagerStaff = s.RealName,
                     Comment = ia.Comment,
-                    Status = ia.Status
                 }).ToListAsync();
         }
 

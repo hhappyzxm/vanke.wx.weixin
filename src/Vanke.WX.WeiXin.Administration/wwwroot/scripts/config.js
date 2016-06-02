@@ -178,6 +178,20 @@
                     pageTitle: '代驾管理'
                 }
             })
+            .state('query.surroundingservices', {
+                url: "/surroundingservices",
+                templateUrl: "views/query/surroundingservices.html",
+                data: {
+                    pageTitle: '无锡周边'
+                }
+            })
+            .state('query.surroundingserviceedit', {
+                url: "/surroundingserviceedit?id",
+                templateUrl: "views/query/surroundingserviceedit.html",
+                data: {
+                    pageTitle: '无锡周边'
+                }
+            })
 
             // Common views
             .state('common', {

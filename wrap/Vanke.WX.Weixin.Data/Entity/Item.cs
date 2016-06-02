@@ -11,7 +11,6 @@ namespace Vanke.WX.Weixin.Data.Entity
         public Item()
         {
             ItemBorrowHistories = new HashSet<ItemBorrowHistory>();
-            IdleAssets = new HashSet<IdleAsset>();
         }
 
         public long ID { get; set; }
@@ -32,8 +31,5 @@ namespace Vanke.WX.Weixin.Data.Entity
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemBorrowHistory> ItemBorrowHistories { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IdleAsset> IdleAssets { get; set; }
     }
 }

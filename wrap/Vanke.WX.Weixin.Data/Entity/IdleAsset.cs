@@ -13,7 +13,9 @@ namespace Vanke.WX.Weixin.Data.Entity
 
         public long PlaceID { get; set; }
 
-        public long ItemID { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string Item { get; set; }
 
         public int Quantity { get; set; }
 
@@ -39,8 +41,6 @@ namespace Vanke.WX.Weixin.Data.Entity
         public virtual ItemStorageArea Area { get; set; }
 
         public virtual ItemStoragePlace Place { get; set; }
-
-        public virtual Item Item { get; set; }
 
         public virtual Staff ManagerStaff { get; set; }
     }

@@ -55,11 +55,11 @@ INSERT ItemStoragePlaces(AreaID, Place, Status, CreatedOn, CreatedBy) VALUES(3, 
 INSERT ItemStoragePlaces(AreaID, Place, Status, CreatedOn, CreatedBy) VALUES(4, '信成道仓库', 0, GETDATE(), 1)
 
 INSERT IdleAssets(AreaID, PlaceID, ItemID, Quantity, Unit, ManagerStaffID, Comment, Status, CreatedOn, CreatedBy)
-VALUES(1, 1, 1, 4, '个', 1, '', 0, GETDATE(), 1)
+VALUES(1, 1, '电风扇', 4, '个', 1, '', 0, GETDATE(), 1)
 INSERT IdleAssets(AreaID, PlaceID, ItemID, Quantity, Unit, ManagerStaffID, Comment, Status, CreatedOn, CreatedBy)
-VALUES(2, 4, 2, 3, '个', 2, '', 0, GETDATE(), 1)
+VALUES(2, 4, '', 3, '个', 2, '', 0, GETDATE(), 1)
 INSERT IdleAssets(AreaID, PlaceID, ItemID, Quantity, Unit, ManagerStaffID, Comment, Status, CreatedOn, CreatedBy)
-VALUES(3, 5, 3, 8, '个', 3, '', 0, GETDATE(), 1)
+VALUES(3, 5, '', 8, '个', 3, '', 0, GETDATE(), 1)
 
 INSERT DesignatedDrivers(DriverName, ServiceArea, BusinessRequirement, ContactPhone, PersonalRequirement, DrivingPhone, FirstTimePeriods, SecondTimePeriods, Status, CreatedOn, CreatedBy)
 VALUES ('无锡爱代驾', '无锡市（不含宜兴、江阴）', '联系总经理办公室 朱奕诚', '13801533450', '直拨代驾公司电话', '4006138138', '05:00-22:00', '22:00-次日04:59', 0, GETDATE(), 1)
@@ -70,3 +70,8 @@ INSERT DesignatedDrivers(DriverName, ServiceArea, BusinessRequirement, ContactPh
 VALUES ('常州E代驾', '常州市区（不含金坛、溧阳地区）', '联系常州片区 戴晓慧', '15195005656', '直拨代驾公司电话', '4007676885', '8:00-23:59', '00:00-次日07:59', 0, GETDATE(), 1)
 INSERT DesignatedDriverPrices(DesignatedDriverID, Distance, FirstTimePeriodsPrice, SecondTimePeriodsPrice) VALUES(2, '常州市区（含天宁区、武进区、钟楼区、新北区、戚墅堰）', '100元', '100元')
 INSERT DesignatedDriverPrices(DesignatedDriverID, Distance, FirstTimePeriodsPrice, SecondTimePeriodsPrice) VALUES(2, '常州-无锡', '300元', '400元')
+
+INSERT SurroundingServices(Name, Description, UnitPrice, Address, Phone, Recommendation, Status, CreatedOn, CreatedBy)
+VALUES ('凯宾斯基芳园中餐厅', '环境较好，菜品清淡', '￥150/人', '无锡南长区永和路18号', '0510-81088288', '脆皮双拼鱼 金蒜 牛柳粒', 0, GETDATE(), 1)
+INSERT SurroundingServices(Name, Description, UnitPrice, Address, Phone, Recommendation, Status, CreatedOn, CreatedBy)
+VALUES ('金蔷薇', '较安静，环境古朴，菜式精致，粤菜为主', '￥170/人', '无锡运河公园C区5号楼', '0510-83776777', '清蒸鲈鱼 烧纸鹅肝卷', 0, GETDATE(), 1)

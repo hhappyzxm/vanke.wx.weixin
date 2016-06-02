@@ -86,4 +86,10 @@ namespace Vanke.WX.Weixin.Common
         Active,
         Removed
     }
+
+    public enum SurroundingServiceStatus
+    {
+        Active,
+        Removed
+    }
 }

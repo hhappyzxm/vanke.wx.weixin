@@ -11,12 +11,10 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>物品<span class="txt-mandatory">*</span></label>
-                                <select name="item" class="form-control" ng-model="data.ItemID" ng-options="item.ID as item.Name for item in items" required>
-                                    <option value="">--- 请选择 ---</option>
-                                </select>
+                                <input name="item" class="form-control" ng-model="data.Item" required />
                                 <div class="m-t-xs" ng-show="submitForm.item.$invalid && submitForm.$submitted">
                                     <span class="text-danger" ng-show="submitForm.item.$error">
-                                        <i class="fa fa-exclamation-triangle"></i>&nbsp;请选择物品
+                                        <i class="fa fa-exclamation-triangle"></i>&nbsp;请输入物品名称
                                     </span>
                                 </div>
                             </div>

@@ -94,7 +94,12 @@
             /**
              * Designated Drivers Api
              */
-            designatedDrivers: $resource(apiHost + '/api/designatedDrivers/:id', { id: '@id' })
+            designatedDrivers: $resource(apiHost + '/api/designateddrivers/:id', { id: '@id' }),
+
+            /**
+             * Surrounding Service Api
+             */
+            surroundingServices: $resource(apiHost + '/api/surroundingservices/:id', { id: '@id' })
         };
     });
 })(angular, app);

@@ -26,6 +26,7 @@ namespace Vanke.WX.Weixin.Data
         public virtual DbSet<StaffRole> StaffRoles { get; set; }
         public virtual DbSet<DesignatedDriver> DesignatedDrivers { get; set; }
         public virtual DbSet<DesignatedDriverPrice> DesignatedDriverPrices { get; set; }
+        public virtual DbSet<SurroundingService> SurroundingServices { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -43,11 +44,6 @@ namespace Vanke.WX.Weixin.Data
 
             modelBuilder.Entity<Item>()
                 .HasMany(e => e.ItemBorrowHistories)
-                .WithRequired(e => e.Item)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Item>()
-                .HasMany(e => e.IdleAssets)
                 .WithRequired(e => e.Item)
                 .WillCascadeOnDelete(false);
 

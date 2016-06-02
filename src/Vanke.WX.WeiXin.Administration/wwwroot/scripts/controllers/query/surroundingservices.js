@@ -1,9 +1,9 @@
 ﻿(function (angular, app) {
     'use strict';
 
-    app.controller('DesignatedDriversCtrl', function ($scope, api, datatableSettings, sweetAlert, DTOptionsBuilder, DTColumnDefBuilder) {
-        api.designatedDrivers.query(function (result) {
-            $scope.designatedDrivers = result;
+    app.controller('SurroundingServicesCtrl', function ($scope, api, datatableSettings, sweetAlert, DTOptionsBuilder, DTColumnDefBuilder) {
+        api.surroundingServices.query(function (result) {
+            $scope.surroundingServices = result;
         });
 
         $scope.dtOptions = datatableSettings.getGeneralSettings(DTOptionsBuilder);
@@ -16,10 +16,10 @@
             sweetAlert.confirm(
                 "你将删除这条数据!",
                 function(resover) {
-                    api.designatedDrivers.remove({ id: id }, function () {
-                        for (var i = 0; i < $scope.designatedDrivers.length; i++) {
-                            if ($scope.designatedDrivers[i].ID === id) {
-                                $scope.designatedDrivers.splice(i, 1);
+                    api.surroundingServices.remove({ id: id }, function () {
+                        for (var i = 0; i < $scope.surroundingServices.length; i++) {
+                            if ($scope.surroundingServices[i].ID === id) {
+                                $scope.surroundingServices.splice(i, 1);
                                 break;
                             }
                         }

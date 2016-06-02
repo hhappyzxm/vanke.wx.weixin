@@ -46,6 +46,7 @@
     <Compile Include="DataContext.cs" />
     <Compile Include="Entity\DesignatedDriverPrice.cs" />
     <Compile Include="Entity\DinnerPlace.cs" />
+    <Compile Include="Entity\SurroundingService.cs" />
     <Compile Include="Entity\DinnerRegisterHistory.cs" />
     <Compile Include="Entity\DinnerType.cs" />
     <Compile Include="Entity\EmployeeDiscount.cs" />
