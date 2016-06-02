@@ -54,11 +54,11 @@ INSERT ItemStoragePlaces(AreaID, Place, Status, CreatedOn, CreatedBy) VALUES(2, 
 INSERT ItemStoragePlaces(AreaID, Place, Status, CreatedOn, CreatedBy) VALUES(3, '魅力仓库', 0, GETDATE(), 1)
 INSERT ItemStoragePlaces(AreaID, Place, Status, CreatedOn, CreatedBy) VALUES(4, '信成道仓库', 0, GETDATE(), 1)
 
-INSERT IdleAssets(AreaID, PlaceID, ItemID, Quantity, Unit, ManagerStaffID, Comment, Status, CreatedOn, CreatedBy)
+INSERT IdleAssets(AreaID, PlaceID, Item, Quantity, Unit, ManagerStaffID, Comment, Status, CreatedOn, CreatedBy)
 VALUES(1, 1, '电风扇', 4, '个', 1, '', 0, GETDATE(), 1)
-INSERT IdleAssets(AreaID, PlaceID, ItemID, Quantity, Unit, ManagerStaffID, Comment, Status, CreatedOn, CreatedBy)
+INSERT IdleAssets(AreaID, PlaceID, Item, Quantity, Unit, ManagerStaffID, Comment, Status, CreatedOn, CreatedBy)
 VALUES(2, 4, '', 3, '个', 2, '', 0, GETDATE(), 1)
-INSERT IdleAssets(AreaID, PlaceID, ItemID, Quantity, Unit, ManagerStaffID, Comment, Status, CreatedOn, CreatedBy)
+INSERT IdleAssets(AreaID, PlaceID, Item, Quantity, Unit, ManagerStaffID, Comment, Status, CreatedOn, CreatedBy)
 VALUES(3, 5, '', 8, '个', 3, '', 0, GETDATE(), 1)
 
 INSERT DesignatedDrivers(DriverName, ServiceArea, BusinessRequirement, ContactPhone, PersonalRequirement, DrivingPhone, CustomFirstColumn, CustomSecondColumn, CustomThirdColumn, Status, CreatedOn, CreatedBy)
