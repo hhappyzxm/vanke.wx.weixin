@@ -61,13 +61,13 @@ VALUES(2, 4, '', 3, '个', 2, '', 0, GETDATE(), 1)
 INSERT IdleAssets(AreaID, PlaceID, ItemID, Quantity, Unit, ManagerStaffID, Comment, Status, CreatedOn, CreatedBy)
 VALUES(3, 5, '', 8, '个', 3, '', 0, GETDATE(), 1)
 
-INSERT DesignatedDrivers(DriverName, ServiceArea, BusinessRequirement, ContactPhone, PersonalRequirement, DrivingPhone, FirstTimePeriods, SecondTimePeriods, Status, CreatedOn, CreatedBy)
-VALUES ('无锡爱代驾', '无锡市（不含宜兴、江阴）', '联系总经理办公室 朱奕诚', '13801533450', '直拨代驾公司电话', '4006138138', '05:00-22:00', '22:00-次日04:59', 0, GETDATE(), 1)
+INSERT DesignatedDrivers(DriverName, ServiceArea, BusinessRequirement, ContactPhone, PersonalRequirement, DrivingPhone, CustomFirstColumn, CustomSecondColumn, CustomThirdColumn, Status, CreatedOn, CreatedBy)
+VALUES ('无锡爱代驾', '无锡市（不含宜兴、江阴）', '联系总经理办公室 朱奕诚', '13801533450', '直拨代驾公司电话', '4006138138', '路程（公里）', '05:00-22:00', '22:00-次日04:59', 0, GETDATE(), 1)
 INSERT DesignatedDriverPrices(DesignatedDriverID, Distance, FirstTimePeriodsPrice, SecondTimePeriodsPrice) VALUES(1, '0-10', '38元', '58元')
 INSERT DesignatedDriverPrices(DesignatedDriverID, Distance, FirstTimePeriodsPrice, SecondTimePeriodsPrice) VALUES(1, '10-100', '每5公里加收20元', '每5公里加收20元')
 
-INSERT DesignatedDrivers(DriverName, ServiceArea, BusinessRequirement, ContactPhone, PersonalRequirement, DrivingPhone, FirstTimePeriods, SecondTimePeriods, Status, CreatedOn, CreatedBy)
-VALUES ('常州E代驾', '常州市区（不含金坛、溧阳地区）', '联系常州片区 戴晓慧', '15195005656', '直拨代驾公司电话', '4007676885', '8:00-23:59', '00:00-次日07:59', 0, GETDATE(), 1)
+INSERT DesignatedDrivers(DriverName, ServiceArea, BusinessRequirement, ContactPhone, PersonalRequirement, DrivingPhone, CustomFirstColumn, CustomSecondColumn, CustomThirdColumn, Status, CreatedOn, CreatedBy)
+VALUES ('常州E代驾', '常州市区（不含金坛、溧阳地区）', '联系常州片区 戴晓慧', '15195005656', '直拨代驾公司电话', '4007676885', '路程（公里）', '8:00-23:59', '00:00-次日07:59', 0, GETDATE(), 1)
 INSERT DesignatedDriverPrices(DesignatedDriverID, Distance, FirstTimePeriodsPrice, SecondTimePeriodsPrice) VALUES(2, '常州市区（含天宁区、武进区、钟楼区、新北区、戚墅堰）', '100元', '100元')
 INSERT DesignatedDriverPrices(DesignatedDriverID, Distance, FirstTimePeriodsPrice, SecondTimePeriodsPrice) VALUES(2, '常州-无锡', '300元', '400元')
 

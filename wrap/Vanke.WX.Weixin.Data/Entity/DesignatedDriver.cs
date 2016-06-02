@@ -35,10 +35,13 @@ namespace Vanke.WX.Weixin.Data.Entity
         public string DrivingPhone { get; set; }
 
         [StringLength(50)]
-        public string FirstTimePeriods { get; set; }
+        public string CustomFirstColumn { get; set; }
 
         [StringLength(50)]
-        public string SecondTimePeriods { get; set; }
+        public string CustomSecondColumn { get; set; }
+
+        [StringLength(50)]
+        public string CustomThirdColumn { get; set; }
 
         public DesignatedDriverStatus Status { get; set; }
 

@@ -19,9 +19,11 @@ namespace Vanke.WX.Weixin.Service.Models
 
         public string DrivingPhone { get; set; }
 
-        public string FirstTimePeriods { get; set; }
+        public string CustomFirstColumn { get; set; }
 
-        public string SecondTimePeriods { get; set; }
+        public string CustomSecondColumn { get; set; }
+
+        public string CustomThirdColumn { get; set; }
 
         public ICollection<DesignatedDriverPriceModel> Prices { get; set; }
     }

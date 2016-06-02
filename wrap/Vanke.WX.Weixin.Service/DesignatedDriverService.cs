@@ -31,8 +31,9 @@ namespace Vanke.WX.Weixin.Service
                 ContactPhone = p.ContactPhone,
                 PersonalRequirement = p.PersonalRequirement,
                 DrivingPhone = p.DrivingPhone,
-                FirstTimePeriods = p.FirstTimePeriods,
-                SecondTimePeriods = p.SecondTimePeriods
+                CustomFirstColumn = p.CustomFirstColumn,
+                CustomSecondColumn = p.CustomSecondColumn,
+                CustomThirdColumn = p.CustomThirdColumn
             };
         }
 
@@ -45,8 +46,9 @@ namespace Vanke.WX.Weixin.Service
             targetEntity.ContactPhone = model.ContactPhone;
             targetEntity.PersonalRequirement = model.PersonalRequirement;
             targetEntity.DrivingPhone = model.DrivingPhone;
-            targetEntity.FirstTimePeriods = model.FirstTimePeriods;
-            targetEntity.SecondTimePeriods = model.SecondTimePeriods;
+            targetEntity.CustomFirstColumn = model.CustomFirstColumn;
+            targetEntity.CustomSecondColumn = model.CustomSecondColumn;
+            targetEntity.CustomThirdColumn = model.CustomThirdColumn;
 
             if (targetEntity.ID > 0)
             {
