@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountManager.cs" />
+    <Compile Include="FileUploadController.cs" />
     <Compile Include="GenericApiController.cs" />
     <Compile Include="IdentityUser.cs" />
     <Compile Include="OAuthBearerServerProvider.cs" />
