@@ -71,23 +71,40 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" ng-model="data.FirstTimePeriods" placeholder="请输入时间范围"/>
+                                <input type="text" class="form-control" ng-model="data.FirstTimePeriods" placeholder="请输入时间范围" />
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" ng-model="data.SecondTimePeriods" placeholder="请输入时间范围"/>
+                                <input type="text" class="form-control" ng-model="data.SecondTimePeriods" placeholder="请输入时间范围" />
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <button type="button" class="btn btn-success btn-sm"><i class="fa fa-plus"></i>&nbsp;添加</button>
+                                <button type="button" class="btn btn-success btn-sm" ng-click="addPrice()"><i class="fa fa-plus"></i>&nbsp;添加</button>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-3"></div>
+                    <div class="row" ng-repeat="item in data.Prices">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="item.Distance" />
+                            </div>
                         </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="item.FirstTimePeriodsPrice" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="item.SecondTimePeriodsPrice" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-danger btn-sm" ng-click="removePrice($index)"><i class="fa fa-remove"></i>&nbsp;删除</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>

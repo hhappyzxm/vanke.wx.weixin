@@ -172,7 +172,7 @@
                 }
             })
             .state('query.designateddriveredit', {
-                url: "/designateddriveredit",
+                url: "/designateddriveredit?id",
                 templateUrl: "views/query/designateddriveredit.html",
                 data: {
                     pageTitle: '代驾管理'

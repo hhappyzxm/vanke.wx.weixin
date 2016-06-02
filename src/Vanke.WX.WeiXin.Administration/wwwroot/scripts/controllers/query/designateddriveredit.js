@@ -3,7 +3,7 @@
 
     app.controller('DesignatedDriverEditCtrl', function ($scope, $state, $stateParams, api) {
         if (!angular.isUndefined($stateParams.id)) {
-            api.items.get({ id: $stateParams.id }, function(result) {
+            api.designatedDrivers.get({ id: $stateParams.id }, function (result) {
                 $scope.data = result;
             });
         }
@@ -12,11 +12,22 @@
             form.$setSubmitted(true);
 
             if (form.$valid) {
-                api.items.save($scope.data, function () {
-                    $state.go('settings.items');
+                api.designatedDrivers.save($scope.data, function () {
+                    $state.go('query.designateddrivers');
                 });
             }
         };
+
+        $scope.addPrice = function () {
+            if (angular.isUndefined($scope.data)) {
+                $scope.data = { Prices: [] };
+            }
+            $scope.data.Prices.push({});
+        }
+
+        $scope.removePrice = function(index) {
+            $scope.data.Prices.splice(index, 1);
+        }
     });
 
 })(angular, app);
