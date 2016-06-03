@@ -190,6 +190,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\DinnerPlacesController.cs" />
     <Compile Include="Controllers\DinnerRegisterController.cs" />
+    <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\ItemBorrowController.cs" />
     <Compile Include="Controllers\IdleAssetsController.cs" />
     <Compile Include="Controllers\DesignatedDriversController.cs" />
