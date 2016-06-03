@@ -7,7 +7,8 @@
         'ui.bootstrap', // AngularJS native directives for Bootstrap
         'angular-flot', // Flot chart
         'datatables', // Angular datatables plugin
-        'datatables.buttons'
+        'datatables.buttons',
+        'ngFileUpload'
     ]);
 
     // Start angular by manual
