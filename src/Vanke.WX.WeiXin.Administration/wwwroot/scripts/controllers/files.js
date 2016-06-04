@@ -6,12 +6,12 @@
         function uploadUsing$http(file) {
             file.upload = Upload.http({
                 url: 'http://localhost:54843/api/files',
-                method: 'POST',
-                headers:
-                  {
-                      'Content-Type': undefined//file.type
-                  },
-                data: file
+                //method: 'POST',
+                //headers:
+                //  {
+                //      'Content-Type': 'multipart/form-data'//file.type
+                //  },
+                data: {file: file}
             });
 
             file.upload.then(function (response) {
