@@ -59,7 +59,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <input type="file" ngf-select="" ng-model="picFile" name="file" ngf-accept="'image/*'" required>
+                        <input type="file" ngf-select="" ng-model="picFile" name="file" ngf-accept="'image/*'" ng-required="uploadedFile==null">
                         <div class="m-t-xs" ng-show="submitForm.file.$invalid && submitForm.$submitted">
                             <span class="text-danger" ng-show="submitForm.file.$error">
                                 <i class="fa fa-exclamation-triangle"></i>&nbsp;请上传图片
@@ -69,11 +69,8 @@
                     <div class="form-group">
                         <button class="btn btn-success btn-sm" type="button" ng-click="upload(picFile)"><i class="fa fa-upload"></i>&nbsp;上传</button>
                     </div>
-                    <!--<div class="form-group">
-                        <img ngf-src="picFile || '/Temp/5DB5390EF1A4C8CB3E952FDE4FB9312C.jpg'" class="thumbnail">
-                    </div>-->
-                    <div ngf-background="picFile" style="width: 200px; height: 200px;">
-
+                    <div class="form-group">
+                        <img ng-src="{{uploadedFile}}" class="thumbnail" style="width: 240px; height: 160px;">
                     </div>
                 </div>
             </div>

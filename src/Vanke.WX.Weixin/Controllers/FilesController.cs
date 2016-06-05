@@ -22,7 +22,7 @@ namespace Vanke.WX.Weixin.Controllers
                 throw new Exception("Unsupported media type");
             }
 
-            var provider = new CustomMultipartFormDataStreamProvider(HttpRuntime.AppDomainAppPath + @"\Temp");
+            var provider = new CustomMultipartFormDataStreamProvider(HttpRuntime.AppDomainAppPath + @"Temp");
 
             await Request.Content.ReadAsMultipartAsync(provider);
 

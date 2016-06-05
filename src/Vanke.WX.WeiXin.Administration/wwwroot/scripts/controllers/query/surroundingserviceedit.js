@@ -5,6 +5,8 @@
         if (!angular.isUndefined($stateParams.id)) {
             api.surroundingServices.get({ id: $stateParams.id }, function (result) {
                 $scope.data = result;
+
+                $scope.uploadedFile = 'http://localhost:54843/Upload/' + $scope.data.ImagePath;
             });
         }
 
@@ -18,35 +20,14 @@
             }
         };
 
-        function uploadUsing$http(file) {
-            Upload.upload({
-                url: 'http://localhost:54843/api/files',
-                //method: 'POST',
-                //headers:
-                //  {
-                //      'Content-Type': 'multipart/form-data'//file.type
-                //  },
-                data: { file: file }
-            });
-
-            //file.upload.then(function (response) {
-            //    file.result = response.data;
-            //}, function (response) {
-            //    if (response.status > 0)
-            //        $scope.errorMsg = response.status + ': ' + response.data;
-            //});
-
-            //file.upload.progress(function (evt) {
-            //    file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-            //});
-        }
-
         $scope.upload = function (file) {
             Upload.upload({
                 url: 'http://localhost:54843/api/files',
                 data: { file: file }
             }).then(function (response) {
+                $scope.data.OriginalImagePath = $scope.data.ImagePath;
                 $scope.data.ImagePath = response.data[0];
+                $scope.uploadedFile = 'http://localhost:54843/Temp/' + $scope.data.ImagePath;
                 sweetAlert.success('上传成功');
             });
         };

@@ -1,11 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using EZ.Framework.Integration.WebApi;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data.Entity;
 using Vanke.WX.Weixin.Service.Interface;
 using Vanke.WX.Weixin.Service.Models;
+using Vanke.WX.Weixin.ViewModels;
 
 namespace Vanke.WX.Weixin.Controllers
 {
@@ -33,22 +36,29 @@ namespace Vanke.WX.Weixin.Controllers
         {
             return await _service.GetByKeyAsync(id);
         }
-        
+
         /// <summary>
         /// Insert/Update item
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task Save(SurroundingServiceModel model)
+        public async Task Save(SurroundingServiceViewModel model)
         {
             if (model.ID.Equals(0))
             {
                 await _service.InsertAsync(model);
+                File.Move(HttpRuntime.AppDomainAppPath + @"Temp\" + model.ImagePath, HttpRuntime.AppDomainAppPath + @"Upload\" + model.ImagePath);
             }
             else
             {
                 await _service.UpdateAsync(model.ID, model);
+
+                if (!string.IsNullOrEmpty(model.OriginalImagePath))
+                {
+                    File.Delete(HttpRuntime.AppDomainAppPath + @"Upload\" + model.OriginalImagePath);
+                    File.Move(HttpRuntime.AppDomainAppPath + @"Temp\" + model.ImagePath, HttpRuntime.AppDomainAppPath + @"Upload\" + model.ImagePath);
+                }
             }
         }
 
