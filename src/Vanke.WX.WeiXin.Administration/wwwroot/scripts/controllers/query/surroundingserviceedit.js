@@ -1,7 +1,7 @@
 ﻿(function (angular, app) {
     'use strict';
 
-    app.controller('SurroundingServiceEditCtrl', function ($scope, $state, $stateParams, api, Upload) {
+    app.controller('SurroundingServiceEditCtrl', function ($scope, $state, $stateParams, api, Upload, sweetAlert) {
         if (!angular.isUndefined($stateParams.id)) {
             api.surroundingServices.get({ id: $stateParams.id }, function (result) {
                 $scope.data = result;
@@ -41,7 +41,15 @@
             //});
         }
 
-        $scope.upload = uploadUsing$http;
+        $scope.upload = function (file) {
+            Upload.upload({
+                url: 'http://localhost:54843/api/files',
+                data: { file: file }
+            }).then(function (response) {
+                $scope.data.ImagePath = response.data[0];
+                sweetAlert.success('上传成功');
+            });
+        };
     });
 
 })(angular, app);

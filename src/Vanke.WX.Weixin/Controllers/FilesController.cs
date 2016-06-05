@@ -14,35 +14,24 @@ namespace Vanke.WX.Weixin.Controllers
     public class FilesController : GenericApiController
     {
         [HttpPost]
-        public async Task<IHttpActionResult> Upload()
+        public async Task<IEnumerable<string>> Upload()
         {
             // Check if the request contains multipart/form-data.
             if (!Request.Content.IsMimeMultipartContent("form-data"))
             {
-                return BadRequest("Unsupported media type");
+                throw new Exception("Unsupported media type");
             }
-            try
-            {
-                var provider = new MultipartFormDataStreamProvider(HttpRuntime.AppDomainAppPath + @"\Temp");
 
-                await Request.Content.ReadAsMultipartAsync(provider);
+            var provider = new CustomMultipartFormDataStreamProvider(HttpRuntime.AppDomainAppPath + @"\Temp");
 
-                var photos =
-                  provider.FileData
+            await Request.Content.ReadAsMultipartAsync(provider);
+
+            var files =
+                provider.FileData
                     .Select(file => new FileInfo(file.LocalFileName))
-                    .Select(fileInfo => new 
-                    {
-                        Name = fileInfo.Name,
-                        Created = fileInfo.CreationTime,
-                        Modified = fileInfo.LastWriteTime,
-                        Size = fileInfo.Length / 1024
-                    }).ToList();
-                return Ok(new { Message = "Photos uploaded ok", Photos = photos });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.GetBaseException().Message);
-            }
+                    .Select(fileInfo => fileInfo.Name).ToList();
+
+            return files;
         }
     }
 
@@ -58,11 +47,16 @@ namespace Vanke.WX.Weixin.Controllers
 
         public override string GetLocalFileName(HttpContentHeaders headers)
         {
-            //Make the file name URL safe and then use it & is the only disallowed url character allowed in a windows filename
-            var name = !string.IsNullOrWhiteSpace(headers.ContentDisposition.FileName)
-              ? headers.ContentDisposition.FileName
-              : "NoName";
-            return name.Trim('"').Replace("&", "and");
+            if (!string.IsNullOrWhiteSpace(headers.ContentDisposition.FileName))
+            {
+                var fileExtension = Path.GetExtension(headers.ContentDisposition.FileName.Trim('"'));
+
+                return Guid.NewGuid() + fileExtension;
+            }
+            else
+            {
+                return "NoName";
+            }
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿using Microsoft.Owin;
+﻿using System.Drawing;
+using System.IO;
+using System.Web;
+using Microsoft.Owin;
 using Owin;
 using Vanke.WX.Weixin;
 
@@ -9,6 +12,19 @@ namespace Vanke.WX.Weixin
     {
         public void Configuration(IAppBuilder app)
         {
+            var rootPath = HttpRuntime.AppDomainAppPath;
+            var tempFolderPath = rootPath + @"Temp";
+            var uploadFolderPath = rootPath + @"Upload";
+
+            if (Directory.Exists(tempFolderPath))
+            {
+                Directory.CreateDirectory(tempFolderPath);
+            }
+            if (Directory.Exists(tempFolderPath))
+            {
+                Directory.CreateDirectory(uploadFolderPath);
+            }
+
             ConfigureSimpleInjector(app);
 
             ConfigureAuth(app);
