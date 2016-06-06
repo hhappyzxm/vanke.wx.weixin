@@ -22,44 +22,42 @@
     <div ng-controller="IdleAssetsCtrl" style="padding-top: 50px;">
         <div class="hpanel" ng-repeat="asset in ::idleAssets">
             <div class="panel-heading hbuilt">
-                <i class="panel-icon fa fa-list"></i>&nbsp;{{asset.area}}
+                <i class="panel-icon fa fa-list"></i>&nbsp;<span ng-bind="asset.area"></span>
             </div>
             <div class="panel-body list">
-                <div class="table-responsive" ng-repeat="item in ::asset.items">
-                    <table  class="table table-bordered table-hover nowrap" width="100%">
-                        <tbody>
-                            <tr>
-                                <td style="width: 60%">
-                                    <strong>闲置物品</strong>
-                                </td>
-                                <td class="text-center">
-                                    <strong>{{item.Item}}</strong>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    数量
-                                </td>
-                                <td class="text-center">
-                                    {{item.Quantity+item.Unit}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    管理负责人
-                                </td>
-                                <td class="text-center">
-                                    {{item.ManagerStaff}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    {{item.Comment == null || item.Comment == '' ? '无' : item.Comment}}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <table class="table table-bordered table-hover nowrap" width="100%" ng-repeat="item in ::asset.items">
+                    <tbody>
+                        <tr>
+                            <td style="width: 50%">
+                                <strong>闲置物品</strong>
+                            </td>
+                            <td class="text-center">
+                                <strong><span ng-bind="item.Item"></span></strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                数量
+                            </td>
+                            <td class="text-center">
+                                <span ng-bind="item.Quantity+item.Unit"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                管理负责人
+                            </td>
+                            <td class="text-center">
+                                <span ng-bind="item.ManagerStaff"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <span ng-bind="item.Comment == null || item.Comment == '' ? '无' : item.Comment"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

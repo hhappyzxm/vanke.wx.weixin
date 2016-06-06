@@ -57,9 +57,9 @@ INSERT ItemStoragePlaces(AreaID, Place, Status, CreatedOn, CreatedBy) VALUES(4, 
 INSERT IdleAssets(AreaID, PlaceID, Item, Quantity, Unit, ManagerStaffID, Comment, Status, CreatedOn, CreatedBy)
 VALUES(1, 1, '电风扇', 4, '个', 1, '', 0, GETDATE(), 1)
 INSERT IdleAssets(AreaID, PlaceID, Item, Quantity, Unit, ManagerStaffID, Comment, Status, CreatedOn, CreatedBy)
-VALUES(2, 4, '', 3, '个', 2, '', 0, GETDATE(), 1)
+VALUES(2, 4, '取暖器', 3, '个', 2, '', 0, GETDATE(), 1)
 INSERT IdleAssets(AreaID, PlaceID, Item, Quantity, Unit, ManagerStaffID, Comment, Status, CreatedOn, CreatedBy)
-VALUES(3, 5, '', 8, '个', 3, '', 0, GETDATE(), 1)
+VALUES(3, 5, '空调扇', 8, '个', 3, '', 0, GETDATE(), 1)
 
 INSERT DesignatedDrivers(DriverName, ServiceArea, BusinessRequirement, ContactPhone, PersonalRequirement, DrivingPhone, CustomFirstColumn, CustomSecondColumn, CustomThirdColumn, Status, CreatedOn, CreatedBy)
 VALUES ('无锡爱代驾', '无锡市（不含宜兴、江阴）', '联系总经理办公室 朱奕诚', '13801533450', '直拨代驾公司电话', '4006138138', '路程（公里）', '05:00-22:00', '22:00-次日04:59', 0, GETDATE(), 1)
