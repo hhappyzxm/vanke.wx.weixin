@@ -18,6 +18,7 @@ namespace Vanke.WX.Weixin.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IEnumerable<IdleAssetModel>> Get()
         {
             return await _service.GetAllAsync();
