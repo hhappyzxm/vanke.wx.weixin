@@ -1,4 +1,4 @@
-/****** Object:  Table [dbo].[DesignatedDriverPrices]    Script Date: 6/2/2016 3:51:19 PM ******/
+/****** Object:  Table [dbo].[DesignatedDriverPrices]    Script Date: 6/7/2016 3:18:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -16,7 +16,7 @@ CREATE TABLE [dbo].[DesignatedDriverPrices](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[DesignatedDrivers]    Script Date: 6/2/2016 3:51:19 PM ******/
+/****** Object:  Table [dbo].[DesignatedDrivers]    Script Date: 6/7/2016 3:18:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -44,7 +44,7 @@ CREATE TABLE [dbo].[DesignatedDrivers](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[DinnerPlaces]    Script Date: 6/2/2016 3:51:19 PM ******/
+/****** Object:  Table [dbo].[DinnerPlaces]    Script Date: 6/7/2016 3:18:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -64,7 +64,7 @@ CREATE TABLE [dbo].[DinnerPlaces](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[DinnerRegisterHistories]    Script Date: 6/2/2016 3:51:19 PM ******/
+/****** Object:  Table [dbo].[DinnerRegisterHistories]    Script Date: 6/7/2016 3:18:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -88,7 +88,7 @@ CREATE TABLE [dbo].[DinnerRegisterHistories](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[DinnerTypes]    Script Date: 6/2/2016 3:51:19 PM ******/
+/****** Object:  Table [dbo].[DinnerTypes]    Script Date: 6/7/2016 3:18:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -108,13 +108,22 @@ CREATE TABLE [dbo].[DinnerTypes](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[EmployeeDiscounts]    Script Date: 6/2/2016 3:51:19 PM ******/
+/****** Object:  Table [dbo].[EmployeeDiscounts]    Script Date: 6/7/2016 3:18:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE [dbo].[EmployeeDiscounts](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Type] [int] NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[ImagePath] [varchar](50) NOT NULL,
+	[Address] [nvarchar](50) NULL,
+	[Phone] [nvarchar](50) NULL,
+	[Discount] [nvarchar](50) NULL,
+	[Status] [int] NOT NULL,
 	[CreatedOn] [datetime] NOT NULL,
 	[CreatedBy] [bigint] NOT NULL,
 	[UpdatedOn] [datetime] NULL,
@@ -126,7 +135,9 @@ CREATE TABLE [dbo].[EmployeeDiscounts](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[ExternalPersonnelDiningRegisterHistories]    Script Date: 6/2/2016 3:51:19 PM ******/
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[ExternalPersonnelDiningRegisterHistories]    Script Date: 6/7/2016 3:18:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -147,7 +158,7 @@ CREATE TABLE [dbo].[ExternalPersonnelDiningRegisterHistories](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Hotels]    Script Date: 6/2/2016 3:51:19 PM ******/
+/****** Object:  Table [dbo].[Hotels]    Script Date: 6/7/2016 3:18:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -166,7 +177,7 @@ CREATE TABLE [dbo].[Hotels](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[IdleAssets]    Script Date: 6/2/2016 3:51:19 PM ******/
+/****** Object:  Table [dbo].[IdleAssets]    Script Date: 6/7/2016 3:18:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -192,7 +203,7 @@ CREATE TABLE [dbo].[IdleAssets](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[ItemBorrowHistories]    Script Date: 6/2/2016 3:51:19 PM ******/
+/****** Object:  Table [dbo].[ItemBorrowHistories]    Script Date: 6/7/2016 3:18:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -213,7 +224,7 @@ CREATE TABLE [dbo].[ItemBorrowHistories](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Items]    Script Date: 6/2/2016 3:51:19 PM ******/
+/****** Object:  Table [dbo].[Items]    Script Date: 6/7/2016 3:18:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -233,7 +244,7 @@ CREATE TABLE [dbo].[Items](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[ItemStorageAreas]    Script Date: 6/2/2016 3:51:19 PM ******/
+/****** Object:  Table [dbo].[ItemStorageAreas]    Script Date: 6/7/2016 3:18:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -253,7 +264,7 @@ CREATE TABLE [dbo].[ItemStorageAreas](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[ItemStoragePlaces]    Script Date: 6/2/2016 3:51:19 PM ******/
+/****** Object:  Table [dbo].[ItemStoragePlaces]    Script Date: 6/7/2016 3:18:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -274,7 +285,7 @@ CREATE TABLE [dbo].[ItemStoragePlaces](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[StaffRoles]    Script Date: 6/2/2016 3:51:19 PM ******/
+/****** Object:  Table [dbo].[StaffRoles]    Script Date: 6/7/2016 3:18:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -290,7 +301,7 @@ CREATE TABLE [dbo].[StaffRoles](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Staffs]    Script Date: 6/2/2016 3:51:19 PM ******/
+/****** Object:  Table [dbo].[Staffs]    Script Date: 6/7/2016 3:18:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -316,7 +327,7 @@ CREATE TABLE [dbo].[Staffs](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[SurroundingServices]    Script Date: 6/2/2016 3:51:19 PM ******/
+/****** Object:  Table [dbo].[SurroundingServices]    Script Date: 6/7/2016 3:18:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

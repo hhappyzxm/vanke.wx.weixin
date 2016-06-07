@@ -92,4 +92,19 @@ namespace Vanke.WX.Weixin.Common
         Active,
         Removed
     }
+
+    public enum EmployeeDiscountStatus
+    {
+        Active,
+        Removed
+    }
+
+    public enum EmployeeDiscountType
+    {
+        Clothes,
+        Food,
+        Live,
+        Walk,
+        Health
+    }
 }

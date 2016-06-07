@@ -192,6 +192,20 @@
                     pageTitle: '无锡周边'
                 }
             })
+            .state('query.employeediscounts', {
+                url: "/employeediscounts",
+                templateUrl: "views/query/employeediscounts.html",
+                data: {
+                    pageTitle: '员工优惠'
+                }
+            })
+            .state('query.employeediscountedit', {
+                url: "/employeediscountedit?id",
+                templateUrl: "views/query/employeediscountedit.html",
+                data: {
+                    pageTitle: '员工优惠'
+                }
+            })
 
             // Common views
             .state('common', {

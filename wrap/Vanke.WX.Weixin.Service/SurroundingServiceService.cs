@@ -38,11 +38,6 @@ namespace Vanke.WX.Weixin.Service
 
         protected override void ConvertToEntity(SurroundingServiceModel model, ref SurroundingService targetEntity)
         {
-            if (targetEntity.ID > 0)
-            {
-
-            }
-
             targetEntity.ID = model.ID;
             targetEntity.Name = model.Name;
             targetEntity.ImagePath = model.ImagePath;

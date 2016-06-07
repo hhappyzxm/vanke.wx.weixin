@@ -51,6 +51,7 @@
     <Compile Include="DinnerRegisterService.cs" />
     <Compile Include="Interface\IIdleAssetService.cs" />
     <Compile Include="Interface\IDesignatedDriverService.cs" />
+    <Compile Include="Interface\IEmployeeDiscountService.cs" />
     <Compile Include="Interface\ISurroundingServiceService.cs" />
     <Compile Include="Interface\IItemStoragePlaceService.cs" />
     <Compile Include="Interface\IItemStorageAreaService.cs" />
@@ -58,6 +59,8 @@
     <Compile Include="DinnerPlaceService.cs" />
     <Compile Include="Interface\IItemBorrowService.cs" />
     <Compile Include="IdleAssetService.cs" />
+    <Compile Include="Models\EmployeeDiscountModel.cs" />
+    <Compile Include="EmployeeDiscountService.cs" />
     <Compile Include="SurroundingServiceService.cs" />
     <Compile Include="ItemStoragePlaceService.cs" />
     <Compile Include="ItemStorageAreaService.cs" />

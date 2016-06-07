@@ -99,7 +99,12 @@
             /**
              * Surrounding Service Api
              */
-            surroundingServices: $resource(apiHost + '/api/surroundingservices/:id', { id: '@id' })
+            surroundingServices: $resource(apiHost + '/api/surroundingservices/:id', { id: '@id' }),
+
+            /**
+             * Employ Discounts Api
+             */
+            employeeDiscounts: $resource(apiHost + '/api/employeediscounts/:id', { id: '@id' })
         };
     });
 })(angular, app);
