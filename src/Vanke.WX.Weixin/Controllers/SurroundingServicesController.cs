@@ -21,9 +21,17 @@ namespace Vanke.WX.Weixin.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IEnumerable<SurroundingServiceModel>> Get()
         {
-            return await _service.GetAllAsync();
+            var services =  await _service.GetAllAsync();
+
+            foreach (var item in services)
+            {
+                item.ImagePath = "http://localhost:54843/Upload/" + item.ImagePath;
+            }
+
+            return services;
         }
 
         /// <summary>
@@ -56,7 +64,10 @@ namespace Vanke.WX.Weixin.Controllers
 
                 if (!string.IsNullOrEmpty(model.OriginalImagePath))
                 {
-                    File.Delete(HttpRuntime.AppDomainAppPath + @"Upload\" + model.OriginalImagePath);
+                    if (File.Exists(HttpRuntime.AppDomainAppPath + @"Upload\" + model.OriginalImagePath))
+                    {
+                        File.Delete(HttpRuntime.AppDomainAppPath + @"Upload\" + model.OriginalImagePath);
+                    }
                     File.Move(HttpRuntime.AppDomainAppPath + @"Temp\" + model.ImagePath, HttpRuntime.AppDomainAppPath + @"Upload\" + model.ImagePath);
                 }
             }

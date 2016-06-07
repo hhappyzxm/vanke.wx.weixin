@@ -32,12 +32,12 @@
                                 <strong>闲置物品</strong>
                             </td>
                             <td class="text-center">
-                                <strong><span ng-bind="item.Item"></span></strong>
+                                <span ng-bind="item.Item"></span>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                数量
+                                <strong>数量</strong>
                             </td>
                             <td class="text-center">
                                 <span ng-bind="item.Quantity+item.Unit"></span>
@@ -45,7 +45,7 @@
                         </tr>
                         <tr>
                             <td>
-                                管理负责人
+                                <strong>管理负责人</strong>
                             </td>
                             <td class="text-center">
                                 <span ng-bind="item.ManagerStaff"></span>
@@ -53,6 +53,7 @@
                         </tr>
                         <tr>
                             <td colspan="2">
+                                <p><strong>备注</strong></p>
                                 <span ng-bind="item.Comment == null || item.Comment == '' ? '无' : item.Comment"></span>
                             </td>
                         </tr>

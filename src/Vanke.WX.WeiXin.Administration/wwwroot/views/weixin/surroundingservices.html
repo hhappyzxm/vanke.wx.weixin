@@ -27,30 +27,49 @@
             <div class="panel-body list">
                 <table class="table table-bordered table-hover nowrap" width="100%">
                     <tbody>
-                        <tr>
-                            <td style="width: 50%">
-                                <strong>闲置物品</strong>
-                            </td>
-                            <td class="text-center">
-                                <strong><span ng-bind="item.Item"></span></strong>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                地址
-                            </td>
-                            <td class="text-center">
-                                <span ng-bind="item.Address"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                电话
-                            </td>
-                            <td class="text-center">
-                                <span ng-bind="item.Phone"></span>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td colspan="2">
+                            <img ng-src="{{item.ImagePath}}" width="100%"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%">
+                            <strong>地址</strong>
+                        </td>
+                        <td class="text-center">
+                            <span ng-bind="item.Address"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>电话</strong>
+                        </td>
+                        <td class="text-center">
+                            <span ng-bind="item.Phone"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>人均</strong>
+                        </td>
+                        <td class="text-center">
+                            <span ng-bind="item.UnitPrice"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p><strong>介绍</strong>
+                            </p>
+                            <span ng-bind="item.Description"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p><strong>推荐菜</strong>
+                            </p>
+                            <span ng-bind="item.Recommendation"></span>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>

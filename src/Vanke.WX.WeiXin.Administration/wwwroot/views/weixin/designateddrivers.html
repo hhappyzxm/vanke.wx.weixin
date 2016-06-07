@@ -32,7 +32,7 @@
                         <tbody>
                             <tr>
                                 <td style="width: 30%">
-                                    服务范围
+                                    <strong>服务范围</strong>
                                 </td>
                                 <td colspan="2">
                                     <span ng-bind="item.ServiceArea"></span>
@@ -40,7 +40,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    公务需求
+                                    <strong>公务需求</strong>
                                 </td>
                                 <td colspan="2">
                                     <span ng-bind="item.BusinessRequirement"></span>
@@ -48,7 +48,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    联系电话
+                                    <strong>联系电话</strong>
                                 </td>
                                 <td colspan="2">
                                     <span ng-bind="item.ContactPhone"></span>
@@ -56,36 +56,36 @@
                             </tr>
                             <tr>
                                 <td>
-                                    个人需求
+                                    <strong> 个人需求</strong>
                                 </td>
                                 <td colspan="2">
                                     <span ng-bind="item.PersonalRequirement"></span>
                                 </td>
                             </tr>
-                        <tr>
-                            <td>
-                                代驾热线
-                            </td>
-                            <td colspan="2">
-                                <span ng-bind="item.DrivingPhone"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" class="text-center">
-                                价格
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span ng-bind="item.CustomFirstColumn"></span>
-                            </td>
-                            <td style="width: 35%">
-                                <span ng-bind="item.CustomSecondColumn"></span>
-                            </td>
-                            <td>
-                                <span ng-bind="item.CustomThirdColumn"></span>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    <strong>代驾热线</strong>
+                                </td>
+                                <td colspan="2">
+                                    <span ng-bind="item.DrivingPhone"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <strong> 价格</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span ng-bind="item.CustomFirstColumn"></span>
+                                </td>
+                                <td style="width: 35%">
+                                    <span ng-bind="item.CustomSecondColumn"></span>
+                                </td>
+                                <td>
+                                    <span ng-bind="item.CustomThirdColumn"></span>
+                                </td>
+                            </tr>
                             <tr ng-repeat="price in ::item.Prices">
                                 <td>
                                     <span ng-bind="price.Distance"></span>
@@ -99,7 +99,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    
+
                 </div>
             </div>
         </div>
