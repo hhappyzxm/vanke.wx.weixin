@@ -104,7 +104,18 @@
             /**
              * Employ Discounts Api
              */
-            employeeDiscounts: $resource(apiHost + '/api/employeediscounts/:id', { id: '@id' })
+            employeeDiscounts: $resource(apiHost + '/api/employeediscounts/:id', { id: '@id' }, {
+                'getTypes': {
+                    method: 'GET',
+                    url: apiHost + '/api/employeediscounts/gettypes',
+                    isArray: true
+                },
+                'search': {
+                    method: 'GET',
+                    url: apiHost + '/api/employeediscounts/search?type=:type',
+                    isArray: true
+                }
+            })
         };
     });
 })(angular, app);

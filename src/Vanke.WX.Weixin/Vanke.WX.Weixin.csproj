@@ -209,6 +209,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\EmployeeDiscountViewModel.cs" />
+    <Compile Include="ViewModels\SelectListItemModels.cs" />
     <Compile Include="ViewModels\SurroundingServiceViewModel.cs" />
     <Compile Include="ViewModels\StaffViewModels.cs" />
   </ItemGroup>

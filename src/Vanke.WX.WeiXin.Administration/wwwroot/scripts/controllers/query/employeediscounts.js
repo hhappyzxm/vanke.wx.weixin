@@ -2,9 +2,17 @@
     'use strict';
 
     app.controller('EmployeeDiscountsCtrl', function ($scope, api, datatableSettings, sweetAlert, DTOptionsBuilder, DTColumnDefBuilder) {
-        api.employeeDiscounts.query(function (result) {
-            $scope.employeeDiscounts = result;
+        api.employeeDiscounts.getTypes(function (result) {
+            $scope.types = result;
         });
+
+        var loadData = function () {
+            api.employeeDiscounts.search({ type: $scope.filterType }, function (result) {
+                $scope.employeeDiscounts = result;
+            });
+        }
+
+        loadData();
 
         $scope.dtOptions = datatableSettings.getGeneralSettings(DTOptionsBuilder);
 
@@ -27,6 +35,10 @@
                         resover();
                     });
                 });
+        };
+
+        $scope.search = function() {
+            loadData();
         };
     });
 

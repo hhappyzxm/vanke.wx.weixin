@@ -53,11 +53,20 @@ namespace Vanke.WX.Weixin.Service
 
         public override async Task<IEnumerable<EmployeeDiscountModel>> GetAllAsync()
         {
-            return await
-                UnitOfWork.Set<EmployeeDiscount>()
-                    .Where(p => p.Status == EmployeeDiscountStatus.Active)
-                    .Select(ModelSelector())
-                    .ToListAsync();
+            return await GetAllAsync(null);
+        }
+
+        public async Task<IEnumerable<EmployeeDiscountModel>> GetAllAsync(EmployeeDiscountType? filterType)
+        {
+            var query = UnitOfWork.Set<EmployeeDiscount>()
+                .Where(p => p.Status == EmployeeDiscountStatus.Active);
+
+            if (filterType.HasValue)
+            {
+                query = query.Where(p => p.Type == filterType.Value);
+            }
+
+            return await query.Select(ModelSelector()).ToListAsync();
         }
 
         protected override async Task InsertEntityAsync(EmployeeDiscount entity)

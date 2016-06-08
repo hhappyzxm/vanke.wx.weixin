@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.WebPages.Html;
 using EZ.Framework.Integration.WebApi;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data.Entity;
@@ -43,6 +44,52 @@ namespace Vanke.WX.Weixin.Controllers
         public async Task<EmployeeDiscountModel> Get(long id)
         {
             return await _service.GetByKeyAsync(id);
+        }
+
+        [HttpGet]
+        [Route("api/employeediscounts/search")]
+        public async Task<IEnumerable<EmployeeDiscountModel>> Search(string type)
+        {
+            return
+                await
+                    _service.GetAllAsync(string.IsNullOrEmpty(type)
+                        ? (EmployeeDiscountType?)null
+                        : (EmployeeDiscountType)int.Parse(type));
+        }
+
+        [HttpGet]
+        [Route("api/employeediscounts/gettypes")]
+        public List<SelectListItemModel> GetTypes()
+        {
+            return new List<SelectListItemModel>
+            {
+                new SelectListItemModel
+                {
+                    Text = "衣",
+                    Value = (int)EmployeeDiscountType.Clothes
+                },
+                new SelectListItemModel
+                {
+                    Text = "食",
+                    Value = (int)EmployeeDiscountType.Food
+                }
+                ,
+                new SelectListItemModel
+                {
+                    Text = "住",
+                    Value = (int)EmployeeDiscountType.Live
+                },
+                new SelectListItemModel
+                {
+                    Text = "行",
+                    Value = (int)EmployeeDiscountType.Walk
+                },
+                new SelectListItemModel
+                {
+                    Text = "健",
+                    Value = (int)EmployeeDiscountType.Health
+                }
+            };
         }
 
         /// <summary>

@@ -20,8 +20,15 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label>人均</label>
-                                <input type="text" class="form-control" ng-model="data.UnitPrice" />
+                                <label>类型<span class="txt-mandatory">*</span></label>
+                                <select name="type" class="form-control" ng-model="data.Type" ng-options="item.Value as item.Text for item in types" required>
+                                    <option value="">--- 请选择 ---</option>
+                                </select>
+                                <div class="m-t-xs" ng-show="submitForm.type.$invalid && submitForm.$submitted">
+                                    <span class="text-danger" ng-show="submitForm.type.$error">
+                                        <i class="fa fa-exclamation-triangle"></i>&nbsp;请选择类型
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -86,7 +93,7 @@
                 <hr>
                 <ul class="mailbox-list">
                     <li>
-                        <a ui-sref="query.employeediscountedit"><i class="fa fa-backward"></i>&nbsp;返回</a>
+                        <a ui-sref="query.employeediscounts"><i class="fa fa-backward"></i>&nbsp;返回</a>
                     </li>
                 </ul>
             </div>
