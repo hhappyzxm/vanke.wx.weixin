@@ -13,14 +13,14 @@
     <link rel="stylesheet" href="../../css/theme.css">
     <link rel="stylesheet" href="../../css/customize.css">
 </head>
-<body>
+<body ng-controller="EmployeeDiscountsCtrl" >
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container text-center text-white" style="line-height: 50px; font-size: 14px;">
-            闲置资产
+            员工优惠 - <span ng-bind="type"></span>
         </div>
     </div>
-    <div ng-controller="SurroundingServicesCtrl" style="padding-top: 50px;">
-        <div class="hpanel" ng-repeat="item in ::surroundingServices">
+    <div style="padding-top: 50px;">
+        <div class="hpanel" ng-repeat="item in ::employeeDiscounts">
             <div class="panel-heading hbuilt">
                 <i class="panel-icon fa fa-list"></i>&nbsp;<span ng-bind="item.Name"></span>
             </div>
@@ -29,7 +29,7 @@
                     <tbody>
                     <tr>
                         <td colspan="2">
-                            <img ng-src="{{item.ImagePath}}"  class="img-responsive"/>
+                            <img ng-src="{{item.ImagePath}}" class="img-responsive"/>
                         </td>
                     </tr>
                     <tr>
@@ -50,24 +50,10 @@
                     </tr>
                     <tr>
                         <td>
-                            <strong>人均</strong>
+                            <strong>折扣</strong>
                         </td>
                         <td class="text-center">
-                            <span ng-bind="item.UnitPrice"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <p><strong>介绍</strong>
-                            </p>
-                            <span ng-bind="item.Description"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <p><strong>推荐菜</strong>
-                            </p>
-                            <span ng-bind="item.Recommendation"></span>
+                            <span ng-bind="item.Discount"></span>
                         </td>
                     </tr>
                     </tbody>
@@ -83,11 +69,12 @@
 
     <script src="../../lib/jquery/jquery.js"></script>
     <script src="../../lib/angular/angular.js"></script>
-    <script src="../../lib/angular-resource/angular-resource.js"></script>
+<script src="../../lib/angular-resource/angular-resource.js"></script>
+    <script src="../../lib/angular-ui-router/angular-ui-router.js"></script>
 
     <script src="../../scripts/weixin_app.js"></script>
     <script src="../../scripts/api.js"></script>
 
-    <script src="../../scripts/controllers/weixin/surroundingservices.js"></script>
+    <script src="../../scripts/controllers/weixin/employeediscounts.js"></script>
 </body>
 </html>

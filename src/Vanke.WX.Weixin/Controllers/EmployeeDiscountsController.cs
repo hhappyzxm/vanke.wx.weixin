@@ -22,7 +22,6 @@ namespace Vanke.WX.Weixin.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [AllowAnonymous]
         public async Task<IEnumerable<EmployeeDiscountModel>> Get()
         {
             var services =  await _service.GetAllAsync();
@@ -48,6 +47,7 @@ namespace Vanke.WX.Weixin.Controllers
 
         [HttpGet]
         [Route("api/employeediscounts/search")]
+        [AllowAnonymous]
         public async Task<IEnumerable<EmployeeDiscountModel>> Search(string type)
         {
             return
