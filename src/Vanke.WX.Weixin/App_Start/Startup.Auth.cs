@@ -34,14 +34,14 @@ namespace Vanke.WX.Weixin
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             // Token Generation
-            app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions()
-            {
-                AllowInsecureHttp = true,
-                TokenEndpointPath = new PathString("/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
-                Provider = new OAuthBearerServerProvider()
-            });
-            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+            //app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions()
+            //{
+            //    AllowInsecureHttp = true,
+            //    TokenEndpointPath = new PathString("/token"),
+            //    AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
+            //    Provider = new OAuthBearerServerProvider()
+            //});
+            //app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
         }
     }
 }

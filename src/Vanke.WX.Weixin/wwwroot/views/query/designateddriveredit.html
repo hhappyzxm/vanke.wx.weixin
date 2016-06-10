@@ -1,0 +1,133 @@
+﻿<div class="row" ng-controller="DesignatedDriverEditCtrl">
+    <div class="col-md-9">
+        <form name="submitForm">
+            <div class="hpanel hgreen">
+                <div class="panel-heading hbuilt">
+                    <div panel-tools></div>
+                    <i class="panel-icon fa fa-info-circle"></i>&nbsp;代驾公司信息
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>代驾公司名称<span class="txt-mandatory">*</span></label>
+                                <input name="driverName" type="text" class="form-control" ng-model="data.DriverName" required />
+                                <div class="m-t-xs" ng-show="submitForm.driverName.$invalid && submitForm.$submitted">
+                                    <span class="text-danger" ng-show="submitForm.driverName.$error">
+                                        <i class="fa fa-exclamation-triangle"></i>&nbsp;请输入代驾公司名称
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>服务范围</label>
+                                <input type="text" class="form-control" ng-model="data.ServiceArea" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>公务需求</label>
+                                <input type="text" class="form-control" ng-model="data.BusinessRequirement" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>联系电话</label>
+                                <input type="text" class="form-control" ng-model="data.ContactPhone" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>个人需求</label>
+                                <input type="text" class="form-control" ng-model="data.PersonalRequirement" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>代驾热线</label>
+                                <input type="text" class="form-control" ng-model="data.DrivingPhone" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hpanel hgreen">
+                <div class="panel-heading hbuilt">
+                    <div panel-tools></div>
+                    <i class="panel-icon fa fa-info-circle"></i>&nbsp;价格
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="data.CustomFirstColumn" placeholder="请输入名称，如路程（公里）" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="data.CustomSecondColumn" placeholder="请输入时间范围" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="data.CustomThirdColumn" placeholder="请输入时间范围" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-success btn-sm" ng-click="addPrice()"><i class="fa fa-plus"></i>&nbsp;添加</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" ng-repeat="item in data.Prices">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="item.Distance" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="item.FirstTimePeriodsPrice" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="item.SecondTimePeriodsPrice" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-danger btn-sm" ng-click="removePrice($index)"><i class="fa fa-remove"></i>&nbsp;删除</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-3">
+        <div sticky class="hpanel hgreen">
+            <div class="panel-heading hbuilt">
+                <div panel-tools></div>
+                <i class="panel-icon fa fa-bars"></i>操作
+            </div>
+            <div class="panel-body">
+                <ul class="mailbox-list">
+                    <li>
+                        <a ng-click="save(submitForm)"><i class="fa fa-save text-success"></i>&nbsp;保存</a>
+                    </li>
+                </ul>
+                <hr>
+                <ul class="mailbox-list">
+                    <li>
+                        <a ui-sref="query.designateddrivers"><i class="fa fa-backward"></i>&nbsp;返回</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

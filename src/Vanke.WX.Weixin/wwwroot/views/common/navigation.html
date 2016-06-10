@@ -1,0 +1,43 @@
+<div id="navigation">
+    <div class="profile-picture">
+
+        <div class="stats-label text-color">
+            <span login-info></span>
+            <ul>
+                <li><small>系统管理员</small></li>
+                <li><small><a ui-sref="common.login" class="btn btn-danger btn-xs">退出</a></small></li>
+            </ul>
+        </div>
+    </div>
+
+    <ul side-navigation class="nav" id="side-menu">
+        <li ng-class="{'active': $state.includes('settings')}">
+            <a href="#"><span class="nav-icon fa fa-lg fa-cogs"></span><span class="nav-label">系统设置</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{'in': $state.includes('settings')}">
+                <li ui-sref-active="active"><a ui-sref="settings.staffs">内部员工管理</a></li>
+                <li ui-sref-active="active"><a ui-sref="settings.dinnerplaces">宴请地点管理</a></li>
+                <li ui-sref-active="active"><a ui-sref="settings.dinnertypes">宴请类型管理</a></li>
+                <li ui-sref-active="active"><a ui-sref="settings.items">物品管理</a></li>
+                <li ui-sref-active="active"><a ui-sref="settings.itemstorageareas">物品存放区域管理</a></li>
+                <li ui-sref-active="active"><a ui-sref="settings.itemstorageplaces">物品存放地点管理</a></li>
+            </ul>
+        </li>
+        <li ng-class="{'active': $state.includes('service')}">
+            <a href="#"><span class="nav-icon fa fa-user fa-lg"></span><span class="nav-label">行政服务</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{'in': $state.includes('service')}">
+                <li ui-sref-active="active"><a ui-sref="service.externalpersonneldiningregister">外部人员就餐管理</a></li>
+                <li ui-sref-active="active"><a ui-sref="service.dinnerregister">宴请管理</a></li>
+                <li ui-sref-active="active"><a ui-sref="service.idleassets">闲置资产管理</a></li>
+                <li ui-sref-active="active"><a ui-sref="service.itemborrow">物品借用管理</a></li>
+            </ul>
+        </li>
+        <li ng-class="{active: $state.includes('query')}">
+            <a href="#"><span class="nav-icon fa fa-car"></span><span class="nav-label">服务查询</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level" ng-class="{in: $state.includes('query')}">
+                <li ui-sref-active="active"><a ui-sref="query.surroundingservices">无锡周边</a></li>
+                <li ui-sref-active="active"><a ui-sref="query.designateddrivers">代驾管理</a></li>
+                <li ui-sref-active="active"><a ui-sref="query.employeediscounts">员工优惠管理</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
