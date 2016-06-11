@@ -33,11 +33,11 @@ namespace Vanke.WX.Weixin.Controllers
         {
             return await _dinnerPlaceService.GetByKeyAsync(id);
         }
-        
+
         /// <summary>
         /// Insert/Update dinner place
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
         public async Task Save(DinnerPlaceModel model)

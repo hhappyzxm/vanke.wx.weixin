@@ -10,19 +10,40 @@ using Vanke.WX.Weixin.ViewModels;
 
 namespace Vanke.WX.Weixin.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : GenericApiController
     {
         /// <summary>
         /// Get current login user name
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        public object Get()
+        //[HttpGet]
+        //public object Get()
+        //{
+        //    return new
+        //    {
+        //        UserName = AccountManager.Instance.CurrentLoginUser.UserName
+        //    };
+        //}
+
+        [HttpPost]
+        [Route("api/account/login")]
+        public object Login(LoginViewModel viewModel)
         {
+            var currentLogin = (CurrentLogin)AccountManager.Instance.SignIn(viewModel.LoginName, viewModel.Password);
+
             return new
             {
-                UserName = AccountManager.Instance.CurrentLoginUser.UserName
+                IsAuthed = currentLogin != null,
+                User = currentLogin
             };
+        }
+
+        [HttpPost]
+        [Route("api/account/logout")]
+        public void Logout()
+        {
+            AccountManager.Instance.SignOut();
         }
     }
 }

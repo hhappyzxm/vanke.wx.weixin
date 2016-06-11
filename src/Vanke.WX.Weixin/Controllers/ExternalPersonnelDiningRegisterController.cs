@@ -43,6 +43,17 @@ namespace Vanke.WX.Weixin.Controllers
         }
 
         /// <summary>
+        /// Insert/Update dinner type
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task Save(ExternalPersonnelDiningRegisterModel model)
+        {
+            await _externalPersonnelDiningRegisterService.InsertAsync(model);
+        }
+
+        /// <summary>
         /// Cancel borrow
         /// </summary>
         /// <param name="id"></param>

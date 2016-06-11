@@ -28,7 +28,7 @@ namespace Vanke.WX.Weixin.Controllers
 
             foreach (var item in services)
             {
-                item.ImagePath = "http://localhost:54843/Upload/" + item.ImagePath;
+                item.ImagePath = "/Upload/" + item.ImagePath;
             }
 
             return services;

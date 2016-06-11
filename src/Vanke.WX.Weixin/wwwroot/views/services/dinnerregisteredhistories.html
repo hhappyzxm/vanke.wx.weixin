@@ -1,0 +1,78 @@
+﻿<div class="row" ng-controller="DinnerRegisteredCtrl">
+    <div class="hpanel">
+        <div class="panel-heading hbuilt">
+            <div panel-tools></div>
+            <i class="panel-icon fa fa-search"></i>搜索
+        </div>
+        <div class="panel-body">
+            <div class="form-inline">
+                <div class="form-group">
+                    <label>状态</label>
+                    <select class="form-control" ng-model="filterStatus">
+                        <option value="0">已登记</option>
+                        <option value="1">已取消</option>
+                    </select>
+                </div>
+                <button class="btn btn-success" ng-click="search()"><i class="fa fa-search"></i>&nbsp; 搜索</button>
+            </div>
+        </div>
+    </div>
+    <div class="hpanel">
+        <div class="panel-heading hbuilt">
+            <div panel-tools></div>
+            <i class="panel-icon fa fa-list"></i>&nbsp;宴请登记
+        </div>
+        <div class="panel-body list">
+            <div class="table-responsive">
+                <table datatable="ng" dt-options="::dtOptions" dt-column-defs="::dtMessageColumnDefs" class="table table-bordered table-hover nowrap" width="100%">
+                    <thead>
+                    <tr>
+                        <th>登记员工</th>
+                        <th>宴请时间</th>
+                        <th>宴请人数</th>
+                        <th>宴请地点</th>
+                        <th>宴请类型</th>
+                        <th>状态</th>
+                        <th>登记时间</th>
+                        <th>取消时间</th>
+                        <th>备注</th>
+                        <th width="70" class="text-center">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in dinnerRegisteredHistories">
+                        <td>
+                            {{item.Staff}}
+                        </td>
+                        <td>
+                            {{item.DinnerDate | date : 'yyyy-MM-dd hh:mm'}}
+                        </td>
+                        <td>
+                            {{item.PeopleCount}}
+                        </td>
+                        <td>
+                            {{item.Place}}
+                        </td>
+                        <td>
+                            {{item.Type}}
+                        </td>
+                        <td>
+                            {{item.Status == 0 ? '已借用' : '已取消'}}
+                        </td>
+                        <td>
+                            {{item.RegisteredOn | date : 'yyyy-MM-dd hh:mm'}}
+                        </td>
+                        <td>
+                            {{item.CancelledOn | date : 'yyyy-MM-dd hh:mm'}}
+                        </td>
+                        <td>
+                            {{item.Comment}}
+                        </td>
+                        <td class="text-center"><button ng-hide="item.Status == 1" class="btn btn-danger btn-xs" type="button" ng-click="cancel(item.ID)">取消</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

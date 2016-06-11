@@ -25,8 +25,7 @@ namespace Vanke.WX.Weixin
             config.Filters.Add(new AuthorizeAttribute());
 
             config.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(IoC.Container);
-
-            app.UseCors(CorsOptions.AllowAll);
+            
             app.UseWebApi(config);
         }
     }
