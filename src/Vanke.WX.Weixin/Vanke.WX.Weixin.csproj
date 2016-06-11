@@ -367,6 +367,7 @@
     <Content Include="wwwroot\scripts\controllers\settings\staffedit.js" />
     <Content Include="wwwroot\scripts\controllers\settings\staffs.js" />
     <Content Include="wwwroot\scripts\controllers\weixin\designateddrivers.js" />
+    <Content Include="wwwroot\scripts\controllers\weixin\externalpersonneldiningregister.js" />
     <Content Include="wwwroot\scripts\controllers\weixin\idleassets.js" />
     <Content Include="wwwroot\scripts\controllers\weixin\surroundingservices.js" />
     <Content Include="wwwroot\scripts\directives.js" />
@@ -406,6 +407,7 @@
     <Content Include="wwwroot\views\settings\staffedit.html" />
     <Content Include="wwwroot\views\settings\staffs.html" />
     <Content Include="wwwroot\views\weixin\designateddrivers.html" />
+    <Content Include="wwwroot\views\weixin\externalpersonneldiningregister.html" />
     <Content Include="wwwroot\views\weixin\idleassets.html" />
     <Content Include="wwwroot\views\weixin\surroundingservices.html" />
     <Content Include="bower.json" />
