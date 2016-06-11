@@ -93,7 +93,7 @@
             /**
              * External Personnel Dining Register Api
              */
-            externalPersonnelDiningRegister: $resource(null, { id: '@id' }, {
+            externalPersonnelDiningRegister: $resource(apiHost + '/api/externalpersonneldiningregister/:id', { id: '@id' }, {
                 'search': {
                     method: 'GET',
                     url: apiHost + '/api/externalpersonneldiningregister/search?status=:status',

@@ -67,13 +67,14 @@ namespace Vanke.WX.Weixin.Service
 
         public async Task InsertAsync(ExternalPersonnelDiningRegisterModel model)
         {
-            var entity = new ExternalPersonnelDiningRegisterHistory()
+            var entity = new ExternalPersonnelDiningRegisterHistory
             {
-                StaffID = model.StaffID,
+                StaffID = (long)AccountManager.Instance.CurrentLoginUser.ID,
                 CardQuantity = model.CardQuantity,
                 Comment = model.Comment,
                 RegisteredOn = DateTime.Now,
-                Status = ExternalPersonnelDiningRegisterStatus.Active};
+                Status = ExternalPersonnelDiningRegisterStatus.Active
+            };
 
             UnitOfWork.Set<ExternalPersonnelDiningRegisterHistory>().Add(entity);
             await UnitOfWork.SaveChangesAsync();
