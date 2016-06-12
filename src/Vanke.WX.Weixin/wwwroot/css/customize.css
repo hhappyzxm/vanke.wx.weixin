@@ -70,3 +70,11 @@ ul.rightside-list, ul.h-list {
 .txt-mandatory {
     color: red;
 }
+
+.hbuilt.hhgred {
+    background-color: #ECBCB6 ;
+}
+
+.panel-heading.hhgred {
+    color: #A54949;
+}

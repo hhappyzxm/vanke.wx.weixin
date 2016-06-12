@@ -31,7 +31,7 @@ namespace Vanke.WX.Weixin.Controllers
 
         [HttpGet]
         [Route("getownhistories")]
-        public async Task<IEnumerable<ItemBorrowModel>> GetOwnHistories(string status)
+        public async Task<IEnumerable<ItemBorrowModel>> GetOwnHistories()
         {
             return await _itemBorrowService.GetOwnHistoriesAsync();
         }
