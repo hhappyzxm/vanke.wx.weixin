@@ -68,6 +68,24 @@ namespace Vanke.WX.Weixin.Service
             }).ToListAsync();
         }
 
+        public async Task<IEnumerable<ItemBorrowModel>> GetOwnHistoriesAsync()
+        {
+            return await UnitOfWork.Set<ItemBorrowHistory>().Select(p => new ItemBorrowModel
+            {
+                ID = p.ID,
+                Item = p.Item.Name,
+                Status = p.Status,
+                Quantity = p.Quantity,
+                BorrowedOn = p.BorrowedOn,
+                CancelledOn = p.CancelledOn
+            })
+                .Where(
+                    p =>
+                        p.Status != ItemBorrowStatus.Removed &&
+                        p.StaffID == (long) AccountManager.Instance.CurrentLoginUser.ID)
+                .ToListAsync();
+        }
+
         public async Task InsertAsync(ItemBorrowModel model)
         {
             var entity = new ItemBorrowHistory

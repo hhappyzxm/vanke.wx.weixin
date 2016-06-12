@@ -64,6 +64,11 @@
                     url: apiHost + '/api/itemborrow/search?status=:status',
                     isArray: true
                 },
+                'getOwnHistories': {
+                    method: 'GET',
+                    url: apiHost + '/api/itemborrow/getownhistories',
+                    isArray: true
+                },
                 'cancel': {
                     method: 'POST',
                     url: apiHost + '/api/itemborrow/cancel/:id'

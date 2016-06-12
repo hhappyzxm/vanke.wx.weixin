@@ -29,6 +29,13 @@ namespace Vanke.WX.Weixin.Controllers
                         : new[] {(ItemBorrowStatus) int.Parse(status)});
         }
 
+        [HttpGet]
+        [Route("getownhistories")]
+        public async Task<IEnumerable<ItemBorrowModel>> GetOwnHistories(string status)
+        {
+            return await _itemBorrowService.GetOwnHistoriesAsync();
+        }
+
         /// <summary>
         /// Borrow item
         /// </summary>

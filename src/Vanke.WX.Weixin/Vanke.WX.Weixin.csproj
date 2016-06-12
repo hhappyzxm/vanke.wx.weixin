@@ -369,6 +369,7 @@
     <Content Include="wwwroot\scripts\controllers\settings\staffs.js" />
     <Content Include="wwwroot\scripts\controllers\weixin\designateddrivers.js" />
     <Content Include="wwwroot\scripts\controllers\weixin\dinnerregister.js" />
+    <Content Include="wwwroot\scripts\controllers\weixin\itemborrowhistories.js" />
     <Content Include="wwwroot\scripts\controllers\weixin\itemborrow.js" />
     <Content Include="wwwroot\scripts\controllers\weixin\externalpersonneldiningregister.js" />
     <Content Include="wwwroot\scripts\controllers\weixin\idleassets.js" />
@@ -411,6 +412,7 @@
     <Content Include="wwwroot\views\settings\staffs.html" />
     <Content Include="wwwroot\views\weixin\designateddrivers.html" />
     <Content Include="wwwroot\views\weixin\dinnerregister.html" />
+    <Content Include="wwwroot\views\weixin\itemborrowhistories.html" />
     <Content Include="wwwroot\views\weixin\itemborrow.html" />
     <Content Include="wwwroot\views\weixin\externalpersonneldiningregister.html" />
     <Content Include="wwwroot\views\weixin\idleassets.html" />

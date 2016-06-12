@@ -10,6 +10,8 @@ namespace Vanke.WX.Weixin.Service.Interface
     {
         Task<IEnumerable<ItemBorrowModel>> GetAllAsync(ItemBorrowStatus[] filterStatuses = null);
 
+        Task<IEnumerable<ItemBorrowModel>> GetOwnHistoriesAsync();
+
         Task CancelAsync(long key);
     }
 }
