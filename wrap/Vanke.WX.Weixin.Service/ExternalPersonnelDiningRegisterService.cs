@@ -65,6 +65,28 @@ namespace Vanke.WX.Weixin.Service
             }).ToListAsync();
         }
 
+        public async Task<IEnumerable<ExternalPersonnelDiningRegisterModel>> GetOwnHistoriesAsync()
+        {
+            var staffId = (long)AccountManager.Instance.CurrentLoginUser.ID;
+
+            return await UnitOfWork.Set<ExternalPersonnelDiningRegisterHistory>()
+                .Where(
+                    p =>
+                        p.Status != ExternalPersonnelDiningRegisterStatus.Removed &&
+                        p.StaffID == staffId)
+                .OrderByDescending(p => p.RegisteredOn)
+                .Select(p => new ExternalPersonnelDiningRegisterModel
+                {
+                    ID = p.ID,
+                    Comment = p.Comment,
+                    Status = p.Status,
+                    CardQuantity = p.CardQuantity,
+                    RegisteredOn = p.RegisteredOn,
+                    CancelledOn = p.CancelledOn
+                })
+                .ToListAsync();
+        }
+
         public async Task InsertAsync(ExternalPersonnelDiningRegisterModel model)
         {
             var entity = new ExternalPersonnelDiningRegisterHistory

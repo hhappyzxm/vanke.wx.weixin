@@ -42,6 +42,13 @@ namespace Vanke.WX.Weixin.Controllers
             await _externalPersonnelDiningRegisterService.InsertAsync(model);
         }
 
+        [HttpGet]
+        [Route("getownhistories")]
+        public async Task<IEnumerable<ExternalPersonnelDiningRegisterModel>> GetOwnHistories()
+        {
+            return await _externalPersonnelDiningRegisterService.GetOwnHistoriesAsync();
+        }
+
         /// <summary>
         /// Insert/Update dinner type
         /// </summary>

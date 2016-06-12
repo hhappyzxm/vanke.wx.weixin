@@ -77,6 +77,7 @@ namespace Vanke.WX.Weixin.Service
                     p =>
                         p.Status != ItemBorrowStatus.Removed &&
                         p.StaffID == staffId)
+                .OrderByDescending(p => p.BorrowedOn)
                 .Select(p => new ItemBorrowModel
                 {
                     ID = p.ID,

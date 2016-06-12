@@ -39,6 +39,9 @@
                         <textarea rows="3" class="form-control" ng-model="data.Comment"></textarea>
                     </div>
                     <button type="button" class="btn btn-success" style="width: 100%" ng-click="save(submitForm)">提交</button>
+                    <div class="weixin_more" ng-if="hasHistories">
+                        <a href="externalpersonneldiningregisterhistories.html">我的用餐记录</a>
+                    </div>
                 </form>
             </div>
         </div>

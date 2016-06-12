@@ -107,6 +107,11 @@
                 'cancel': {
                     method: 'POST',
                     url: apiHost + '/api/externalpersonneldiningregister/cancel/:id'
+                },
+                'getOwnHistories': {
+                    method: 'GET',
+                    url: apiHost + '/api/externalpersonneldiningregister/getownhistories',
+                    isArray: true
                 }
             }),
 

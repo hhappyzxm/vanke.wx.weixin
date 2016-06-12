@@ -78,3 +78,11 @@ ul.rightside-list, ul.h-list {
 .panel-heading.hhgred {
     color: #A54949;
 }
+
+.weixin_more {
+    margin-top: 20px;
+}
+
+.weixin_more a {
+    color: red;
+}

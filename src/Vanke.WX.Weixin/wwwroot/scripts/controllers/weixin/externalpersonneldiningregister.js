@@ -2,6 +2,10 @@
     'use strict';
 
     app.controller('ExternalPersonnelDiningRegisterCtrl', function ($scope, api, sweetAlert) {
+        api.externalPersonnelDiningRegister.getOwnHistories(function (result) {
+            $scope.hasHistories = result.length > 0;
+        });
+
         $scope.save = function (form) {
             form.$setSubmitted(true);
 
