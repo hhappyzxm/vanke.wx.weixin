@@ -28,6 +28,16 @@ namespace Vanke.WX.Weixin.Controllers
                         : new[] {(DinnerRegisterStatus) int.Parse(status)});
         }
 
+        /// <summary>
+        /// Insert/Update dinner type
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task Save(DinnerRegisterModel model)
+        {
+            await _dinnerRegisterService.InsertAsync(model);
+        }
 
         /// <summary>
         /// Cancel borrow

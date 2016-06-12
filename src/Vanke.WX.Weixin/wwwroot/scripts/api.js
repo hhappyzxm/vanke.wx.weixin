@@ -78,7 +78,7 @@
             /**
              * Dinner Register Api
              */
-            dinnerRegister: $resource(null, { id: '@id' }, {
+            dinnerRegister: $resource(apiHost + '/api/dinnerregister/:id', { id: '@id' }, {
                 'search': {
                     method: 'GET',
                     url: apiHost + '/api/dinnerregister/search?status=:status',

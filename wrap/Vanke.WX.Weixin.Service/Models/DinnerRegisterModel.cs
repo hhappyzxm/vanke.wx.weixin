@@ -16,7 +16,11 @@ namespace Vanke.WX.Weixin.Service.Models
 
         public string Type { get; set; }
 
+        public long TypeID { get; set; }
+
         public string Place { get; set; }
+
+        public long PlaceID { get; set; }
 
         public string Comment { get; set; }
 

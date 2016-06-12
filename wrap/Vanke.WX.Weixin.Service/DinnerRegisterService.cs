@@ -73,9 +73,22 @@ namespace Vanke.WX.Weixin.Service
             }).ToListAsync();
         }
 
-        public Task InsertAsync(DinnerRegisterModel model)
+        public async Task InsertAsync(DinnerRegisterModel model)
         {
-            throw new NotImplementedException();
+            var entity = new DinnerRegisterHistory
+            {
+                StaffID = (long)AccountManager.Instance.CurrentLoginUser.ID,
+                PeopleCount = model.PeopleCount,
+                DinnerDate = DateTime.Now,
+                TypeID = model.TypeID,
+                PlaceID = model.PlaceID,
+                Comment = model.Comment,
+                RegisteredOn = DateTime.Now,
+                Status = DinnerRegisterStatus.Active
+            };
+
+            UnitOfWork.Set<DinnerRegisterHistory>().Add(entity);
+            await UnitOfWork.SaveChangesAsync();
         }
     }
 }
