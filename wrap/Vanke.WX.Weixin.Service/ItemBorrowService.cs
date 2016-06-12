@@ -68,9 +68,19 @@ namespace Vanke.WX.Weixin.Service
             }).ToListAsync();
         }
 
-        public Task InsertAsync(ItemBorrowModel model)
+        public async Task InsertAsync(ItemBorrowModel model)
         {
-            throw new NotImplementedException();
+            var entity = new ItemBorrowHistory
+            {
+                StaffID = (long)AccountManager.Instance.CurrentLoginUser.ID,
+                ItemID = model.ItemID,
+                Quantity = model.Quantity,
+                BorrowedOn = DateTime.Now,
+                Status = ItemBorrowStatus.Active
+            };
+
+            UnitOfWork.Set<ItemBorrowHistory>().Add(entity);
+            await UnitOfWork.SaveChangesAsync();
         }
     }
 }

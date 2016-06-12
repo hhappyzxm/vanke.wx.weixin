@@ -8,9 +8,13 @@ namespace Vanke.WX.Weixin.Service.Models
     {
         public long ID { get; set; }
 
+        public long StaffID { get; set; }
+
         public string Staff { get; set; }
 
         public string Item { get; set; }
+
+        public long ItemID { get; set; }
 
         public int Quantity { get; set; }
 

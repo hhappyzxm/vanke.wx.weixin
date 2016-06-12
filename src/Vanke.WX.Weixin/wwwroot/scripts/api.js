@@ -58,7 +58,7 @@
             /**
              * Item Borrow Api
              */
-            itemBorrow: $resource(null, { id: '@id' }, {
+            itemBorrow: $resource(apiHost + '/api/itemborrow/:id', { id: '@id' }, {
                 'search': {
                     method: 'GET',
                     url: apiHost + '/api/itemborrow/search?status=:status',
