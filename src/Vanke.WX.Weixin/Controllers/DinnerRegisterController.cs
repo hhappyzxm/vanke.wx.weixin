@@ -28,6 +28,13 @@ namespace Vanke.WX.Weixin.Controllers
                         : new[] {(DinnerRegisterStatus) int.Parse(status)});
         }
 
+        [HttpGet]
+        [Route("getownhistories")]
+        public async Task<IEnumerable<DinnerRegisterModel>> GetOwnHistories()
+        {
+            return await _dinnerRegisterService.GetOwnHistoriesAsync();
+        }
+
         /// <summary>
         /// Insert/Update dinner type
         /// </summary>

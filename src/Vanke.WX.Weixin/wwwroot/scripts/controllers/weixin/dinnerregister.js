@@ -10,6 +10,10 @@
             $scope.dinnerPlaces = result;
         });
 
+        api.dinnerRegister.getOwnHistories(function (result) {
+            $scope.hasHistories = result.length > 0;
+        });
+
         $scope.save = function (form) {
             form.$setSubmitted(true);
 

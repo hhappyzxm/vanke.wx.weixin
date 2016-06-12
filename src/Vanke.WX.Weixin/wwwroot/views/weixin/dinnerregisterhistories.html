@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title page-title></title>
+
+    <link rel="stylesheet" href="../../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../lib/font-awesome/css/font-awesome.css" />
+
+    <link rel="stylesheet" href="../../fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="../../fonts/pe-icon-7-stroke/css/helper.css" />
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="../../css/customize.css">
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container text-center text-white" style="line-height: 50px; font-size: 14px;">
+            我的宴请记录
+        </div>
+    </div>
+    <div ng-controller="DinnerRegisterHistoriesCtrl" style="padding-top: 50px;">
+        <div class="hpanel " ng-repeat="item in ::histories">
+            <div class="panel-heading hbuilt" ng-class="{'hhgred':item.Status == 1}">
+                <i class="panel-icon fa fa-info-circle"></i>&nbsp;<span ng-bind="item.Status == 0 ? '已登记' : '已取消'"></span>
+            </div>
+            <div class="panel-body list">
+                <table class="table table-bordered table-hover nowrap" width="100%">
+                    <tbody>
+                        <tr>
+                            <td style="width: 50%">
+                                <strong>宴请地点</strong>
+                            </td>
+                            <td class="text-center">
+                                <span ng-bind="item.Place"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>宴请类型</strong>
+                            </td>
+                            <td class="text-center">
+                                <span ng-bind="item.Type"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>宴请人数</strong>
+                            </td>
+                            <td class="text-center">
+                                <span ng-bind="item.PeopleCount"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>宴请时间</strong>
+                            </td>
+                            <td class="text-center">
+                                <span ng-bind="item.DinnerDate | date : 'yyyy-MM-dd hh:mm'"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>登记时间</strong>
+                            </td>
+                            <td class="text-center">
+                                <span ng-bind="item.RegisteredOn | date : 'yyyy-MM-dd hh:mm'"></span>
+                            </td>
+                        </tr>
+                        <tr ng-if="item.Status == 1">
+                            <td>
+                                <strong>取消时间</strong>
+                            </td>
+                            <td class="text-center">
+                                <span ng-bind="item.CancelledOn | date : 'yyyy-MM-dd hh:mm'"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!--[if lt IE 7]>
+            <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            <![endif]-->
+
+
+    <script src="../../lib/jquery/jquery.js"></script>
+    <script src="../../lib/angular/angular.js"></script>
+    <script src="../../lib/angular-resource/angular-resource.js"></script>
+
+    <script src="../../scripts/weixin_app.js"></script>
+    <script src="../../scripts/api.js"></script>
+    <script src="../../scripts/config.http.js"></script>
+
+    <script src="../../scripts/controllers/weixin/dinnerregisterhistories.js"></script>
+</body>
+</html>

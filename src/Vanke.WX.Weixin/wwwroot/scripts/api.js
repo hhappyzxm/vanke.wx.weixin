@@ -92,6 +92,11 @@
                 'cancel': {
                     method: 'POST',
                     url: apiHost + '/api/dinnerregister/cancel/:id'
+                },
+                'getOwnHistories': {
+                    method: 'GET',
+                    url: apiHost + '/api/dinnerregister/getownhistories',
+                    isArray: true
                 }
             }),
 

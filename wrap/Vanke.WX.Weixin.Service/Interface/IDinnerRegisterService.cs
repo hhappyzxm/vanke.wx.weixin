@@ -10,6 +10,8 @@ namespace Vanke.WX.Weixin.Service.Interface
     {
         Task<IEnumerable<DinnerRegisterModel>> GetAllAsync(DinnerRegisterStatus[] filterStatuses = null);
 
+        Task<IEnumerable<DinnerRegisterModel>> GetOwnHistoriesAsync();
+
         Task CancelAsync(long key);
     }
 }

@@ -73,13 +73,39 @@ namespace Vanke.WX.Weixin.Service
             }).ToListAsync();
         }
 
+        public async Task<IEnumerable<DinnerRegisterModel>> GetOwnHistoriesAsync()
+        {
+            var staffId = (long)AccountManager.Instance.CurrentLoginUser.ID;
+
+            var query = from registerHistory in UnitOfWork.Set<DinnerRegisterHistory>()
+                join staff in UnitOfWork.Set<Staff>() on registerHistory.StaffID equals staff.ID
+                join type in UnitOfWork.Set<DinnerType>() on registerHistory.TypeID equals type.ID
+                join place in UnitOfWork.Set<DinnerPlace>() on registerHistory.PlaceID equals place.ID
+                        where registerHistory.Status != DinnerRegisterStatus.Removed && registerHistory.StaffID == staffId
+                        orderby registerHistory.RegisteredOn descending 
+                select new DinnerRegisterModel
+                {
+                    ID = registerHistory.ID,
+                    Type = type.Type,
+                    Place = place.Place,
+                    DinnerDate = registerHistory.DinnerDate,
+                    PeopleCount = registerHistory.PeopleCount,
+                    Comment = registerHistory.Comment,
+                    Status = registerHistory.Status,
+                    RegisteredOn = registerHistory.RegisteredOn,
+                    CancelledOn = registerHistory.CancelledOn
+                };
+
+            return await query.ToListAsync();
+        }
+
         public async Task InsertAsync(DinnerRegisterModel model)
         {
             var entity = new DinnerRegisterHistory
             {
                 StaffID = (long)AccountManager.Instance.CurrentLoginUser.ID,
                 PeopleCount = model.PeopleCount,
-                DinnerDate = DateTime.Now,
+                DinnerDate = model.DinnerDate,
                 TypeID = model.TypeID,
                 PlaceID = model.PlaceID,
                 Comment = model.Comment,
