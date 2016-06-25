@@ -58,7 +58,7 @@
                     </div>
                     <div class="form-group">
                         <label>宴请时间<span class="txt-mandatory">*</span></label>
-                        <input name="registeredOn" type="datetime" class="form-control" ng-model="data.DinnerDate" required/>
+                        <input name="registeredOn" type="datetime-local" class="form-control" ng-model="data.DinnerDate" required/>
                         <div class="m-t-xs" ng-show="submitForm.registeredOn.$invalid && submitForm.$submitted">
                             <span class="text-danger" ng-show="submitForm.registeredOn.$error">
                                 <i class="fa fa-exclamation-triangle"></i>&nbsp;请输入宴请时间
