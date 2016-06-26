@@ -51,14 +51,19 @@ namespace Vanke.WX.Weixin.App_Extension
                     weixinCode);
 
                 var responseData = client.DownloadString(url);
-
                 var serializer = new JavaScriptSerializer();
                 var responseObj = serializer.Deserialize<Dictionary<string, string>>(responseData);
+
+                string errMsg;
+                if (responseObj.TryGetValue("errmsg", out errMsg))
+                {
+                    throw new Exception(errMsg);
+                }
 
                 string weixinOpenId;
                 if (!responseObj.TryGetValue("openid", out weixinOpenId))
                 {
-                    throw new Exception("Cannot found open id of weixin");
+                    throw new Exception("Can not found open id of weixin");
                 }
 
                 var staffService = IoC.Container.GetInstance<IStaffService>();
