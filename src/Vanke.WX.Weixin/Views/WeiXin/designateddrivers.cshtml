@@ -1,0 +1,103 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container text-center text-white" style="line-height: 50px; font-size: 14px;">
+        代驾
+    </div>
+</div>
+<div ng-controller="DesignatedDriversCtrl" style="padding-top: 50px;">
+    <div class="hpanel" ng-repeat="item in :: designatedDrivers">
+        <div class="panel-heading hbuilt">
+            <div panel-tools></div>
+            <i class="panel-icon fa fa-info-circle"></i>&nbsp;<span ng-bind="item.DriverName"></span>
+        </div>
+        <div class="panel-body list">
+            <div>
+                <table class="table table-bordered table-hover nowrap" width="100%" style="margin-bottom: 0;">
+                    <tbody>
+                        <tr>
+                            <td style="width: 30%">
+                                <strong>服务范围</strong>
+                            </td>
+                            <td colspan="2">
+                                <span ng-bind="item.ServiceArea"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>公务需求</strong>
+                            </td>
+                            <td colspan="2">
+                                <span ng-bind="item.BusinessRequirement"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>联系电话</strong>
+                            </td>
+                            <td colspan="2">
+                                <span ng-bind="item.ContactPhone"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong> 个人需求</strong>
+                            </td>
+                            <td colspan="2">
+                                <span ng-bind="item.PersonalRequirement"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>代驾热线</strong>
+                            </td>
+                            <td colspan="2">
+                                <span ng-bind="item.DrivingPhone"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <strong> 价格</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span ng-bind="item.CustomFirstColumn"></span>
+                            </td>
+                            <td style="width: 35%">
+                                <span ng-bind="item.CustomSecondColumn"></span>
+                            </td>
+                            <td>
+                                <span ng-bind="item.CustomThirdColumn"></span>
+                            </td>
+                        </tr>
+                        <tr ng-repeat="price in ::item.Prices">
+                            <td>
+                                <span ng-bind="price.Distance"></span>
+                            </td>
+                            <td>
+                                <span ng-bind="price.FirstTimePeriodsPrice"></span>
+                            </td>
+                            <td>
+                                <span ng-bind="price.SecondTimePeriodsPrice"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/wwwroot/lib/jquery/jquery.js"></script>
+    <script src="~/wwwroot/lib/angular/angular.js"></script>
+    <script src="~/wwwroot/lib/angular-resource/angular-resource.js"></script>
+    <script src="~/wwwroot/lib/sweetalert2/sweetalert2.min.js"></script>
+
+    <script src="~/wwwroot/scripts/weixin_app.js"></script>
+    <script src="~/wwwroot/scripts/api.js"></script>
+    <script src="~/wwwroot/scripts/config.http.js"></script>
+    <script src="~/wwwroot/scripts/factories.js"></script>
+
+    <script src="~/wwwroot/scripts/controllers/weixin/designateddrivers.js"></script>
+}

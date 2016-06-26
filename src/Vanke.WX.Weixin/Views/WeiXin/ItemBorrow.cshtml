@@ -1,0 +1,52 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container text-center text-white" style="line-height: 50px; font-size: 14px;">
+        物品借用
+    </div>
+</div>
+<div ng-controller="ItemBorrowCtrl" style="padding-top: 50px;">
+    <div class="hpanel hgreen">
+
+        <div class="panel-body">
+            <form name="submitForm">
+                <div class="form-group">
+                    <label>物品<span class="txt-mandatory">*</span></label>
+                    <select name="item" class="form-control" ng-model="data.ItemID" ng-options="item.ID as item.Name for item in items" required>
+                        <option value="">--- 请选择 ---</option>
+                    </select>
+                    <div class="m-t-xs" ng-show="submitForm.item.$invalid && submitForm.$submitted">
+                        <span class="text-danger" ng-show="submitForm.item.$error">
+                            <i class="fa fa-exclamation-triangle"></i>&nbsp;请选择物品
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>数量<span class="txt-mandatory">*</span></label>
+                    <input name="quantity" type="text" class="form-control" ng-model="data.Quantity" required />
+                    <div class="m-t-xs" ng-show="submitForm.quantity.$invalid && submitForm.$submitted">
+                        <span class="text-danger" ng-show="submitForm.quantity.$error">
+                            <i class="fa fa-exclamation-triangle"></i>&nbsp;请输入数量
+                        </span>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success" style="width: 100%" ng-click="save(submitForm)">提交</button>
+                <div class="weixin_more" ng-if="hasHistories">
+                    <a href="ItemBorrowHistories.cshtml">我的借用记录</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/wwwroot/lib/jquery/jquery.js"></script>
+    <script src="~/wwwroot/lib/angular/angular.js"></script>
+    <script src="~/wwwroot/lib/angular-resource/angular-resource.js"></script>
+    <script src="~/wwwroot/lib/sweetalert2/sweetalert2.min.js"></script>
+
+    <script src="~/wwwroot/scripts/weixin_app.js"></script>
+    <script src="~/wwwroot/scripts/api.js"></script>
+    <script src="~/wwwroot/scripts/config.http.js"></script>
+    <script src="~/wwwroot/scripts/factories.js"></script>
+
+    <script src="~/wwwroot/scripts/controllers/weixin/itemborrow.js"></script>
+}

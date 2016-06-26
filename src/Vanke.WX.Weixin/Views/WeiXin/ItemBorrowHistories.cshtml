@@ -1,0 +1,64 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container text-center text-white" style="line-height: 50px; font-size: 14px;">
+        我的物品借用记录
+    </div>
+</div>
+<div ng-controller="ItemBorrowHistoriesCtrl" style="padding-top: 50px;">
+    <div class="hpanel " ng-repeat="item in ::histories">
+        <div class="panel-heading hbuilt" ng-class="{'hhgred':item.Status == 1}">
+            <i class="panel-icon fa fa-info-circle"></i>&nbsp;<span ng-bind="item.Status == 0 ? '已借用' : '已取消'"></span>
+        </div>
+        <div class="panel-body list">
+            <table class="table table-bordered table-hover nowrap" width="100%">
+                <tbody>
+                    <tr>
+                        <td style="width: 50%">
+                            <strong>物品</strong>
+                        </td>
+                        <td class="text-center">
+                            <span ng-bind="item.Item"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>数量</strong>
+                        </td>
+                        <td class="text-center">
+                            <span ng-bind="item.Quantity"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>借用时间</strong>
+                        </td>
+                        <td class="text-center">
+                            <span ng-bind="item.BorrowedOn | date : 'yyyy-MM-dd hh:mm'"></span>
+                        </td>
+                    </tr>
+                    <tr ng-if="item.Status == 1">
+                        <td>
+                            <strong>取消时间</strong>
+                        </td>
+                        <td class="text-center">
+                            <span ng-bind="item.CancelledOn | date : 'yyyy-MM-dd hh:mm'"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/wwwroot/lib/jquery/jquery.js"></script>
+    <script src="~/wwwroot/lib/angular/angular.js"></script>
+    <script src="~/wwwroot/lib/angular-resource/angular-resource.js"></script>
+    <script src="~/wwwroot/lib/sweetalert2/sweetalert2.min.js"></script>
+
+    <script src="~/wwwroot/scripts/weixin_app.js"></script>
+    <script src="~/wwwroot/scripts/api.js"></script>
+    <script src="~/wwwroot/scripts/config.http.js"></script>
+    <script src="~/wwwroot/scripts/factories.js"></script>
+
+    <script src="~/wwwroot/scripts/controllers/weixin/itemborrowhistories.js"></script>
+}

@@ -1,0 +1,76 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container text-center text-white" style="line-height: 50px; font-size: 14px;">
+        闲置资产
+    </div>
+</div>
+<div ng-controller="SurroundingServicesCtrl" style="padding-top: 50px;">
+    <div class="hpanel" ng-repeat="item in ::surroundingServices">
+        <div class="panel-heading hbuilt">
+            <i class="panel-icon fa fa-list"></i>&nbsp;<span ng-bind="item.Name"></span>
+        </div>
+        <div class="panel-body list">
+            <table class="table table-bordered table-hover nowrap" width="100%">
+                <tbody>
+                    <tr>
+                        <td colspan="2">
+                            <img ng-src="{{item.ImagePath}}" width="100%" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%">
+                            <strong>地址</strong>
+                        </td>
+                        <td class="text-center">
+                            <span ng-bind="item.Address"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>电话</strong>
+                        </td>
+                        <td class="text-center">
+                            <span ng-bind="item.Phone"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>人均</strong>
+                        </td>
+                        <td class="text-center">
+                            <span ng-bind="item.UnitPrice"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p>
+                                <strong>介绍</strong>
+                            </p>
+                            <span ng-bind="item.Description"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p>
+                                <strong>推荐菜</strong>
+                            </p>
+                            <span ng-bind="item.Recommendation"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="~/wwwroot/lib/jquery/jquery.js"></script>
+    <script src="~/wwwroot/lib/angular/angular.js"></script>
+    <script src="~/wwwroot/lib/angular-resource/angular-resource.js"></script>
+    <script src="~/wwwroot/lib/sweetalert2/sweetalert2.min.js"></script>
+
+    <script src="~/wwwroot/scripts/weixin_app.js"></script>
+    <script src="~/wwwroot/scripts/api.js"></script>
+    <script src="~/wwwroot/scripts/config.http.js"></script>
+    <script src="~/wwwroot/scripts/factories.js"></script>
+
+    <script src="~/wwwroot/scripts/controllers/weixin/surroundingservices.js"></script>
+}
