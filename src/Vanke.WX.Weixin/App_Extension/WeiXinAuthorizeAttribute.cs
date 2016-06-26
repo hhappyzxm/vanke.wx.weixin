@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Vanke.WX.Weixin.Common;
+using Vanke.WX.Weixin.Service;
 using Vanke.WX.Weixin.Service.Interface;
 
 namespace Vanke.WX.Weixin.App_Extension
@@ -65,7 +66,7 @@ namespace Vanke.WX.Weixin.App_Extension
                 {
                     throw new Exception("Can not found open id of weixin");
                 }
-
+                
                 var staffService = IoC.Container.GetInstance<IStaffService>();
                 var staff = staffService.GetByOpenID(weixinOpenId);
                 if (staff != null)
