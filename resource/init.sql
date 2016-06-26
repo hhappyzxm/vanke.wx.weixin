@@ -313,7 +313,7 @@ CREATE TABLE [dbo].[Staffs](
 	[RealName] [nvarchar](50) NOT NULL,
 	[LoginName] [varchar](50) NOT NULL,
 	[Password] [varchar](50) NOT NULL,
-	[WeiXinOpenID] [nvarchar](50) NULL,
+	[WeixinOpenID] [nvarchar](50) NULL,
 	[OpenIDBindTime] [datetime] NULL,
 	[Status] [int] NOT NULL,
 	[CreatedOn] [datetime] NOT NULL,
