@@ -92,7 +92,7 @@ namespace Vanke.WX.Weixin.Service
 
         public async Task<Staff> GetByOpenID(string openId)
         {
-            return await UnitOfWork.Set<Staff>().SingleOrDefaultAsync(p => p.WeiXinOpenID == openId);
+            return await UnitOfWork.Set<Staff>().SingleOrDefaultAsync(p => p.WeixinOpenID == openId);
         }
 
         protected override async Task InsertEntityAsync(Staff entity)
