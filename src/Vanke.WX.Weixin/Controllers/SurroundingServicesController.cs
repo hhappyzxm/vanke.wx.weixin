@@ -21,7 +21,6 @@ namespace Vanke.WX.Weixin.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [AllowAnonymous]
         public async Task<IEnumerable<SurroundingServiceModel>> Get()
         {
             var services =  await _service.GetAllAsync();

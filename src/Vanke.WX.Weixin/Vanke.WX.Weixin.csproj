@@ -392,6 +392,7 @@
     <Content Include="wwwroot\scripts\controllers\weixin\itemborrow.js" />
     <Content Include="wwwroot\scripts\controllers\weixin\externalpersonneldiningregister.js" />
     <Content Include="wwwroot\scripts\controllers\weixin\idleassets.js" />
+    <Content Include="wwwroot\scripts\controllers\weixin\login.js" />
     <Content Include="wwwroot\scripts\controllers\weixin\surroundingservices.js" />
     <Content Include="wwwroot\scripts\directives.js" />
     <Content Include="wwwroot\scripts\factories.js" />
@@ -453,6 +454,7 @@
     <Content Include="Views\WeiXin\DinnerRegisterHistories.cshtml" />
     <Content Include="Views\WeiXin\ExternalPersonnelDiningRegister.cshtml" />
     <Content Include="Views\WeiXin\ExternalPersonnelDiningRegisterHistories.cshtml" />
+    <Content Include="Views\WeiXin\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

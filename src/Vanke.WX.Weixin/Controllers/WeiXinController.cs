@@ -49,5 +49,10 @@ namespace Vanke.WX.Weixin.Controllers
         {
             return View();
         }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
     }
 }

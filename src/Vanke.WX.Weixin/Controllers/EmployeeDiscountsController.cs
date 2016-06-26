@@ -47,7 +47,6 @@ namespace Vanke.WX.Weixin.Controllers
 
         [HttpGet]
         [Route("api/employeediscounts/search")]
-        [AllowAnonymous]
         public async Task<IEnumerable<EmployeeDiscountModel>> Search(string type)
         {
             return
