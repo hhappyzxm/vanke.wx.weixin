@@ -481,6 +481,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Extension\WeiXinAuthorizeAttribute.cs" />
+    <Compile Include="App_Extension\WeiXinHelper.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.SimpleInjector.cs" />
     <Compile Include="App_Start\Startup.AccountManager.cs" />

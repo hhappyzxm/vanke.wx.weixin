@@ -33,6 +33,11 @@ namespace Vanke.WX.Weixin.Data.Entity
         [StringLength(50)]
         public string Password { get; set; }
 
+        [StringLength(50)]
+        public string WeiXinOpenID { get; set; }
+
+        public DateTime OpenIDBindTime { get; set; }
+
         public StaffStatus Status { get; set; }
 
         public DateTime CreatedOn { get; set; }
