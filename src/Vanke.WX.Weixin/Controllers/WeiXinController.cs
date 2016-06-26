@@ -1,9 +1,11 @@
 ﻿using System.Web.Mvc;
+using Vanke.WX.Weixin.App_Extension;
 
 
 namespace Vanke.WX.Weixin.Controllers
 {
-    public class WeiXinController : Controller
+    [WeixinAuthorize]
+    public class WeixinController : Controller
     {
         public ActionResult ItemBorrow()
         {

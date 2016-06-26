@@ -445,16 +445,16 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Administration\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\WeiXin\ItemBorrow.cshtml" />
-    <Content Include="Views\WeiXin\ItemBorrowHistories.cshtml" />
-    <Content Include="Views\WeiXin\SurroundingServices.cshtml" />
-    <Content Include="Views\WeiXin\Idleassets.cshtml" />
-    <Content Include="Views\WeiXin\DesignatedDrivers.cshtml" />
-    <Content Include="Views\WeiXin\DinnerRegister.cshtml" />
-    <Content Include="Views\WeiXin\DinnerRegisterHistories.cshtml" />
-    <Content Include="Views\WeiXin\ExternalPersonnelDiningRegister.cshtml" />
-    <Content Include="Views\WeiXin\ExternalPersonnelDiningRegisterHistories.cshtml" />
-    <Content Include="Views\WeiXin\Login.cshtml" />
+    <Content Include="Views\Weixin\ItemBorrow.cshtml" />
+    <Content Include="Views\Weixin\ItemBorrowHistories.cshtml" />
+    <Content Include="Views\Weixin\SurroundingServices.cshtml" />
+    <Content Include="Views\Weixin\Idleassets.cshtml" />
+    <Content Include="Views\Weixin\DesignatedDrivers.cshtml" />
+    <Content Include="Views\Weixin\DinnerRegister.cshtml" />
+    <Content Include="Views\Weixin\DinnerRegisterHistories.cshtml" />
+    <Content Include="Views\Weixin\ExternalPersonnelDiningRegister.cshtml" />
+    <Content Include="Views\Weixin\ExternalPersonnelDiningRegisterHistories.cshtml" />
+    <Content Include="Views\Weixin\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -481,8 +481,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Extension\WeiXinAuthorizeAttribute.cs" />
-    <Compile Include="App_Extension\WeiXinHelper.cs" />
+    <Compile Include="App_Extension\WeixinAuthorizeAttribute.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.SimpleInjector.cs" />
     <Compile Include="App_Start\Startup.AccountManager.cs" />
@@ -504,7 +503,7 @@
     <Compile Include="Controllers\ExternalPersonnelDiningRegisterController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\StaffsController.cs" />
-    <Compile Include="Controllers\WeiXinController.cs" />
+    <Compile Include="Controllers\WeixinController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
