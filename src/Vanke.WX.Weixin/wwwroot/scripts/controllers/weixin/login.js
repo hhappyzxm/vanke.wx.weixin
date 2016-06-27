@@ -1,7 +1,7 @@
 ﻿(function (angular, app) {
     'use strict';
 
-    app.controller('LoginCtrl', function ($scope, $location, $window, api) {
+    app.controller('LoginCtrl', function ($scope, $location, $window, api, sweetAlert) {
         $scope.login = function(form) {
             form.$setSubmitted(true);
 
