@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using EZ.Framework.Integration.WebApi;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data;
 using Vanke.WX.Weixin.Service;
@@ -68,8 +70,13 @@ namespace Vanke.WX.Weixin.App_Extension
                     var staff = staffService.GetByOpenID(weixinOpenId);
                     if (staff != null && DateTime.Now < staff.OpenIDBindTime.Value.AddMonths(1))
                     {
-                        var identity = AccountManager.Instance.CreateIdentity(staff.LoginName, staff.Password);
+                        var identityUser = new IdentityUser() {Id = staff.ID};
+                        var identity = identityUser.GenerateUserIdentity();
                         httpContext.User = new ClaimsPrincipal(identity);
+
+                        var authManager = HttpContext.Current.GetOwinContext().Authentication;
+                        authManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+                        authManager.SignIn(new AuthenticationProperties (), identity);
 
                         return true;
                     }
