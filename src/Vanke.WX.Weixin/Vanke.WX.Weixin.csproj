@@ -386,6 +386,7 @@
     <Content Include="wwwroot\scripts\controllers\settings\staffs.js" />
     <Content Include="wwwroot\scripts\controllers\weixin\designateddrivers.js" />
     <Content Include="wwwroot\scripts\controllers\weixin\dinnerregister.js" />
+    <Content Include="wwwroot\scripts\controllers\weixin\employeediscounts.js" />
     <Content Include="wwwroot\scripts\controllers\weixin\externalpersonneldiningregisterhistories.js" />
     <Content Include="wwwroot\scripts\controllers\weixin\dinnerregisterhistories.js" />
     <Content Include="wwwroot\scripts\controllers\weixin\itemborrowhistories.js" />
@@ -455,6 +456,8 @@
     <Content Include="Views\Weixin\ExternalPersonnelDiningRegister.cshtml" />
     <Content Include="Views\Weixin\ExternalPersonnelDiningRegisterHistories.cshtml" />
     <Content Include="Views\Weixin\Login.cshtml" />
+    <Content Include="Views\Weixin\EmployeeDiscounts.cshtml" />
+    <Content Include="Views\Weixin\EmployeeDiscountTypes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

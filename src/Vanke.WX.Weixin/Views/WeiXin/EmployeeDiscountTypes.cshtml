@@ -1,0 +1,26 @@
+﻿<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container text-center text-white" style="line-height: 50px; font-size: 14px;">
+        员工优惠
+    </div>
+</nav>
+<div class="container" style="padding-top: 70px;">
+    <ul class="list-group">
+        <li class="list-group-item text-center" onclick="window.location.href = 'employeediscounts#?t=0'">衣</li>
+        <li class="list-group-item text-center" onclick="window.location.href = 'employeediscounts#?t=1'">食</li>
+        <li class="list-group-item text-center" onclick="window.location.href = 'employeediscounts#?t=2'">住</li>
+        <li class="list-group-item text-center" onclick="window.location.href = 'employeediscounts#?t=3'">行</li>
+        <li class="list-group-item text-center" onclick="window.location.href = 'employeediscounts#?t=4'">健</li>
+    </ul>
+</div>
+
+@section scripts {
+    <script src="~/wwwroot/lib/jquery/jquery.js"></script>
+    <script src="~/wwwroot/lib/angular/angular.js"></script>
+    <script src="~/wwwroot/lib/angular-resource/angular-resource.js"></script>
+    <script src="~/wwwroot/lib/sweetalert2/sweetalert2.min.js"></script>
+
+    <script src="~/wwwroot/scripts/weixin_app.js"></script>
+    <script src="~/wwwroot/scripts/api.js"></script>
+    <script src="~/wwwroot/scripts/config.http.js"></script>
+    <script src="~/wwwroot/scripts/factories.js"></script>
+}

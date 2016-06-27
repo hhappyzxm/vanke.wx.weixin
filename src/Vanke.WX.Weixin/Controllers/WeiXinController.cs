@@ -52,6 +52,17 @@ namespace Vanke.WX.Weixin.Controllers
             return View();
         }
 
+        public ActionResult EmployeeDiscounts()
+        {
+            return View();
+        }
+
+        public ActionResult EmployeeDiscountTypes()
+        {
+            return View();
+        }
+
+
         [AllowAnonymous]
         public ActionResult Login()
         {

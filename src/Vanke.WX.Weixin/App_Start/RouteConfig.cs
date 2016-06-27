@@ -11,7 +11,7 @@ namespace Vanke.WX.Weixin
 
             routes.MapRoute(
                 name: "Administration",
-                url: "index",
+                url: "",
                 defaults: new { controller = "Administration", action = "Index", id = UrlParameter.Optional }
             );
 

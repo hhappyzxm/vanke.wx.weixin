@@ -49,11 +49,18 @@ namespace Vanke.WX.Weixin.Controllers
         [Route("api/employeediscounts/search")]
         public async Task<IEnumerable<EmployeeDiscountModel>> Search(string type)
         {
-            return
+            var lst=
                 await
                     _service.GetAllAsync(string.IsNullOrEmpty(type)
                         ? (EmployeeDiscountType?)null
                         : (EmployeeDiscountType)int.Parse(type));
+
+            foreach (var item in lst)
+            {
+                item.ImagePath = "/Upload/" + item.ImagePath;
+            }
+
+            return lst;
         }
 
         [HttpGet]
