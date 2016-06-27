@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -44,6 +45,23 @@ namespace Vanke.WX.Weixin.Controllers
         public void Logout()
         {
             AccountManager.Instance.SignOut();
+        }
+
+        [HttpPost]
+        [Route("api/account/weixinlogin")]
+        public object WeixinLogin(WeixinLoginViewModel viewModel)
+        {
+            var currentLogin = (CurrentLogin)AccountManager.Instance.SignIn(viewModel.LoginName, viewModel.Password);
+
+            if (currentLogin != null)
+            {
+                IoC.Container.GetInstance<IStaffService>().BindOpenId(Convert.ToInt32(currentLogin.ID), viewModel.WeixinOpenId);
+            }
+
+            return new
+            {
+                IsAuthed = currentLogin != null
+            };
         }
     }
 }

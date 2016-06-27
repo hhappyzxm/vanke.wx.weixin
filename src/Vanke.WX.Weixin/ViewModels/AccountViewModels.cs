@@ -11,4 +11,9 @@ namespace Vanke.WX.Weixin.ViewModels
 
         public string Password { get; set; }
     }
+
+    public class WeixinLoginViewModel : LoginViewModel
+    {
+        public string WeixinOpenId { get; set; }
+    }
 }

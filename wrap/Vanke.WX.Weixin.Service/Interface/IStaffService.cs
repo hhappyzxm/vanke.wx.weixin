@@ -7,6 +7,8 @@ namespace Vanke.WX.Weixin.Service.Interface
 {
     public interface IStaffService : ICRUDAsyncService<StaffModel>
     {
-        Task<Staff> GetByOpenID(string openId);
+        Staff GetByOpenID(string openId);
+
+        void BindOpenId(int staffId, string openId);
     }
 }

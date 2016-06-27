@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Vanke.WX.Weixin.Common;
+using Vanke.WX.Weixin.Data;
 using Vanke.WX.Weixin.Service;
 using Vanke.WX.Weixin.Service.Interface;
 
@@ -20,36 +21,29 @@ namespace Vanke.WX.Weixin.App_Extension
         {
             if (httpContext == null)
             {
-                throw new ArgumentNullException("httpContext");
+                throw new ArgumentNullException(nameof(httpContext));
+            }
+
+            IPrincipal user = httpContext.User;
+            if (user.Identity.IsAuthenticated)
+            {
+                return true;
             }
 
             var weixinCode = httpContext.Request.QueryString["Code"];
-
             if (string.IsNullOrEmpty(weixinCode))
             {
-                IPrincipal user = httpContext.User;
-                if (!user.Identity.IsAuthenticated)
-                {
-                    var url =
-                        string.Format(
-                            @"https://open.weixin.qq.com/connect/oauth2/authorize?appid={0}&redirect_uri={1}&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect",
-                            WeixinAppId,
-                            HttpUtility.UrlEncode(httpContext.Request.Url.ToString(), System.Text.Encoding.UTF8));
+                var url =
+                         $@"https://open.weixin.qq.com/connect/oauth2/authorize?appid={WeixinAppId}&redirect_uri={HttpUtility.UrlEncode(httpContext.Request.Url.ToString(), System.Text.Encoding.UTF8)}&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect";
 
-                    httpContext.Response.Redirect(url);
-
-                    return false;
-                }
+                httpContext.Response.Redirect(url);
             }
             else
             {
-                var client = new System.Net.WebClient();
-                client.Encoding = System.Text.Encoding.UTF8;
+                var client = new System.Net.WebClient {Encoding = System.Text.Encoding.UTF8};
 
-                var url = string.Format("https://api.weixin.qq.com/sns/oauth2/access_token?appid={0}&secret={1}&code={2}&grant_type=authorization_code", 
-                    WeixinAppId, 
-                    WeixinAppSecret, 
-                    weixinCode);
+                var url =
+                    $"https://api.weixin.qq.com/sns/oauth2/access_token?appid={WeixinAppId}&secret={WeixinAppSecret}&code={weixinCode}&grant_type=authorization_code";
 
                 var responseData = client.DownloadString(url);
                 var serializer = new JavaScriptSerializer();
@@ -66,16 +60,24 @@ namespace Vanke.WX.Weixin.App_Extension
                 {
                     throw new Exception("Can not found open id of weixin");
                 }
-                
-                var staffService = IoC.Container.GetInstance<IStaffService>();
+
+                var staffService = new StaffService(new DataContext("SQLConnection"));
                 var staff = staffService.GetByOpenID(weixinOpenId);
-                if (staff != null)
+                if (staff != null && DateTime.Now < staff.OpenIDBindTime.Value.AddMonths(1))
                 {
+
                     return true;
                 }
                 else
                 {
-                    httpContext.Response.Redirect(string.Format("/weixin/login?openid={0}", weixinOpenId));
+                    var iz = httpContext.Request.RawUrl.IndexOf('?');
+                    var redirectUri =
+                        HttpUtility.UrlEncode(
+                            iz == -1
+                                ? httpContext.Request.RawUrl
+                                : httpContext.Request.RawUrl.Substring(0, httpContext.Request.RawUrl.IndexOf('?')),
+                            System.Text.Encoding.UTF8);
+                    httpContext.Response.Redirect($"/weixin/login#?openid={weixinOpenId}&redirect_uri={redirectUri}");
                 }
             }
 

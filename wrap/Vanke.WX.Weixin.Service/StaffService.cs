@@ -90,9 +90,18 @@ namespace Vanke.WX.Weixin.Service
             return staffs;
         }
 
-        public async Task<Staff> GetByOpenID(string openId)
+        public Staff GetByOpenID(string openId)
         {
-            return await UnitOfWork.Set<Staff>().SingleOrDefaultAsync(p => p.WeixinOpenID == openId);
+            return UnitOfWork.Set<Staff>().SingleOrDefault(p => p.WeixinOpenID == openId);
+        }
+
+        public void BindOpenId(int staffId, string openId)
+        {
+            var staff = UnitOfWork.Set<Staff>().Find(staffId);
+            staff.WeixinOpenID = openId;
+            staff.OpenIDBindTime = DateTime.Now;
+
+            UnitOfWork.SaveChanges();
         }
 
         protected override async Task InsertEntityAsync(Staff entity)

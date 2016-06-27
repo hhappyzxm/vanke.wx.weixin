@@ -16,7 +16,11 @@
                 'logout': {
                     method: 'POST',
                     url: apiHost + '/api/account/logout'
-                }
+                },
+                'weixinLogin': {
+                    method: 'POST',
+                    url: apiHost + '/api/account/weixinlogin'
+                },
             }),
 
             /**
