@@ -1,7 +1,7 @@
 ﻿(function (angular, app) {
     'use strict';
 
-    app.controller('DinnerRegisterCtrl', function ($scope, api, sweetAlert) {
+    app.controller('DinnerRegisterCtrl', function ($scope, $window, api) {
         api.dinnerTypes.query(function (result) {
             $scope.dinnerTypes = result;
         });
@@ -19,9 +19,7 @@
 
             if (form.$valid) {
                 api.dinnerRegister.save($scope.data, function () {
-                    sweetAlert.success('提交成功');
-                    form.$submitted = false;
-                    $scope.data = null;
+                    $window.location.href = "/weixin/dinnerregisterhistories";
                 });
             }
         };

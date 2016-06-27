@@ -1,7 +1,7 @@
 ﻿(function (angular, app) {
     'use strict';
 
-    app.controller('ItemBorrowCtrl', function ($scope, api, sweetAlert) {
+    app.controller('ItemBorrowCtrl', function ($scope, $window, api) {
         api.items.query(function(result) {
             $scope.items = result;
         });
@@ -15,9 +15,7 @@
 
             if (form.$valid) {
                 api.itemBorrow.save($scope.data, function () {
-                    sweetAlert.success('提交成功');
-                    form.$submitted = false;
-                    $scope.data = null;
+                    $window.location.href = "/weixin/itemborrowhistories";
                 });
             }
         };

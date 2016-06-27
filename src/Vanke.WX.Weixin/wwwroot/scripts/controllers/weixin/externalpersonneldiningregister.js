@@ -1,7 +1,7 @@
 ﻿(function (angular, app) {
     'use strict';
 
-    app.controller('ExternalPersonnelDiningRegisterCtrl', function ($scope, api, sweetAlert) {
+    app.controller('ExternalPersonnelDiningRegisterCtrl', function ($scope, $window, api) {
         api.externalPersonnelDiningRegister.getOwnHistories(function (result) {
             $scope.hasHistories = result.length > 0;
         });
@@ -11,9 +11,7 @@
 
             if (form.$valid) {
                 api.externalPersonnelDiningRegister.save($scope.data, function () {
-                    sweetAlert.success('提交成功');
-                    form.$submitted = false;
-                    $scope.data = null;
+                    $window.location.href = "/weixin/externalpersonneldiningregisterhistories";
                 });
             }
         };
