@@ -31,10 +31,28 @@
                                     class="fa fa-exclamation-triangle"></i>&nbsp;请输入密码</span>
                         </div>
                     </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" ng-model="data.IsAdmin"> 系统管理员
-                        </label>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="data.IsAdmin"> 系统管理员
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="data.IsExternalPersonnelDiningManager"> 外部就餐管理员
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="data.IsItemBorrowManager"> 物品借用管理员
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>

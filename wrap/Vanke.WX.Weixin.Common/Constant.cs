@@ -15,7 +15,9 @@ namespace Vanke.WX.Weixin.Common
     public enum Role
     {
         Admin,
-        Staff
+        Staff,
+        ExternalPersonnelDiningManager,
+        ItemBorrowManager
     }
 
     public enum StaffRoleStatus

@@ -29,19 +29,7 @@ namespace Vanke.WX.Weixin.Controllers
                         ? null
                         : new[] { (ExternalPersonnelDiningRegisterStatus)int.Parse(status) });
         }
-
-        /// <summary>
-        /// Borrow item
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        [HttpPost]
-        [Route("borrow")]
-        public async Task Borrow(ExternalPersonnelDiningRegisterModel model)
-        {
-            await _externalPersonnelDiningRegisterService.InsertAsync(model);
-        }
-
+        
         [HttpGet]
         [Route("getownhistories")]
         public async Task<IEnumerable<ExternalPersonnelDiningRegisterModel>> GetOwnHistories()

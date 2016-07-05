@@ -11,7 +11,11 @@ namespace Vanke.WX.Weixin.Data.Entity
 
         public long StaffID { get; set; }
 
+        public long DinnerTypeID { get; set; }
+
         public int CardQuantity { get; set; }
+
+        public string Department { get; set; }
 
         [StringLength(500)]
         public string Comment { get; set; }
@@ -25,5 +29,7 @@ namespace Vanke.WX.Weixin.Data.Entity
         public long? CancelledBy { get; set; }
 
         public virtual Staff Staff { get; set; }
+
+        public virtual DinnerType DinnerType { get; set; }
     }
 }

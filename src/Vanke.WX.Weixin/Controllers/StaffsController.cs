@@ -40,7 +40,9 @@ namespace Vanke.WX.Weixin.Controllers
                 RealName = staff.RealName,
                 LoginName = staff.LoginName,
                 Password = "******",
-                IsAdmin = staff.Roles.Any(p => p == Role.Admin)
+                IsAdmin = staff.Roles.Any(p => p == Role.Admin),
+                IsExternalPersonnelDiningManager = staff.Roles.Any(p => p == Role.ExternalPersonnelDiningManager),
+                IsItemBorrowManager = staff.Roles.Any(p => p == Role.ItemBorrowManager)
             };
         }
 
@@ -69,6 +71,16 @@ namespace Vanke.WX.Weixin.Controllers
             if (viewModel.IsAdmin)
             {
                 model.Roles.Add(Role.Admin);
+            }
+
+            if (viewModel.IsExternalPersonnelDiningManager)
+            {
+                model.Roles.Add(Role.ExternalPersonnelDiningManager);
+            }
+
+            if (viewModel.IsItemBorrowManager)
+            {
+                model.Roles.Add(Role.ItemBorrowManager);
             }
 
             #endregion

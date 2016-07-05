@@ -12,6 +12,7 @@ namespace Vanke.WX.Weixin.Data.Entity
         public DinnerType()
         {
             DinnerRegisterHistories = new HashSet<DinnerRegisterHistory>();
+            ExternalPersonnelDiningRegisterHistories = new HashSet<ExternalPersonnelDiningRegisterHistory>();
         }
 
         public long ID { get; set; }
@@ -32,5 +33,8 @@ namespace Vanke.WX.Weixin.Data.Entity
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DinnerRegisterHistory> DinnerRegisterHistories { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExternalPersonnelDiningRegisterHistory> ExternalPersonnelDiningRegisterHistories { get; set; }
     }
 }

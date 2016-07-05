@@ -12,6 +12,12 @@ namespace Vanke.WX.Weixin.Service.Models
 
         public string Staff { get; set; }
 
+        public long DinnerTypeID { get; set; }
+
+        public string DinnerType { get; set; }
+
+        public string Department { get; set; }
+
         public int CardQuantity { get; set; }
 
         public string Comment { get; set; }

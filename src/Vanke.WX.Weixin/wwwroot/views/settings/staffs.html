@@ -16,7 +16,9 @@
                         <tr>
                             <th>真实姓名</th>
                             <th>用户名</th>
-                            <th>是否管理员</th>
+                            <th>系统管理员</th>
+                            <th>外部就餐管理员</th>
+                            <th>物品借用管理员</th>
                             <th width="150" class="text-center">操作</th>
                         </tr>
                     </thead>
@@ -30,6 +32,12 @@
                             </td>
                             <td>
                                 {{(item.Roles.indexOf(0)!=-1)?'是':'否'}}
+                            </td>
+                            <td>
+                                {{(item.Roles.indexOf(2)!=-1)?'是':'否'}}
+                            </td>
+                            <td>
+                                {{(item.Roles.indexOf(3)!=-1)?'是':'否'}}
                             </td>
                             <td class="text-center"><a ui-sref="settings.staffedit({id:item.ID})" class="btn btn-success btn-xs">修改</a>&nbsp;<button class="btn btn-danger btn-xs" type="button" ng-click="remove(item.ID)">删除</button></td>
                         </tr>

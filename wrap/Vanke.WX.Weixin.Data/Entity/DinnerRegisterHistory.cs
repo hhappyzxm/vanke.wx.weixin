@@ -19,6 +19,14 @@ namespace Vanke.WX.Weixin.Data.Entity
 
         public long PlaceID { get; set; }
 
+        public string Department { get; set; }
+
+        public bool IsRead { get; set; }
+
+        public long? ReadBy { get; set; }
+
+        public DateTime? ReadOn { get; set; }
+
         public DinnerRegisterStatus Status { get; set; }
 
         [StringLength(500)]
@@ -35,5 +43,7 @@ namespace Vanke.WX.Weixin.Data.Entity
         public virtual DinnerType DinnerType { get; set; }
 
         public virtual Staff Staff { get; set; }
+
+        public virtual Staff ReadStaff { get; set; }
     }
 }

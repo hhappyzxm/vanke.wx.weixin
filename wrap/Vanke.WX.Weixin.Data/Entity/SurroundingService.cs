@@ -30,6 +30,9 @@ namespace Vanke.WX.Weixin.Data.Entity
         [StringLength(50)]
         public string Recommendation { get; set; }
 
+        [StringLength(500)]
+        public string NavigationAddress { get; set; }
+
         public SurroundingServiceStatus Status { get; set; }
 
         public DateTime CreatedOn { get; set; }

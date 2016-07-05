@@ -19,12 +19,12 @@ namespace Vanke.WX.Weixin.Service
         public ExternalPersonnelDiningRegisterService(IDataContext dataContext) : base(dataContext)
         {
         }
-        
+
         public async Task CancelAsync(long key)
         {
             var entity = await UnitOfWork.Set<ExternalPersonnelDiningRegisterHistory>().FindAsync(key);
 
-            entity.Status= ExternalPersonnelDiningRegisterStatus.Cancelled;
+            entity.Status = ExternalPersonnelDiningRegisterStatus.Cancelled;
             entity.CancelledBy = (long)AccountManager.Instance.CurrentLoginUser.ID;
             entity.CancelledOn = DateTime.Now;
 
@@ -35,9 +35,11 @@ namespace Vanke.WX.Weixin.Service
         {
             var query = from register in UnitOfWork.Set<ExternalPersonnelDiningRegisterHistory>()
                         join staff in UnitOfWork.Set<Staff>() on register.StaffID equals staff.ID
+                        join dinnerType in UnitOfWork.Set<DinnerType>() on register.DinnerTypeID equals dinnerType.ID
                         select new
                         {
                             Register = register,
+                            DinnerType = dinnerType,
                             Staff = staff,
                         };
 
@@ -58,6 +60,9 @@ namespace Vanke.WX.Weixin.Service
                 ID = p.Register.ID,
                 Staff = p.Staff.RealName,
                 Status = p.Register.Status,
+                Department = p.Register.Department,
+                DinnerTypeID = p.Register.DinnerTypeID,
+                DinnerType = p.DinnerType.Type,
                 CardQuantity = p.Register.CardQuantity,
                 Comment = p.Register.Comment,
                 RegisteredOn = p.Register.RegisteredOn,
@@ -69,22 +74,24 @@ namespace Vanke.WX.Weixin.Service
         {
             var staffId = (long)AccountManager.Instance.CurrentLoginUser.ID;
 
-            return await UnitOfWork.Set<ExternalPersonnelDiningRegisterHistory>()
-                .Where(
-                    p =>
-                        p.Status != ExternalPersonnelDiningRegisterStatus.Removed &&
-                        p.StaffID == staffId)
-                .OrderByDescending(p => p.RegisteredOn)
-                .Select(p => new ExternalPersonnelDiningRegisterModel
-                {
-                    ID = p.ID,
-                    Comment = p.Comment,
-                    Status = p.Status,
-                    CardQuantity = p.CardQuantity,
-                    RegisteredOn = p.RegisteredOn,
-                    CancelledOn = p.CancelledOn
-                })
-                .ToListAsync();
+            var query = from register in UnitOfWork.Set<ExternalPersonnelDiningRegisterHistory>()
+                join dinnerType in UnitOfWork.Set<DinnerType>() on register.DinnerTypeID equals dinnerType.ID
+                where register.Status != ExternalPersonnelDiningRegisterStatus.Removed &&
+                      register.StaffID == staffId
+                      orderby register.RegisteredOn descending 
+                        select new ExternalPersonnelDiningRegisterModel
+                        {
+                            ID = register.ID,
+                            Comment = register.Comment,
+                            Status = register.Status,
+                            Department = register.Department,
+                            DinnerType = dinnerType.Type,
+                            CardQuantity = register.CardQuantity,
+                            RegisteredOn = register.RegisteredOn,
+                            CancelledOn = register.CancelledOn
+                        };
+
+            return await query.ToListAsync();
         }
 
         public async Task InsertAsync(ExternalPersonnelDiningRegisterModel model)
@@ -93,6 +100,8 @@ namespace Vanke.WX.Weixin.Service
             {
                 StaffID = (long)AccountManager.Instance.CurrentLoginUser.ID,
                 CardQuantity = model.CardQuantity,
+                DinnerTypeID = model.DinnerTypeID,
+                Department = model.Department,
                 Comment = model.Comment,
                 RegisteredOn = DateTime.Now,
                 Status = ExternalPersonnelDiningRegisterStatus.Active
