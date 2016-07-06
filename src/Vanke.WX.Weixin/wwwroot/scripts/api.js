@@ -53,6 +53,11 @@
             itemStorageAreas: $resource(apiHost + '/api/itemstorageareas/:id', { id: '@id' }),
 
             /**
+             * Settings  Api
+             */
+            settings: $resource(apiHost + '/api/settings'),
+
+            /**
              * Item Storage Place  Api
              */
             itemStoragePlaces: $resource(apiHost + '/api/itemstorageplaces/:id', { id: '@id' }, {

@@ -377,6 +377,7 @@
     <Content Include="wwwroot\scripts\controllers\settings\dinnertypeedit.js" />
     <Content Include="wwwroot\scripts\controllers\settings\dinnertypes.js" />
     <Content Include="wwwroot\scripts\controllers\settings\itemedit.js" />
+    <Content Include="wwwroot\scripts\controllers\settings\settings.js" />
     <Content Include="wwwroot\scripts\controllers\settings\items.js" />
     <Content Include="wwwroot\scripts\controllers\settings\itemstorageareaedit.js" />
     <Content Include="wwwroot\scripts\controllers\settings\itemstorageareas.js" />
@@ -424,6 +425,7 @@
     <Content Include="wwwroot\views\settings\dinnertypeedit.html" />
     <Content Include="wwwroot\views\settings\dinnertypes.html" />
     <Content Include="wwwroot\views\settings\itemedit.html" />
+    <Content Include="wwwroot\views\settings\settings.html" />
     <Content Include="wwwroot\views\settings\items.html" />
     <Content Include="wwwroot\views\settings\itemstorageareaedit.html" />
     <Content Include="wwwroot\views\settings\itemstorageareas.html" />
@@ -489,6 +491,7 @@
     <Compile Include="Controllers\IdleAssetsController.cs" />
     <Compile Include="Controllers\DesignatedDriversController.cs" />
     <Compile Include="Controllers\EmployeeDiscountsController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\SurroundingServicesController.cs" />
     <Compile Include="Controllers\ItemStoragePlacesController.cs" />
     <Compile Include="Controllers\ItemStorageAreasController.cs" />

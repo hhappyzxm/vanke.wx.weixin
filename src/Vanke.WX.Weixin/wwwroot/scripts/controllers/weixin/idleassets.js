@@ -2,6 +2,10 @@
     'use strict';
 
     app.controller('IdleAssetsCtrl', function ($scope, api) {
+        api.settings.get(function (result) {
+            $scope.idleAssetDescription = result.IdleAssetDescription;
+        });
+
         api.idleAssets.query(function (result) {
             var idleAssets = [];
 

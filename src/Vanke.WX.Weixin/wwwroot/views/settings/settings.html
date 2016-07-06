@@ -1,0 +1,39 @@
+﻿<div class="row" ng-controller="SettingsCtrl">
+    <div class="col-md-9">
+        <div class="hpanel hgreen">
+            <div class="panel-heading hbuilt">
+                <div panel-tools></div>
+                <i class="panel-icon fa fa-info-circle"></i>&nbsp;参数配置
+            </div>
+            <div class="panel-body">
+                <form name="submitForm">
+                    <div class="form-group">
+                        <label>闲置资产说明</label>
+                        <textarea rows="5" class="form-control" ng-model="data.IdleAssetDescription"></textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div sticky class="hpanel hgreen">
+            <div class="panel-heading hbuilt">
+                <div panel-tools></div>
+                <i class="panel-icon fa fa-bars"></i>操作
+            </div>
+            <div class="panel-body">
+                <ul class="mailbox-list">
+                    <li>
+                        <a ng-click="save(submitForm)"><i class="fa fa-save text-success"></i>&nbsp;保存</a>
+                    </li>
+                </ul>
+                <hr>
+                <ul class="mailbox-list">
+                    <li>
+                        <a ui-sref="settings.items"><i class="fa fa-backward"></i>&nbsp;返回</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

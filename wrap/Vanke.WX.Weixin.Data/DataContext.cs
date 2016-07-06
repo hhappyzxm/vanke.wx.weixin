@@ -27,6 +27,7 @@ namespace Vanke.WX.Weixin.Data
         public virtual DbSet<DesignatedDriver> DesignatedDrivers { get; set; }
         public virtual DbSet<DesignatedDriverPrice> DesignatedDriverPrices { get; set; }
         public virtual DbSet<SurroundingService> SurroundingServices { get; set; }
+        public virtual DbSet<Setting> Settings { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

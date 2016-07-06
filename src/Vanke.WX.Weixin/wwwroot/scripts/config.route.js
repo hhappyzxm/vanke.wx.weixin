@@ -108,6 +108,13 @@
                     pageTitle: '物品存放地点管理'
                 }
             })
+            .state("settings.setting", {
+                url: "/settings",
+                templateUrl: "/wwwroot/views/settings/settings.html",
+                data: {
+                    pageTitle: '参数配置'
+                }
+            })
 
             // 行政服务
             .state('service', {

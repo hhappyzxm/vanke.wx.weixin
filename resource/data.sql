@@ -24,6 +24,8 @@ INSERT ItemBorrowHistories(ItemID, StaffID, Quantity, Status, BorrowedOn) Values
 INSERT ItemBorrowHistories(ItemID, StaffID, Quantity, Status, BorrowedOn) Values(2, 2, 1, 0, GETDATE())
 INSERT ItemBorrowHistories(ItemID, StaffID, Quantity, Status, BorrowedOn) Values(3, 3, 1, 0, GETDATE())
 
+INSERT Settings(IdleAssetDescription) VALUES('')
+
 INSERT ExternalPersonnelDiningRegisterHistories(StaffID, CardQuantity, Comment, Status, RegisteredOn) VALUES(1, 3, '会客', 0, GETDATE())
 INSERT ExternalPersonnelDiningRegisterHistories(StaffID, CardQuantity, Comment, Status, RegisteredOn) VALUES(2, 5, '会客', 0, GETDATE())
 INSERT ExternalPersonnelDiningRegisterHistories(StaffID, CardQuantity, Comment, Status, RegisteredOn) VALUES(3, 8, '会客', 0, GETDATE())
