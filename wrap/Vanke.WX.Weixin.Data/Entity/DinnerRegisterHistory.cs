@@ -43,7 +43,5 @@ namespace Vanke.WX.Weixin.Data.Entity
         public virtual DinnerType DinnerType { get; set; }
 
         public virtual Staff Staff { get; set; }
-
-        public virtual Staff ReadStaff { get; set; }
     }
 }

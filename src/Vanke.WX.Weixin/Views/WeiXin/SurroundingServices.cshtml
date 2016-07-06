@@ -21,7 +21,7 @@
                             <strong>地址</strong>
                         </td>
                         <td class="text-center">
-                            <span ng-bind="item.Address"></span>
+                            <u><a ng-href="{{item.NavigationAddress}}"><span ng-bind="item.Address"></span></a></u>
                         </td>
                     </tr>
                     <tr>
@@ -61,6 +61,7 @@
         </div>
     </div>
 </div>
+
 @section scripts {
     <script src="~/wwwroot/lib/jquery/jquery.js"></script>
     <script src="~/wwwroot/lib/angular/angular.js"></script>

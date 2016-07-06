@@ -123,6 +123,8 @@ namespace Vanke.WX.Weixin.Service
             entity.UpdatedBy = (long)AccountManager.Instance.CurrentLoginUser.ID;
 
             await base.UpdateEntityAsync(entity);
+
+            AccountManager.Instance.Remove(AccountManager.Instance.CurrentLoginUser.ID.ToString());
         }
 
         protected override Task RemoveEntityAsync(Staff entity)

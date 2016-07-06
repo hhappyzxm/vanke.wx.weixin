@@ -13,6 +13,8 @@ namespace Vanke.WX.Weixin.Service.Interface
         Task<IEnumerable<DinnerRegisterModel>> GetOwnHistoriesAsync();
 
         Task CancelAsync(long key);
+
+        Task ReadAsync(long key);
     }
 }
 

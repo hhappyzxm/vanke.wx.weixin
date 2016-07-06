@@ -10,6 +10,8 @@ namespace Vanke.WX.Weixin.Service.Models
 
         public string Staff { get; set; }
 
+        public string Department { get; set; }
+
         public DateTime DinnerDate { get; set; }
 
         public int PeopleCount { get; set; }
@@ -29,5 +31,13 @@ namespace Vanke.WX.Weixin.Service.Models
         public DateTime RegisteredOn { get; set; }
 
         public DateTime? CancelledOn { get; set; }
+
+        public string CancelledStaff { get; set; }
+
+        public bool IsRead { get; set; }
+
+        public string ReadStaff { get; set; }
+
+        public DateTime? ReadTime { get; set; }
     }
 }

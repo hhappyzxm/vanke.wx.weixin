@@ -431,15 +431,6 @@
     <Content Include="wwwroot\views\settings\itemstorageplaces.html" />
     <Content Include="wwwroot\views\settings\staffedit.html" />
     <Content Include="wwwroot\views\settings\staffs.html" />
-    <Content Include="wwwroot\views\weixin\designateddrivers.html" />
-    <Content Include="wwwroot\views\weixin\dinnerregister.html" />
-    <Content Include="wwwroot\views\weixin\externalpersonneldiningregisterhistories.html" />
-    <Content Include="wwwroot\views\weixin\dinnerregisterhistories.html" />
-    <Content Include="wwwroot\views\weixin\itemborrowhistories.html" />
-    <Content Include="wwwroot\views\weixin\itemborrow.html" />
-    <Content Include="wwwroot\views\weixin\externalpersonneldiningregister.html" />
-    <Content Include="wwwroot\views\weixin\idleassets.html" />
-    <Content Include="wwwroot\views\weixin\surroundingservices.html" />
     <Content Include="bower.json" />
     <Content Include="package.json" />
     <Content Include="Views\Web.config" />

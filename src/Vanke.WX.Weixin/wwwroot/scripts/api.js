@@ -21,6 +21,10 @@
                     method: 'POST',
                     url: apiHost + '/api/account/weixinlogin'
                 },
+                'getUserInfo': {
+                    method: 'POST',
+                    url: apiHost + '/api/account/getuserinfo'
+                }
             }),
 
             /**
@@ -101,6 +105,10 @@
                     method: 'GET',
                     url: apiHost + '/api/dinnerregister/getownhistories',
                     isArray: true
+                },
+                'read': {
+                    method: 'POST',
+                    url: apiHost + '/api/dinnerregister/read/:id'
                 }
             }),
 

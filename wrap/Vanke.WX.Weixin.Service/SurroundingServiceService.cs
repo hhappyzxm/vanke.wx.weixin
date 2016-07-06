@@ -31,6 +31,7 @@ namespace Vanke.WX.Weixin.Service
                 Description = p.Description,
                 UnitPrice = p.UnitPrice,
                 Address = p.Address,
+                NavigationAddress = p.NavigationAddress,
                 Phone = p.Phone,
                 Recommendation = p.Recommendation
             };
@@ -44,6 +45,7 @@ namespace Vanke.WX.Weixin.Service
             targetEntity.Description = model.Description;
             targetEntity.UnitPrice = model.UnitPrice;
             targetEntity.Address = model.Address;
+            targetEntity.NavigationAddress = model.NavigationAddress;
             targetEntity.Phone = model.Phone;
             targetEntity.Recommendation = model.Recommendation;
         }

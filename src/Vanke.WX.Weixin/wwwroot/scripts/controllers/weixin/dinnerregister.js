@@ -2,6 +2,10 @@
     'use strict';
 
     app.controller('DinnerRegisterCtrl', function ($scope, $window, api) {
+        api.account.getUserInfo(function (result) {
+            $scope.isExternalPersonnelDiningManager = result.IsExternalPersonnelDiningManager;
+        });
+
         api.dinnerTypes.query(function (result) {
             $scope.dinnerTypes = result;
         });
@@ -19,7 +23,7 @@
 
             if (form.$valid) {
                 api.dinnerRegister.save($scope.data, function () {
-                    $window.location.href = "/weixin/dinnerregisterhistories";
+                    $window.location.href = "/weixin/dinnerregisterhistories#?isown=true";
                 });
             }
         };

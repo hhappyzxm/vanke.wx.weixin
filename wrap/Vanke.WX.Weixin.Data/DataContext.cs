@@ -74,11 +74,6 @@ namespace Vanke.WX.Weixin.Data
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Staff>()
-               .HasMany(e => e.DinnerRegisterHistories)
-               .WithRequired(e => e.ReadStaff)
-               .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Staff>()
                 .HasMany(e => e.ExternalPersonnelDiningRegisterHistories)
                 .WithRequired(e => e.Staff)
                 .WillCascadeOnDelete(false);

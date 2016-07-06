@@ -19,7 +19,7 @@ namespace Vanke.WX.Weixin.Service
         public DinnerRegisterService(IDataContext dataContext) : base(dataContext)
         {
         }
-        
+
         public async Task CancelAsync(long key)
         {
             var entity = await UnitOfWork.Set<DinnerRegisterHistory>().FindAsync(key);
@@ -31,20 +31,37 @@ namespace Vanke.WX.Weixin.Service
             await UnitOfWork.SaveChangesAsync();
         }
 
+        public async Task ReadAsync(long key)
+        {
+            var entity = await UnitOfWork.Set<DinnerRegisterHistory>().FindAsync(key);
+
+            entity.IsRead = true;
+            entity.ReadBy = (long)AccountManager.Instance.CurrentLoginUser.ID;
+            entity.ReadOn = DateTime.Now;
+
+            await UnitOfWork.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<DinnerRegisterModel>> GetAllAsync(
             DinnerRegisterStatus[] filterStatuses = null)
         {
             var query = from registerHistory in UnitOfWork.Set<DinnerRegisterHistory>()
-                join staff in UnitOfWork.Set<Staff>() on registerHistory.StaffID equals staff.ID
-                join type in UnitOfWork.Set<DinnerType>() on registerHistory.TypeID equals  type.ID
-                join place in UnitOfWork.Set<DinnerPlace>() on registerHistory.PlaceID equals place.ID
-                select new
-                {
-                    RegisterHistory = registerHistory,
-                    Staff = staff,
-                    Type = type,
-                    Place = place
-                };
+                        join staff in UnitOfWork.Set<Staff>() on registerHistory.StaffID equals staff.ID
+                        join t1 in UnitOfWork.Set<Staff>() on registerHistory.ReadBy equals t1.ID into tt1
+                        from readStaff in tt1.DefaultIfEmpty()
+                        join t2 in UnitOfWork.Set<Staff>() on registerHistory.CancelledBy equals t2.ID into tt2
+                        from cancelStaff in tt2.DefaultIfEmpty()
+                        join type in UnitOfWork.Set<DinnerType>() on registerHistory.TypeID equals type.ID
+                        join place in UnitOfWork.Set<DinnerPlace>() on registerHistory.PlaceID equals place.ID
+                        select new
+                        {
+                            RegisterHistory = registerHistory,
+                            Staff = staff,
+                            Type = type,
+                            Place = place,
+                            ReadStaff = readStaff,
+                            CancelStaff = cancelStaff
+                        };
 
             if (filterStatuses == null)
             {
@@ -62,6 +79,7 @@ namespace Vanke.WX.Weixin.Service
             {
                 ID = p.RegisterHistory.ID,
                 Staff = p.Staff.RealName,
+                Department = p.RegisterHistory.Department,
                 Type = p.Type.Type,
                 Place = p.Place.Place,
                 DinnerDate = p.RegisterHistory.DinnerDate,
@@ -69,8 +87,12 @@ namespace Vanke.WX.Weixin.Service
                 Comment = p.RegisterHistory.Comment,
                 Status = p.RegisterHistory.Status,
                 RegisteredOn = p.RegisterHistory.RegisteredOn,
-                CancelledOn = p.RegisterHistory.CancelledOn
-            }).ToListAsync();
+                CancelledOn = p.RegisterHistory.CancelledOn,
+                CancelledStaff = p.CancelStaff == null ? string.Empty : p.CancelStaff.RealName,
+                IsRead = p.RegisterHistory.IsRead,
+                ReadTime = p.RegisterHistory.ReadOn,
+                ReadStaff = p.ReadStaff == null ? string.Empty : p.ReadStaff.RealName
+            }).OrderByDescending(p => p.RegisteredOn).ToListAsync();
         }
 
         public async Task<IEnumerable<DinnerRegisterModel>> GetOwnHistoriesAsync()
@@ -78,23 +100,33 @@ namespace Vanke.WX.Weixin.Service
             var staffId = (long)AccountManager.Instance.CurrentLoginUser.ID;
 
             var query = from registerHistory in UnitOfWork.Set<DinnerRegisterHistory>()
-                join staff in UnitOfWork.Set<Staff>() on registerHistory.StaffID equals staff.ID
-                join type in UnitOfWork.Set<DinnerType>() on registerHistory.TypeID equals type.ID
-                join place in UnitOfWork.Set<DinnerPlace>() on registerHistory.PlaceID equals place.ID
+                        join staff in UnitOfWork.Set<Staff>() on registerHistory.StaffID equals staff.ID
+                        join t1 in UnitOfWork.Set<Staff>() on registerHistory.ReadBy equals t1.ID into tt1
+                        from readStaff in tt1.DefaultIfEmpty()
+                        join t2 in UnitOfWork.Set<Staff>() on registerHistory.CancelledBy equals t2.ID into tt2
+                        from cancelStaff in tt2.DefaultIfEmpty()
+                        join type in UnitOfWork.Set<DinnerType>() on registerHistory.TypeID equals type.ID
+                        join place in UnitOfWork.Set<DinnerPlace>() on registerHistory.PlaceID equals place.ID
                         where registerHistory.Status != DinnerRegisterStatus.Removed && registerHistory.StaffID == staffId
-                        orderby registerHistory.RegisteredOn descending 
-                select new DinnerRegisterModel
-                {
-                    ID = registerHistory.ID,
-                    Type = type.Type,
-                    Place = place.Place,
-                    DinnerDate = registerHistory.DinnerDate,
-                    PeopleCount = registerHistory.PeopleCount,
-                    Comment = registerHistory.Comment,
-                    Status = registerHistory.Status,
-                    RegisteredOn = registerHistory.RegisteredOn,
-                    CancelledOn = registerHistory.CancelledOn
-                };
+                        orderby registerHistory.RegisteredOn descending
+                        select new DinnerRegisterModel
+                        {
+                            ID = registerHistory.ID,
+                            Type = type.Type,
+                            Place = place.Place,
+                            Staff = staff.RealName,
+                            Department = registerHistory.Department,
+                            DinnerDate = registerHistory.DinnerDate,
+                            PeopleCount = registerHistory.PeopleCount,
+                            Comment = registerHistory.Comment,
+                            Status = registerHistory.Status,
+                            RegisteredOn = registerHistory.RegisteredOn,
+                            CancelledOn = registerHistory.CancelledOn,
+                            CancelledStaff = cancelStaff == null ? string.Empty : cancelStaff.RealName,
+                            IsRead = registerHistory.IsRead,
+                            ReadStaff = readStaff == null ? string.Empty : readStaff.RealName,
+                            ReadTime = registerHistory.ReadOn
+                        };
 
             return await query.ToListAsync();
         }
@@ -106,6 +138,7 @@ namespace Vanke.WX.Weixin.Service
                 StaffID = (long)AccountManager.Instance.CurrentLoginUser.ID,
                 PeopleCount = model.PeopleCount,
                 DinnerDate = model.DinnerDate,
+                Department = model.Department,
                 TypeID = model.TypeID,
                 PlaceID = model.PlaceID,
                 Comment = model.Comment,

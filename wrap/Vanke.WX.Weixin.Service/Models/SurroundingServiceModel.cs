@@ -17,6 +17,8 @@ namespace Vanke.WX.Weixin.Service.Models
 
         public string Address { get; set; }
 
+        public string NavigationAddress { get; set; }
+
         public string Phone { get; set; }
 
         public string Recommendation { get; set; }

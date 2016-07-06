@@ -122,7 +122,7 @@ namespace EZ.Framework.Integration.WebApi
             }
         }
 
-        private void Remove(string key)
+        public void Remove(string key)
         {
             // If cookie timeout or be cleared, can not get useid from identity.
             if (string.IsNullOrEmpty(key))

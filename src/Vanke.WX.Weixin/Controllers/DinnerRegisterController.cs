@@ -47,7 +47,7 @@ namespace Vanke.WX.Weixin.Controllers
         }
 
         /// <summary>
-        /// Cancel borrow
+        /// Cancel
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -56,6 +56,18 @@ namespace Vanke.WX.Weixin.Controllers
         public async Task Cancel(long id)
         {
             await _dinnerRegisterService.CancelAsync(id);
+        }
+
+        /// <summary>
+        /// Read
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("read/{id}")]
+        public async Task Read(long id)
+        {
+            await _dinnerRegisterService.ReadAsync(id);
         }
     }
 }
