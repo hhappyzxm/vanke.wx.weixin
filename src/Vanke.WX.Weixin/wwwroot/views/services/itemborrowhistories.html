@@ -10,6 +10,7 @@
                     <label>状态</label>
                     <select class="form-control" ng-model="filterStatus">
                         <option value="0">已借用</option>
+                        <option value="1">已归还</option>
                         <option value="2">已取消</option>
                     </select>
                 </div>
@@ -32,6 +33,9 @@
                         <th>数量</th>
                         <th>状态</th>
                         <th>借用时间</th>
+                        <th>归还人</th>
+                        <th>归还时间</th>
+                        <th>取消人</th>
                         <th>取消时间</th>
                         <th width="70" class="text-center">操作</th>
                     </tr>
@@ -52,6 +56,15 @@
                         </td>
                         <td>
                             {{item.BorrowedOn | date : 'yyyy-MM-dd hh:mm'}}
+                        </td>
+                        <td>
+                            {{item.ReturnedStaff}}
+                        </td>
+                        <td>
+                            {{item.ReturnedOn | date : 'yyyy-MM-dd hh:mm'}}
+                        </td>
+                        <td>
+                            {{item.CancelledStaff}}
                         </td>
                         <td>
                             {{item.CancelledOn | date : 'yyyy-MM-dd hh:mm'}}
