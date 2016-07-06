@@ -19,7 +19,7 @@ namespace Vanke.WX.Weixin.Service
         public ItemBorrowService(IDataContext dataContext) : base(dataContext)
         {
         }
-        
+
         public async Task CancelAsync(long key)
         {
             var entity = await UnitOfWork.Set<ItemBorrowHistory>().FindAsync(key);
@@ -31,18 +31,36 @@ namespace Vanke.WX.Weixin.Service
             await UnitOfWork.SaveChangesAsync();
         }
 
+        public async Task ReturnAsync(long key)
+        {
+            var entity = await UnitOfWork.Set<ItemBorrowHistory>().FindAsync(key);
+
+            entity.Status = ItemBorrowStatus.Returned;
+            entity.ReturnedBy = (long)AccountManager.Instance.CurrentLoginUser.ID;
+            entity.ReturnedOn = DateTime.Now;
+
+            await UnitOfWork.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<ItemBorrowModel>> GetAllAsync(
-            ItemBorrowStatus[] filterStatuses = null)
+            ItemBorrowStatus[] filterStatuses = null, long? borrowBy = null)
         {
             var query = from borrowHistory in UnitOfWork.Set<ItemBorrowHistory>()
-                join staff in UnitOfWork.Set<Staff>() on borrowHistory.StaffID equals staff.ID
-                join item in UnitOfWork.Set<Item>() on borrowHistory.ItemID equals  item.ID
-                select new
-                {
-                    BorrowHistory = borrowHistory,
-                    Staff = staff,
-                    Item = item
-                };
+                        join staff in UnitOfWork.Set<Staff>() on borrowHistory.StaffID equals staff.ID
+                        join t1 in UnitOfWork.Set<Staff>() on borrowHistory.ReturnedBy equals t1.ID into tt1
+                        from returnStaff in tt1.DefaultIfEmpty()
+                        join t2 in UnitOfWork.Set<Staff>() on borrowHistory.CancelledBy equals t2.ID into tt2
+                        from cancelStaff in tt2.DefaultIfEmpty()
+                        join item in UnitOfWork.Set<Item>() on borrowHistory.ItemID equals item.ID
+                        orderby borrowHistory.BorrowedOn descending 
+                        select new
+                        {
+                            BorrowHistory = borrowHistory,
+                            Staff = staff,
+                            ReturnStaff = returnStaff,
+                            CancelStaff = cancelStaff,
+                            Item = item
+                        };
 
             if (filterStatuses == null)
             {
@@ -56,6 +74,11 @@ namespace Vanke.WX.Weixin.Service
                 }
             }
 
+            if (borrowBy.HasValue)
+            {
+                query = query.Where(p => p.BorrowHistory.StaffID == borrowBy);
+            }
+
             return await query.Select(p => new ItemBorrowModel
             {
                 ID = p.BorrowHistory.ID,
@@ -63,31 +86,18 @@ namespace Vanke.WX.Weixin.Service
                 Item = p.Item.Name,
                 Status = p.BorrowHistory.Status,
                 Quantity = p.BorrowHistory.Quantity,
+                Comment = p.BorrowHistory.Comment,
                 BorrowedOn = p.BorrowHistory.BorrowedOn,
-                CancelledOn = p.BorrowHistory.CancelledOn
+                CancelledOn = p.BorrowHistory.CancelledOn,
+                CancelledStaff = p.CancelStaff == null ? string.Empty : p.CancelStaff.RealName,
+                ReturnedOn = p.BorrowHistory.ReturnedOn,
+                ReturnedStaff = p.ReturnStaff == null ? string.Empty : p.ReturnStaff.RealName
             }).ToListAsync();
         }
 
         public async Task<IEnumerable<ItemBorrowModel>> GetOwnHistoriesAsync()
         {
-            var staffId = (long) AccountManager.Instance.CurrentLoginUser.ID;
-
-            return await UnitOfWork.Set<ItemBorrowHistory>()
-                .Where(
-                    p =>
-                        p.Status != ItemBorrowStatus.Removed &&
-                        p.StaffID == staffId)
-                .OrderByDescending(p => p.BorrowedOn)
-                .Select(p => new ItemBorrowModel
-                {
-                    ID = p.ID,
-                    Item = p.Item.Name,
-                    Status = p.Status,
-                    Quantity = p.Quantity,
-                    BorrowedOn = p.BorrowedOn,
-                    CancelledOn = p.CancelledOn
-                })
-                .ToListAsync();
+            return await this.GetAllAsync(null, (long) AccountManager.Instance.CurrentLoginUser.ID);
         }
 
         public async Task InsertAsync(ItemBorrowModel model)
@@ -98,8 +108,10 @@ namespace Vanke.WX.Weixin.Service
                 ItemID = model.ItemID,
                 Quantity = model.Quantity,
                 BorrowedOn = DateTime.Now,
+                Comment = model.Comment,
                 Status = ItemBorrowStatus.Active
             };
+
 
             UnitOfWork.Set<ItemBorrowHistory>().Add(entity);
             await UnitOfWork.SaveChangesAsync();

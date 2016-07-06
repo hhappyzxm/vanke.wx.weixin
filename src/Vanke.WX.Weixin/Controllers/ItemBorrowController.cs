@@ -70,5 +70,13 @@ namespace Vanke.WX.Weixin.Controllers
         {
             await _itemBorrowService.CancelAsync(id);
         }
+
+        [HttpPost]
+        [Route("return/{id}")]
+        public async Task Return(long id)
+        {
+            await _itemBorrowService.ReturnAsync(id);
+        }
+
     }
 }

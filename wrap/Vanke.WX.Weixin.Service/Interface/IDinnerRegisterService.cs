@@ -8,7 +8,7 @@ namespace Vanke.WX.Weixin.Service.Interface
 {
     public interface IDinnerRegisterService : ICreateAsyncService<DinnerRegisterModel>
     {
-        Task<IEnumerable<DinnerRegisterModel>> GetAllAsync(DinnerRegisterStatus[] filterStatuses = null);
+        Task<IEnumerable<DinnerRegisterModel>> GetAllAsync(DinnerRegisterStatus[] filterStatuses = null, long? registerBy = null);
 
         Task<IEnumerable<DinnerRegisterModel>> GetOwnHistoriesAsync();
 

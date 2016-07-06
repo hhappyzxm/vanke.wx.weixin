@@ -5,8 +5,11 @@
 </div>
 <div ng-controller="ItemBorrowHistoriesCtrl" style="padding-top: 50px;">
     <div class="hpanel " ng-repeat="item in ::histories">
-        <div class="panel-heading hbuilt" ng-class="{'hhgred':item.Status == 1}">
-            <i class="panel-icon fa fa-info-circle"></i>&nbsp;<span ng-bind="item.Status == 0 ? '已借用' : '已取消'"></span>
+        <div class="panel-heading hbuilt" ng-class="{'hhgred':item.Status == 2}">
+            <div class="panel-tools" ng-if="item.Status == 0 && isItemBorrowManager">
+                <button class="btn btn-success btn-xs" ng-click="return(item.ID)">归还</button>
+            </div>
+            <i class="panel-icon fa fa-info-circle"></i>&nbsp;<span ng-bind="item.Status == 0 ? '已借用' : (item.Status == 1 ? '已归还':'已取消')"></span>
         </div>
         <div class="panel-body list">
             <table class="table table-bordered table-hover nowrap" width="100%">
@@ -29,18 +32,58 @@
                     </tr>
                     <tr>
                         <td>
+                            <strong>备注</strong>
+                        </td>
+                        <td class="text-center">
+                            <span ng-bind="item.Comment"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>借用人</strong>
+                        </td>
+                        <td class="text-center">
+                            <span ng-bind="item.Staff"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             <strong>借用时间</strong>
                         </td>
                         <td class="text-center">
                             <span ng-bind="item.BorrowedOn | date : 'yyyy-MM-dd hh:mm'"></span>
                         </td>
                     </tr>
-                    <tr ng-if="item.Status == 1">
+                    <tr ng-if="item.Status == 2">
+                        <td>
+                            <strong>取消人</strong>
+                        </td>
+                        <td class="text-center">
+                            <span ng-bind="item.CancelledStaff | date : 'yyyy-MM-dd hh:mm'"></span>
+                        </td>
+                    </tr>
+                    <tr ng-if="item.Status == 2">
                         <td>
                             <strong>取消时间</strong>
                         </td>
                         <td class="text-center">
                             <span ng-bind="item.CancelledOn | date : 'yyyy-MM-dd hh:mm'"></span>
+                        </td>
+                    </tr>
+                    <tr ng-if="item.Status == 1">
+                        <td>
+                            <strong>归还人</strong>
+                        </td>
+                        <td class="text-center">
+                            <span ng-bind="item.ReturnedStaff | date : 'yyyy-MM-dd hh:mm'"></span>
+                        </td>
+                    </tr>
+                    <tr ng-if="item.Status == 1">
+                        <td>
+                            <strong>归还时间</strong>
+                        </td>
+                        <td class="text-center">
+                            <span ng-bind="item.ReturnedOn | date : 'yyyy-MM-dd hh:mm'"></span>
                         </td>
                     </tr>
                 </tbody>

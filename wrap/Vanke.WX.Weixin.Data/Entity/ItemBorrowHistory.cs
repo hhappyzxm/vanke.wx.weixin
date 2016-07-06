@@ -33,7 +33,5 @@ namespace Vanke.WX.Weixin.Data.Entity
         public virtual Item Item { get; set; }
 
         public virtual Staff Staff { get; set; }
-
-        public virtual Staff ReturnedStaff { get; set; }
     }
 }

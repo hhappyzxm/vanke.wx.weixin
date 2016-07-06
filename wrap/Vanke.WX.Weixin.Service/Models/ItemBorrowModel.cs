@@ -18,10 +18,18 @@ namespace Vanke.WX.Weixin.Service.Models
 
         public int Quantity { get; set; }
 
+        public string Comment { get; set; }
+
         public ItemBorrowStatus Status { get; set; }
 
         public DateTime BorrowedOn { get; set; }
 
         public DateTime? CancelledOn { get; set; }
+
+        public string CancelledStaff { get; set; }
+
+        public string ReturnedStaff { get; set; }
+
+        public DateTime? ReturnedOn { get; set; }
     }
 }

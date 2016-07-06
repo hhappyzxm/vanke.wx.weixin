@@ -8,11 +8,13 @@ namespace Vanke.WX.Weixin.Service.Interface
 {
     public interface IItemBorrowService : ICreateAsyncService<ItemBorrowModel>
     {
-        Task<IEnumerable<ItemBorrowModel>> GetAllAsync(ItemBorrowStatus[] filterStatuses = null);
+        Task<IEnumerable<ItemBorrowModel>> GetAllAsync(ItemBorrowStatus[] filterStatuses = null, long? borrowBy = null);
 
         Task<IEnumerable<ItemBorrowModel>> GetOwnHistoriesAsync();
 
         Task CancelAsync(long key);
+
+        Task ReturnAsync(long key);
     }
 }
 

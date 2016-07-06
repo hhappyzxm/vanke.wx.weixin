@@ -65,6 +65,7 @@ namespace Vanke.WX.Weixin.Common
     public enum ItemBorrowStatus
     {
         Active,
+        Returned,
         Cancelled,
         Removed
     }

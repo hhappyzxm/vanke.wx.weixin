@@ -43,7 +43,7 @@ namespace Vanke.WX.Weixin.Service
         }
 
         public async Task<IEnumerable<DinnerRegisterModel>> GetAllAsync(
-            DinnerRegisterStatus[] filterStatuses = null)
+            DinnerRegisterStatus[] filterStatuses = null, long? registerBy = null)
         {
             var query = from registerHistory in UnitOfWork.Set<DinnerRegisterHistory>()
                         join staff in UnitOfWork.Set<Staff>() on registerHistory.StaffID equals staff.ID
@@ -75,6 +75,11 @@ namespace Vanke.WX.Weixin.Service
                 }
             }
 
+            if (registerBy.HasValue)
+            {
+                query = query.Where(p => p.RegisterHistory.StaffID == registerBy);
+            }
+
             return await query.Select(p => new DinnerRegisterModel
             {
                 ID = p.RegisterHistory.ID,
@@ -97,38 +102,7 @@ namespace Vanke.WX.Weixin.Service
 
         public async Task<IEnumerable<DinnerRegisterModel>> GetOwnHistoriesAsync()
         {
-            var staffId = (long)AccountManager.Instance.CurrentLoginUser.ID;
-
-            var query = from registerHistory in UnitOfWork.Set<DinnerRegisterHistory>()
-                        join staff in UnitOfWork.Set<Staff>() on registerHistory.StaffID equals staff.ID
-                        join t1 in UnitOfWork.Set<Staff>() on registerHistory.ReadBy equals t1.ID into tt1
-                        from readStaff in tt1.DefaultIfEmpty()
-                        join t2 in UnitOfWork.Set<Staff>() on registerHistory.CancelledBy equals t2.ID into tt2
-                        from cancelStaff in tt2.DefaultIfEmpty()
-                        join type in UnitOfWork.Set<DinnerType>() on registerHistory.TypeID equals type.ID
-                        join place in UnitOfWork.Set<DinnerPlace>() on registerHistory.PlaceID equals place.ID
-                        where registerHistory.Status != DinnerRegisterStatus.Removed && registerHistory.StaffID == staffId
-                        orderby registerHistory.RegisteredOn descending
-                        select new DinnerRegisterModel
-                        {
-                            ID = registerHistory.ID,
-                            Type = type.Type,
-                            Place = place.Place,
-                            Staff = staff.RealName,
-                            Department = registerHistory.Department,
-                            DinnerDate = registerHistory.DinnerDate,
-                            PeopleCount = registerHistory.PeopleCount,
-                            Comment = registerHistory.Comment,
-                            Status = registerHistory.Status,
-                            RegisteredOn = registerHistory.RegisteredOn,
-                            CancelledOn = registerHistory.CancelledOn,
-                            CancelledStaff = cancelStaff == null ? string.Empty : cancelStaff.RealName,
-                            IsRead = registerHistory.IsRead,
-                            ReadStaff = readStaff == null ? string.Empty : readStaff.RealName,
-                            ReadTime = registerHistory.ReadOn
-                        };
-
-            return await query.ToListAsync();
+            return await this.GetAllAsync(null, (long)AccountManager.Instance.CurrentLoginUser.ID);
         }
 
         public async Task InsertAsync(DinnerRegisterModel model)

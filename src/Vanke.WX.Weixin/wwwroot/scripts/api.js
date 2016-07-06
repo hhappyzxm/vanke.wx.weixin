@@ -80,6 +80,10 @@
                 'cancel': {
                     method: 'POST',
                     url: apiHost + '/api/itemborrow/cancel/:id'
+                },
+                'return': {
+                    method: 'POST',
+                    url: apiHost + '/api/itemborrow/return/:id'
                 }
             }),
 
