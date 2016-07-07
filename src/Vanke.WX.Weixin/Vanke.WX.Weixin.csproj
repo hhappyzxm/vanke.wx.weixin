@@ -196,6 +196,7 @@
     <Content Include="wwwroot\fonts\pe-icon-7-stroke\css\helper.css" />
     <Content Include="wwwroot\fonts\pe-icon-7-stroke\css\pe-icon-7-stroke.css" />
     <Content Include="wwwroot\fonts\pe-icon-7-stroke\fonts\Pe-icon-7-stroke.svg" />
+    <Content Include="wwwroot\images\employeediscount_bg.png" />
     <Content Include="wwwroot\images\loading-bars.svg" />
     <Content Include="wwwroot\index.html" />
     <Content Include="wwwroot\lib\angular-bootstrap\index.js" />

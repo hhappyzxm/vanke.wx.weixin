@@ -4,15 +4,14 @@
     </div>
 </nav>
 <div class="container" style="padding-top: 70px;">
-    <ul class="list-group">
-        <li class="list-group-item text-center" onclick="window.location.href = 'employeediscounts#?t=0'">衣</li>
-        <li class="list-group-item text-center" onclick="window.location.href = 'employeediscounts#?t=1'">食</li>
-        <li class="list-group-item text-center" onclick="window.location.href = 'employeediscounts#?t=2'">住</li>
-        <li class="list-group-item text-center" onclick="window.location.href = 'employeediscounts#?t=3'">行</li>
-        <li class="list-group-item text-center" onclick="window.location.href = 'employeediscounts#?t=4'">健</li>
-    </ul>
+    <div style="position: relative; margin: 0 auto; width: 320px; height: 414px; background-image: url(../wwwroot/images/employeediscount_bg.png);">
+        <div style="width: 75px; height: 60px; position: absolute; top: 20px; left: 115px;" onclick="window.location.href = 'employeediscounts#?t=0'"></div>
+        <div style="width: 75px; height: 60px; position: absolute; top: 75px; left: 55px;" onclick="window.location.href = 'employeediscounts#?t=1'"></div>
+        <div style="width: 75px; height: 60px; position: absolute; top: 75px; left: 195px;" onclick="window.location.href = 'employeediscounts#?t=2'"></div>
+        <div style="width: 75px; height: 60px; position: absolute; top: 160px; left: 85px;" onclick="window.location.href = 'employeediscounts#?t=3'"></div>
+        <div style="width: 75px; height: 60px; position: absolute; top: 160px; left: 175px;" onclick="window.location.href = 'employeediscounts#?t=4'"></div>
+    </div>
 </div>
-
 @section scripts {
     <script src="~/wwwroot/lib/jquery/jquery.js"></script>
     <script src="~/wwwroot/lib/angular/angular.js"></script>
