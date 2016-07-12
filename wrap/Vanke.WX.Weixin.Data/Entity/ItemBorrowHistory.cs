@@ -18,6 +18,7 @@ namespace Vanke.WX.Weixin.Data.Entity
         public ItemBorrowStatus Status { get; set; }
 
         [StringLength(50)]
+        [Required]
         public string Comment { get; set; }
 
         public DateTime BorrowedOn { get; set; }

@@ -59,7 +59,12 @@
                 </div>
                 <div class="form-group">
                     <label>备注</label>
-                    <textarea rows="3" class="form-control" ng-model="data.Comment" placeholder="酒水种类、人均标准"></textarea>
+                    <textarea rows="3" name="comment" class="form-control" ng-model="data.Comment" placeholder="酒水种类、人均标准" required></textarea>
+                    <div class="m-t-xs" ng-show="submitForm.comment.$invalid && submitForm.$submitted">
+                        <span class="text-danger" ng-show="submitForm.comment.$error">
+                            <i class="fa fa-exclamation-triangle"></i>&nbsp;请输入备注
+                        </span>
+                    </div>
                 </div>
                 <button type="button" class="btn btn-success" style="width: 100%" ng-click="save(submitForm)">提交</button>
                 <div class="weixin_more" ng-if="hasHistories">

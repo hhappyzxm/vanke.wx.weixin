@@ -5,7 +5,7 @@
 </div>
 <div ng-controller="IdleAssetsCtrl" style="padding-top: 50px;">
     <div class="container">
-        <h4><span ng-bind="idleAssetDescription"></span></h4>
+        <h4><span class="text-danger" ng-bind="idleAssetDescription"></span></h4>
     </div>
     <div class="hpanel" ng-repeat="asset in ::idleAssets">
         <div class="panel-heading hbuilt">

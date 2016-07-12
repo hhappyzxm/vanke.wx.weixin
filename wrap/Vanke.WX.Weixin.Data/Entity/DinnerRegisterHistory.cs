@@ -30,6 +30,7 @@ namespace Vanke.WX.Weixin.Data.Entity
         public DinnerRegisterStatus Status { get; set; }
 
         [StringLength(500)]
+        [Required]
         public string Comment { get; set; }
 
         public DateTime RegisteredOn { get; set; }
