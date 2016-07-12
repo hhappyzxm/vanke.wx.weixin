@@ -42,6 +42,11 @@ namespace Vanke.WX.Weixin.Service
             return await UnitOfWork.Set<ItemStorageArea>().Select(ModelSelector()).SingleOrDefaultAsync(p => p.ID == (long)key);
         }
 
+        public async Task<ItemStorageAreaModel> GetByNameAsync(string name)
+        {
+            return await UnitOfWork.Set<ItemStorageArea>().Select(ModelSelector()).SingleOrDefaultAsync(p => p.Area.Equals(name));
+        }
+
         public override async Task<IEnumerable<ItemStorageAreaModel>> GetAllAsync()
         {
             return await
@@ -53,7 +58,7 @@ namespace Vanke.WX.Weixin.Service
 
         protected override async Task InsertEntityAsync(ItemStorageArea entity)
         {
-            await CheckItemExist(entity);
+            await CheckAreaExist(entity.Area, entity.ID);
 
             entity.Status = ItemStorageAreaStatus.Active;
             entity.CreatedOn = DateTime.Now;
@@ -64,7 +69,7 @@ namespace Vanke.WX.Weixin.Service
 
         protected override async Task UpdateEntityAsync(ItemStorageArea entity)
         {
-            await CheckItemExist(entity);
+            await CheckAreaExist(entity.Area, entity.ID);
 
             entity.UpdatedOn = DateTime.Now;
             entity.UpdatedBy = (long)AccountManager.Instance.CurrentLoginUser.ID;
@@ -79,9 +84,9 @@ namespace Vanke.WX.Weixin.Service
             return base.UpdateEntityAsync(entity);
         }
 
-        private async Task CheckItemExist(ItemStorageArea entity)
+        private async Task CheckAreaExist(string area, long id = 0)
         {
-            if (await UnitOfWork.Set<ItemStorageArea>().AnyAsync(p => p.Area.Equals(entity.Area) && p.ID != entity.ID))
+            if (await UnitOfWork.Set<ItemStorageArea>().AnyAsync(p => p.Area.Equals(area) && p.ID != id))
             {
                 throw new BusinessException("存放区域已经存在");
             }

@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
+using EZ.Framework;
 using EZ.Framework.Integration.WebApi;
+using Vanke.WX.Weixin.App_Extension;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Data.Entity;
 using Vanke.WX.Weixin.Service.Interface;
 using Vanke.WX.Weixin.Service.Models;
+using Vanke.WX.Weixin.ViewModels;
 
 namespace Vanke.WX.Weixin.Controllers
 {
@@ -55,9 +60,89 @@ namespace Vanke.WX.Weixin.Controllers
 
         [HttpPost]
         [Route("api/idleassets/import")]
-        public async Task Import(string fileName)
+        public async Task Import(IdleAssetImportModel viewModel)
         {
-            throw new NotImplementedException();
+            var filePath = HttpRuntime.AppDomainAppPath + @"Temp\" + viewModel.FileName;
+            var dataSource = ExcelHelper.GetExcelDataTable(filePath);
+
+            var itemStorageAreaService = IoC.Container.GetInstance<IItemStorageAreaService>();
+
+            var checkedArea = new Dictionary<string, long>();
+            var checkedPlace = new Dictionary<string, long>();
+            int index;
+
+            #region 验证Excel格式
+
+            index = 2;
+            foreach (DataRow row in dataSource.Rows)
+            {
+                if (string.IsNullOrEmpty(row[0].ToString()) &&
+                    string.IsNullOrEmpty(row[1].ToString()) &&
+                    string.IsNullOrEmpty(row[2].ToString()) &&
+                    string.IsNullOrEmpty(row[3].ToString()) &&
+                    string.IsNullOrEmpty(row[4].ToString()) &&
+                    string.IsNullOrEmpty(row[5].ToString()) &&
+                    string.IsNullOrEmpty(row[6].ToString()))
+                {
+                    break;
+                }
+
+                if (string.IsNullOrEmpty(row[0].ToString()))
+                {
+                    throw new BusinessException($"第{index}行项目名称为空");
+                }
+                if (string.IsNullOrEmpty(row[1].ToString()))
+                {
+                    throw new BusinessException($"第{index}行闲置资产物品为空");
+                }
+                if (string.IsNullOrEmpty(row[2].ToString()))
+                {
+                    throw new BusinessException($"第{index}行数量为空");
+                }
+                if (string.IsNullOrEmpty(row[3].ToString()))
+                {
+                    throw new BusinessException($"第{index}行单位为空");
+                }
+                if (string.IsNullOrEmpty(row[4].ToString()))
+                {
+                    throw new BusinessException($"第{index}行物品管理负责人为空");
+                }
+                if (string.IsNullOrEmpty(row[5].ToString()))
+                {
+                    throw new BusinessException($"第{index}行负责人账号为空");
+                }
+                if (string.IsNullOrEmpty(row[6].ToString()))
+                {
+                    throw new BusinessException($"第{index}行备注为空");
+                }
+
+                index++;
+            }
+
+            #endregion
+
+            #region 验证基础数据是否存在
+
+            index = 2;
+            foreach (DataRow row in dataSource.Rows)
+            {
+                // 验证项目名称
+                var area = row[0].ToString();
+                if (!checkedArea.ContainsKey(area))
+                {
+                    var entity = await itemStorageAreaService.GetByNameAsync(area);
+                    if (entity != null)
+                    {
+                        checkedArea.Add(area, entity.ID);
+                    }
+                    else
+                    {
+                        throw new BusinessException($"第{index}行项目名称{area}不存在，请先创建");
+                    }
+                }
+            }
+
+            #endregion
         }
 
         /// <summary>

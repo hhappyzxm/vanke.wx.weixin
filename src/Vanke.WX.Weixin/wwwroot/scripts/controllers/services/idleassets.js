@@ -12,12 +12,17 @@
             DTColumnDefBuilder.newColumnDef(6).notSortable()
         ];
 
-        $scope.selectFile = function(file) {
+        $scope.selectFile = function (file) {
+            if (file == null) {
+                return;
+            }
             Upload.upload({
                 url: '/api/files',
                 data: { file: file }
             }).then(function (response) {
-                var fileName = response.data[0];
+                api.idleAssets.import({ FileName: response.data[0] }, function() {
+                    sweetAlert.success("导入成功");
+                });
             });
         };
 

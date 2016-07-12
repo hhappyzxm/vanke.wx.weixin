@@ -100,7 +100,13 @@
             /**
              * Idle Assets Api
              */
-            idleAssets: $resource(apiHost + '/api/idleassets/:id', { id: '@id' }),
+            idleAssets: $resource(apiHost + '/api/idleassets/:id', { id: '@id' }, {
+                'import': {
+                    method: 'POST',
+                    url: apiHost + '/api/idleassets/import',
+                    isArray: true
+                }
+            }),
 
             /**
              * Dinner Register Api
