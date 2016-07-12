@@ -11,7 +11,7 @@ namespace Vanke.WX.Weixin.Data.Entity
 
         public long StaffID { get; set; }
 
-        public long DinnerTypeID { get; set; }
+        public long MealTypeID { get; set; }
 
         public int CardQuantity { get; set; }
 
@@ -30,6 +30,6 @@ namespace Vanke.WX.Weixin.Data.Entity
 
         public virtual Staff Staff { get; set; }
 
-        public virtual DinnerType DinnerType { get; set; }
+        public virtual MealType MealType { get; set; }
     }
 }

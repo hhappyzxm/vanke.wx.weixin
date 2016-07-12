@@ -375,7 +375,9 @@
     <Content Include="wwwroot\scripts\controllers\settings\admins.js" />
     <Content Include="wwwroot\scripts\controllers\settings\dinnerplaceedit.js" />
     <Content Include="wwwroot\scripts\controllers\settings\dinnerplaces.js" />
+    <Content Include="wwwroot\scripts\controllers\settings\mealtypeedit.js" />
     <Content Include="wwwroot\scripts\controllers\settings\dinnertypeedit.js" />
+    <Content Include="wwwroot\scripts\controllers\settings\mealtypes.js" />
     <Content Include="wwwroot\scripts\controllers\settings\dinnertypes.js" />
     <Content Include="wwwroot\scripts\controllers\settings\itemedit.js" />
     <Content Include="wwwroot\scripts\controllers\settings\settings.js" />
@@ -423,7 +425,9 @@
     <Content Include="wwwroot\views\services\itemborrowhistories.html" />
     <Content Include="wwwroot\views\settings\dinnerplaceedit.html" />
     <Content Include="wwwroot\views\settings\dinnerplaces.html" />
+    <Content Include="wwwroot\views\settings\mealtypeedit.html" />
     <Content Include="wwwroot\views\settings\dinnertypeedit.html" />
+    <Content Include="wwwroot\views\settings\mealtypes.html" />
     <Content Include="wwwroot\views\settings\dinnertypes.html" />
     <Content Include="wwwroot\views\settings\itemedit.html" />
     <Content Include="wwwroot\views\settings\settings.html" />
@@ -486,6 +490,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\DinnerPlacesController.cs" />
     <Compile Include="Controllers\DinnerRegisterController.cs" />
+    <Compile Include="Controllers\MealTypesController.cs" />
     <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\ItemBorrowController.cs" />

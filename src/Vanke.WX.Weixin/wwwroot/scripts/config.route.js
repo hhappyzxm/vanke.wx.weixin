@@ -52,6 +52,20 @@
                     pageTitle: '宴会类型管理'
                 }
             })
+            .state("settings.mealtypes", {
+                url: "/mealtypes",
+                templateUrl: "/wwwroot/views/settings/mealtypes.html",
+                data: {
+                    pageTitle: '餐别管理'
+                }
+            })
+            .state("settings.mealtypeedit", {
+                url: "/mealtypeedit?id",
+                templateUrl: "/wwwroot/views/settings/mealtypeedit.html",
+                data: {
+                    pageTitle: '餐别管理'
+                }
+            })
             .state("settings.dinnerplaces", {
                 url: "/dinnerplaces",
                 templateUrl: "/wwwroot/views/settings/dinnerplaces.html",

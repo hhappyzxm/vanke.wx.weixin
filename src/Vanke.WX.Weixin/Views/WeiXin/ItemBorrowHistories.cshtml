@@ -51,7 +51,7 @@
                             <strong>借用时间</strong>
                         </td>
                         <td class="text-center">
-                            <span ng-bind="item.BorrowedOn | date : 'yyyy-MM-dd hh:mm'"></span>
+                            <span ng-bind="item.BorrowedOn | date : 'yyyy-MM-dd HH:mm'"></span>
                         </td>
                     </tr>
                     <tr ng-if="item.Status == 2">
@@ -59,7 +59,7 @@
                             <strong>取消人</strong>
                         </td>
                         <td class="text-center">
-                            <span ng-bind="item.CancelledStaff | date : 'yyyy-MM-dd hh:mm'"></span>
+                            <span ng-bind="item.CancelledStaff | date : 'yyyy-MM-dd HH:mm'"></span>
                         </td>
                     </tr>
                     <tr ng-if="item.Status == 2">
@@ -67,7 +67,7 @@
                             <strong>取消时间</strong>
                         </td>
                         <td class="text-center">
-                            <span ng-bind="item.CancelledOn | date : 'yyyy-MM-dd hh:mm'"></span>
+                            <span ng-bind="item.CancelledOn | date : 'yyyy-MM-dd HH:mm'"></span>
                         </td>
                     </tr>
                     <tr ng-if="item.Status == 1">
@@ -75,7 +75,7 @@
                             <strong>归还人</strong>
                         </td>
                         <td class="text-center">
-                            <span ng-bind="item.ReturnedStaff | date : 'yyyy-MM-dd hh:mm'"></span>
+                            <span ng-bind="item.ReturnedStaff | date : 'yyyy-MM-dd HH:mm'"></span>
                         </td>
                     </tr>
                     <tr ng-if="item.Status == 1">
@@ -83,7 +83,7 @@
                             <strong>归还时间</strong>
                         </td>
                         <td class="text-center">
-                            <span ng-bind="item.ReturnedOn | date : 'yyyy-MM-dd hh:mm'"></span>
+                            <span ng-bind="item.ReturnedOn | date : 'yyyy-MM-dd HH:mm'"></span>
                         </td>
                     </tr>
                 </tbody>

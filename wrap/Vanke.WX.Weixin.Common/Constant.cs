@@ -26,6 +26,12 @@ namespace Vanke.WX.Weixin.Common
         Removed
     }
 
+    public enum MealTypeStatus
+    {
+        Active,
+        Removed
+    }
+
     public enum DinnerTypeStatus
     {
         Active,

@@ -43,10 +43,10 @@ namespace Vanke.WX.Weixin.Data
                 .HasForeignKey(e => e.TypeID)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<DinnerType>()
+            modelBuilder.Entity<MealType>()
                .HasMany(e => e.ExternalPersonnelDiningRegisterHistories)
-               .WithRequired(e => e.DinnerType)
-               .HasForeignKey(e => e.DinnerTypeID)
+               .WithRequired(e => e.MealType)
+               .HasForeignKey(e => e.MealTypeID)
                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Item>()

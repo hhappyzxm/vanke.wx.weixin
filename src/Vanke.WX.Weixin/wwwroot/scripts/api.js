@@ -38,6 +38,11 @@
             dinnerTypes: $resource(apiHost + '/api/dinnertypes/:id', { id: '@id' }),
 
             /**
+             * Meal Types Api
+             */
+            mealTypes: $resource(apiHost + '/api/mealtypes/:id', { id: '@id' }),
+
+            /**
              * Dinner Places Api
              */
             dinnerPlaces: $resource(apiHost + '/api/dinnerplaces/:id', { id: '@id' }),

@@ -2,8 +2,8 @@
     'use strict';
 
     app.controller('ExternalPersonnelDiningRegisterCtrl', function ($scope, $window, api) {
-        api.dinnerTypes.query(function (result) {
-            $scope.dinnerTypes = result;
+        api.mealTypes.query(function (result) {
+            $scope.mealTypes = result;
         });
 
         api.externalPersonnelDiningRegister.getOwnHistories(function (result) {

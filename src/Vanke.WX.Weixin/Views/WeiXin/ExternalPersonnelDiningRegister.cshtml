@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-group">
                     <label>餐别<span class="txt-mandatory">*</span></label>
-                    <select name="dinnerType" class="form-control" ng-model="data.DinnerTypeID" ng-options="item.ID as item.Type for item in dinnerTypes" required>
+                    <select name="dinnerType" class="form-control" ng-model="data.MealTypeID" ng-options="item.ID as item.Type for item in mealTypes" required>
                         <option value="">--- 请选择 ---</option>
                     </select>
                     <div class="m-t-xs" ng-show="submitForm.dinnerType.$invalid && submitForm.$submitted">

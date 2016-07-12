@@ -52,7 +52,7 @@
                                 <strong>宴请时间</strong>
                             </td>
                             <td class="text-center">
-                                <span ng-bind="item.DinnerDate | date : 'yyyy-MM-dd hh:mm'"></span>
+                                <span ng-bind="item.DinnerDate | date : 'yyyy-MM-dd HH:mm'"></span>
                             </td>
                         </tr>
                         <tr>
@@ -76,7 +76,7 @@
                                 <strong>登记时间</strong>
                             </td>
                             <td class="text-center">
-                                <span ng-bind="item.RegisteredOn | date : 'yyyy-MM-dd hh:mm'"></span>
+                                <span ng-bind="item.RegisteredOn | date : 'yyyy-MM-dd HH:mm'"></span>
                             </td>
                         </tr>
                         <tr ng-if="item.Status == 1">
@@ -92,7 +92,7 @@
                                 <strong>取消时间</strong>
                             </td>
                             <td class="text-center">
-                                <span ng-bind="item.CancelledOn | date : 'yyyy-MM-dd hh:mm'"></span>
+                                <span ng-bind="item.CancelledOn | date : 'yyyy-MM-dd HH:mm'"></span>
                             </td>
                         </tr>
                         <tr ng-if="item.IsRead">
@@ -108,7 +108,7 @@
                                 <strong>确认时间</strong>
                             </td>
                             <td class="text-center">
-                                <span ng-bind="item.ReadTime | date : 'yyyy-MM-dd hh:mm'"></span>
+                                <span ng-bind="item.ReadTime | date : 'yyyy-MM-dd HH:mm'"></span>
                             </td>
                         </tr>
                     </tbody>

@@ -35,11 +35,11 @@ namespace Vanke.WX.Weixin.Service
         {
             var query = from register in UnitOfWork.Set<ExternalPersonnelDiningRegisterHistory>()
                         join staff in UnitOfWork.Set<Staff>() on register.StaffID equals staff.ID
-                        join dinnerType in UnitOfWork.Set<DinnerType>() on register.DinnerTypeID equals dinnerType.ID
+                        join mealType in UnitOfWork.Set<MealType>() on register.MealTypeID equals mealType.ID
                         select new
                         {
                             Register = register,
-                            DinnerType = dinnerType,
+                            MealType = mealType,
                             Staff = staff,
                         };
 
@@ -61,8 +61,8 @@ namespace Vanke.WX.Weixin.Service
                 Staff = p.Staff.RealName,
                 Status = p.Register.Status,
                 Department = p.Register.Department,
-                DinnerTypeID = p.Register.DinnerTypeID,
-                DinnerType = p.DinnerType.Type,
+                MealTypeID = p.Register.MealTypeID,
+                MealType = p.MealType.Type,
                 CardQuantity = p.Register.CardQuantity,
                 Comment = p.Register.Comment,
                 RegisteredOn = p.Register.RegisteredOn,
@@ -75,17 +75,16 @@ namespace Vanke.WX.Weixin.Service
             var staffId = (long)AccountManager.Instance.CurrentLoginUser.ID;
 
             var query = from register in UnitOfWork.Set<ExternalPersonnelDiningRegisterHistory>()
-                join dinnerType in UnitOfWork.Set<DinnerType>() on register.DinnerTypeID equals dinnerType.ID
-                where register.Status != ExternalPersonnelDiningRegisterStatus.Removed &&
-                      register.StaffID == staffId
-                      orderby register.RegisteredOn descending 
+                        join mealType in UnitOfWork.Set<MealType>() on register.MealTypeID equals mealType.ID
+                        where register.Status != ExternalPersonnelDiningRegisterStatus.Removed && register.StaffID == staffId
+                        orderby register.RegisteredOn descending
                         select new ExternalPersonnelDiningRegisterModel
                         {
                             ID = register.ID,
                             Comment = register.Comment,
                             Status = register.Status,
                             Department = register.Department,
-                            DinnerType = dinnerType.Type,
+                            MealType = mealType.Type,
                             CardQuantity = register.CardQuantity,
                             RegisteredOn = register.RegisteredOn,
                             CancelledOn = register.CancelledOn
@@ -100,7 +99,7 @@ namespace Vanke.WX.Weixin.Service
             {
                 StaffID = (long)AccountManager.Instance.CurrentLoginUser.ID,
                 CardQuantity = model.CardQuantity,
-                DinnerTypeID = model.DinnerTypeID,
+                MealTypeID = model.MealTypeID,
                 Department = model.Department,
                 Comment = model.Comment,
                 RegisteredOn = DateTime.Now,

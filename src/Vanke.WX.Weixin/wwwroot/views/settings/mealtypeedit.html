@@ -1,0 +1,43 @@
+﻿<div class="row" ng-controller="MealTypeEditCtrl">
+    <div class="col-md-9">
+        <div class="hpanel hgreen">
+            <div class="panel-heading hbuilt">
+                <div panel-tools></div>
+                <i class="panel-icon fa fa-info-circle"></i>&nbsp;餐别管理
+            </div>
+            <div class="panel-body">
+                <form name="submitForm">
+                    <div class="form-group">
+                        <label>类型<span class="txt-mandatory">*</span></label>
+                        <input name="type" type="text" class="form-control" ng-model="data.Type" required/>
+                        <div class="m-t-xs" ng-show="submitForm.type.$invalid && submitForm.$submitted">
+                            <span class="text-danger" ng-show="submitForm.type.$error"><i
+                                    class="fa fa-exclamation-triangle"></i>&nbsp;请输入餐别</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div sticky class="hpanel hgreen">
+            <div class="panel-heading hbuilt">
+                <div panel-tools></div>
+                <i class="panel-icon fa fa-bars"></i>操作
+            </div>
+            <div class="panel-body">
+                <ul class="mailbox-list">
+                    <li>
+                        <a ng-click="save(submitForm)"><i class="fa fa-save text-success"></i>&nbsp;保存</a>
+                    </li>
+                </ul>
+                <hr>
+                <ul class="mailbox-list">
+                    <li>
+                        <a ui-sref="settings.mealtypes"><i class="fa fa-backward"></i>&nbsp;返回</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -24,7 +24,7 @@
                             <strong>餐别</strong>
                         </td>
                         <td class="text-center">
-                            <span ng-bind="item.DinnerType"></span>
+                            <span ng-bind="item.MealType"></span>
                         </td>
                     </tr>
                     <tr>
@@ -48,7 +48,7 @@
                             <strong>登记时间</strong>
                         </td>
                         <td class="text-center">
-                            <span ng-bind="item.RegisteredOn | date : 'yyyy-MM-dd hh:mm'"></span>
+                            <span ng-bind="item.RegisteredOn | date : 'yyyy-MM-dd HH:mm'"></span>
                         </td>
                     </tr>
                     <tr ng-if="item.Status == 1">
@@ -56,7 +56,7 @@
                             <strong>取消时间</strong>
                         </td>
                         <td class="text-center">
-                            <span ng-bind="item.CancelledOn | date : 'yyyy-MM-dd hh:mm'"></span>
+                            <span ng-bind="item.CancelledOn | date : 'yyyy-MM-dd HH:mm'"></span>
                         </td>
                     </tr>
                 </tbody>

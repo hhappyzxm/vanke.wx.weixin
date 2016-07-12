@@ -6,12 +6,12 @@ using Vanke.WX.Weixin.Common;
 
 namespace Vanke.WX.Weixin.Data.Entity
 {
-    public partial class DinnerType : IEntity
+    public partial class MealType : IEntity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DinnerType()
+        public MealType()
         {
-            DinnerRegisterHistories = new HashSet<DinnerRegisterHistory>();
+            ExternalPersonnelDiningRegisterHistories = new HashSet<ExternalPersonnelDiningRegisterHistory>();
         }
 
         public long ID { get; set; }
@@ -20,7 +20,7 @@ namespace Vanke.WX.Weixin.Data.Entity
         [StringLength(50)]
         public string Type { get; set; }
 
-        public DinnerTypeStatus Status { get; set; }
+        public MealTypeStatus Status { get; set; }
 
         public DateTime CreatedOn { get; set; }
 
@@ -29,8 +29,8 @@ namespace Vanke.WX.Weixin.Data.Entity
         public DateTime? UpdatedOn { get; set; }
 
         public long? UpdatedBy { get; set; }
-
+        
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DinnerRegisterHistory> DinnerRegisterHistories { get; set; }
+        public virtual ICollection<ExternalPersonnelDiningRegisterHistory> ExternalPersonnelDiningRegisterHistories { get; set; }
     }
 }

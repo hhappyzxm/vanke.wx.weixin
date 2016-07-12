@@ -1,4 +1,4 @@
-/****** Object:  Table [dbo].[DesignatedDriverPrices]    Script Date: 2016/7/6 16:17:29 ******/
+/****** Object:  Table [dbo].[DesignatedDriverPrices]    Script Date: 2016/7/12 13:36:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -16,7 +16,7 @@ CREATE TABLE [dbo].[DesignatedDriverPrices](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[DesignatedDrivers]    Script Date: 2016/7/6 16:17:29 ******/
+/****** Object:  Table [dbo].[DesignatedDrivers]    Script Date: 2016/7/12 13:36:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -44,7 +44,7 @@ CREATE TABLE [dbo].[DesignatedDrivers](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[DinnerPlaces]    Script Date: 2016/7/6 16:17:29 ******/
+/****** Object:  Table [dbo].[DinnerPlaces]    Script Date: 2016/7/12 13:36:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -64,7 +64,7 @@ CREATE TABLE [dbo].[DinnerPlaces](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[DinnerRegisterHistories]    Script Date: 2016/7/6 16:17:29 ******/
+/****** Object:  Table [dbo].[DinnerRegisterHistories]    Script Date: 2016/7/12 13:36:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -81,7 +81,7 @@ CREATE TABLE [dbo].[DinnerRegisterHistories](
 	[IsRead] [bit] NOT NULL,
 	[ReadOn] [datetime] NULL,
 	[ReadBy] [bigint] NULL,
-	[Comment] [nvarchar](500) NULL,
+	[Comment] [nvarchar](500) NOT NULL,
 	[RegisteredOn] [datetime] NOT NULL,
 	[CancelledOn] [datetime] NULL,
 	[CancelledBy] [bigint] NULL,
@@ -92,7 +92,7 @@ CREATE TABLE [dbo].[DinnerRegisterHistories](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[DinnerTypes]    Script Date: 2016/7/6 16:17:29 ******/
+/****** Object:  Table [dbo].[DinnerTypes]    Script Date: 2016/7/12 13:36:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -112,7 +112,7 @@ CREATE TABLE [dbo].[DinnerTypes](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[EmployeeDiscounts]    Script Date: 2016/7/6 16:17:29 ******/
+/****** Object:  Table [dbo].[EmployeeDiscounts]    Script Date: 2016/7/12 13:36:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -141,7 +141,7 @@ CREATE TABLE [dbo].[EmployeeDiscounts](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[ExternalPersonnelDiningRegisterHistories]    Script Date: 2016/7/6 16:17:29 ******/
+/****** Object:  Table [dbo].[ExternalPersonnelDiningRegisterHistories]    Script Date: 2016/7/12 13:36:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -149,7 +149,7 @@ GO
 CREATE TABLE [dbo].[ExternalPersonnelDiningRegisterHistories](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
 	[StaffID] [bigint] NOT NULL,
-	[DinnerTypeID] [bigint] NOT NULL,
+	[MealTypeID] [bigint] NOT NULL,
 	[Department] [nvarchar](50) NOT NULL,
 	[CardQuantity] [int] NOT NULL,
 	[Comment] [nvarchar](500) NULL,
@@ -164,7 +164,7 @@ CREATE TABLE [dbo].[ExternalPersonnelDiningRegisterHistories](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Hotels]    Script Date: 2016/7/6 16:17:29 ******/
+/****** Object:  Table [dbo].[Hotels]    Script Date: 2016/7/12 13:36:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -183,7 +183,7 @@ CREATE TABLE [dbo].[Hotels](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[IdleAssets]    Script Date: 2016/7/6 16:17:29 ******/
+/****** Object:  Table [dbo].[IdleAssets]    Script Date: 2016/7/12 13:36:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -209,7 +209,7 @@ CREATE TABLE [dbo].[IdleAssets](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[ItemBorrowHistories]    Script Date: 2016/7/6 16:17:29 ******/
+/****** Object:  Table [dbo].[ItemBorrowHistories]    Script Date: 2016/7/12 13:36:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -220,7 +220,7 @@ CREATE TABLE [dbo].[ItemBorrowHistories](
 	[StaffID] [bigint] NOT NULL,
 	[Quantity] [int] NOT NULL,
 	[Status] [int] NOT NULL,
-	[Comment] [nvarchar](500) NULL,
+	[Comment] [nvarchar](500) NOT NULL,
 	[BorrowedOn] [datetime] NOT NULL,
 	[CancelledOn] [datetime] NULL,
 	[CancelledBy] [bigint] NULL,
@@ -233,7 +233,7 @@ CREATE TABLE [dbo].[ItemBorrowHistories](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Items]    Script Date: 2016/7/6 16:17:29 ******/
+/****** Object:  Table [dbo].[Items]    Script Date: 2016/7/12 13:36:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -253,7 +253,7 @@ CREATE TABLE [dbo].[Items](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[ItemStorageAreas]    Script Date: 2016/7/6 16:17:29 ******/
+/****** Object:  Table [dbo].[ItemStorageAreas]    Script Date: 2016/7/12 13:36:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -273,7 +273,7 @@ CREATE TABLE [dbo].[ItemStorageAreas](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[ItemStoragePlaces]    Script Date: 2016/7/6 16:17:29 ******/
+/****** Object:  Table [dbo].[ItemStoragePlaces]    Script Date: 2016/7/12 13:36:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -294,14 +294,34 @@ CREATE TABLE [dbo].[ItemStoragePlaces](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Settings]    Script Date: 2016/7/6 16:17:29 ******/
+/****** Object:  Table [dbo].[MealTypes]    Script Date: 2016/7/12 13:36:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[MealTypes](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Type] [nvarchar](50) NOT NULL,
+	[Status] [int] NOT NULL,
+	[CreatedOn] [datetime] NOT NULL,
+	[CreatedBy] [bigint] NOT NULL,
+	[UpdatedOn] [datetime] NULL,
+	[UpdatedBy] [bigint] NULL,
+ CONSTRAINT [PK_MealTypes] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Settings]    Script Date: 2016/7/12 13:36:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Settings](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
-	[IdleAssetDescription] [nvarchar](500) NOT NULL,
+	[IdleAssetDescription] [nvarchar](500) NULL,
  CONSTRAINT [PK_Settings] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
@@ -309,7 +329,7 @@ CREATE TABLE [dbo].[Settings](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[StaffRoles]    Script Date: 2016/7/6 16:17:29 ******/
+/****** Object:  Table [dbo].[StaffRoles]    Script Date: 2016/7/12 13:36:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -325,7 +345,7 @@ CREATE TABLE [dbo].[StaffRoles](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Staffs]    Script Date: 2016/7/6 16:17:29 ******/
+/****** Object:  Table [dbo].[Staffs]    Script Date: 2016/7/12 13:36:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -353,7 +373,7 @@ CREATE TABLE [dbo].[Staffs](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[SurroundingServices]    Script Date: 2016/7/6 16:17:29 ******/
+/****** Object:  Table [dbo].[SurroundingServices]    Script Date: 2016/7/12 13:36:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -409,10 +429,10 @@ REFERENCES [dbo].[Staffs] ([ID])
 GO
 ALTER TABLE [dbo].[DinnerRegisterHistories] CHECK CONSTRAINT [FK_DinnerRegisterHistories_Staffs1]
 GO
-ALTER TABLE [dbo].[ExternalPersonnelDiningRegisterHistories]  WITH CHECK ADD  CONSTRAINT [FK_ExternalPersonnelDiningRegisterHistories_DinnerTypes] FOREIGN KEY([DinnerTypeID])
-REFERENCES [dbo].[DinnerTypes] ([ID])
+ALTER TABLE [dbo].[ExternalPersonnelDiningRegisterHistories]  WITH CHECK ADD  CONSTRAINT [FK_ExternalPersonnelDiningRegisterHistories_MealTypes] FOREIGN KEY([MealTypeID])
+REFERENCES [dbo].[MealTypes] ([ID])
 GO
-ALTER TABLE [dbo].[ExternalPersonnelDiningRegisterHistories] CHECK CONSTRAINT [FK_ExternalPersonnelDiningRegisterHistories_DinnerTypes]
+ALTER TABLE [dbo].[ExternalPersonnelDiningRegisterHistories] CHECK CONSTRAINT [FK_ExternalPersonnelDiningRegisterHistories_MealTypes]
 GO
 ALTER TABLE [dbo].[ExternalPersonnelDiningRegisterHistories]  WITH CHECK ADD  CONSTRAINT [FK_ExternalPersonnelDiningRegisterHistories_Staffs] FOREIGN KEY([StaffID])
 REFERENCES [dbo].[Staffs] ([ID])
