@@ -30,11 +30,11 @@
                 </div>
                 <div class="form-group">
                     <label>宴请类型<span class="txt-mandatory">*</span></label>
-                    <select name="place" class="form-control" ng-model="data.TypeID" ng-options="item.ID as item.Type for item in dinnerTypes" required>
+                    <select name="dinnerType" class="form-control" ng-model="data.TypeID" ng-options="item.ID as item.Type for item in dinnerTypes" required>
                         <option value="">--- 请选择 ---</option>
                     </select>
-                    <div class="m-t-xs" ng-show="submitForm.place.$invalid && submitForm.$submitted">
-                        <span class="text-danger" ng-show="submitForm.place.$error">
+                    <div class="m-t-xs" ng-show="submitForm.dinnerType.$invalid && submitForm.$submitted">
+                        <span class="text-danger" ng-show="submitForm.dinnerType.$error">
                             <i class="fa fa-exclamation-triangle"></i>&nbsp;请选择宴请类型
                         </span>
                     </div>

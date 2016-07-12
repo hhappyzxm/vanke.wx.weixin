@@ -1,7 +1,7 @@
 ﻿(function (angular, app) {
     'use strict';
 
-    app.controller('DinnerRegisterCtrl', function ($scope, $window, api) {
+    app.controller('DinnerRegisterCtrl', function ($scope, $window, $filter, api) {
         api.account.getUserInfo(function (result) {
             $scope.isExternalPersonnelDiningManager = result.IsExternalPersonnelDiningManager;
         });

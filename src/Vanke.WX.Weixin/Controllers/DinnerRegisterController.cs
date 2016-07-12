@@ -43,6 +43,9 @@ namespace Vanke.WX.Weixin.Controllers
         [HttpPost]
         public async Task Save(DinnerRegisterModel model)
         {
+            // UCT 时间
+            model.DinnerDate = model.DinnerDate.AddHours(8);
+
             await _dinnerRegisterService.InsertAsync(model);
         }
 
