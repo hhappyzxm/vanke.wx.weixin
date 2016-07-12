@@ -1,7 +1,7 @@
 ﻿(function (angular, app) {
     'use strict';
 
-    app.controller('IdleAssetsCtrl', function ($scope, api, datatableSettings, sweetAlert, DTOptionsBuilder, DTColumnDefBuilder) {
+    app.controller('IdleAssetsCtrl', function ($scope, api, datatableSettings, sweetAlert, DTOptionsBuilder, DTColumnDefBuilder, Upload) {
         api.idleAssets.query(function (result) {
             $scope.idleAssets = result;
         });
@@ -11,6 +11,15 @@
         $scope.dtMessageColumnDefs = [
             DTColumnDefBuilder.newColumnDef(6).notSortable()
         ];
+
+        $scope.selectFile = function(file) {
+            Upload.upload({
+                url: '/api/files',
+                data: { file: file }
+            }).then(function (response) {
+                var fileName = response.data[0];
+            });
+        };
 
         $scope.remove = function (id) {
             sweetAlert.confirm(

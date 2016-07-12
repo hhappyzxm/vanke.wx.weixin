@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 using EZ.Framework.Integration.WebApi;
@@ -50,6 +51,13 @@ namespace Vanke.WX.Weixin.Controllers
             {
                 await _service.UpdateAsync(model.ID, model);
             }
+        }
+
+        [HttpPost]
+        [Route("api/idleassets/import")]
+        public async Task Import(string fileName)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
