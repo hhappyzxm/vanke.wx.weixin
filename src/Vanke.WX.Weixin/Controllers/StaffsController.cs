@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -184,6 +185,8 @@ namespace Vanke.WX.Weixin.Controllers
 
                 line ++;
             }
+
+            File.Delete(filePath);
 
             return new
             {

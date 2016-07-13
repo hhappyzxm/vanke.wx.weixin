@@ -5,9 +5,14 @@
         $scope.isImporting = false;
         $scope.importState = "导入";
         
-        api.staffs.query(function (result) {
-            $scope.staffs = result;
-        });
+        var loadData = function() {
+            api.staffs.search({ RealName: $scope.realName },
+               function (result) {
+                   $scope.staffs = result;
+               });
+        }
+
+        loadData()();
 
         $scope.dtOptions = datatableSettings.getGeneralSettings(DTOptionsBuilder);
 
@@ -31,6 +36,7 @@
                         sweetAlert.success("导入成功" + successed + "个新账户");
                         $scope.isImporting = false;
                         $scope.importState = "导入";
+                        loadData();
                     },
                     function() {
                         $scope.isImporting = false;
@@ -57,10 +63,7 @@
         };
 
         $scope.search= function() {
-            api.staffs.search({ RealName: $scope.realName },
-                function(result) {
-                    $scope.staffs = result;
-                });
+            loadData();
         }
     });
 

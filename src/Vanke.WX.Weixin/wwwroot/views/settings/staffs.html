@@ -2,23 +2,24 @@
     <div class="hpanel">
         <div class="panel-heading hbuilt">
             <div panel-tools></div>
+            <i class="panel-icon fa fa-search"></i>搜索
+        </div>
+        <div class="panel-body">
+            <div class="form-inline">
+                <div class="form-group">
+                    <label>姓名</label>
+                    <input ng-model="realName" class="form-control" />
+                </div>
+                <button class="btn btn-success" ng-click="search()"><i class="fa fa-search"></i>&nbsp; 搜索</button>
+            </div>
+        </div>
+    </div>
+    <div class="hpanel">
+        <div class="panel-heading hbuilt">
+            <div panel-tools></div>
             <i class="panel-icon fa fa-list"></i>&nbsp;内部员工
         </div>
-        <div class="hpanel">
-            <div class="panel-heading hbuilt">
-                <div panel-tools></div>
-                <i class="panel-icon fa fa-search"></i>搜索
-            </div>
-            <div class="panel-body">
-                <div class="form-inline">
-                    <div class="form-group">
-                        <label>姓名</label>
-                        <input ng-model="realName" class="form-control"/>
-                    </div>
-                    <button class="btn btn-success" ng-click="search()"><i class="fa fa-search"></i>&nbsp; 搜索</button>
-                </div>
-            </div>
-        </div>
+
         <div class="panel-body list">
             <div class="row">
                 <div class="col-md-6 m-b-md">
@@ -33,34 +34,34 @@
             <div class="table-responsive">
                 <table datatable="ng" dt-options="::dtOptions" dt-column-defs="::dtMessageColumnDefs" class="table table-bordered table-hover nowrap" width="100%">
                     <thead>
-                        <tr>
-                            <th>真实姓名</th>
-                            <th>用户名</th>
-                            <th>系统管理员</th>
-                            <th>外部就餐管理员</th>
-                            <th>物品借用管理员</th>
-                            <th width="150" class="text-center">操作</th>
-                        </tr>
+                    <tr>
+                        <th>真实姓名</th>
+                        <th>用户名</th>
+                        <th>系统管理员</th>
+                        <th>外部就餐管理员</th>
+                        <th>物品借用管理员</th>
+                        <th width="150" class="text-center">操作</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="item in staffs">
-                            <td>
-                                {{item.RealName}}
-                            </td>
-                            <td>
-                                {{item.LoginName}}
-                            </td>
-                            <td>
-                                {{(item.Roles.indexOf(0)!=-1)?'是':'否'}}
-                            </td>
-                            <td>
-                                {{(item.Roles.indexOf(2)!=-1)?'是':'否'}}
-                            </td>
-                            <td>
-                                {{(item.Roles.indexOf(3)!=-1)?'是':'否'}}
-                            </td>
-                            <td class="text-center"><a ui-sref="settings.staffedit({id:item.ID})" class="btn btn-success btn-xs">修改</a>&nbsp;<button class="btn btn-danger btn-xs" type="button" ng-click="remove(item.ID)">删除</button></td>
-                        </tr>
+                    <tr ng-repeat="item in staffs">
+                        <td>
+                            {{item.RealName}}
+                        </td>
+                        <td>
+                            {{item.LoginName}}
+                        </td>
+                        <td>
+                            {{(item.Roles.indexOf(0)!=-1)?'是':'否'}}
+                        </td>
+                        <td>
+                            {{(item.Roles.indexOf(2)!=-1)?'是':'否'}}
+                        </td>
+                        <td>
+                            {{(item.Roles.indexOf(3)!=-1)?'是':'否'}}
+                        </td>
+                        <td class="text-center"><a ui-sref="settings.staffedit({id:item.ID})" class="btn btn-success btn-xs">修改</a>&nbsp;<button class="btn btn-danger btn-xs" type="button" ng-click="remove(item.ID)">删除</button></td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
