@@ -62,6 +62,11 @@ namespace Vanke.WX.Weixin.Controllers
             return View();
         }
 
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
 
         [AllowAnonymous]
         public ActionResult Login()

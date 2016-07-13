@@ -154,6 +154,21 @@ namespace Vanke.WX.Weixin.Service
             return base.UpdateEntityAsync(entity);
         }
 
+        public async Task ChangePassword(string oldPassword, string newPassword)
+        {
+            var staff = await UnitOfWork.Set<Staff>().FindAsync(AccountManager.Instance.CurrentLoginUser.ID);
+            oldPassword = Convert.ToBase64String(System.Text.Encoding.Default.GetBytes(oldPassword));
+            newPassword = Convert.ToBase64String(System.Text.Encoding.Default.GetBytes(newPassword));
+
+            if (oldPassword != staff.Password)
+            {
+                throw new BusinessException("旧密码不正确");
+            }
+
+            staff.Password = newPassword;
+            await UnitOfWork.SaveChangesAsync();
+        }
+
         private async Task CheckItemExist(Staff entity)
         {
             if (await UnitOfWork.Set<Staff>().AnyAsync(p => p.LoginName.Equals(entity.LoginName) && p.ID != entity.ID))

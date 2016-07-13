@@ -389,6 +389,7 @@
     <Content Include="wwwroot\scripts\controllers\settings\staffedit.js" />
     <Content Include="wwwroot\scripts\controllers\settings\staffs.js" />
     <Content Include="wwwroot\scripts\controllers\weixin\designateddrivers.js" />
+    <Content Include="wwwroot\scripts\controllers\weixin\changepassword.js" />
     <Content Include="wwwroot\scripts\controllers\weixin\dinnerregister.js" />
     <Content Include="wwwroot\scripts\controllers\weixin\employeediscounts.js" />
     <Content Include="wwwroot\scripts\controllers\weixin\externalpersonneldiningregisterhistories.js" />
@@ -456,6 +457,7 @@
     <Content Include="Views\Weixin\Login.cshtml" />
     <Content Include="Views\Weixin\EmployeeDiscounts.cshtml" />
     <Content Include="Views\Weixin\EmployeeDiscountTypes.cshtml" />
+    <Content Include="Views\Weixin\ChangePassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

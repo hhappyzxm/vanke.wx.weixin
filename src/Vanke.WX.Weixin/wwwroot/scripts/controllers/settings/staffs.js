@@ -12,7 +12,7 @@
                });
         }
 
-        loadData()();
+        loadData();
 
         $scope.dtOptions = datatableSettings.getGeneralSettings(DTOptionsBuilder);
 

@@ -200,5 +200,12 @@ namespace Vanke.WX.Weixin.Controllers
         {
             return await _staffService.GetAllAsync(viewModel.RealName);
         }
+
+        [HttpPost]
+        [Route("api/staffs/changepassword")]
+        public async Task ChangePassword(ChangePasswordViewModel viewModel)
+        {
+            await _staffService.ChangePassword(viewModel.OldPassword, viewModel.NewPassword);
+        }
     }
 }

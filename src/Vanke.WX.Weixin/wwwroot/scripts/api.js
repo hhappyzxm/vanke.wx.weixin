@@ -40,6 +40,10 @@
                     method: 'POST',
                     url: apiHost + '/api/staffs/search',
                     isArray:true
+                },
+                'changePassword': {
+                    method: 'POST',
+                    url: apiHost + '/api/staffs/changepassword',
                 }
             }),
 

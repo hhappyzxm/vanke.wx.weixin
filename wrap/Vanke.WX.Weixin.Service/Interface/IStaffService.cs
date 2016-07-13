@@ -15,5 +15,7 @@ namespace Vanke.WX.Weixin.Service.Interface
         Task<StaffModel> GetByLoginNameAsync(string loginName);
 
         Task<IEnumerable<StaffModel>> GetAllAsync(string realName);
+
+        Task ChangePassword(string oldPassword, string newPassword);
     }
 }
