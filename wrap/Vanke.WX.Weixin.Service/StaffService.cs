@@ -28,6 +28,7 @@ namespace Vanke.WX.Weixin.Service
                 RealName = p.RealName,
                 LoginName = p.LoginName,
                 Password = p.Password,
+                Email = p.Email,
                 Status = p.Status
             };
         }
@@ -38,6 +39,7 @@ namespace Vanke.WX.Weixin.Service
             targetEntity.LoginName = model.LoginName;
             targetEntity.Password = Convert.ToBase64String(System.Text.Encoding.Default.GetBytes(model.Password));
             targetEntity.RealName = model.RealName;
+            targetEntity.Email = model.Email;
             targetEntity.Status = model.Status;
 
             if (targetEntity.ID > 0)
@@ -80,6 +82,7 @@ namespace Vanke.WX.Weixin.Service
                     ID = s.ID,
                     RealName = s.RealName,
                     LoginName = s.LoginName,
+                    Email = s.Email,
                     Status = s.Status,
                 }).ToListAsync();
 

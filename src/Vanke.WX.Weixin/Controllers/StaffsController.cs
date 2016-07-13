@@ -1,8 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
+using EZ.Framework;
 using EZ.Framework.Integration.WebApi;
+using Vanke.WX.Weixin.App_Extension;
 using Vanke.WX.Weixin.Common;
 using Vanke.WX.Weixin.Service.Interface;
 using Vanke.WX.Weixin.Service.Models;
@@ -40,6 +45,7 @@ namespace Vanke.WX.Weixin.Controllers
                 RealName = staff.RealName,
                 LoginName = staff.LoginName,
                 Password = "******",
+                Email = staff.Email,
                 IsAdmin = staff.Roles.Any(p => p == Role.Admin),
                 IsExternalPersonnelDiningManager = staff.Roles.Any(p => p == Role.ExternalPersonnelDiningManager),
                 IsItemBorrowManager = staff.Roles.Any(p => p == Role.ItemBorrowManager)
@@ -62,6 +68,7 @@ namespace Vanke.WX.Weixin.Controllers
                 RealName = viewModel.RealName,
                 LoginName = viewModel.LoginName,
                 Password = viewModel.Password,
+                Email = viewModel.Email,
                 Roles = new List<Role>
                 {
                     Role.Staff
@@ -104,6 +111,84 @@ namespace Vanke.WX.Weixin.Controllers
         public async Task Delete(long id)
         {
             await _staffService.RemoveAsync(id);
+        }
+
+        [HttpPost]
+        [Route("api/staffs/import")]
+        public async Task<object> Import(StaffImportViewModel viewModel)
+        {
+            var filePath = HttpRuntime.AppDomainAppPath + @"Temp\" + viewModel.FileName;
+            var dataSource = ExcelHelper.GetExcelDataTable(filePath, "UserList");
+            int index;
+
+            #region 验证Excel格式
+
+            index = 5;
+            foreach (DataRow row in dataSource.Rows)
+            {
+                if (string.IsNullOrEmpty(row[1].ToString()) &&
+                    string.IsNullOrEmpty(row[2].ToString()) &&
+                    string.IsNullOrEmpty(row[3].ToString()))
+                {
+                    break;
+                }
+                
+                if (string.IsNullOrEmpty(row[2].ToString()))
+                {
+                    throw new BusinessException($"第{index}行用户名为空");
+                }
+                //if (string.IsNullOrEmpty(row[3].ToString()))
+                //{
+                //    throw new BusinessException($"第{index}行说明为空");
+                //}
+
+                index++;
+            }
+
+            #endregion
+            
+            int successed = 0;
+            var line = 0;
+            foreach (DataRow row in dataSource.Rows)
+            {
+                if (string.IsNullOrEmpty(row[1].ToString()) &&
+                    string.IsNullOrEmpty(row[2].ToString()) &&
+                    string.IsNullOrEmpty(row[3].ToString()))
+                {
+                    break;
+                }
+
+                if (line <= 3)
+                {
+                    line++;
+                    continue;
+                }
+
+                try
+                {
+                    var newStaffModel = new StaffEditViewModel
+                    {
+                        LoginName = row[2].ToString(),
+                        RealName = string.IsNullOrEmpty(row[3].ToString()) ? row[2].ToString() : row[3].ToString(),
+                        Password = "123456",
+                        Email = row[8].ToString()
+                    };
+
+                    await this.Save(newStaffModel);
+                    successed++;
+                }
+                catch (BusinessException)
+                {
+                    // Do nonthing
+                }
+
+                line ++;
+            }
+
+            return new
+            {
+                Successed = successed
+            };
         }
     }
 }

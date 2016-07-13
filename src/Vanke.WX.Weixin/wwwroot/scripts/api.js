@@ -30,7 +30,13 @@
             /**
              * Admin Api
              */
-            staffs: $resource(apiHost + '/api/staffs/:id', { id: '@id' }),
+            staffs: $resource(apiHost + '/api/staffs/:id', { id: '@id' }, {
+                'import': {
+                    method: 'POST',
+                    url: apiHost + '/api/staffs/import',
+                    isArray: false
+                }
+            }),
 
             /**
              * Dinner Types Api

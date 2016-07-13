@@ -15,10 +15,17 @@ namespace Vanke.WX.Weixin.ViewModels
 
         public string Password { get; set; }
 
+        public string Email { get; set; }
+
         public bool IsAdmin { get; set; }
 
         public bool IsExternalPersonnelDiningManager { get; set; }
 
         public bool IsItemBorrowManager { get; set; }
+    }
+
+    public class StaffImportViewModel
+    {
+        public string FileName { get; set; }
     }
 }

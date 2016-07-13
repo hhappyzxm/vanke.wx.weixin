@@ -9,6 +9,11 @@
                 <div class="col-md-6 m-b-md">
                     <a ui-sref="settings.staffedit" class="btn btn-success btn-sm"><i class="fa fa-plus"></i>&nbsp;添加</a>
                 </div>
+                <div class="col-md-6 m-b-md">
+                    <div class="pull-right">
+                        <a class="btn btn-success btn-sm" ngf-select="selectFile($file)" name="file" ngf-accept="'application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'" ng-disabled="isImporting"><i class="fa fa-file"></i>&nbsp;{{importState}}</a>
+                    </div>
+                </div>
             </div>
             <div class="table-responsive">
                 <table datatable="ng" dt-options="::dtOptions" dt-column-defs="::dtMessageColumnDefs" class="table table-bordered table-hover nowrap" width="100%">

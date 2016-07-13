@@ -33,6 +33,9 @@ namespace Vanke.WX.Weixin.Data.Entity
         [StringLength(50)]
         public string Password { get; set; }
 
+        [StringLength(100)]
+        public string Email { get; set; }
+
         [StringLength(50)]
         public string WeixinOpenID { get; set; }
 

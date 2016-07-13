@@ -14,6 +14,8 @@ namespace Vanke.WX.Weixin.Service.Models
 
         public string Password { get; set; }
 
+        public string Email { get; set; }
+
         public StaffStatus Status { get; set; }
 
         public ICollection<Role> Roles { get; set; }

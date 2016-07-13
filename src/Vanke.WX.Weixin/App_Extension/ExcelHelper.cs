@@ -9,11 +9,11 @@ namespace Vanke.WX.Weixin.App_Extension
 {
     public class ExcelHelper
     {
-        public static DataTable GetExcelDataTable(string filePath)
+        public static DataTable GetExcelDataTable(string filePath, string sheetName = "sheet1")
         {
             using (var connection = new OleDbConnection(GetConnString(filePath)))
             {
-                string excelQuery = "select * from [sheet1$]";
+                string excelQuery = $"select * from [{sheetName}$]";
                 using (var command = new OleDbDataAdapter(excelQuery, connection))
                 {
                     var ds = new DataSet();

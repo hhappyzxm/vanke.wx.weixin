@@ -31,6 +31,15 @@
                                     class="fa fa-exclamation-triangle"></i>&nbsp;请输入密码</span>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label>邮件</label>
+                        <input name="email" type="email" class="form-control" ng-model="data.Email" />
+                        <div class="m-t-xs" ng-show="submitForm.email.$invalid && submitForm.$submitted">
+                            <span class="text-danger" ng-show="submitForm.email.$error">
+                                <i class="fa fa-exclamation-triangle"></i>&nbsp;请输入正确的邮件
+                            </span>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="checkbox">
