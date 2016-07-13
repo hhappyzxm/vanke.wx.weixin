@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-md-6 m-b-md">
                     <div class="pull-right">
-                        <a class="btn btn-success btn-sm" ngf-select="selectFile($file)" name="file" ngf-accept="'application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"><i class="fa fa-file"></i>&nbsp;导入</a>
+                        <a class="btn btn-success btn-sm" ngf-select="selectFile($file)" name="file" ngf-accept="'application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'" ng-disabled="isImporting"><i class="fa fa-file"></i>&nbsp;{{importState}}</a>
                     </div>
                 </div>
             </div>

@@ -99,7 +99,7 @@ namespace Vanke.WX.Weixin.Service
 
         private async Task CheckItemExist(EmployeeDiscount entity)
         {
-            if (await UnitOfWork.Set<EmployeeDiscount>().AnyAsync(p => p.Name.Equals(entity.Name) && p.ID != entity.ID))
+            if (await UnitOfWork.Set<EmployeeDiscount>().AnyAsync(p => p.Name.Equals(entity.Name) && p.ID != entity.ID && p.Status!= EmployeeDiscountStatus.Removed))
             {
                 throw new BusinessException("名称已经存在");
             }

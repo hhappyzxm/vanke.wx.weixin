@@ -94,7 +94,7 @@ namespace Vanke.WX.Weixin.Service
 
         private async Task CheckItemExist(SurroundingService entity)
         {
-            if (await UnitOfWork.Set<SurroundingService>().AnyAsync(p => p.Name.Equals(entity.Name) && p.ID != entity.ID))
+            if (await UnitOfWork.Set<SurroundingService>().AnyAsync(p => p.Name.Equals(entity.Name) && p.ID != entity.ID && p.Status != SurroundingServiceStatus.Removed))
             {
                 throw new BusinessException("名称已经存在");
             }

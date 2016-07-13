@@ -134,7 +134,7 @@ namespace Vanke.WX.Weixin.Service
 
         private async Task CheckItemExist(DesignatedDriver entity)
         {
-            if (await UnitOfWork.Set<DesignatedDriver>().AnyAsync(p => p.DriverName.Equals(entity.DriverName) && p.ID != entity.ID))
+            if (await UnitOfWork.Set<DesignatedDriver>().AnyAsync(p => p.DriverName.Equals(entity.DriverName) && p.ID != entity.ID && p.Status!= DesignatedDriverStatus.Removed))
             {
                 throw new BusinessException("代驾公司名字已经存在");
             }

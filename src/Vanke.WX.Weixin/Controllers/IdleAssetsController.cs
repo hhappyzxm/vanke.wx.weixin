@@ -68,6 +68,7 @@ namespace Vanke.WX.Weixin.Controllers
             var itemStorageAreaService = IoC.Container.GetInstance<IItemStorageAreaService>();
             var itemStoragePlaceService = IoC.Container.GetInstance<IItemStoragePlaceService>();
             var staffService = IoC.Container.GetInstance<IStaffService>();
+            var idleAssetService = IoC.Container.GetInstance<IIdleAssetService>();
 
             var checkedArea = new Dictionary<string, long>();
             var checkedPlace = new Dictionary<string, long>();
@@ -129,6 +130,17 @@ namespace Vanke.WX.Weixin.Controllers
             index = 2;
             foreach (DataRow row in dataSource.Rows)
             {
+                if (string.IsNullOrEmpty(row[0].ToString()) &&
+                    string.IsNullOrEmpty(row[1].ToString()) &&
+                    string.IsNullOrEmpty(row[2].ToString()) &&
+                    string.IsNullOrEmpty(row[3].ToString()) &&
+                    string.IsNullOrEmpty(row[4].ToString()) &&
+                    string.IsNullOrEmpty(row[5].ToString()) &&
+                    string.IsNullOrEmpty(row[6].ToString()))
+                {
+                    break;
+                }
+
                 // 验证项目名称
                 var area = row[0].ToString();
                 long areaId = 0;
@@ -144,6 +156,10 @@ namespace Vanke.WX.Weixin.Controllers
                     {
                         throw new BusinessException($"第{index}行项目名称{area}不存在，请先创建");
                     }
+                }
+                else
+                {
+                    areaId = checkedArea[area];
                 }
 
                 // 验证存放地点
@@ -165,7 +181,7 @@ namespace Vanke.WX.Weixin.Controllers
                 var managerAccount = row[5].ToString();
                 if (!checkedManagerAccount.ContainsKey(managerAccount))
                 {
-                    var entity = await staffService.GetByLoginNameAsync(area);
+                    var entity = await staffService.GetByLoginNameAsync(managerAccount);
                     if (entity != null)
                     {
                         checkedManagerAccount.Add(managerAccount, entity.ID);
@@ -175,6 +191,39 @@ namespace Vanke.WX.Weixin.Controllers
                         throw new BusinessException($"第{index}行负责人账号不存在{managerAccount}不存在，请先创建");
                     }
                 }
+
+                index++;
+            }
+
+            #endregion
+
+            #region 导入
+
+            index = 2;
+            foreach (DataRow row in dataSource.Rows)
+            {
+                if (string.IsNullOrEmpty(row[0].ToString()) &&
+                    string.IsNullOrEmpty(row[1].ToString()) &&
+                    string.IsNullOrEmpty(row[2].ToString()) &&
+                    string.IsNullOrEmpty(row[3].ToString()) &&
+                    string.IsNullOrEmpty(row[4].ToString()) &&
+                    string.IsNullOrEmpty(row[5].ToString()) &&
+                    string.IsNullOrEmpty(row[6].ToString()))
+                {
+                    break;
+                }
+
+                var model = new IdleAssetModel
+                {
+                    AreaID = checkedArea[row[0].ToString()],
+                    PlaceID = checkedPlace[row[6].ToString()+"|"+ checkedArea[row[0].ToString()]],
+                    Item = row[1].ToString(),
+                    Quantity = Convert.ToInt32(row[2]),
+                    Unit = row[3].ToString(),
+                    ManagerStaffID = checkedManagerAccount[row[5].ToString()]
+                };
+
+                await idleAssetService.InsertOrUpdate(model);
             }
 
             #endregion

@@ -86,7 +86,7 @@ namespace Vanke.WX.Weixin.Service
 
         private async Task CheckAreaExist(string area, long id = 0)
         {
-            if (await UnitOfWork.Set<ItemStorageArea>().AnyAsync(p => p.Area.Equals(area) && p.ID != id))
+            if (await UnitOfWork.Set<ItemStorageArea>().AnyAsync(p => p.Area.Equals(area) && p.ID != id && p.Status!= ItemStorageAreaStatus.Removed))
             {
                 throw new BusinessException("存放区域已经存在");
             }

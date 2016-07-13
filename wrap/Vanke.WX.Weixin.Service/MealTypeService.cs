@@ -81,7 +81,7 @@ namespace Vanke.WX.Weixin.Service
 
         private async Task CheckTypeExist(MealType entity)
         {
-            if (await UnitOfWork.Set<MealType>().AnyAsync(p => p.Type.Equals(entity.Type) && p.ID != entity.ID))
+            if (await UnitOfWork.Set<MealType>().AnyAsync(p => p.Type.Equals(entity.Type) && p.ID != entity.ID && p.Status!= MealTypeStatus.Removed))
             {
                 throw new BusinessException("餐别已经存在");
             }

@@ -109,7 +109,7 @@ namespace Vanke.WX.Weixin.Service
 
         private async Task CheckItemExist(ItemStoragePlace entity)
         {
-            if (await UnitOfWork.Set<ItemStoragePlace>().AnyAsync(p => p.Place.Equals(entity.Place) && p.ID != entity.ID))
+            if (await UnitOfWork.Set<ItemStoragePlace>().AnyAsync(p => p.Place.Equals(entity.Place) && p.ID != entity.ID && p.Status!= ItemStoragePlaceStatus.Removed))
             {
                 throw new BusinessException("存放地点已经存在");
             }

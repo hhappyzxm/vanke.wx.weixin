@@ -81,7 +81,7 @@ namespace Vanke.WX.Weixin.Service
 
         private async Task CheckPlaceExist(DinnerPlace entity)
         {
-            if (await UnitOfWork.Set<DinnerPlace>().AnyAsync(p => p.Place.Equals(entity.Place) && p.ID != entity.ID))
+            if (await UnitOfWork.Set<DinnerPlace>().AnyAsync(p => p.Place.Equals(entity.Place) && p.ID != entity.ID && p.Status!= DinnerPlaceStatus.Removed))
             {
                 throw new BusinessException("宴请地点已经存在");
             }
