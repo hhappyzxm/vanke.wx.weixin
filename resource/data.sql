@@ -37,17 +37,6 @@ INSERT MealTypes(Type, Status, CreatedOn, CreatedBy) VALUES ('早餐', 0, GETDATE(
 INSERT MealTypes(Type, Status, CreatedOn, CreatedBy) VALUES ('午餐', 0, GETDATE(), 1)
 INSERT MealTypes(Type, Status, CreatedOn, CreatedBy) VALUES ('晚餐', 0, GETDATE(), 1)
 
-INSERT ExternalPersonnelDiningRegisterHistories(StaffID, CardQuantity, Comment, Status, RegisteredOn) VALUES(1, 3, '会客', 0, GETDATE())
-INSERT ExternalPersonnelDiningRegisterHistories(StaffID, CardQuantity, Comment, Status, RegisteredOn) VALUES(2, 5, '会客', 0, GETDATE())
-INSERT ExternalPersonnelDiningRegisterHistories(StaffID, CardQuantity, Comment, Status, RegisteredOn) VALUES(3, 8, '会客', 0, GETDATE())
-
-INSERT DinnerRegisterHistories(StaffID, DinnerDate, PeopleCount, TypeID, PlaceID, Status, Comment, RegisteredOn)
-VALUES (1, GETDATE(), 4, 1, 1, 0, '会客', GETDATE())
-INSERT DinnerRegisterHistories(StaffID, DinnerDate, PeopleCount, TypeID, PlaceID, Status, Comment, RegisteredOn)
-VALUES (2, GETDATE(), 7, 2, 2, 0, '会客', GETDATE())
-INSERT DinnerRegisterHistories(StaffID, DinnerDate, PeopleCount, TypeID, PlaceID, Status, Comment, RegisteredOn)
-VALUES (3, GETDATE(), 3, 1, 3, 0, '会客', GETDATE())
-
 INSERT ItemStorageAreas(Area, Status, CreatedOn, CreatedBy) VALUES('无锡办公楼', 0, GETDATE(), 1)
 INSERT ItemStorageAreas(Area, Status, CreatedOn, CreatedBy) VALUES('常州售楼处', 0, GETDATE(), 1)
 INSERT ItemStorageAreas(Area, Status, CreatedOn, CreatedBy) VALUES('魅力仓库', 0, GETDATE(), 1)
@@ -59,6 +48,17 @@ INSERT ItemStoragePlaces(AreaID, Place, Status, CreatedOn, CreatedBy) VALUES(1, 
 INSERT ItemStoragePlaces(AreaID, Place, Status, CreatedOn, CreatedBy) VALUES(2, '售楼处', 0, GETDATE(), 1)
 INSERT ItemStoragePlaces(AreaID, Place, Status, CreatedOn, CreatedBy) VALUES(3, '魅力仓库', 0, GETDATE(), 1)
 INSERT ItemStoragePlaces(AreaID, Place, Status, CreatedOn, CreatedBy) VALUES(4, '信成道仓库', 0, GETDATE(), 1)
+
+INSERT ExternalPersonnelDiningRegisterHistories(StaffID, CardQuantity, Comment, Status, RegisteredOn) VALUES(1, 3, '会客', 0, GETDATE())
+INSERT ExternalPersonnelDiningRegisterHistories(StaffID, CardQuantity, Comment, Status, RegisteredOn) VALUES(2, 5, '会客', 0, GETDATE())
+INSERT ExternalPersonnelDiningRegisterHistories(StaffID, CardQuantity, Comment, Status, RegisteredOn) VALUES(3, 8, '会客', 0, GETDATE())
+
+INSERT DinnerRegisterHistories(StaffID, DinnerDate, PeopleCount, TypeID, PlaceID, Status, Comment, RegisteredOn)
+VALUES (1, GETDATE(), 4, 1, 1, 0, '会客', GETDATE())
+INSERT DinnerRegisterHistories(StaffID, DinnerDate, PeopleCount, TypeID, PlaceID, Status, Comment, RegisteredOn)
+VALUES (2, GETDATE(), 7, 2, 2, 0, '会客', GETDATE())
+INSERT DinnerRegisterHistories(StaffID, DinnerDate, PeopleCount, TypeID, PlaceID, Status, Comment, RegisteredOn)
+VALUES (3, GETDATE(), 3, 1, 3, 0, '会客', GETDATE())
 
 INSERT IdleAssets(AreaID, PlaceID, Item, Quantity, Unit, ManagerStaffID, Comment, Status, CreatedOn, CreatedBy)
 VALUES(1, 1, '电风扇', 4, '个', 1, '', 0, GETDATE(), 1)

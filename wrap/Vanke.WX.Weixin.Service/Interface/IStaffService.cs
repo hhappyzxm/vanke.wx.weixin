@@ -10,5 +10,7 @@ namespace Vanke.WX.Weixin.Service.Interface
         Staff GetByOpenID(string openId);
 
         void BindOpenId(int staffId, string openId);
+
+        Task<StaffModel> GetByLoginNameAsync(string loginName);
     }
 }

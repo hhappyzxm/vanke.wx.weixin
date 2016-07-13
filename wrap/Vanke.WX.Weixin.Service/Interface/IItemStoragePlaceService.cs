@@ -8,5 +8,7 @@ namespace Vanke.WX.Weixin.Service.Interface
     public interface IItemStoragePlaceService : ICRUDAsyncService<ItemStoragePlaceModel>
     {
         Task<IEnumerable<ItemStoragePlaceModel>> GetAllAsync(long areaId = 0);
+
+        Task<ItemStoragePlaceModel> GetByNameAsync(long areaId, string name);
     }
 }

@@ -66,9 +66,12 @@ namespace Vanke.WX.Weixin.Controllers
             var dataSource = ExcelHelper.GetExcelDataTable(filePath);
 
             var itemStorageAreaService = IoC.Container.GetInstance<IItemStorageAreaService>();
+            var itemStoragePlaceService = IoC.Container.GetInstance<IItemStoragePlaceService>();
+            var staffService = IoC.Container.GetInstance<IStaffService>();
 
             var checkedArea = new Dictionary<string, long>();
             var checkedPlace = new Dictionary<string, long>();
+            var checkedManagerAccount = new Dictionary<string, long>();
             int index;
 
             #region 验证Excel格式
@@ -128,16 +131,48 @@ namespace Vanke.WX.Weixin.Controllers
             {
                 // 验证项目名称
                 var area = row[0].ToString();
+                long areaId = 0;
                 if (!checkedArea.ContainsKey(area))
                 {
                     var entity = await itemStorageAreaService.GetByNameAsync(area);
                     if (entity != null)
                     {
                         checkedArea.Add(area, entity.ID);
+                        areaId = entity.ID;
                     }
                     else
                     {
                         throw new BusinessException($"第{index}行项目名称{area}不存在，请先创建");
+                    }
+                }
+
+                // 验证存放地点
+                var place = row[6].ToString();
+                if (!checkedPlace.ContainsKey(place + "|" + areaId))
+                {
+                    var entity = await itemStoragePlaceService.GetByNameAsync(areaId, place);
+                    if (entity != null)
+                    {
+                        checkedPlace.Add(place + "|" + areaId, entity.ID);
+                    }
+                    else
+                    {
+                        throw new BusinessException($"第{index}行备注{place}不存在，请先创建");
+                    }
+                }
+
+                // 验证负责人账号
+                var managerAccount = row[5].ToString();
+                if (!checkedManagerAccount.ContainsKey(managerAccount))
+                {
+                    var entity = await staffService.GetByLoginNameAsync(area);
+                    if (entity != null)
+                    {
+                        checkedManagerAccount.Add(managerAccount, entity.ID);
+                    }
+                    else
+                    {
+                        throw new BusinessException($"第{index}行负责人账号不存在{managerAccount}不存在，请先创建");
                     }
                 }
             }

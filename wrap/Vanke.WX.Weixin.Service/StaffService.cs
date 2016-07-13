@@ -66,6 +66,11 @@ namespace Vanke.WX.Weixin.Service
             return staff;
         }
 
+        public async Task<StaffModel> GetByLoginNameAsync(string loginName)
+        {
+            return await UnitOfWork.Set<Staff>().Select(ModelSelector()).SingleOrDefaultAsync(p => p.LoginName.Equals(loginName));
+        }
+
         public override async Task<IEnumerable<StaffModel>> GetAllAsync()
         {
             var staffs = await (from s in UnitOfWork.Set<Staff>()

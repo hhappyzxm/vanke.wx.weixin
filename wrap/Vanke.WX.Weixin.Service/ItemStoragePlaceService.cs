@@ -44,6 +44,11 @@ namespace Vanke.WX.Weixin.Service
             return await UnitOfWork.Set<ItemStoragePlace>().Select(ModelSelector()).SingleOrDefaultAsync(p => p.ID == (long)key);
         }
 
+        public async Task<ItemStoragePlaceModel> GetByNameAsync(long areaId, string name)
+        {
+            return await UnitOfWork.Set<ItemStoragePlace>().Select(ModelSelector()).SingleOrDefaultAsync(p => p.AreaID == areaId && p.Place.Equals(name));
+        }
+
         public override async Task<IEnumerable<ItemStoragePlaceModel>> GetAllAsync()
         {
             return await GetAllAsync(0);
