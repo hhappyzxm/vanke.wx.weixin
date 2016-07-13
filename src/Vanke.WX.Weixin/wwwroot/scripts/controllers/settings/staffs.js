@@ -4,7 +4,7 @@
     app.controller('StaffsCtrl', function ($scope, api, datatableSettings, sweetAlert, DTOptionsBuilder, DTColumnDefBuilder, Upload) {
         $scope.isImporting = false;
         $scope.importState = "导入";
-
+        
         api.staffs.query(function (result) {
             $scope.staffs = result;
         });
@@ -55,6 +55,13 @@
                     });
                 });
         };
+
+        $scope.search= function() {
+            api.staffs.search({ RealName: $scope.realName },
+                function(result) {
+                    $scope.staffs = result;
+                });
+        }
     });
 
 })(angular, window.app);

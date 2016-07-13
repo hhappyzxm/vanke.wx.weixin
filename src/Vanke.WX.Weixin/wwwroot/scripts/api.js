@@ -35,6 +35,11 @@
                     method: 'POST',
                     url: apiHost + '/api/staffs/import',
                     isArray: false
+                },
+                'search': {
+                    method: 'POST',
+                    url: apiHost + '/api/staffs/search',
+                    isArray:true
                 }
             }),
 

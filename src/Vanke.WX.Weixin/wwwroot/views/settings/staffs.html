@@ -4,6 +4,21 @@
             <div panel-tools></div>
             <i class="panel-icon fa fa-list"></i>&nbsp;内部员工
         </div>
+        <div class="hpanel">
+            <div class="panel-heading hbuilt">
+                <div panel-tools></div>
+                <i class="panel-icon fa fa-search"></i>搜索
+            </div>
+            <div class="panel-body">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label>姓名</label>
+                        <input ng-model="realName" class="form-control"/>
+                    </div>
+                    <button class="btn btn-success" ng-click="search()"><i class="fa fa-search"></i>&nbsp; 搜索</button>
+                </div>
+            </div>
+        </div>
         <div class="panel-body list">
             <div class="row">
                 <div class="col-md-6 m-b-md">

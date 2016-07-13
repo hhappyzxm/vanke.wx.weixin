@@ -75,7 +75,12 @@ namespace Vanke.WX.Weixin.Service
 
         public override async Task<IEnumerable<StaffModel>> GetAllAsync()
         {
-            var staffs = await (from s in UnitOfWork.Set<Staff>()
+            return await GetAllAsync(string.Empty);
+        }
+
+        public async Task<IEnumerable<StaffModel>> GetAllAsync(string realName)
+        {
+            var query = from s in UnitOfWork.Set<Staff>()
                 where s.Status == StaffStatus.Active
                 select new StaffModel
                 {
@@ -84,14 +89,21 @@ namespace Vanke.WX.Weixin.Service
                     LoginName = s.LoginName,
                     Email = s.Email,
                     Status = s.Status,
-                }).ToListAsync();
+                };
+
+            if (!string.IsNullOrEmpty(realName))
+            {
+                query = query.Where(p => p.RealName.Contains(realName));
+            }
+
+            var staffs = await query.ToListAsync();
 
             var staffIds = staffs.Select(p => p.ID).ToList();
 
             var roles =
                 await UnitOfWork.Set<StaffRole>()
                     .Where(p => staffIds.Contains(p.StaffID))
-                    .Select(p => new {StaffID = p.StaffID, Role = p.Role}).ToListAsync();
+                    .Select(p => new { StaffID = p.StaffID, Role = p.Role }).ToListAsync();
 
             staffs.ForEach(p => p.Roles = roles.Where(t => t.StaffID == p.ID).Select(t => t.Role).ToList());
 

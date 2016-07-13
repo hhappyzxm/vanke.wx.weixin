@@ -28,4 +28,9 @@ namespace Vanke.WX.Weixin.ViewModels
     {
         public string FileName { get; set; }
     }
+
+    public class StaffSearchViewModel
+    {
+        public string RealName { get; set; }
+    }
 }

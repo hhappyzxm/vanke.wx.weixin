@@ -190,5 +190,12 @@ namespace Vanke.WX.Weixin.Controllers
                 Successed = successed
             };
         }
+
+        [HttpPost]
+        [Route("api/staffs/search")]
+        public async Task<IEnumerable<StaffModel>> Search(StaffSearchViewModel viewModel)
+        {
+            return await _staffService.GetAllAsync(viewModel.RealName);
+        }
     }
 }
