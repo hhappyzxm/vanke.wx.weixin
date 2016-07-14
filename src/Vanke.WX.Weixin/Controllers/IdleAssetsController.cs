@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
@@ -227,6 +228,8 @@ namespace Vanke.WX.Weixin.Controllers
             }
 
             #endregion
+
+            File.Delete(filePath);
         }
 
         /// <summary>
