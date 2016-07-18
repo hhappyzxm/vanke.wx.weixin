@@ -37,7 +37,10 @@ namespace Vanke.WX.Weixin.Service
         {
             targetEntity.ID = model.ID;
             targetEntity.LoginName = model.LoginName;
-            targetEntity.Password = Convert.ToBase64String(System.Text.Encoding.Default.GetBytes(model.Password));
+            if (model.Password != "******")
+            {
+                targetEntity.Password = Convert.ToBase64String(System.Text.Encoding.Default.GetBytes(model.Password));
+            }
             targetEntity.RealName = model.RealName;
             targetEntity.Email = model.Email;
             targetEntity.Status = model.Status;

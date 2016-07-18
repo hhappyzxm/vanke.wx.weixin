@@ -11,7 +11,7 @@ using Vanke.WX.Weixin.ViewModels;
 
 namespace Vanke.WX.Weixin.Controllers
 {
-    
+
     public class AccountController : GenericApiController
     {
         [AllowAnonymous]
@@ -19,11 +19,11 @@ namespace Vanke.WX.Weixin.Controllers
         [Route("api/account/login")]
         public object Login(LoginViewModel viewModel)
         {
-            var currentLogin = (CurrentLogin) AccountManager.Instance.SignIn(viewModel.LoginName, viewModel.Password);
+            var currentLogin = (CurrentLogin)AccountManager.Instance.SignIn(viewModel.LoginName, viewModel.Password);
 
             return new
             {
-                IsAuthed = currentLogin != null,
+                IsAuthed = currentLogin != null && currentLogin.Roles.Any(p => p == Role.Admin),
                 User = currentLogin
             };
         }
@@ -41,7 +41,7 @@ namespace Vanke.WX.Weixin.Controllers
         [Route("api/account/weixinlogin")]
         public object WeixinLogin(WeixinLoginViewModel viewModel)
         {
-            var currentLogin = (CurrentLogin) AccountManager.Instance.SignIn(viewModel.LoginName, viewModel.Password);
+            var currentLogin = (CurrentLogin)AccountManager.Instance.SignIn(viewModel.LoginName, viewModel.Password);
 
             if (currentLogin != null)
             {
