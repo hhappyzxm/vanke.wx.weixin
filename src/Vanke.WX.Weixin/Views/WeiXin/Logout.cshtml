@@ -1,4 +1,8 @@
-﻿<div ng-controller="LogoutCtrl"></div>
+﻿<div ng-controller="LogoutCtrl">
+    <div class="text-center margin-top-10" ng-show="logoutSuccessed">
+        <h2>已经成功退出账号</h2>
+    </div>
+</div>
 @section scripts {
     <script src="~/wwwroot/lib/jquery/jquery.js"></script>
     <script src="~/wwwroot/lib/angular/angular.js"></script>

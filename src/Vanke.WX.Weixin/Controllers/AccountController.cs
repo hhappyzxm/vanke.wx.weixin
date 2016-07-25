@@ -56,12 +56,17 @@ namespace Vanke.WX.Weixin.Controllers
         }
         
         [HttpPost]
+        [AllowAnonymous]
         [Route("api/account/weixinlogout")]
         public void WeixinLogout()
         {
             AccountManager.Instance.SignOut();
 
-            IoC.Container.GetInstance<IStaffService>().UnBindOpenId(Convert.ToInt32(AccountManager.Instance.CurrentLoginUser.ID));
+            if (AccountManager.Instance.CurrentLoginUser != null)
+            {
+                IoC.Container.GetInstance<IStaffService>()
+                    .UnBindOpenId(Convert.ToInt32(AccountManager.Instance.CurrentLoginUser.ID));
+            }
         }
 
         [HttpPost]

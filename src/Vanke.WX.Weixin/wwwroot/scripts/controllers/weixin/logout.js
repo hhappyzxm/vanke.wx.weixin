@@ -1,9 +1,10 @@
 ﻿(function (angular, app) {
     'use strict';
 
-    app.controller('LogoutCtrl', function ($window, api) {
+    app.controller('LogoutCtrl', function ($scope, $window, api) {
+        $scope.logoutSuccessed = false;
         api.account.weixinLogout(function () {
-            $window.location.href = "/weixin/login";
+            $scope.logoutSuccessed = true;
         });
     });
 

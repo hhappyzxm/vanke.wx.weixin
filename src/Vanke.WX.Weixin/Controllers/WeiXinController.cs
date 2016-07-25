@@ -73,7 +73,8 @@ namespace Vanke.WX.Weixin.Controllers
         {
             return View();
         }
-        
+
+        [AllowAnonymous]
         public ActionResult Logout()
         {
             return View();
