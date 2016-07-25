@@ -12,6 +12,8 @@ namespace Vanke.WX.Weixin.Service.Interface
 
         void BindOpenId(int staffId, string openId);
 
+        void UnBindOpenId(int staffId);
+
         Task<StaffModel> GetByLoginNameAsync(string loginName);
 
         Task<IEnumerable<StaffModel>> GetAllAsync(string realName);

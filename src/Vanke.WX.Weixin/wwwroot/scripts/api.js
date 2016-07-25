@@ -21,6 +21,10 @@
                     method: 'POST',
                     url: apiHost + '/api/account/weixinlogin'
                 },
+                'weixinLogout': {
+                    method: 'POST',
+                    url: apiHost + '/api/account/weixinlogout'
+                },
                 'getUserInfo': {
                     method: 'POST',
                     url: apiHost + '/api/account/getuserinfo'

@@ -127,6 +127,15 @@ namespace Vanke.WX.Weixin.Service
             UnitOfWork.SaveChanges();
         }
 
+        public void UnBindOpenId(int staffId)
+        {
+            var staff = UnitOfWork.Set<Staff>().Find(staffId);
+            staff.OpenIDBindTime = null;
+            staff.WeixinOpenID = string.Empty;
+
+            UnitOfWork.SaveChanges();
+        }
+
         protected override async Task InsertEntityAsync(Staff entity)
         {
             await CheckItemExist(entity);

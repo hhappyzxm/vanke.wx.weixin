@@ -54,6 +54,15 @@ namespace Vanke.WX.Weixin.Controllers
                 IsAuthed = currentLogin != null
             };
         }
+        
+        [HttpPost]
+        [Route("api/account/weixinlogout")]
+        public void WeixinLogout()
+        {
+            AccountManager.Instance.SignOut();
+
+            IoC.Container.GetInstance<IStaffService>().UnBindOpenId(Convert.ToInt32(AccountManager.Instance.CurrentLoginUser.ID));
+        }
 
         [HttpPost]
         [Route("api/account/getuserinfo")]
