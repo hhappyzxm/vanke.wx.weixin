@@ -28,6 +28,8 @@ namespace Vanke.WX.Weixin.Data
         public virtual DbSet<DesignatedDriverPrice> DesignatedDriverPrices { get; set; }
         public virtual DbSet<SurroundingService> SurroundingServices { get; set; }
         public virtual DbSet<Setting> Settings { get; set; }
+        public virtual DbSet<Topic> Topics { get; set; }
+        public virtual DbSet<TopicReply> TopicReplies { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -44,10 +46,10 @@ namespace Vanke.WX.Weixin.Data
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<MealType>()
-               .HasMany(e => e.ExternalPersonnelDiningRegisterHistories)
-               .WithRequired(e => e.MealType)
-               .HasForeignKey(e => e.MealTypeID)
-               .WillCascadeOnDelete(false);
+                .HasMany(e => e.ExternalPersonnelDiningRegisterHistories)
+                .WithRequired(e => e.MealType)
+                .HasForeignKey(e => e.MealTypeID)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Item>()
                 .HasMany(e => e.ItemBorrowHistories)
@@ -97,6 +99,11 @@ namespace Vanke.WX.Weixin.Data
             modelBuilder.Entity<DesignatedDriver>()
                 .HasMany(e => e.DesignatedDriverPrices)
                 .WithRequired(e => e.DesignatedDriver)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Topic>()
+                .HasMany(e => e.TopicReplies)
+                .WithRequired(e => e.Topic)
                 .WillCascadeOnDelete(false);
         }
     }

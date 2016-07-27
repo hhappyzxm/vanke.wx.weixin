@@ -460,6 +460,7 @@
     <Content Include="Views\Weixin\EmployeeDiscountTypes.cshtml" />
     <Content Include="Views\Weixin\ChangePassword.cshtml" />
     <Content Include="Views\Weixin\Logout.cshtml" />
+    <Content Include="Views\Weixin\Topics.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -116,4 +116,10 @@ namespace Vanke.WX.Weixin.Common
         Walk,
         Health
     }
+
+    public enum TopicStatus
+    {
+        Active,
+        Removed
+    }
 }
