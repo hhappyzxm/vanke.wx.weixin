@@ -1,79 +1,130 @@
 ﻿<div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container text-center text-white" style="line-height: 50px; font-size: 14px;">
-        宴请登记
+        互动
     </div>
 </div>
-<div ng-controller="DinnerRegisterCtrl" style="padding-top: 50px;">
+<div class="content" ng-controller="InteractiveCtrl" style="padding-top: 70px;">
     <div class="hpanel hgreen">
 
         <div class="panel-body">
-            <form name="submitForm">
-                <div class="form-group">
-                    <label>申领部门<span class="txt-mandatory">*</span></label>
-                    <input name="department" type="text" class="form-control" ng-model="data.Department" required />
-                    <div class="m-t-xs" ng-show="submitForm.department.$invalid && submitForm.$submitted">
-                        <span class="text-danger" ng-show="submitForm.department.$error">
-                            <i class="fa fa-exclamation-triangle"></i>&nbsp;请输入领用部门
-                        </span>
+            <div class="media social-profile clearfix">
+                <div class="media-body">
+                    <h5>赵旭明</h5>
+                    <small class="text-muted">2016-7-27 11:11</small>
+                </div>
+                <div class="social-content m-t-md">
+                    测试互动
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="social-talk">
+                <div class="media social-profile clearfix">
+                    <div class="media-body">
+                        <span class="font-bold">赵旭明</span>
+                        <span class="text-muted">2016-7-27 11:11</span>
+                    </div>
+                    <div class="social-content">
+                        asdfasdfasdfasdfasdf
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>宴请地点<span class="txt-mandatory">*</span></label>
-                    <select name="place" class="form-control" ng-model="data.PlaceID" ng-options="item.ID as item.Place for item in dinnerPlaces" required>
-                        <option value="">--- 请选择 ---</option>
-                    </select>
-                    <div class="m-t-xs" ng-show="submitForm.place.$invalid && submitForm.$submitted">
-                        <span class="text-danger" ng-show="submitForm.place.$error">
-                            <i class="fa fa-exclamation-triangle"></i>&nbsp;请选择宴请地点
-                        </span>
+            </div>
+            <div class="social-talk">
+                <div class="media social-profile clearfix">
+                    <div class="media-body">
+                        <span class="font-bold">赵旭明</span>
+                        <span class="text-muted">2016-7-27 11:11</span>
+                    </div>
+                    <div class="social-content">
+                        asdfasdfasdfasdfasdf
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>宴请类型<span class="txt-mandatory">*</span></label>
-                    <select name="dinnerType" class="form-control" ng-model="data.TypeID" ng-options="item.ID as item.Type for item in dinnerTypes" required>
-                        <option value="">--- 请选择 ---</option>
-                    </select>
-                    <div class="m-t-xs" ng-show="submitForm.dinnerType.$invalid && submitForm.$submitted">
-                        <span class="text-danger" ng-show="submitForm.dinnerType.$error">
-                            <i class="fa fa-exclamation-triangle"></i>&nbsp;请选择宴请类型
-                        </span>
+            </div>
+            <div class="social-form">
+                <input class="form-control" placeholder="评论"/>
+            </div>
+        </div>
+    </div>
+    <div class="hpanel blog-box">
+        <div class="panel-heading">
+            <div class="media clearfix">
+                <div class="media-body">
+                    <small>赵旭明</small><br/>
+                    <small>16.02.2015, 08:34 pm</small>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            测试互动发帖测试互动发帖测试互动发帖测试互动发帖测试互动发帖测试互动发帖
+            测试互动发帖测试互动发帖测试互动发帖测试互动发帖测试互动发帖测试互动发帖测试互动发帖测试互动发帖测试互动发帖测试互动发帖
+        </div>
+        <div class="panel-footer">
+            <div class="social-talk">
+                <div class="media social-profile clearfix">
+                    <div class="media-body">
+                        <span class="font-bold">赵旭明</span>
+                        <span class="text-muted">2016-7-27 11:11</span>
+                    </div>
+                    <div class="social-content">
+                        asdfasdfasdfasdfasdf
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>宴请人数<span class="txt-mandatory">*</span></label>
-                    <input name="peopleCount" type="number" class="form-control" ng-model="data.PeopleCount" required/>
-                    <div class="m-t-xs" ng-show="submitForm.peopleCount.$invalid && submitForm.$submitted">
-                        <span class="text-danger" ng-show="submitForm.peopleCount.$error">
-                            <i class="fa fa-exclamation-triangle"></i>&nbsp;请输入宴请人数
-                        </span>
+            </div>
+            <div class="social-talk">
+                <div class="media social-profile clearfix">
+                    <div class="media-body">
+                        <span class="font-bold">赵旭明</span>
+                        <span class="text-muted">2016-7-27 11:11</span>
+                    </div>
+                    <div class="social-content">
+                        asdfasdfasdfasdfasdf
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>宴请时间<span class="txt-mandatory">*</span></label>
-                    <input name="registeredOn" type="datetime-local" class="form-control" ng-model="data.DinnerDate" required/>
-                    <div class="m-t-xs" ng-show="submitForm.registeredOn.$invalid && submitForm.$submitted">
-                        <span class="text-danger" ng-show="submitForm.registeredOn.$error">
-                            <i class="fa fa-exclamation-triangle"></i>&nbsp;请输入宴请时间
-                        </span>
+            </div>
+            <div class="social-form">
+                <input class="form-control" placeholder="评论"/>
+            </div>
+        </div>
+    </div>
+    <div class="hpanel blog-box">
+        <div class="panel-heading">
+            <div class="media clearfix">
+                <div class="media-body">
+                    <small>赵旭明</small><br />
+                    <small>16.02.2015, 08:34 pm</small>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            测试互动发帖测试互动发帖测试互动发帖测试互动发帖测试互动发帖测试互动发帖
+            测试互动发帖测试互动发帖测试互动发帖测试互动发帖测试互动发帖测试互动发帖测试互动发帖测试互动发帖测试互动发帖测试互动发帖
+        </div>
+        <div class="panel-footer">
+            <div class="social-talk">
+                <div class="media social-profile clearfix">
+                    <div class="media-body">
+                        <span class="font-bold">赵旭明</span>
+                        <span class="text-muted">2016-7-27 11:11</span>
+                    </div>
+                    <div class="social-content">
+                        asdfasdfasdfasdfasdf
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>备注<span class="txt-mandatory">*</span></label>
-                    <textarea rows="3" name="comment" class="form-control" ng-model="data.Comment" placeholder="酒水种类、人均标准" required></textarea>
-                    <div class="m-t-xs" ng-show="submitForm.comment.$invalid && submitForm.$submitted">
-                        <span class="text-danger" ng-show="submitForm.comment.$error">
-                            <i class="fa fa-exclamation-triangle"></i>&nbsp;请输入备注
-                        </span>
+            </div>
+            <div class="social-talk">
+                <div class="media social-profile clearfix">
+                    <div class="media-body">
+                        <span class="font-bold">赵旭明</span>
+                        <span class="text-muted">2016-7-27 11:11</span>
+                    </div>
+                    <div class="social-content">
+                        asdfasdfasdfasdfasdf
                     </div>
                 </div>
-                <button type="button" class="btn btn-success" style="width: 100%" ng-click="save(submitForm)">提交</button>
-                <div class="weixin_more" ng-if="hasHistories">
-                    <a href="DinnerRegisterHistories#?isown=true">我的宴请记录</a>
-                </div>
-                <div class="weixin_more" ng-if="isExternalPersonnelDiningManager">
-                    <a href="DinnerRegisterHistories#?isown=false">所有宴请记录</a>
-                </div>
-            </form>
+            </div>
+            <div class="social-form">
+                <input class="form-control" placeholder="评论" />
+            </div>
         </div>
     </div>
 </div>

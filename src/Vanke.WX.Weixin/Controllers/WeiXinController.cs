@@ -66,7 +66,7 @@ namespace Vanke.WX.Weixin.Controllers
         {
             return View();
         }
-
+        [AllowAnonymous]
         public ActionResult Topics()
         {
             return View();
